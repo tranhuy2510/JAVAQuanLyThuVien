@@ -4,6 +4,11 @@
  */
 package ui_library;
 
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+
 /**
  *
  * @author ADMIN
@@ -11,10 +16,20 @@ package ui_library;
 public class frmQLSach extends javax.swing.JFrame {
 
     /**
-     * Creates new form frmQuanLySach
+     * Creates new form frmQLTheLoai
      */
     public frmQLSach() {
         initComponents();
+        
+        // can giua cho form
+        this.setLocationRelativeTo(null);
+        // tao vien xam cho khung panel
+        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(238, 180, 34));
+        jPanel_Theloaisach.setBorder(panelHeaderBorder);
+        
+        controllers.Func_Class func = new controllers.Func_Class();
+        func.displayImage(50,50,"/image/threeBooks.png", lblTieudeTL );
+    
     }
 
     /**
@@ -26,21 +41,89 @@ public class frmQLSach extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel_Theloaisach = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        lblTieudeTL = new javax.swing.JLabel();
+        lbl_CloseFormTL = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        jPanel_Theloaisach.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblTieudeTL.setBackground(new java.awt.Color(238, 180, 34));
+        lblTieudeTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTieudeTL.setForeground(new java.awt.Color(255, 255, 255));
+        lblTieudeTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTieudeTL.setText("Quản lý sách");
+        lblTieudeTL.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTieudeTL, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTieudeTL, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        lbl_CloseFormTL.setBackground(new java.awt.Color(238, 180, 34));
+        lbl_CloseFormTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl_CloseFormTL.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_CloseFormTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_CloseFormTL.setText("X");
+        lbl_CloseFormTL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_CloseFormTL.setOpaque(true);
+        lbl_CloseFormTL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_CloseFormTLMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel_TheloaisachLayout = new javax.swing.GroupLayout(jPanel_Theloaisach);
+        jPanel_Theloaisach.setLayout(jPanel_TheloaisachLayout);
+        jPanel_TheloaisachLayout.setHorizontalGroup(
+            jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_CloseFormTL, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+        jPanel_TheloaisachLayout.setVerticalGroup(
+            jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
+                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_CloseFormTL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(269, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel_Theloaisach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel_Theloaisach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lbl_CloseFormTLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_CloseFormTLMouseClicked
+        // TODO add your handling code here:
+        // Dong form the loai sach
+        this.dispose();
+    }//GEN-LAST:event_lbl_CloseFormTLMouseClicked
 
     /**
      * @param args the command line arguments
@@ -54,7 +137,9 @@ public class frmQLSach extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
@@ -79,5 +164,9 @@ public class frmQLSach extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel_Theloaisach;
+    private javax.swing.JLabel lblTieudeTL;
+    private javax.swing.JLabel lbl_CloseFormTL;
     // End of variables declaration//GEN-END:variables
 }
