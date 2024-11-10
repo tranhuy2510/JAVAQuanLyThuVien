@@ -10,4 +10,31 @@ package models;
  */
 public class TheLoaiModel {
     
+    private int id;
+    private String name;
+    
+    // constractors
+    public TheLoaiModel(){};
+    
+    public TheLoaiModel(int _id, String _name){
+        this.id = _id;
+        this.name = _name;
+    }
+
+    // getters va setters
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setId(int _id) {
+        this.id = _id;
+    }
+
+    public void setName(String _name) {
+        this.name = _name;
+    }
 }

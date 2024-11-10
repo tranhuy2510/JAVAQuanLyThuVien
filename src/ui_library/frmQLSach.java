@@ -29,8 +29,8 @@ public class frmQLSach extends javax.swing.JFrame {
         
         
         //CODE LOI TAM THOI NOTE
-        //controllers.Func_Class func = new controllers.Func_Class();
-        //func.displayImage(50,50,"/image/books-1977235.png", lblTieudeTL );
+        controllers.Func_Class func = new controllers.Func_Class();
+        func.displayImage(50,50,"/image/books-1977235.png", lblTieudeTL );
     
     }
 

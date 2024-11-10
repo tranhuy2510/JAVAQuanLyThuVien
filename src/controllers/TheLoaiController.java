@@ -9,5 +9,9 @@ package controllers;
  * @author ADMIN
  */
 public class TheLoaiController {
+     
+    // functions
+    
+    // insert a new theloai function
     
 }
