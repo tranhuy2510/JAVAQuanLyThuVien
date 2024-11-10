@@ -27,8 +27,10 @@ public class frmQLSach extends javax.swing.JFrame {
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(238, 180, 34));
         jPanel_Theloaisach.setBorder(panelHeaderBorder);
         
-        controllers.Func_Class func = new controllers.Func_Class();
-        func.displayImage(50,50,"/image/books-1977235.png", lblTieudeTL );
+        
+        //CODE LOI TAM THOI NOTE
+        //controllers.Func_Class func = new controllers.Func_Class();
+        //func.displayImage(50,50,"/image/books-1977235.png", lblTieudeTL );
     
     }
 
