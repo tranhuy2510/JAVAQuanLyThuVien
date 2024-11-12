@@ -15,6 +15,11 @@ public class frmQLDocGia extends javax.swing.JFrame {
      */
     public frmQLDocGia() {
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
+        
+        
+        
     }
 
     /**

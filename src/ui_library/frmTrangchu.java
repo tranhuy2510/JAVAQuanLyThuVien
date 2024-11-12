@@ -53,24 +53,24 @@ public class frmTrangchu extends javax.swing.JFrame {
         lblTraSach = new javax.swing.JLabel();
         pnlViewReader = new javax.swing.JPanel();
         lblDSDocGia = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        pnlSystem = new javax.swing.JPanel();
+        lblWelcome = new javax.swing.JLabel();
+        pnlCReader = new javax.swing.JPanel();
+        lblDocGia = new javax.swing.JLabel();
+        lblSDocGia = new javax.swing.JLabel();
+        pnlCAuthor = new javax.swing.JPanel();
+        lblSTacGia = new javax.swing.JLabel();
+        lblTacGia = new javax.swing.JLabel();
+        pnlCBooks = new javax.swing.JPanel();
+        lblSSach = new javax.swing.JLabel();
+        lblSach = new javax.swing.JLabel();
+        pnlIssue = new javax.swing.JPanel();
+        lblMuonS = new javax.swing.JLabel();
+        lblSMuon = new javax.swing.JLabel();
+        scrollDocGia = new javax.swing.JScrollPane();
+        tblDocGia = new javax.swing.JTable();
+        scrollSach = new javax.swing.JScrollPane();
+        tblSach = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ thống quản lý thư viện");
@@ -94,7 +94,7 @@ public class frmTrangchu extends javax.swing.JFrame {
                 lblDangXuatMouseClicked(evt);
             }
         });
-        pnlHeader.add(lblDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1420, 0, 120, 70));
+        pnlHeader.add(lblDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1410, 0, 130, 70));
 
         lblTaiKhoanIC.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblTaiKhoanIC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -261,80 +261,80 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         getContentPane().add(pnlLeftBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 270, 850));
 
-        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlSystem.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSystem.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Xin chào, Admin");
-        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel12.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 50));
+        lblWelcome.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblWelcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWelcome.setText("Xin chào, Admin");
+        lblWelcome.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pnlSystem.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 50));
 
-        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlCReader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel17.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel17.setText("Độc giả");
-        jPanel13.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 30));
+        lblDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        lblDocGia.setForeground(new java.awt.Color(102, 102, 102));
+        lblDocGia.setText("Độc giả");
+        pnlCReader.add(lblDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 30));
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_docgia.png"))); // NOI18N
-        jLabel21.setText("10   ");
-        jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel13.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 70));
+        lblSDocGia.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblSDocGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_docgia.png"))); // NOI18N
+        lblSDocGia.setText("10   ");
+        lblSDocGia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pnlCReader.add(lblSDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 70));
 
-        jPanel12.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 240, 140));
+        pnlSystem.add(pnlCReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 240, 140));
 
-        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlCAuthor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia.png"))); // NOI18N
-        jLabel23.setText("10   ");
-        jLabel23.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel14.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 70));
+        lblSTacGia.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblSTacGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia.png"))); // NOI18N
+        lblSTacGia.setText("10   ");
+        lblSTacGia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pnlCAuthor.add(lblSTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 70));
 
-        jLabel18.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel18.setText("Tác giả");
-        jPanel14.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 30));
+        lblTacGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        lblTacGia.setForeground(new java.awt.Color(102, 102, 102));
+        lblTacGia.setText("Tác giả");
+        pnlCAuthor.add(lblTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 30));
 
-        jPanel12.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 240, 140));
+        pnlSystem.add(pnlCAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 240, 140));
 
-        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlCBooks.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_dausach.png"))); // NOI18N
-        jLabel25.setText("10   ");
-        jLabel25.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel15.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 170, 70));
+        lblSSach.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblSSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_dausach.png"))); // NOI18N
+        lblSSach.setText("10   ");
+        lblSSach.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pnlCBooks.add(lblSSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 170, 70));
 
-        jLabel19.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel19.setText("Đầu sách");
-        jPanel15.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 90, 30));
+        lblSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        lblSach.setForeground(new java.awt.Color(102, 102, 102));
+        lblSach.setText("Đầu sách");
+        pnlCBooks.add(lblSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 90, 30));
 
-        jPanel12.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 230, 140));
+        pnlSystem.add(pnlCBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 230, 140));
 
-        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlIssue.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel26.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel26.setText("Lượt mượn");
-        jPanel16.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 30));
+        lblMuonS.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        lblMuonS.setForeground(new java.awt.Color(102, 102, 102));
+        lblMuonS.setText("Lượt mượn");
+        pnlIssue.add(lblMuonS, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 30));
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_luotmuon.png"))); // NOI18N
-        jLabel28.setText("10   ");
-        jLabel28.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel16.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 70));
+        lblSMuon.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblSMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_luotmuon.png"))); // NOI18N
+        lblSMuon.setText("10   ");
+        lblSMuon.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pnlIssue.add(lblSMuon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 70));
 
-        jPanel12.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 60, 240, 140));
+        pnlSystem.add(pnlIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 60, 240, 140));
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 153, 153));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đầu sách tiêu biểu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18))); // NOI18N
+        scrollDocGia.setBackground(new java.awt.Color(255, 153, 153));
+        scrollDocGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đầu sách tiêu biểu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18))); // NOI18N
 
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tblDocGia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -344,20 +344,28 @@ public class frmTrangchu extends javax.swing.JFrame {
             new String [] {
                 "Mã sách", "Tiêu đề", "Tác giả", "Lượt mượn"
             }
-        ));
-        jTable1.setToolTipText("");
-        jTable1.setShowGrid(true);
-        jTable1.setShowHorizontalLines(true);
-        jTable1.setShowVerticalLines(true);
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
 
-        jPanel12.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 550, 240));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblDocGia.setToolTipText("");
+        tblDocGia.setShowGrid(true);
+        tblDocGia.setShowHorizontalLines(true);
+        tblDocGia.setShowVerticalLines(true);
+        scrollDocGia.setViewportView(tblDocGia);
 
-        jScrollPane2.setBackground(new java.awt.Color(255, 153, 153));
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Độc giả nổi bật", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18))); // NOI18N
+        pnlSystem.add(scrollDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 530, 240));
 
-        jTable2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        scrollSach.setBackground(new java.awt.Color(255, 153, 153));
+        scrollSach.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Độc giả nổi bật", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18))); // NOI18N
+
+        tblSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tblSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -367,16 +375,24 @@ public class frmTrangchu extends javax.swing.JFrame {
             new String [] {
                 "Mã độc giả", "Họ và tên", "Lượt mượn", "Email"
             }
-        ));
-        jTable2.setToolTipText("");
-        jTable2.setShowGrid(true);
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
 
-        jPanel12.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 540, 240));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblSach.setToolTipText("");
+        tblSach.setShowGrid(true);
+        scrollSach.setViewportView(tblSach);
 
-        getContentPane().add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 1270, 850));
+        pnlSystem.add(scrollSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 540, 240));
 
-        setSize(new java.awt.Dimension(1534, 916));
+        getContentPane().add(pnlSystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 1270, 850));
+
+        setSize(new java.awt.Dimension(1540, 920));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -420,14 +436,20 @@ public class frmTrangchu extends javax.swing.JFrame {
 
     private void lblTraSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTraSachMouseClicked
         // TODO add your handling code here:
+        frmQLTraSach returns = new frmQLTraSach();
+        returns.setVisible(true);
     }//GEN-LAST:event_lblTraSachMouseClicked
 
     private void lblDSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDSDocGiaMouseClicked
         // TODO add your handling code here:
+        frmDSDocGia lstreader = new frmDSDocGia();
+        lstreader.setVisible(true);
     }//GEN-LAST:event_lblDSDocGiaMouseClicked
 
     private void lblDSMuonTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDSMuonTraMouseClicked
         // TODO add your handling code here:
+        frmDSMuonTra lstRI = new frmDSMuonTra();
+        lstRI.setVisible(true);
     }//GEN-LAST:event_lblDSMuonTraMouseClicked
 
     /**
@@ -466,48 +488,48 @@ public class frmTrangchu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblDSDocGia;
     private javax.swing.JLabel lblDSMuonTra;
     private javax.swing.JLabel lblDangXuat;
+    private javax.swing.JLabel lblDocGia;
     private javax.swing.JLabel lblFeature;
+    private javax.swing.JLabel lblMuonS;
     private javax.swing.JLabel lblQLDocGia;
     private javax.swing.JLabel lblQLMuonSach;
     private javax.swing.JLabel lblQLSach;
     private javax.swing.JLabel lblQLTacGia;
     private javax.swing.JLabel lblQLTheLoai;
+    private javax.swing.JLabel lblSDocGia;
+    private javax.swing.JLabel lblSMuon;
+    private javax.swing.JLabel lblSSach;
+    private javax.swing.JLabel lblSTacGia;
+    private javax.swing.JLabel lblSach;
     private javax.swing.JLabel lblSystemIC;
+    private javax.swing.JLabel lblTacGia;
     private javax.swing.JLabel lblTaiKhoanIC;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JLabel lblTraSach;
     private javax.swing.JLabel lblTrangchu;
+    private javax.swing.JLabel lblWelcome;
     private javax.swing.JPanel pnlAuthors;
     private javax.swing.JPanel pnlBookIssue;
     private javax.swing.JPanel pnlBooks;
+    private javax.swing.JPanel pnlCAuthor;
+    private javax.swing.JPanel pnlCBooks;
+    private javax.swing.JPanel pnlCReader;
     private javax.swing.JPanel pnlGenres;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlHome;
+    private javax.swing.JPanel pnlIssue;
     private javax.swing.JPanel pnlLeftBar;
     private javax.swing.JPanel pnlRIList;
     private javax.swing.JPanel pnlReader;
     private javax.swing.JPanel pnlReturnBook;
+    private javax.swing.JPanel pnlSystem;
     private javax.swing.JPanel pnlViewReader;
+    private javax.swing.JScrollPane scrollDocGia;
+    private javax.swing.JScrollPane scrollSach;
+    private javax.swing.JTable tblDocGia;
+    private javax.swing.JTable tblSach;
     // End of variables declaration//GEN-END:variables
 }
