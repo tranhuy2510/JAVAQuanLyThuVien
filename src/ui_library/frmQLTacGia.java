@@ -15,6 +15,9 @@ public class frmQLTacGia extends javax.swing.JFrame {
      */
     public frmQLTacGia() {
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**
