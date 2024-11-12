@@ -15,6 +15,8 @@ public class frmQLTraSach extends javax.swing.JFrame {
      */
     public frmQLTraSach() {
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
     }
 
     /**

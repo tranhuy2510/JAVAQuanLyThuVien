@@ -15,6 +15,10 @@ public class frmQLMuonSach extends javax.swing.JFrame {
      */
     public frmQLMuonSach() {
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
+        
+        
     }
 
     /**

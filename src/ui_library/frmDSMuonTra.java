@@ -15,6 +15,12 @@ public class frmDSMuonTra extends javax.swing.JFrame {
      */
     public frmDSMuonTra() {
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
+        
+        
+        
+        
     }
 
     /**
