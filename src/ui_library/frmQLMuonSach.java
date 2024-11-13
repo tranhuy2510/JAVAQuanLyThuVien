@@ -14,8 +14,8 @@ public class frmQLMuonSach extends javax.swing.JFrame {
         
         this.setSize(1105,636);
         this.setLocationRelativeTo(null);
-        // tao vien xam cho khung panel
-        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(238, 180, 34));
+        // tao vien cho khung panel
+        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(205,193,255));
         
         jPanel_Theloaisach.setBorder(panelHeaderBorder);
      
@@ -53,7 +53,7 @@ public class frmQLMuonSach extends javax.swing.JFrame {
 
         jPanel_Theloaisach.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbl_CloseFormTL.setBackground(new java.awt.Color(238, 180, 34));
+        lbl_CloseFormTL.setBackground(new java.awt.Color(238, 183, 249));
         lbl_CloseFormTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_CloseFormTL.setForeground(new java.awt.Color(255, 255, 255));
         lbl_CloseFormTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,9 +106,9 @@ public class frmQLMuonSach extends javax.swing.JFrame {
         btnHuy.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnHuy.setText("Hủy bỏ");
 
-        lblTieudeTL.setBackground(new java.awt.Color(238, 180, 34));
+        lblTieudeTL.setBackground(new java.awt.Color(238, 183, 249));
         lblTieudeTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTieudeTL.setForeground(new java.awt.Color(255, 255, 255));
+        lblTieudeTL.setForeground(new java.awt.Color(102, 102, 102));
         lblTieudeTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTieudeTL.setText("Quản lý sách mượn");
         lblTieudeTL.setOpaque(true);
@@ -148,14 +148,12 @@ public class frmQLMuonSach extends javax.swing.JFrame {
                                     .addComponent(txtTensach, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTacgia, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtSoluong, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtSoluong, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_TheloaisachLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnHuy)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnHuy)))
                 .addGap(0, 0, 0))
         );
         jPanel_TheloaisachLayout.setVerticalGroup(
