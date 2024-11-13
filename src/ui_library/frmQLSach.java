@@ -5,6 +5,7 @@
 package ui_library;
 
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
@@ -26,9 +27,18 @@ public class frmQLSach extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         // tao vien xam cho khung panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(238, 180, 34));
+        
         jPanel_Theloaisach.setBorder(panelHeaderBorder);
-        
-        
+        tblQuanlysach.setSelectionBackground(new Color(198, 226, 255));
+        tblQuanlysach.setSelectionForeground(Color.white);
+        tblQuanlysach.setRowHeight(30);
+        tblQuanlysach.setShowGrid(true);
+        tblQuanlysach.setBackground(new Color(238, 233, 233));
+        // thiet ke cho hang tren dau cua bang
+        tblQuanlysach.getTableHeader().setBackground(new Color(0, 191, 255));
+        tblQuanlysach.getTableHeader().setForeground(Color.white);
+        tblQuanlysach.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 12));
+        tblQuanlysach.getTableHeader().setOpaque(false);
         //CODE LOI TAM THOI NOTE
         controllers.Func_Class func = new controllers.Func_Class();
         func.displayImage(50,50,"/image/books-1977235.png", lblTieudeTL );
@@ -111,15 +121,23 @@ public class frmQLSach extends javax.swing.JFrame {
 
         tblQuanlysach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Tên", "Tác giả", "Thể loại", "Số lượng", "Số lượng"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblQuanlysach);
 
         btnLuu.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
