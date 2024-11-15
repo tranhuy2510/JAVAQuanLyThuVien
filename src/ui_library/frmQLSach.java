@@ -7,6 +7,8 @@ package ui_library;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 
 /**
@@ -19,6 +21,16 @@ public class frmQLSach extends javax.swing.JFrame {
      * Creates new form frmQLTheLoai
      */
     public frmQLSach() {
+        
+        // Dòng lệnh dưới dùng để khắc phục lỗi mở bảng trong trang chủ
+        
+        try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                SwingUtilities.updateComponentTreeUI(this);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        
         initComponents();
         
         // can giua cho form
@@ -39,6 +51,8 @@ public class frmQLSach extends javax.swing.JFrame {
         tblQuanlysach.getTableHeader().setForeground(Color.white);
         tblQuanlysach.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 12));
         tblQuanlysach.getTableHeader().setOpaque(false);
+
+        tblQuanlysach.getTableHeader().repaint();
         //CODE LOI TAM THOI NOTE
         controllers.Func_Class func = new controllers.Func_Class();
         func.displayImage(60,60,"/image/books-1977235.png", lblTieudeTL );
@@ -138,6 +152,7 @@ public class frmQLSach extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblQuanlysach.setShowGrid(true);
         jScrollPane1.setViewportView(tblQuanlysach);
 
         btnLuu.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N

@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -21,6 +23,13 @@ public class frmQLTheLoai extends javax.swing.JFrame {
      * Creates new form frmQLTheLoai
      */
     public frmQLTheLoai() {
+        
+        try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                SwingUtilities.updateComponentTreeUI(this);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         initComponents();
         
         // can giua cho form
@@ -49,7 +58,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         
         // thiet ke cho hang tren dau cua bang
         tblTheloai.getTableHeader().setBackground(new Color(0, 191, 255));
-        tblTheloai.getTableHeader().setForeground(Color.white);
+        tblTheloai.getTableHeader().setForeground(Color.WHITE);
         tblTheloai.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 18));
         tblTheloai.getTableHeader().setOpaque(false);
         
