@@ -23,7 +23,7 @@ public class frmQLSach extends javax.swing.JFrame {
         
         // can giua cho form
         
-        this.setSize(1105,636);
+        this.setSize(1110,670);
         this.setLocationRelativeTo(null);
         // tao vien xam cho khung panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(238, 180, 34));
@@ -41,7 +41,7 @@ public class frmQLSach extends javax.swing.JFrame {
         tblQuanlysach.getTableHeader().setOpaque(false);
         //CODE LOI TAM THOI NOTE
         controllers.Func_Class func = new controllers.Func_Class();
-        func.displayImage(50,50,"/image/books-1977235.png", lblTieudeTL );
+        func.displayImage(60,60,"/image/books-1977235.png", lblTieudeTL );
     
     }
 
