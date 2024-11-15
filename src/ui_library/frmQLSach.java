@@ -72,7 +72,6 @@ public class frmQLSach extends javax.swing.JFrame {
         txtMasach = new javax.swing.JTextField();
         txtTensach = new javax.swing.JTextField();
         txtTacgia = new javax.swing.JTextField();
-        txtTheloai = new javax.swing.JTextField();
         txtSoluong = new javax.swing.JTextField();
         txtGia = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
@@ -83,6 +82,7 @@ public class frmQLSach extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblTieudeTL = new javax.swing.JLabel();
         lblChonanhbia = new javax.swing.JLabel();
+        cmbTheloai = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -228,6 +228,8 @@ public class frmQLSach extends javax.swing.JFrame {
         lblChonanhbia.setForeground(new java.awt.Color(51, 51, 255));
         lblChonanhbia.setText("Chọn ảnh bìa");
 
+        cmbTheloai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel_TheloaisachLayout = new javax.swing.GroupLayout(jPanel_Theloaisach);
         jPanel_Theloaisach.setLayout(jPanel_TheloaisachLayout);
         jPanel_TheloaisachLayout.setHorizontalGroup(
@@ -266,9 +268,9 @@ public class frmQLSach extends javax.swing.JFrame {
                                                 .addComponent(txtMasach, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(txtTensach, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtTacgia, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(txtSoluong, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(txtTacgia, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txtSoluong, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(cmbTheloai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(35, 35, 35)
                                         .addComponent(lblAnhQLsach, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -310,7 +312,7 @@ public class frmQLSach extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblTheloai)
-                                    .addComponent(txtTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmbTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(27, 27, 27)
                                 .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblSoluong)
@@ -403,6 +405,7 @@ public class frmQLSach extends javax.swing.JFrame {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cmbTheloai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -426,6 +429,5 @@ public class frmQLSach extends javax.swing.JFrame {
     private javax.swing.JTextField txtSoluong;
     private javax.swing.JTextField txtTacgia;
     private javax.swing.JTextField txtTensach;
-    private javax.swing.JTextField txtTheloai;
     // End of variables declaration//GEN-END:variables
 }
