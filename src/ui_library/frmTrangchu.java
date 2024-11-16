@@ -313,7 +313,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         lblDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         lblDocGia.setForeground(new java.awt.Color(102, 102, 102));
         lblDocGia.setText("Độc giả");
-        pnlLstBook.add(lblDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 170, 40));
+        pnlLstBook.add(lblDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 170, 40));
 
         pnlSystem.add(pnlLstBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 1130, 280));
 
