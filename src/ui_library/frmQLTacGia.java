@@ -29,21 +29,139 @@ public class frmQLTacGia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlHeader = new javax.swing.JPanel();
+        lblSystemIC = new javax.swing.JLabel();
+        lblTieude = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblSystemIC1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        pnlHeader.setBackground(new java.awt.Color(90, 34, 139));
+        pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close32.png"))); // NOI18N
+        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseClicked(evt);
+            }
+        });
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 60, 57));
+
+        lblTieude.setBackground(new java.awt.Color(241, 231, 254));
+        lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTieude.setForeground(new java.awt.Color(255, 255, 255));
+        lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTieude.setText("   Quản lý tác giả");
+        lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 390, 57));
+        pnlHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 20, -1));
+
+        lblSystemIC1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSystemIC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia64.png"))); // NOI18N
+        pnlHeader.add(lblSystemIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 57));
+
+        jPanel1.setBackground(new java.awt.Color(241, 231, 254));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel2.setText("Tên thể loại:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 140, 30));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel3.setText("Mã thể loại:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 140, 30));
+
+        jScrollPane1.setBackground(new java.awt.Color(213, 184, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTable1.setForeground(new java.awt.Color(90, 34, 139));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Mã ", "Tên thể loại"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 340, 230));
+
+        jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(90, 34, 139));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 290, 30));
+
+        jTextField2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(90, 34, 139));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, 30));
+
+        jButton1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(90, 34, 139));
+        jButton1.setText("Thêm");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 80, -1));
+
+        jButton2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(90, 34, 139));
+        jButton2.setText("Sửa");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 70, -1));
+
+        jButton3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(90, 34, 139));
+        jButton3.setText("Xóa");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 80, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 847, Short.MAX_VALUE)
+            .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
+        // TODO add your handling code here:
+        // Dong form 
+        this.dispose();
+    }//GEN-LAST:event_lblSystemICMouseClicked
 
     /**
      * @param args the command line arguments
@@ -81,5 +199,20 @@ public class frmQLTacGia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblSystemIC;
+    private javax.swing.JLabel lblSystemIC1;
+    private javax.swing.JLabel lblTieude;
+    private javax.swing.JPanel pnlHeader;
     // End of variables declaration//GEN-END:variables
 }
