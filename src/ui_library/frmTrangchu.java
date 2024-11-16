@@ -37,27 +37,26 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlHome = new javax.swing.JPanel();
         lblTrangchu = new javax.swing.JLabel();
         pnlBooks = new javax.swing.JPanel();
-        lblQLSach = new javax.swing.JLabel();
+        btnQLSach = new javax.swing.JButton();
         pnlAuthors = new javax.swing.JPanel();
-        lblQLTacGia = new javax.swing.JLabel();
+        btnQLTacGia = new javax.swing.JButton();
         pnlRIList = new javax.swing.JPanel();
-        lblDSMuonTra = new javax.swing.JLabel();
+        btnDSMuonTra = new javax.swing.JButton();
         pnlGenres = new javax.swing.JPanel();
-        lblQLTheLoai = new javax.swing.JLabel();
+        btnQLTheLoai = new javax.swing.JButton();
         lblFeature = new javax.swing.JLabel();
         pnlReader = new javax.swing.JPanel();
-        lblQLDocGia = new javax.swing.JLabel();
+        btnQLDocGia = new javax.swing.JButton();
         pnlBookIssue = new javax.swing.JPanel();
-        lblQLMuonSach = new javax.swing.JLabel();
+        btnQLMuonSach = new javax.swing.JButton();
         pnlReturnBook = new javax.swing.JPanel();
-        lblTraSach = new javax.swing.JLabel();
+        btnTraSach = new javax.swing.JButton();
         pnlViewReader = new javax.swing.JPanel();
-        lblDSDocGia = new javax.swing.JLabel();
+        btnDSDocGia = new javax.swing.JButton();
         pnlSystem = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
-        pnlCReader = new javax.swing.JPanel();
+        pnlLstBook = new javax.swing.JPanel();
         lblDocGia = new javax.swing.JLabel();
-        lblSDocGia = new javax.swing.JLabel();
         pnlCAuthor = new javax.swing.JPanel();
         lblSTacGia = new javax.swing.JLabel();
         lblTacGia = new javax.swing.JLabel();
@@ -71,39 +70,48 @@ public class frmTrangchu extends javax.swing.JFrame {
         tblDocGia = new javax.swing.JTable();
         scrollSach = new javax.swing.JScrollPane();
         tblSach = new javax.swing.JTable();
+        pnlCReader1 = new javax.swing.JPanel();
+        lblDocGia1 = new javax.swing.JLabel();
+        lblSDocGia1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ thống quản lý thư viện");
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlHeader.setBackground(new java.awt.Color(205, 193, 255));
+        pnlHeader.setBackground(new java.awt.Color(90, 34, 139));
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_library_color.png"))); // NOI18N
         pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 70, 70));
 
+        lblDangXuat.setBackground(new java.awt.Color(241, 231, 254));
         lblDangXuat.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        lblDangXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_thoat.png"))); // NOI18N
-        lblDangXuat.setText("Đăng xuất");
+        lblDangXuat.setForeground(new java.awt.Color(255, 255, 255));
+        lblDangXuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_exit_color.png"))); // NOI18N
+        lblDangXuat.setText("  Đăng xuất");
         lblDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         lblDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDangXuatMouseClicked(evt);
             }
         });
-        pnlHeader.add(lblDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1410, 0, 130, 70));
+        pnlHeader.add(lblDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1420, 0, 120, 70));
 
+        lblTaiKhoanIC.setBackground(new java.awt.Color(241, 231, 254));
         lblTaiKhoanIC.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTaiKhoanIC.setForeground(new java.awt.Color(255, 255, 255));
         lblTaiKhoanIC.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTaiKhoanIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_User.png"))); // NOI18N
         lblTaiKhoanIC.setText(" Admin");
         lblTaiKhoanIC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         pnlHeader.add(lblTaiKhoanIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 0, 220, 70));
 
+        lblTieude.setBackground(new java.awt.Color(241, 231, 254));
         lblTieude.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        lblTieude.setForeground(new java.awt.Color(255, 255, 255));
         lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTieude.setText("Hệ Thống Quản Lý Thư Viện");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -111,13 +119,14 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1540, 70));
 
-        pnlLeftBar.setBackground(new java.awt.Color(0, 0, 0));
+        pnlLeftBar.setBackground(new java.awt.Color(213, 184, 255));
         pnlLeftBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlHome.setBackground(new java.awt.Color(255, 51, 51));
+        pnlHome.setBackground(new java.awt.Color(159, 90, 253));
         pnlHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTrangchu.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        lblTrangchu.setBackground(new java.awt.Color(255, 255, 255));
+        lblTrangchu.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblTrangchu.setForeground(new java.awt.Color(255, 255, 255));
         lblTrangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_home.png"))); // NOI18N
         lblTrangchu.setText("     Trang chủ");
@@ -125,137 +134,162 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         pnlLeftBar.add(pnlHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 270, 60));
 
-        pnlBooks.setBackground(new java.awt.Color(51, 51, 51));
+        pnlBooks.setBackground(new java.awt.Color(241, 231, 254));
         pnlBooks.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblQLSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblQLSach.setForeground(new java.awt.Color(255, 255, 255));
-        lblQLSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Book_Shelf.png"))); // NOI18N
-        lblQLSach.setText("   Quản lý sách");
-        lblQLSach.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnQLSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnQLSach.setForeground(new java.awt.Color(90, 34, 139));
+        btnQLSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_sach.png"))); // NOI18N
+        btnQLSach.setText("    Quản lý sách");
+        btnQLSach.setContentAreaFilled(false);
+        btnQLSach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnQLSach.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnQLSach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblQLSachMouseClicked(evt);
+                btnQLSachMouseClicked(evt);
             }
         });
-        pnlBooks.add(lblQLSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 230, 60));
+        pnlBooks.add(btnQLSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
 
         pnlLeftBar.add(pnlBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 270, 60));
 
-        pnlAuthors.setBackground(new java.awt.Color(51, 51, 51));
+        pnlAuthors.setBackground(new java.awt.Color(241, 231, 254));
         pnlAuthors.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblQLTacGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblQLTacGia.setForeground(new java.awt.Color(255, 255, 255));
-        lblQLTacGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_author.png"))); // NOI18N
-        lblQLTacGia.setText("  Quản lý tác giả");
-        lblQLTacGia.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnQLTacGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnQLTacGia.setForeground(new java.awt.Color(90, 34, 139));
+        btnQLTacGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_author.png"))); // NOI18N
+        btnQLTacGia.setText("    Quản lý tác giả");
+        btnQLTacGia.setContentAreaFilled(false);
+        btnQLTacGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnQLTacGia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnQLTacGia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblQLTacGiaMouseClicked(evt);
+                btnQLTacGiaMouseClicked(evt);
             }
         });
-        pnlAuthors.add(lblQLTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 230, 60));
+        pnlAuthors.add(btnQLTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
 
         pnlLeftBar.add(pnlAuthors, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 270, 60));
 
-        pnlRIList.setBackground(new java.awt.Color(51, 51, 51));
+        pnlRIList.setBackground(new java.awt.Color(241, 231, 254));
         pnlRIList.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDSMuonTra.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblDSMuonTra.setForeground(new java.awt.Color(255, 255, 255));
-        lblDSMuonTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_team.png"))); // NOI18N
-        lblDSMuonTra.setText("   Danh sách mượn trả");
-        lblDSMuonTra.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnDSMuonTra.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnDSMuonTra.setForeground(new java.awt.Color(90, 34, 139));
+        btnDSMuonTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_DsChiTiet.png"))); // NOI18N
+        btnDSMuonTra.setText("    Danh sách mượn");
+        btnDSMuonTra.setContentAreaFilled(false);
+        btnDSMuonTra.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDSMuonTra.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnDSMuonTra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblDSMuonTraMouseClicked(evt);
+                btnDSMuonTraMouseClicked(evt);
             }
         });
-        pnlRIList.add(lblDSMuonTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 230, 60));
+        pnlRIList.add(btnDSMuonTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
 
         pnlLeftBar.add(pnlRIList, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 270, 60));
 
-        pnlGenres.setBackground(new java.awt.Color(51, 51, 51));
+        pnlGenres.setBackground(new java.awt.Color(241, 231, 254));
         pnlGenres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblQLTheLoai.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblQLTheLoai.setForeground(new java.awt.Color(255, 255, 255));
-        lblQLTheLoai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_muc.png"))); // NOI18N
-        lblQLTheLoai.setText("   Quản lý thể loại");
-        lblQLTheLoai.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnQLTheLoai.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnQLTheLoai.setForeground(new java.awt.Color(90, 34, 139));
+        btnQLTheLoai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_muc.png"))); // NOI18N
+        btnQLTheLoai.setText("    Quản lý thế loại");
+        btnQLTheLoai.setContentAreaFilled(false);
+        btnQLTheLoai.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnQLTheLoai.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnQLTheLoai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblQLTheLoaiMouseClicked(evt);
+                btnQLTheLoaiMouseClicked(evt);
             }
         });
-        pnlGenres.add(lblQLTheLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 230, 60));
+        pnlGenres.add(btnQLTheLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
 
         pnlLeftBar.add(pnlGenres, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 270, 60));
 
-        lblFeature.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblFeature.setForeground(new java.awt.Color(255, 255, 255));
+        lblFeature.setBackground(new java.awt.Color(102, 51, 153));
+        lblFeature.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
+        lblFeature.setForeground(new java.awt.Color(102, 51, 153));
         lblFeature.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblFeature.setText("Chức năng");
-        pnlLeftBar.add(lblFeature, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 190, 60));
+        pnlLeftBar.add(lblFeature, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 190, 40));
 
-        pnlReader.setBackground(new java.awt.Color(51, 51, 51));
+        pnlReader.setBackground(new java.awt.Color(241, 231, 254));
         pnlReader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblQLDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblQLDocGia.setForeground(new java.awt.Color(255, 255, 255));
-        lblQLDocGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_team.png"))); // NOI18N
-        lblQLDocGia.setText("    Quản lý độc giả");
-        lblQLDocGia.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnQLDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnQLDocGia.setForeground(new java.awt.Color(90, 34, 139));
+        btnQLDocGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_team.png"))); // NOI18N
+        btnQLDocGia.setText("    Quản lý độc giả");
+        btnQLDocGia.setContentAreaFilled(false);
+        btnQLDocGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnQLDocGia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnQLDocGia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblQLDocGiaMouseClicked(evt);
+                btnQLDocGiaMouseClicked(evt);
             }
         });
-        pnlReader.add(lblQLDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 230, 60));
+        pnlReader.add(btnQLDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
 
         pnlLeftBar.add(pnlReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 270, 60));
 
-        pnlBookIssue.setBackground(new java.awt.Color(51, 51, 51));
+        pnlBookIssue.setBackground(new java.awt.Color(241, 231, 254));
         pnlBookIssue.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblQLMuonSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblQLMuonSach.setForeground(new java.awt.Color(255, 255, 255));
-        lblQLMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_team.png"))); // NOI18N
-        lblQLMuonSach.setText("     Sách mượn");
-        lblQLMuonSach.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnQLMuonSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnQLMuonSach.setForeground(new java.awt.Color(90, 34, 139));
+        btnQLMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_muons.png"))); // NOI18N
+        btnQLMuonSach.setText("    Sách mượn");
+        btnQLMuonSach.setContentAreaFilled(false);
+        btnQLMuonSach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnQLMuonSach.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnQLMuonSach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblQLMuonSachMouseClicked(evt);
+                btnQLMuonSachMouseClicked(evt);
             }
         });
-        pnlBookIssue.add(lblQLMuonSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 230, 60));
+        pnlBookIssue.add(btnQLMuonSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
 
         pnlLeftBar.add(pnlBookIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 270, 60));
 
-        pnlReturnBook.setBackground(new java.awt.Color(51, 51, 51));
+        pnlReturnBook.setBackground(new java.awt.Color(241, 231, 254));
         pnlReturnBook.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTraSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblTraSach.setForeground(new java.awt.Color(255, 255, 255));
-        lblTraSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_team.png"))); // NOI18N
-        lblTraSach.setText("     Trả lại sách");
-        lblTraSach.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnTraSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnTraSach.setForeground(new java.awt.Color(90, 34, 139));
+        btnTraSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_returnbook.png"))); // NOI18N
+        btnTraSach.setText("    Trả lại sách");
+        btnTraSach.setContentAreaFilled(false);
+        btnTraSach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnTraSach.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnTraSach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblTraSachMouseClicked(evt);
+                btnTraSachMouseClicked(evt);
             }
         });
-        pnlReturnBook.add(lblTraSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 230, 60));
+        pnlReturnBook.add(btnTraSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
 
         pnlLeftBar.add(pnlReturnBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 270, 60));
 
-        pnlViewReader.setBackground(new java.awt.Color(51, 51, 51));
+        pnlViewReader.setBackground(new java.awt.Color(241, 231, 254));
         pnlViewReader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDSDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblDSDocGia.setForeground(new java.awt.Color(255, 255, 255));
-        lblDSDocGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_team.png"))); // NOI18N
-        lblDSDocGia.setText("     Hồ sơ độc giả");
-        lblDSDocGia.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnDSDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnDSDocGia.setForeground(new java.awt.Color(90, 34, 139));
+        btnDSDocGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_profile.png"))); // NOI18N
+        btnDSDocGia.setText("    Hồ sơ độc giả");
+        btnDSDocGia.setContentAreaFilled(false);
+        btnDSDocGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDSDocGia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnDSDocGia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblDSDocGiaMouseClicked(evt);
+                btnDSDocGiaMouseClicked(evt);
             }
         });
-        pnlViewReader.add(lblDSDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 230, 60));
+        pnlViewReader.add(btnDSDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
 
         pnlLeftBar.add(pnlViewReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 270, 60));
 
@@ -265,29 +299,27 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlSystem.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblWelcome.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(90, 34, 139));
         lblWelcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWelcome.setText("Xin chào, Admin");
         lblWelcome.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         pnlSystem.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 50));
 
-        pnlCReader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLstBook.setBackground(new java.awt.Color(241, 231, 254));
+        pnlLstBook.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         lblDocGia.setForeground(new java.awt.Color(102, 102, 102));
         lblDocGia.setText("Độc giả");
-        pnlCReader.add(lblDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 30));
+        pnlLstBook.add(lblDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 170, 40));
 
-        lblSDocGia.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        lblSDocGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_docgia.png"))); // NOI18N
-        lblSDocGia.setText("10   ");
-        lblSDocGia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        pnlCReader.add(lblSDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 70));
+        pnlSystem.add(pnlLstBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 1130, 280));
 
-        pnlSystem.add(pnlCReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 240, 140));
-
+        pnlCAuthor.setBackground(new java.awt.Color(241, 231, 254));
         pnlCAuthor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSTacGia.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblSTacGia.setForeground(new java.awt.Color(90, 34, 139));
         lblSTacGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia.png"))); // NOI18N
         lblSTacGia.setText("10   ");
         lblSTacGia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -300,9 +332,11 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         pnlSystem.add(pnlCAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 240, 140));
 
+        pnlCBooks.setBackground(new java.awt.Color(241, 231, 254));
         pnlCBooks.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSSach.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblSSach.setForeground(new java.awt.Color(90, 34, 139));
         lblSSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_dausach.png"))); // NOI18N
         lblSSach.setText("10   ");
         lblSSach.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -315,6 +349,7 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         pnlSystem.add(pnlCBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 230, 140));
 
+        pnlIssue.setBackground(new java.awt.Color(241, 231, 254));
         pnlIssue.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMuonS.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -323,6 +358,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlIssue.add(lblMuonS, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 30));
 
         lblSMuon.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblSMuon.setForeground(new java.awt.Color(90, 34, 139));
         lblSMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_luotmuon.png"))); // NOI18N
         lblSMuon.setText("10   ");
         lblSMuon.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -330,9 +366,10 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         pnlSystem.add(pnlIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 60, 240, 140));
 
-        scrollDocGia.setBackground(new java.awt.Color(255, 153, 153));
+        scrollDocGia.setBackground(new java.awt.Color(241, 231, 254));
         scrollDocGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đầu sách tiêu biểu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18))); // NOI18N
 
+        tblDocGia.setBackground(new java.awt.Color(241, 231, 254));
         tblDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         tblDocGia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -355,15 +392,14 @@ public class frmTrangchu extends javax.swing.JFrame {
         });
         tblDocGia.setToolTipText("");
         tblDocGia.setShowGrid(true);
-        tblDocGia.setShowHorizontalLines(true);
-        tblDocGia.setShowVerticalLines(true);
         scrollDocGia.setViewportView(tblDocGia);
 
         pnlSystem.add(scrollDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 530, 240));
 
-        scrollSach.setBackground(new java.awt.Color(255, 153, 153));
+        scrollSach.setBackground(new java.awt.Color(241, 231, 254));
         scrollSach.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Độc giả nổi bật", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18))); // NOI18N
 
+        tblSach.setBackground(new java.awt.Color(241, 231, 254));
         tblSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         tblSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -390,6 +426,23 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         pnlSystem.add(scrollSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 540, 240));
 
+        pnlCReader1.setBackground(new java.awt.Color(241, 231, 254));
+        pnlCReader1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDocGia1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        lblDocGia1.setForeground(new java.awt.Color(102, 102, 102));
+        lblDocGia1.setText("Độc giả");
+        pnlCReader1.add(lblDocGia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 90, 30));
+
+        lblSDocGia1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lblSDocGia1.setForeground(new java.awt.Color(90, 34, 139));
+        lblSDocGia1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_docgia.png"))); // NOI18N
+        lblSDocGia1.setText("10   ");
+        lblSDocGia1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pnlCReader1.add(lblSDocGia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 70));
+
+        pnlSystem.add(pnlCReader1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 240, 140));
+
         getContentPane().add(pnlSystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 1270, 850));
 
         setSize(new java.awt.Dimension(1540, 920));
@@ -404,53 +457,53 @@ public class frmTrangchu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_lblDangXuatMouseClicked
 
-    private void lblQLTheLoaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLTheLoaiMouseClicked
+    private void btnQLTheLoaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLTheLoaiMouseClicked
         // TODO add your handling code here:
         frmQLTheLoai genres = new frmQLTheLoai();
         genres.setVisible(true);
-    }//GEN-LAST:event_lblQLTheLoaiMouseClicked
+    }//GEN-LAST:event_btnQLTheLoaiMouseClicked
 
-    private void lblQLTacGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLTacGiaMouseClicked
-        // TODO add your handling code here:
-        frmQLTacGia author = new frmQLTacGia();
-        author.setVisible(true);
-    }//GEN-LAST:event_lblQLTacGiaMouseClicked
-
-    private void lblQLSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLSachMouseClicked
-        // TODO add your handling code here:
-        frmQLSach book = new frmQLSach();
-        book.setVisible(true);
-    }//GEN-LAST:event_lblQLSachMouseClicked
-
-    private void lblQLDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLDocGiaMouseClicked
-        // TODO add your handling code here:
-        frmQLDocGia reader = new frmQLDocGia();
-        reader.setVisible(true);
-    }//GEN-LAST:event_lblQLDocGiaMouseClicked
-
-    private void lblQLMuonSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLMuonSachMouseClicked
-        // TODO add your handling code here:
-        frmQLMuonSach issue = new frmQLMuonSach();
-        issue.setVisible(true);
-    }//GEN-LAST:event_lblQLMuonSachMouseClicked
-
-    private void lblTraSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTraSachMouseClicked
-        // TODO add your handling code here:
-        frmQLTraSach returns = new frmQLTraSach();
-        returns.setVisible(true);
-    }//GEN-LAST:event_lblTraSachMouseClicked
-
-    private void lblDSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDSDocGiaMouseClicked
-        // TODO add your handling code here:
-        frmDSDocGia lstreader = new frmDSDocGia();
-        lstreader.setVisible(true);
-    }//GEN-LAST:event_lblDSDocGiaMouseClicked
-
-    private void lblDSMuonTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDSMuonTraMouseClicked
+    private void btnDSMuonTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSMuonTraMouseClicked
         // TODO add your handling code here:
         frmDSMuonTra lstRI = new frmDSMuonTra();
         lstRI.setVisible(true);
-    }//GEN-LAST:event_lblDSMuonTraMouseClicked
+    }//GEN-LAST:event_btnDSMuonTraMouseClicked
+
+    private void btnDSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSDocGiaMouseClicked
+        // TODO add your handling code here:
+        frmDSDocGia lstreader = new frmDSDocGia();
+        lstreader.setVisible(true);
+    }//GEN-LAST:event_btnDSDocGiaMouseClicked
+
+    private void btnTraSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTraSachMouseClicked
+        // TODO add your handling code here:
+        frmQLTraSach returns = new frmQLTraSach();
+        returns.setVisible(true);
+    }//GEN-LAST:event_btnTraSachMouseClicked
+
+    private void btnQLMuonSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLMuonSachMouseClicked
+        // TODO add your handling code here:
+        frmQLMuonSach issue = new frmQLMuonSach();
+        issue.setVisible(true);
+    }//GEN-LAST:event_btnQLMuonSachMouseClicked
+
+    private void btnQLDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLDocGiaMouseClicked
+        // TODO add your handling code here:
+        frmQLDocGia mreader = new frmQLDocGia();
+        mreader.setVisible(true);
+    }//GEN-LAST:event_btnQLDocGiaMouseClicked
+
+    private void btnQLTacGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLTacGiaMouseClicked
+        // TODO add your handling code here:
+        frmQLTacGia author = new frmQLTacGia();
+        author.setVisible(true);
+    }//GEN-LAST:event_btnQLTacGiaMouseClicked
+
+    private void btnQLSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLSachMouseClicked
+        // TODO add your handling code here:
+        frmQLSach book = new frmQLSach();
+        book.setVisible(true);
+    }//GEN-LAST:event_btnQLSachMouseClicked
 
     /**
      * @param args the command line arguments
@@ -488,18 +541,20 @@ public class frmTrangchu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblDSDocGia;
-    private javax.swing.JLabel lblDSMuonTra;
+    private javax.swing.JButton btnDSDocGia;
+    private javax.swing.JButton btnDSMuonTra;
+    private javax.swing.JButton btnQLDocGia;
+    private javax.swing.JButton btnQLMuonSach;
+    private javax.swing.JButton btnQLSach;
+    private javax.swing.JButton btnQLTacGia;
+    private javax.swing.JButton btnQLTheLoai;
+    private javax.swing.JButton btnTraSach;
     private javax.swing.JLabel lblDangXuat;
     private javax.swing.JLabel lblDocGia;
+    private javax.swing.JLabel lblDocGia1;
     private javax.swing.JLabel lblFeature;
     private javax.swing.JLabel lblMuonS;
-    private javax.swing.JLabel lblQLDocGia;
-    private javax.swing.JLabel lblQLMuonSach;
-    private javax.swing.JLabel lblQLSach;
-    private javax.swing.JLabel lblQLTacGia;
-    private javax.swing.JLabel lblQLTheLoai;
-    private javax.swing.JLabel lblSDocGia;
+    private javax.swing.JLabel lblSDocGia1;
     private javax.swing.JLabel lblSMuon;
     private javax.swing.JLabel lblSSach;
     private javax.swing.JLabel lblSTacGia;
@@ -508,7 +563,6 @@ public class frmTrangchu extends javax.swing.JFrame {
     private javax.swing.JLabel lblTacGia;
     private javax.swing.JLabel lblTaiKhoanIC;
     private javax.swing.JLabel lblTieude;
-    private javax.swing.JLabel lblTraSach;
     private javax.swing.JLabel lblTrangchu;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JPanel pnlAuthors;
@@ -516,12 +570,13 @@ public class frmTrangchu extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBooks;
     private javax.swing.JPanel pnlCAuthor;
     private javax.swing.JPanel pnlCBooks;
-    private javax.swing.JPanel pnlCReader;
+    private javax.swing.JPanel pnlCReader1;
     private javax.swing.JPanel pnlGenres;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlHome;
     private javax.swing.JPanel pnlIssue;
     private javax.swing.JPanel pnlLeftBar;
+    private javax.swing.JPanel pnlLstBook;
     private javax.swing.JPanel pnlRIList;
     private javax.swing.JPanel pnlReader;
     private javax.swing.JPanel pnlReturnBook;
