@@ -9,6 +9,7 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 
 /**
@@ -27,15 +28,14 @@ public class frmQLSach extends javax.swing.JFrame {
         try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 SwingUtilities.updateComponentTreeUI(this);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
             }
         
         initComponents();
         
         // can giua cho form
         
-        this.setSize(1110,670);
+        this.setSize(1105,630);
         this.setLocationRelativeTo(null);
         // tao vien xam cho khung panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(238, 180, 34));
