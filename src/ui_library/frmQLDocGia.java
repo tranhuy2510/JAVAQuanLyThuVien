@@ -31,21 +31,56 @@ public class frmQLDocGia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        pnlHeader = new javax.swing.JPanel();
+        lblSystemIC = new javax.swing.JLabel();
+        lblTieude = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(213, 184, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 530, 620));
+
+        pnlHeader.setBackground(new java.awt.Color(90, 34, 139));
+        pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseClicked(evt);
+            }
+        });
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, 70, 60));
+
+        lblTieude.setBackground(new java.awt.Color(241, 231, 254));
+        lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTieude.setForeground(new java.awt.Color(255, 255, 255));
+        lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTieude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_nhom.png"))); // NOI18N
+        lblTieude.setText("   Quản lý độc giả");
+        lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 270, 60));
+        pnlHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 20, -1));
+
+        getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 550, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
+        // TODO add your handling code here:
+        // Dong form
+        this.dispose();
+    }//GEN-LAST:event_lblSystemICMouseClicked
 
     /**
      * @param args the command line arguments
@@ -84,5 +119,11 @@ public class frmQLDocGia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblSystemIC;
+    private javax.swing.JLabel lblTieude;
+    private javax.swing.JPanel pnlHeader;
     // End of variables declaration//GEN-END:variables
 }
