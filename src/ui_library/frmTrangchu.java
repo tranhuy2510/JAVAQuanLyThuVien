@@ -100,7 +100,7 @@ public class frmTrangchu extends javax.swing.JFrame {
                 lblDangXuatMouseClicked(evt);
             }
         });
-        pnlHeader.add(lblDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1420, 0, 120, 70));
+        pnlHeader.add(lblDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(1410, 0, 120, 70));
 
         lblTaiKhoanIC.setBackground(new java.awt.Color(241, 231, 254));
         lblTaiKhoanIC.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -109,7 +109,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         lblTaiKhoanIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_User.png"))); // NOI18N
         lblTaiKhoanIC.setText(" Admin");
         lblTaiKhoanIC.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        pnlHeader.add(lblTaiKhoanIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 0, 220, 70));
+        pnlHeader.add(lblTaiKhoanIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 0, 220, 70));
 
         lblTieude.setBackground(new java.awt.Color(241, 231, 254));
         lblTieude.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
@@ -122,6 +122,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1540, 70));
 
         pnlLeftBar.setBackground(new java.awt.Color(213, 184, 255));
+        pnlLeftBar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 0, new java.awt.Color(90, 34, 139)));
         pnlLeftBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlHome.setBackground(new java.awt.Color(159, 90, 253));
@@ -132,9 +133,9 @@ public class frmTrangchu extends javax.swing.JFrame {
         lblTrangchu.setForeground(new java.awt.Color(255, 255, 255));
         lblTrangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_home.png"))); // NOI18N
         lblTrangchu.setText("     Trang chủ");
-        pnlHome.add(lblTrangchu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 230, 60));
+        pnlHome.add(lblTrangchu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 220, 60));
 
-        pnlLeftBar.add(pnlHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 270, 60));
+        pnlLeftBar.add(pnlHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 42, 262, 60));
 
         pnlBooks.setBackground(new java.awt.Color(241, 231, 254));
         pnlBooks.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -151,9 +152,9 @@ public class frmTrangchu extends javax.swing.JFrame {
                 btnQLSachMouseClicked(evt);
             }
         });
-        pnlBooks.add(btnQLSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
+        pnlBooks.add(btnQLSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 270, 60));
+        pnlLeftBar.add(pnlBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 280, 262, 60));
 
         pnlAuthors.setBackground(new java.awt.Color(241, 231, 254));
         pnlAuthors.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,9 +171,9 @@ public class frmTrangchu extends javax.swing.JFrame {
                 btnQLTacGiaMouseClicked(evt);
             }
         });
-        pnlAuthors.add(btnQLTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
+        pnlAuthors.add(btnQLTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlAuthors, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 270, 60));
+        pnlLeftBar.add(pnlAuthors, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 220, 262, 60));
 
         pnlRIList.setBackground(new java.awt.Color(241, 231, 254));
         pnlRIList.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -189,9 +190,9 @@ public class frmTrangchu extends javax.swing.JFrame {
                 btnDSMuonTraMouseClicked(evt);
             }
         });
-        pnlRIList.add(btnDSMuonTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
+        pnlRIList.add(btnDSMuonTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlRIList, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 270, 60));
+        pnlLeftBar.add(pnlRIList, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 580, 262, 60));
 
         pnlGenres.setBackground(new java.awt.Color(241, 231, 254));
         pnlGenres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -208,9 +209,9 @@ public class frmTrangchu extends javax.swing.JFrame {
                 btnQLTheLoaiMouseClicked(evt);
             }
         });
-        pnlGenres.add(btnQLTheLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
+        pnlGenres.add(btnQLTheLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlGenres, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 270, 60));
+        pnlLeftBar.add(pnlGenres, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 160, 262, 60));
 
         lblFeature.setBackground(new java.awt.Color(102, 51, 153));
         lblFeature.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
@@ -234,9 +235,9 @@ public class frmTrangchu extends javax.swing.JFrame {
                 btnQLDocGiaMouseClicked(evt);
             }
         });
-        pnlReader.add(btnQLDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
+        pnlReader.add(btnQLDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 270, 60));
+        pnlLeftBar.add(pnlReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 340, 262, 60));
 
         pnlBookIssue.setBackground(new java.awt.Color(241, 231, 254));
         pnlBookIssue.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -253,9 +254,9 @@ public class frmTrangchu extends javax.swing.JFrame {
                 btnQLMuonSachMouseClicked(evt);
             }
         });
-        pnlBookIssue.add(btnQLMuonSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
+        pnlBookIssue.add(btnQLMuonSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlBookIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 270, 60));
+        pnlLeftBar.add(pnlBookIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 400, 262, 60));
 
         pnlReturnBook.setBackground(new java.awt.Color(241, 231, 254));
         pnlReturnBook.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -272,9 +273,9 @@ public class frmTrangchu extends javax.swing.JFrame {
                 btnTraSachMouseClicked(evt);
             }
         });
-        pnlReturnBook.add(btnTraSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
+        pnlReturnBook.add(btnTraSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlReturnBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 270, 60));
+        pnlLeftBar.add(pnlReturnBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 460, 262, 60));
 
         pnlViewReader.setBackground(new java.awt.Color(241, 231, 254));
         pnlViewReader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -291,13 +292,14 @@ public class frmTrangchu extends javax.swing.JFrame {
                 btnDSDocGiaMouseClicked(evt);
             }
         });
-        pnlViewReader.add(btnDSDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 240, 60));
+        pnlViewReader.add(btnDSDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlViewReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 270, 60));
+        pnlLeftBar.add(pnlViewReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 520, 262, 60));
 
-        getContentPane().add(pnlLeftBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 270, 850));
+        getContentPane().add(pnlLeftBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 270, 840));
 
         pnlSystem.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSystem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 3, new java.awt.Color(90, 34, 139)));
         pnlSystem.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblWelcome.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -313,9 +315,9 @@ public class frmTrangchu extends javax.swing.JFrame {
         lblDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         lblDocGia.setForeground(new java.awt.Color(102, 102, 102));
         lblDocGia.setText("Độc giả");
-        pnlLstBook.add(lblDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 170, 40));
+        pnlLstBook.add(lblDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 170, 40));
 
-        pnlSystem.add(pnlLstBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 1130, 280));
+        pnlSystem.add(pnlLstBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 1130, 280));
 
         pnlCAuthor.setBackground(new java.awt.Color(241, 231, 254));
         pnlCAuthor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -445,9 +447,9 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         pnlSystem.add(pnlCReader1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 240, 140));
 
-        getContentPane().add(pnlSystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 1270, 850));
+        getContentPane().add(pnlSystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 1260, 840));
 
-        setSize(new java.awt.Dimension(1540, 920));
+        setSize(new java.awt.Dimension(1530, 910));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

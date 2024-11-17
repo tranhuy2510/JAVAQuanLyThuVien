@@ -4,6 +4,7 @@
  */
 package ui_library;
 
+
 /**
  *
  * @author ADMIN
@@ -17,6 +18,16 @@ public class frmQLTacGia extends javax.swing.JFrame {
         initComponents();
         // can giua cho form
         this.setLocationRelativeTo(null);
+        
+        //set UI
+        jTable1.getTableHeader().setBackground(new java.awt.Color(213, 184, 255));
+        jTable1.getTableHeader().setForeground(new java.awt.Color(90, 34, 139));
+        jTable1.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 18));
+        jTable1.getTableHeader().setOpaque(false);
+
+
+
+
         
     }
 
@@ -44,21 +55,28 @@ public class frmQLTacGia extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlHeader.setBackground(new java.awt.Color(90, 34, 139));
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close32.png"))); // NOI18N
+        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
         lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSystemICMouseClicked(evt);
             }
         });
-        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 60, 57));
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 60, 57));
 
         lblTieude.setBackground(new java.awt.Color(241, 231, 254));
         lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -66,93 +84,107 @@ public class frmQLTacGia extends javax.swing.JFrame {
         lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTieude.setText("   Quản lý tác giả");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 390, 57));
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 390, 57));
         pnlHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 20, -1));
 
         lblSystemIC1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSystemIC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia64.png"))); // NOI18N
-        pnlHeader.add(lblSystemIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 57));
+        pnlHeader.add(lblSystemIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 57));
+
+        getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(241, 231, 254));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 34, 139), 5));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(90, 34, 139));
-        jLabel2.setText("Tên thể loại:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 140, 30));
+        jLabel2.setText("Tên tác giả:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 150, 30));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(90, 34, 139));
-        jLabel3.setText("Mã thể loại:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 140, 30));
+        jLabel3.setText("Mã tác giả:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 150, 30));
 
         jScrollPane1.setBackground(new java.awt.Color(213, 184, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jTable1.setForeground(new java.awt.Color(90, 34, 139));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Mã ", "Tên thể loại"
+                "Mã ", "Tên thể loại", "Chuyên môn", "Giới thiệu"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
+        jTable1.setShowGrid(false);
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 340, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 490, 460));
 
         jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(90, 34, 139));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 290, 30));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 290, 30));
 
         jTextField2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(90, 34, 139));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, 30));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 150, 30));
 
         jButton1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(90, 34, 139));
         jButton1.setText("Thêm");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 80, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 90, 30));
 
         jButton2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(90, 34, 139));
         jButton2.setText("Sửa");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 70, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 90, -1));
 
         jButton3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(90, 34, 139));
         jButton3.setText("Xóa");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 80, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 90, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel4.setText("* Nhập tên tác giả");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 240, 20));
+
+        jTextField3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(90, 34, 139));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 290, 30));
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel6.setText("Chuyên môn:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 150, 30));
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel7.setText("Giới thiệu:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 140, 30));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 290, 100));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 890, 524));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,7 +207,8 @@ public class frmQLTacGia extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
@@ -205,11 +238,17 @@ public class frmQLTacGia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblSystemIC1;
     private javax.swing.JLabel lblTieude;
