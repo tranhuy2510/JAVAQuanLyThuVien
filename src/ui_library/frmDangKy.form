@@ -38,14 +38,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="b8" red="d5" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder bottom="3" left="0" right="3" top="3">
-              <Color PropertyName="color" blue="8b" green="22" red="5a" type="rgb"/>
-            </MatteColorBorder>
-          </Border>
+          <Color blue="f4" green="c4" red="89" type="rgb"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Default Cursor"/>
@@ -53,7 +46,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="533" y="0" width="482" height="730"/>
+          <AbsoluteConstraints x="530" y="0" width="484" height="730"/>
         </Constraint>
       </Constraints>
 
@@ -67,7 +60,7 @@
               <Font name="Roboto" size="30" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8b" green="22" red="5a" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng k&#xfd; th&#xe0;nh vi&#xea;n"/>
@@ -84,7 +77,7 @@
               <Font name="Roboto" size="18" style="2"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fd" green="37" red="a5" type="rgb"/>
+              <Color blue="be" green="77" red="4b" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Tham gia c&#x1ed9;ng &#x111;&#x1ed3;ng y&#xea;u s&#xe1;ch c&#x1ee7;a ch&#xfa;ng t&#xf4;i"/>
           </Properties>
@@ -100,7 +93,7 @@
               <Font name="Roboto" size="20" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8b" green="22" red="5a" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xea;n ng&#x1b0;&#x1edd;i d&#xf9;ng:"/>
           </Properties>
@@ -116,7 +109,7 @@
               <Font name="Roboto" size="20" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8b" green="22" red="5a" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nh&#x1ead;p l&#x1ea1;i m&#x1ead;t kh&#x1ea9;u:"/>
           </Properties>
@@ -132,7 +125,7 @@
               <Font name="Roboto" size="20" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8b" green="22" red="5a" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Email:"/>
           </Properties>
@@ -148,7 +141,7 @@
               <Font name="Roboto" size="20" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8b" green="22" red="5a" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i:"/>
           </Properties>
@@ -211,18 +204,18 @@
         <Component class="javax.swing.JTextField" name="jTextField1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="b8" red="d5" type="rgb"/>
+              <Color blue="f4" green="c4" red="89" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fc" green="14" red="8c" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="8b" green="22" red="5a" type="rgb"/>
+                  <Color PropertyName="color" blue="87" green="43" red="28" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -240,19 +233,18 @@
         <Component class="javax.swing.JTextField" name="jTextField3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="b8" red="d5" type="rgb"/>
+              <Color blue="f4" green="c4" red="89" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fc" green="14" red="8c" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="@gmail.com"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="8b" green="22" red="5a" type="rgb"/>
+                  <Color PropertyName="color" blue="87" green="43" red="28" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -266,18 +258,18 @@
         <Component class="javax.swing.JTextField" name="jTextField4">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="b8" red="d5" type="rgb"/>
+              <Color blue="f4" green="c4" red="89" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fc" green="14" red="8c" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="8b" green="22" red="5a" type="rgb"/>
+                  <Color PropertyName="color" blue="87" green="43" red="28" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -291,18 +283,18 @@
         <Component class="javax.swing.JPasswordField" name="jPasswordField1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="b8" red="d5" type="rgb"/>
+              <Color blue="f4" green="c4" red="89" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fc" green="14" red="8c" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="8b" green="22" red="5a" type="rgb"/>
+                  <Color PropertyName="color" blue="87" green="43" red="28" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -328,7 +320,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="160" y="620" width="193" height="44"/>
+              <AbsoluteConstraints x="160" y="610" width="193" height="44"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -338,7 +330,7 @@
               <Font name="Roboto" size="14" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fd" green="37" red="a5" type="rgb"/>
+              <Color blue="b3" green="6c" red="44" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="B&#x1ea1;n &#x111;&#xe3; c&#xf3; t&#xe0;i kho&#x1ea3;n?"/>
           </Properties>
@@ -357,7 +349,7 @@
               <Font name="Roboto" size="16" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fd" green="37" red="a5" type="rgb"/>
+              <Color blue="b3" green="6c" red="44" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -392,7 +384,7 @@
               <Font name="Roboto" size="20" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8b" green="22" red="5a" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M&#x1ead;t kh&#x1ea9;u:"/>
           </Properties>
@@ -405,18 +397,18 @@
         <Component class="javax.swing.JPasswordField" name="jPasswordField2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="b8" red="d5" type="rgb"/>
+              <Color blue="f4" green="c4" red="89" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fc" green="14" red="8c" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                  <Color PropertyName="color" blue="8b" green="22" red="5a" type="rgb"/>
+                  <Color PropertyName="color" blue="87" green="43" red="28" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -433,7 +425,7 @@
               <Font name="Roboto" size="14" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fd" green="37" red="a5" type="rgb"/>
+              <Color blue="b3" green="6c" red="44" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng nh&#x1ead;p"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -458,17 +450,10 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder bottom="3" left="3" right="0" top="3">
-              <Color PropertyName="color" blue="8b" green="22" red="5a" type="rgb"/>
-            </MatteColorBorder>
-          </Border>
-        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="540" height="730"/>
+          <AbsoluteConstraints x="0" y="0" width="530" height="730"/>
         </Constraint>
       </Constraints>
 
@@ -482,7 +467,7 @@
               <Font name="Roboto" size="36" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8b" green="22" red="5a" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="CH&#xc0;O M&#x1eea;NG B&#x1ea0;N"/>
@@ -512,7 +497,7 @@
               <Font name="Roboto" size="24" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8b" green="22" red="5a" type="rgb"/>
+              <Color blue="87" green="43" red="28" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value=" &#x110;&#x1ebe;N V&#x1eda;I TH&#x1ebe; GI&#x1eda;I S&#xc1;CH"/>

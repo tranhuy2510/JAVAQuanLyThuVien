@@ -19,6 +19,13 @@ public class frmQLDocGia extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         
+        //set UI
+        jTable1.getTableHeader().setBackground(new java.awt.Color(200,247,197));
+        jTable1.getTableHeader().setForeground(new java.awt.Color(4,147,114));
+        jTable1.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 14));
+        jTable1.getTableHeader().setOpaque(false);
+        
+        
         
     }
 
@@ -32,20 +39,164 @@ public class frmQLDocGia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         pnlHeader = new javax.swing.JPanel();
         lblSystemIC = new javax.swing.JLabel();
         lblTieude = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(213, 184, 255));
+        jPanel1.setBackground(new java.awt.Color(200, 247, 197));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 0, new java.awt.Color(4, 147, 114)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 530, 620));
 
-        pnlHeader.setBackground(new java.awt.Color(90, 34, 139));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-BlackUser.png"))); // NOI18N
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 40, 30));
+
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel4.setText("* Nhập tên độc giả");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 240, 30));
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel8.setText("Tên độc giả:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 210, 32));
+
+        jTextField4.setBackground(new java.awt.Color(200, 247, 197));
+        jTextField4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(140, 20, 252));
+        jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(4, 147, 114)));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 350, 32));
+
+        jTextField6.setBackground(new java.awt.Color(200, 247, 197));
+        jTextField6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextField6.setForeground(new java.awt.Color(140, 20, 252));
+        jTextField6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(4, 147, 114)));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 350, 32));
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_email32.png"))); // NOI18N
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 40, 30));
+
+        jLabel10.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel10.setText("Email:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 210, 32));
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel5.setText("* Nhập email");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 190, 30));
+
+        jTextField7.setBackground(new java.awt.Color(200, 247, 197));
+        jTextField7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextField7.setForeground(new java.awt.Color(140, 20, 252));
+        jTextField7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(4, 147, 114)));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 190, 32));
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_phone32.png"))); // NOI18N
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 40, 40));
+
+        jLabel11.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel11.setText("Số điện thoại:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 180, 32));
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel6.setText("* Nhập tên số điện thoại");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 210, 30));
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_gender32.png"))); // NOI18N
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 40, 30));
+
+        jLabel16.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel16.setText("Lựa chọn file ảnh cho hồ sơ...");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 380, 20));
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel7.setText("*Chọn giới tính");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 170, 30));
+
+        jComboBox1.setBackground(new java.awt.Color(200, 247, 197));
+        jComboBox1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(4, 147, 114));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(4, 147, 114)));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 140, 32));
+
+        jButton4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(4, 147, 114));
+        jButton4.setText("Chọn file");
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 160, 20));
+
+        jLabel17.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel17.setText("Giới tính:");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 130, 32));
+
+        jLabel18.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel18.setText("Ảnh hồ sơ:");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 130, 32));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user_128.png"))); // NOI18N
+        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(4, 147, 114)));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 160, 200));
+
+        jButton6.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(4, 147, 114));
+        jButton6.setText("Thêm");
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 540, 120, 32));
+
+        jButton7.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(4, 147, 114));
+        jButton7.setText("Hủy bỏ");
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 540, 120, 32));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 530, 595));
+
+        pnlHeader.setBackground(new java.awt.Color(4, 147, 114));
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -70,8 +221,87 @@ public class frmQLDocGia extends javax.swing.JFrame {
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 3, new java.awt.Color(4, 147, 114)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 550, 620));
+
+        jScrollPane1.setBackground(new java.awt.Color(213, 184, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTable1.setBackground(new java.awt.Color(200, 247, 197));
+        jTable1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(90, 34, 139));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Mã ", "Tên độc giả", "Số điện thoại", "Email", "Giới tính"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setGridColor(new java.awt.Color(4, 147, 114));
+        jTable1.setRowHeight(25);
+        jTable1.setSelectionBackground(new java.awt.Color(4, 147, 114));
+        jTable1.setShowGrid(true);
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 510, 400));
+
+        jLabel9.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel9.setText("Nhập mã người dùng:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 200, 32));
+
+        jTextField5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextField5.setForeground(new java.awt.Color(140, 20, 252));
+        jTextField5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(4, 147, 114)));
+        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 120, 32));
+
+        jButton2.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(4, 147, 114));
+        jButton2.setText("Hiển thi tất cả");
+        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(4, 147, 114)));
+        jButton2.setContentAreaFilled(false);
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 100, 20));
+
+        jButton5.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(4, 147, 114));
+        jButton5.setText("Sửa");
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 120, 32));
+
+        jButton1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(4, 147, 114));
+        jButton1.setText("Xóa");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 120, 32));
+
+        jButton3.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(4, 147, 114));
+        jButton3.setText("Lưu");
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 120, 32));
+
+        jButton8.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(4, 147, 114));
+        jButton8.setText("Tìm kiếm");
+        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 100, 32));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 550, 595));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,7 +324,8 @@ public class frmQLDocGia extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
@@ -119,9 +350,40 @@ public class frmQLDocGia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JPanel pnlHeader;
