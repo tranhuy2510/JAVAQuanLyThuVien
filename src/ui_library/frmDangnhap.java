@@ -181,7 +181,7 @@ public class frmDangnhap extends javax.swing.JFrame {
         
         if (taikhoan.isEmpty() || matkhau.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui long nhap day du tai khoan va mat khau!", "Thong bao",JOptionPane.WARNING_MESSAGE);
-            return; // Dung nếu thông tin không đủ
+            return; // Dừng chạy tiếp khi không đủ dưx liệu
          }
         
         // tao doi tuong nguoi dung 
