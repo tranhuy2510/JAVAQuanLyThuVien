@@ -4,10 +4,12 @@
  */
 package ui_library;
 import controllers.NguoiDungController;
-import models.NguoiDungModel;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 
 /**
@@ -20,6 +22,7 @@ public class frmDangnhap extends javax.swing.JFrame {
      * Creates new form frmDangnhap
      */
     public frmDangnhap() {
+        
         initComponents();
         
        // can giua form
@@ -195,13 +198,11 @@ public class frmDangnhap extends javax.swing.JFrame {
         if (isSuccess) {
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             // Chuyển đến màn hình tiếp theo tùy theo loại người dùng
-            switch (loainguoidung) {
-                case "Quản trị viên" -> System.out.println("Chào mừng Quản trị viên!");
-                case "Độc giả" -> System.out.println("Chào mừng Độc giả!");
-                case "Thủ thư" -> System.out.println("Chào mừng Thủ thư!");
-                default -> {
-                }
-            }
+            // Mở giao diện trang chủ và truyền loại người dùng
+            frmTrangchu home = new frmTrangchu();
+            home.setVisible(true);
+             // Đóng form đăng nhập
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
@@ -213,10 +214,9 @@ public class frmDangnhap extends javax.swing.JFrame {
 
         // Kiểm tra loại người dùng và thực hiện các hành động tương ứng
         switch (loaiNguoiDung) {
-            case "Quản trị viên" -> System.out.println("Bạn đã chọn Quản trị viên");
-            case "Độc giả" -> System.out.println("Bạn đã chọn Độc giả");
-            case "Thủ thư" -> System.out.println("Bạn đã chọn Thủ thư");
-            default -> System.out.println("Vui lòng chọn loại người dùng hợp lệ");
+            case "Admin" -> System.out.println("Ban da chon Quan tri vien");
+            case "User" -> System.out.println("Ban da chon doc gia");
+            default -> System.out.println("Vui long chon loai nguoi dung hop le");
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 

@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -27,8 +28,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 SwingUtilities.updateComponentTreeUI(this);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
             }
         initComponents();
         
@@ -57,7 +57,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         }
         
         // thiet ke cho hang tren dau cua bang
-        tblTheloai.getTableHeader().setBackground(new Color(0, 191, 255));
+        tblTheloai.getTableHeader().setBackground(Color.GRAY);
         tblTheloai.getTableHeader().setForeground(Color.WHITE);
         tblTheloai.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 18));
         tblTheloai.getTableHeader().setOpaque(false);
@@ -139,7 +139,6 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         btnThem.setBackground(new java.awt.Color(204, 204, 204));
         btnThem.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnThem.setText("Thêm");
-        btnThem.setOpaque(true);
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);

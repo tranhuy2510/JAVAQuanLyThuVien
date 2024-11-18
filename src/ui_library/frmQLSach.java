@@ -11,6 +11,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
+import org.w3c.dom.css.RGBColor;
 
 /**
  *
@@ -41,19 +42,19 @@ public class frmQLSach extends javax.swing.JFrame {
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(238, 180, 34));
         
         jPanel_Theloaisach.setBorder(panelHeaderBorder);
-        tblQuanlysach.setSelectionBackground(new Color(198, 226, 255));
+        tblQuanlysach.setSelectionBackground(new Color(255, 222, 149));
         tblQuanlysach.setSelectionForeground(Color.white);
         tblQuanlysach.setRowHeight(30);
         tblQuanlysach.setShowGrid(true);
         tblQuanlysach.setBackground(new Color(238, 233, 233));
         // thiet ke cho hang tren dau cua bang
-        tblQuanlysach.getTableHeader().setBackground(new Color(0, 191, 255));
+        tblQuanlysach.getTableHeader().setBackground(new Color(242, 120, 75)); 
         tblQuanlysach.getTableHeader().setForeground(Color.white);
         tblQuanlysach.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 12));
         tblQuanlysach.getTableHeader().setOpaque(false);
 
         tblQuanlysach.getTableHeader().repaint();
-        //CODE LOI TAM THOI NOTE
+       
         controllers.Func_Class func = new controllers.Func_Class();
         func.displayImage(60,60,"/image/books-1977235.png", lblTieudeTL );
     
