@@ -19,6 +19,18 @@ public class frmTrangchu extends javax.swing.JFrame {
         initComponents();
         // can giua cho form
         this.setLocationRelativeTo(null);
+        
+        //tblSach     tblDocGia
+        tblSach.getTableHeader().setBackground(new java.awt.Color(241,231,254));
+        tblSach.getTableHeader().setForeground(new java.awt.Color(90,34,139));
+        tblSach.getTableHeader().setFont(new java.awt.Font("Roboto", 0, 16));
+        tblSach.getTableHeader().setOpaque(false);
+        
+        tblDocGia.getTableHeader().setBackground(new java.awt.Color(241,231,254));
+        tblDocGia.getTableHeader().setForeground(new java.awt.Color(90,34,139));
+        tblDocGia.getTableHeader().setFont(new java.awt.Font("Roboto", 0, 16));
+        tblDocGia.getTableHeader().setOpaque(false);
+        
     }
 
     /**
@@ -58,7 +70,13 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlSystem = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
         pnlLstBook = new javax.swing.JPanel();
-        lblDocGia = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         pnlCAuthor = new javax.swing.JPanel();
         lblSTacGia = new javax.swing.JLabel();
         lblTacGia = new javax.swing.JLabel();
@@ -309,15 +327,38 @@ public class frmTrangchu extends javax.swing.JFrame {
         lblWelcome.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         pnlSystem.add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 50));
 
-        pnlLstBook.setBackground(new java.awt.Color(241, 231, 254));
+        pnlLstBook.setBackground(new java.awt.Color(213, 184, 255));
         pnlLstBook.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        lblDocGia.setForeground(new java.awt.Color(102, 102, 102));
-        lblDocGia.setText("Độc giả");
-        pnlLstBook.add(lblDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 170, 40));
+        jPanel1.setBackground(new java.awt.Color(159, 90, 253));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLstBook.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 50));
 
-        pnlSystem.add(pnlLstBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 1130, 280));
+        jPanel2.setBackground(new java.awt.Color(241, 231, 254));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLstBook.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 160, 210));
+
+        jPanel3.setBackground(new java.awt.Color(241, 231, 254));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLstBook.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 160, 210));
+
+        jPanel4.setBackground(new java.awt.Color(241, 231, 254));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLstBook.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 160, 210));
+
+        jPanel5.setBackground(new java.awt.Color(241, 231, 254));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLstBook.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 160, 210));
+
+        jPanel6.setBackground(new java.awt.Color(241, 231, 254));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLstBook.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 70, 160, 210));
+
+        jPanel7.setBackground(new java.awt.Color(241, 231, 254));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLstBook.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 70, 160, 210));
+
+        pnlSystem.add(pnlLstBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 1130, 310));
 
         pnlCAuthor.setBackground(new java.awt.Color(241, 231, 254));
         pnlCAuthor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -371,7 +412,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlSystem.add(pnlIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 60, 240, 140));
 
         scrollDocGia.setBackground(new java.awt.Color(241, 231, 254));
-        scrollDocGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đầu sách tiêu biểu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18))); // NOI18N
+        scrollDocGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đầu sách tiêu biểu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18), new java.awt.Color(90, 34, 139))); // NOI18N
 
         tblDocGia.setBackground(new java.awt.Color(241, 231, 254));
         tblDocGia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -395,13 +436,15 @@ public class frmTrangchu extends javax.swing.JFrame {
             }
         });
         tblDocGia.setToolTipText("");
+        tblDocGia.setRowHeight(25);
+        tblDocGia.setSelectionBackground(new java.awt.Color(213, 184, 255));
         tblDocGia.setShowGrid(true);
         scrollDocGia.setViewportView(tblDocGia);
 
         pnlSystem.add(scrollDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 530, 240));
 
         scrollSach.setBackground(new java.awt.Color(241, 231, 254));
-        scrollSach.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Độc giả nổi bật", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18))); // NOI18N
+        scrollSach.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Độc giả nổi bật", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 18), new java.awt.Color(90, 34, 139))); // NOI18N
 
         tblSach.setBackground(new java.awt.Color(241, 231, 254));
         tblSach.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -425,6 +468,8 @@ public class frmTrangchu extends javax.swing.JFrame {
             }
         });
         tblSach.setToolTipText("");
+        tblSach.setRowHeight(25);
+        tblSach.setSelectionBackground(new java.awt.Color(213, 184, 255));
         tblSach.setShowGrid(true);
         scrollSach.setViewportView(tblSach);
 
@@ -521,7 +566,8 @@ public class frmTrangchu extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
@@ -553,8 +599,14 @@ public class frmTrangchu extends javax.swing.JFrame {
     private javax.swing.JButton btnQLTacGia;
     private javax.swing.JButton btnQLTheLoai;
     private javax.swing.JButton btnTraSach;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lblDangXuat;
-    private javax.swing.JLabel lblDocGia;
     private javax.swing.JLabel lblDocGia1;
     private javax.swing.JLabel lblFeature;
     private javax.swing.JLabel lblMuonS;
