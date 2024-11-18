@@ -54,8 +54,8 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnQLSach = new javax.swing.JButton();
         pnlAuthors = new javax.swing.JPanel();
         btnQLTacGia = new javax.swing.JButton();
-        pnlRIList = new javax.swing.JPanel();
-        btnDSMuonTra = new javax.swing.JButton();
+        pnlUsers = new javax.swing.JPanel();
+        btnQLNguoiDung = new javax.swing.JButton();
         pnlGenres = new javax.swing.JPanel();
         btnQLTheLoai = new javax.swing.JButton();
         lblFeature = new javax.swing.JLabel();
@@ -67,6 +67,8 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnTraSach = new javax.swing.JButton();
         pnlViewReader = new javax.swing.JPanel();
         btnDSDocGia = new javax.swing.JButton();
+        pnlRIList1 = new javax.swing.JPanel();
+        btnDSMuonTra1 = new javax.swing.JButton();
         pnlSystem = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
         pnlLstBook = new javax.swing.JPanel();
@@ -193,24 +195,24 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         pnlLeftBar.add(pnlAuthors, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 220, 266, 60));
 
-        pnlRIList.setBackground(new java.awt.Color(241, 231, 254));
-        pnlRIList.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlUsers.setBackground(new java.awt.Color(241, 231, 254));
+        pnlUsers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnDSMuonTra.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        btnDSMuonTra.setForeground(new java.awt.Color(90, 34, 139));
-        btnDSMuonTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_DsChiTiet.png"))); // NOI18N
-        btnDSMuonTra.setText("    Danh sách mượn");
-        btnDSMuonTra.setContentAreaFilled(false);
-        btnDSMuonTra.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDSMuonTra.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnDSMuonTra.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnQLNguoiDung.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnQLNguoiDung.setForeground(new java.awt.Color(90, 34, 139));
+        btnQLNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_user32.png"))); // NOI18N
+        btnQLNguoiDung.setText("   Quản lý người dùng");
+        btnQLNguoiDung.setContentAreaFilled(false);
+        btnQLNguoiDung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnQLNguoiDung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnQLNguoiDung.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDSMuonTraMouseClicked(evt);
+                btnQLNguoiDungMouseClicked(evt);
             }
         });
-        pnlRIList.add(btnDSMuonTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
+        pnlUsers.add(btnQLNguoiDung, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 0, -1, 60));
 
-        pnlLeftBar.add(pnlRIList, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 580, 266, 60));
+        pnlLeftBar.add(pnlUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 640, 266, 60));
 
         pnlGenres.setBackground(new java.awt.Color(241, 231, 254));
         pnlGenres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -313,6 +315,25 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlViewReader.add(btnDSDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
         pnlLeftBar.add(pnlViewReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 520, 266, 60));
+
+        pnlRIList1.setBackground(new java.awt.Color(241, 231, 254));
+        pnlRIList1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnDSMuonTra1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        btnDSMuonTra1.setForeground(new java.awt.Color(90, 34, 139));
+        btnDSMuonTra1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_DsChiTiet.png"))); // NOI18N
+        btnDSMuonTra1.setText("    Danh sách mượn");
+        btnDSMuonTra1.setContentAreaFilled(false);
+        btnDSMuonTra1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDSMuonTra1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnDSMuonTra1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDSMuonTra1MouseClicked(evt);
+            }
+        });
+        pnlRIList1.add(btnDSMuonTra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
+
+        pnlLeftBar.add(pnlRIList1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 580, 266, 60));
 
         getContentPane().add(pnlLeftBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 270, 840));
 
@@ -512,11 +533,11 @@ public class frmTrangchu extends javax.swing.JFrame {
         genres.setVisible(true);
     }//GEN-LAST:event_btnQLTheLoaiMouseClicked
 
-    private void btnDSMuonTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSMuonTraMouseClicked
+    private void btnQLNguoiDungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLNguoiDungMouseClicked
         // TODO add your handling code here:
-        frmDSMuonTra lstRI = new frmDSMuonTra();
-        lstRI.setVisible(true);
-    }//GEN-LAST:event_btnDSMuonTraMouseClicked
+        frmQLNguoiDung users = new frmQLNguoiDung();
+        users.setVisible(true);
+    }//GEN-LAST:event_btnQLNguoiDungMouseClicked
 
     private void btnDSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSDocGiaMouseClicked
         // TODO add your handling code here:
@@ -553,6 +574,12 @@ public class frmTrangchu extends javax.swing.JFrame {
         frmQLSach book = new frmQLSach();
         book.setVisible(true);
     }//GEN-LAST:event_btnQLSachMouseClicked
+
+    private void btnDSMuonTra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSMuonTra1MouseClicked
+        // TODO add your handling code here:
+        frmDSMuonTra lstRI = new frmDSMuonTra();
+        lstRI.setVisible(true);
+    }//GEN-LAST:event_btnDSMuonTra1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -592,9 +619,10 @@ public class frmTrangchu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDSDocGia;
-    private javax.swing.JButton btnDSMuonTra;
+    private javax.swing.JButton btnDSMuonTra1;
     private javax.swing.JButton btnQLDocGia;
     private javax.swing.JButton btnQLMuonSach;
+    private javax.swing.JButton btnQLNguoiDung;
     private javax.swing.JButton btnQLSach;
     private javax.swing.JButton btnQLTacGia;
     private javax.swing.JButton btnQLTheLoai;
@@ -633,10 +661,11 @@ public class frmTrangchu extends javax.swing.JFrame {
     private javax.swing.JPanel pnlIssue;
     private javax.swing.JPanel pnlLeftBar;
     private javax.swing.JPanel pnlLstBook;
-    private javax.swing.JPanel pnlRIList;
+    private javax.swing.JPanel pnlRIList1;
     private javax.swing.JPanel pnlReader;
     private javax.swing.JPanel pnlReturnBook;
     private javax.swing.JPanel pnlSystem;
+    private javax.swing.JPanel pnlUsers;
     private javax.swing.JPanel pnlViewReader;
     private javax.swing.JScrollPane scrollDocGia;
     private javax.swing.JScrollPane scrollSach;
