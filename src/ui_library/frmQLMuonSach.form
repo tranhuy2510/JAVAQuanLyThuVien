@@ -839,7 +839,6 @@
                   <Font name="Verdana" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xe1;t phi&#x1ebf;u"/>
-                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnHuy">

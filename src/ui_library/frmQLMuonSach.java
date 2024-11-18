@@ -404,7 +404,6 @@ public class frmQLMuonSach extends javax.swing.JFrame {
         btnPhatphieu.setBackground(new java.awt.Color(25, 87, 199));
         btnPhatphieu.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnPhatphieu.setText("Phát phiếu");
-        btnPhatphieu.setOpaque(true);
 
         btnHuy.setBackground(new java.awt.Color(255, 51, 51));
         btnHuy.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N

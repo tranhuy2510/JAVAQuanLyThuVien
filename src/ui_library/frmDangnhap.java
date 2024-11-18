@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui_library;
-
+import models.NguoiDungModel;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -54,7 +56,7 @@ public class frmDangnhap extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         pwMatkhauDN = new javax.swing.JPasswordField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnDangnhap = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -84,11 +86,16 @@ public class frmDangnhap extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản trị viên", "Độc giả", "Thủ thư", " " }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), null));
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Đăng nhập");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 153)));
+        btnDangnhap.setBackground(new java.awt.Color(255, 153, 0));
+        btnDangnhap.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+        btnDangnhap.setForeground(new java.awt.Color(255, 255, 255));
+        btnDangnhap.setText("Đăng nhập");
+        btnDangnhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 153)));
+        btnDangnhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangnhapActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-key.png"))); // NOI18N
 
@@ -116,7 +123,7 @@ public class frmDangnhap extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(123, 123, 123)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -139,7 +146,7 @@ public class frmDangnhap extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -166,6 +173,28 @@ public class frmDangnhap extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
+        // TODO add your handling code here:
+        String taikhoan = txtTaikhoanDN.getText();
+        String matkhau = String.valueOf(pwMatkhauDN.getPassword());
+        
+        if (taikhoan.isEmpty() || matkhau.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui long nhap day du tai khoan va mat khau!", "Thong bao",JOptionPane.WARNING_MESSAGE);
+         }
+        
+        // tao doi tuong nguoi dung 
+        NguoiDungModel user  = new NguoiDungModel(taikhoan, matkhau);
+        // Kiểm tra đăng nhập với tài khoản tĩnh
+        if (user.kiemtramatkhau(matkhau)) {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false); // Ẩn frmDangnhap
+            frmTrangchu trangchu = new frmTrangchu();
+            trangchu.setVisible(true); // Hiển thị frmTrangchu
+        } else {
+            JOptionPane.showMessageDialog(this, "Sai tài khoản hoặc mật khẩu!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDangnhapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,7 +233,7 @@ public class frmDangnhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnDangnhap;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
