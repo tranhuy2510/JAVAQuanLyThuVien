@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui_library;
+import controllers.NguoiDungController;
 import models.NguoiDungModel;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -83,8 +84,13 @@ public class frmDangnhap extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(51, 51, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản trị viên", "Độc giả", "Thủ thư", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), null));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         btnDangnhap.setBackground(new java.awt.Color(255, 153, 0));
         btnDangnhap.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
@@ -177,25 +183,42 @@ public class frmDangnhap extends javax.swing.JFrame {
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
         // TODO add your handling code here:
         String taikhoan = txtTaikhoanDN.getText();
-        String matkhau = String.valueOf(pwMatkhauDN.getPassword());
-        
-        if (taikhoan.isEmpty() || matkhau.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui long nhap day du tai khoan va mat khau!", "Thong bao",JOptionPane.WARNING_MESSAGE);
-            return; // Dừng chạy tiếp khi không đủ dưx liệu
-         }
-        
-        // tao doi tuong nguoi dung 
-        NguoiDungModel user  = new NguoiDungModel(taikhoan, matkhau);
-        // Kiểm tra đăng nhập với tài khoản tĩnh
-        if (user.kiemtramatkhau(matkhau)) {
+        String matkhau = new String(pwMatkhauDN.getPassword());
+        String loainguoidung = jComboBox1.getSelectedItem().toString();
+
+        // Gọi phương thức đăng nhập từ controller
+        NguoiDungController nguoiDungCtrl = new NguoiDungController();
+    
+        // Kiểm tra đăng nhập
+        boolean isSuccess = nguoiDungCtrl.kiemTraDangNhap(taikhoan, matkhau, loainguoidung);
+
+        if (isSuccess) {
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false); // Ẩn frmDangnhap
-            frmTrangchu trangchu = new frmTrangchu();
-            trangchu.setVisible(true); // Hiển thị frmTrangchu
+            // Chuyển đến màn hình tiếp theo tùy theo loại người dùng
+            switch (loainguoidung) {
+                case "Quản trị viên" -> System.out.println("Chào mừng Quản trị viên!");
+                case "Độc giả" -> System.out.println("Chào mừng Độc giả!");
+                case "Thủ thư" -> System.out.println("Chào mừng Thủ thư!");
+                default -> {
+                }
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Sai tài khoản hoặc mật khẩu!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnDangnhapActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        String loaiNguoiDung = jComboBox1.getSelectedItem().toString();
+
+        // Kiểm tra loại người dùng và thực hiện các hành động tương ứng
+        switch (loaiNguoiDung) {
+            case "Quản trị viên" -> System.out.println("Bạn đã chọn Quản trị viên");
+            case "Độc giả" -> System.out.println("Bạn đã chọn Độc giả");
+            case "Thủ thư" -> System.out.println("Bạn đã chọn Thủ thư");
+            default -> System.out.println("Vui lòng chọn loại người dùng hợp lệ");
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,11 +248,8 @@ public class frmDangnhap extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new frmDangnhap().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new frmDangnhap().setVisible(true);
         });
     }
 

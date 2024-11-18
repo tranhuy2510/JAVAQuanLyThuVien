@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ui_library;
 
 import java.awt.Color;
@@ -35,7 +32,7 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
         
         // can giua cho form
         
-        this.setSize(1105,529);
+        this.setSize(1105,519);
         this.setLocationRelativeTo(null);
         // tao vien xam cho khung panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(30, 130, 76));

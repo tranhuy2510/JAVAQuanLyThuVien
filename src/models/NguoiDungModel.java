@@ -1,7 +1,5 @@
-
 package models;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
 /**
  *
  * @author ADMIN
@@ -10,89 +8,63 @@ public class NguoiDungModel {
     
     private String taikhoan;
     private String matkhau;
+    private String hoten;
+    private String loaiuser;
     
-    // khoi tao khong tham so
+    // Khởi tạo không tham số
     public NguoiDungModel(){
         
     }
-     public NguoiDungModel(String taikhoan, String matkhau){
-         this.taikhoan = taikhoan;
-         this.matkhau = hashPassword(matkhau);
-     }
-
-    public String getTaikhoan() {
-        return taikhoan;
+    
+    // Khởi tạo có tham số
+    public NguoiDungModel(String taikhoan, String matkhau, String hoten, String loaiuser){
+        this.taikhoan = taikhoan;
+        this.matkhau = hashPassword(matkhau);  // Giả sử hàm hashPassword là để mã hóa mật khẩu
+        this.hoten = hoten;
+        this.loaiuser = loaiuser;
     }
 
-    public String getMatkhau() {
-        return matkhau;
+    // Getter và Setter
+    public String getTaikhoan() {
+        return taikhoan;
     }
 
     public void setTaikhoan(String taikhoan) {
         this.taikhoan = taikhoan;
     }
 
-    public void setMatkhau(String matkhau) {
-        this.matkhau = hashPassword(matkhau);
-    }
-    // kiểm tra xem người dùng có nhập đúng mật khẩu hay không
-    public boolean kiemtramatkhau(String matkhaunhap){
-        //return this.matkhau.equals(hashPassword(matkhaunhap));
-        String hashedPassword = hashPassword(matkhaunhap);
-    
-        // Kiểm tra tài khoản "admin" với mật khẩu mã hóa
-        if ("admin".equals(taikhoan) && hashPassword("123456").equals(hashedPassword)) {
-            return true;
-        } 
-        // Kiểm tra tài khoản "user" với mật khẩu mã hóa
-        else if ("user".equals(taikhoan) && hashPassword("password").equals(hashedPassword)) {
-            return true;
-        }
-        // Kiểm tra mật khẩu nhập vào có khớp với mật khẩu đã lưu hay không
-        return this.matkhau.equals(hashedPassword);
-    }
-    
-    // Mã hóa mật khẩu sử dụng thuật toán SHA-256
-    private String hashPassword(String password) {
-        try{
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hash = md.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
-            for(byte b : hash){
-                hexString.append(String.format("%02x", b));
-            }
-            return hexString.toString();
-        }catch (NoSuchAlgorithmException e){
-            throw new RuntimeException(e);
-        }
+    public String getMatkhau() {
+        return matkhau;
     }
 
-    // Phương thức tótring() để in thông tin đối tượng
-    
-    @Override
-    public String toString(){
-        return "NguoiDungModel{" + "taikhoan='" + taikhoan + '\'' + '}';
+    public void setMatkhau(String matkhau) {
+        this.matkhau = hashPassword(matkhau);  // Giả sử bạn mã hóa mật khẩu trước khi set
     }
-     
-    /**
-     *
-     * @param obj
-     * @return
-     */
-    @Override
-    public boolean equals(Object obj){
-        if(this == obj) return true;
-        if(obj == null || getClass() != obj.getClass()) return false;
-        NguoiDungModel that  = (NguoiDungModel) obj;
-        return taikhoan.equals(that.taikhoan);
+
+    public String getHoten() {
+        return hoten;
     }
-    
-    /**
-     *
-     * @return
-     */
-    @Override
-    public int hashCode(){
-        return taikhoan.hashCode();
+
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
+    }
+
+    public String getLoaiuser() {
+        return loaiuser;
+    }
+
+    public void setLoaiuser(String loaiuser) {
+        this.loaiuser = loaiuser;
+    }
+
+    // Giả sử hàm hashPassword thực hiện mã hóa mật khẩu
+    private String hashPassword(String password) {
+        // Thực hiện mã hóa mật khẩu ở đây (MD5, SHA-1, hoặc bất kỳ phương thức nào bạn chọn)
+        return password; // Trả về mật khẩu đã được mã hóa (ở đây là ví dụ, bạn cần thực hiện mã hóa thực tế)
+    }
+
+    // So sánh mật khẩu đã mã hóa
+    public boolean checkPassword(String inputPassword) {
+        return this.matkhau.equals(hashPassword(inputPassword));  // So sánh mật khẩu nhập với mật khẩu đã mã hóa
     }
 }
