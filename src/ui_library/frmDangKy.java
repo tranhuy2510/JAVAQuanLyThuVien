@@ -62,39 +62,38 @@ public class frmDangKy extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(213, 184, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 0, 3, 3, new java.awt.Color(90, 34, 139)));
+        jPanel1.setBackground(new java.awt.Color(137, 196, 244));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel2.setForeground(new java.awt.Color(40, 67, 135));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Đăng ký thành viên");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 72, -1, 48));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(165, 55, 253));
+        jLabel4.setForeground(new java.awt.Color(75, 119, 190));
         jLabel4.setText("Tham gia cộng đồng yêu sách của chúng tôi");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 126, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel5.setForeground(new java.awt.Color(40, 67, 135));
         jLabel5.setText("Tên người dùng:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 182, 298, 32));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel6.setForeground(new java.awt.Color(40, 67, 135));
         jLabel6.setText("Nhập lại mật khẩu:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 298, 32));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel7.setForeground(new java.awt.Color(40, 67, 135));
         jLabel7.setText("Email:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 428, 298, 32));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel8.setForeground(new java.awt.Color(40, 67, 135));
         jLabel8.setText("Số điện thoại:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 508, 298, 32));
 
@@ -112,10 +111,10 @@ public class frmDangKy extends javax.swing.JFrame {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_dienthoai.png"))); // NOI18N
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 50, 45));
 
-        jTextField1.setBackground(new java.awt.Color(213, 184, 255));
+        jTextField1.setBackground(new java.awt.Color(137, 196, 244));
         jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(140, 20, 252));
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(90, 34, 139)));
+        jTextField1.setForeground(new java.awt.Color(40, 67, 135));
+        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField1FocusGained(evt);
@@ -126,39 +125,38 @@ public class frmDangKy extends javax.swing.JFrame {
         });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 216, 298, 32));
 
-        jTextField3.setBackground(new java.awt.Color(213, 184, 255));
+        jTextField3.setBackground(new java.awt.Color(137, 196, 244));
         jTextField3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(140, 20, 252));
-        jTextField3.setText("@gmail.com");
-        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(90, 34, 139)));
+        jTextField3.setForeground(new java.awt.Color(40, 67, 135));
+        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 298, 32));
 
-        jTextField4.setBackground(new java.awt.Color(213, 184, 255));
+        jTextField4.setBackground(new java.awt.Color(137, 196, 244));
         jTextField4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(140, 20, 252));
-        jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(90, 34, 139)));
+        jTextField4.setForeground(new java.awt.Color(40, 67, 135));
+        jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 298, 32));
 
-        jPasswordField1.setBackground(new java.awt.Color(213, 184, 255));
+        jPasswordField1.setBackground(new java.awt.Color(137, 196, 244));
         jPasswordField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(140, 20, 252));
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(90, 34, 139)));
+        jPasswordField1.setForeground(new java.awt.Color(40, 67, 135));
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 298, 32));
 
         jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Đăng ký");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 620, 193, 44));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, 193, 44));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(165, 55, 253));
+        jLabel13.setForeground(new java.awt.Color(68, 108, 179));
         jLabel13.setText("Bạn đã có tài khoản?");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, 140, 24));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(165, 55, 253));
+        jLabel15.setForeground(new java.awt.Color(68, 108, 179));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_exit_color.png"))); // NOI18N
         jLabel15.setText("Thoát");
@@ -173,31 +171,30 @@ public class frmDangKy extends javax.swing.JFrame {
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel18.setForeground(new java.awt.Color(40, 67, 135));
         jLabel18.setText("Mật khẩu:");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 268, 298, 30));
 
-        jPasswordField2.setBackground(new java.awt.Color(213, 184, 255));
+        jPasswordField2.setBackground(new java.awt.Color(137, 196, 244));
         jPasswordField2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jPasswordField2.setForeground(new java.awt.Color(140, 20, 252));
-        jPasswordField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(90, 34, 139)));
+        jPasswordField2.setForeground(new java.awt.Color(40, 67, 135));
+        jPasswordField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
         jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 298, 298, 32));
 
         jButton1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(165, 55, 253));
+        jButton1.setForeground(new java.awt.Color(68, 108, 179));
         jButton1.setText("Đăng nhập");
         jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 102, 102)));
         jButton1.setContentAreaFilled(false);
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 670, -1, 24));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(533, 0, 482, 730));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 484, 730));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 0, new java.awt.Color(90, 34, 139)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel3.setForeground(new java.awt.Color(40, 67, 135));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("CHÀO MỪNG BẠN");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, 52));
@@ -207,12 +204,12 @@ public class frmDangKy extends javax.swing.JFrame {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 191, 510, 510));
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(90, 34, 139));
+        jLabel14.setForeground(new java.awt.Color(40, 67, 135));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText(" ĐẾN VỚI THẾ GIỚI SÁCH");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 295, 47));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 730));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -15,6 +15,10 @@ public class frmCardMember extends javax.swing.JFrame {
      */
     public frmCardMember() {
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -26,21 +30,98 @@ public class frmCardMember extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        pnlHeader = new javax.swing.JPanel();
+        lblSystemIC = new javax.swing.JLabel();
+        lblTieude = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblSystemIC1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlHeader.setBackground(new java.awt.Color(211, 84, 0));
+        pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseClicked(evt);
+            }
+        });
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 60, 57));
+
+        lblTieude.setBackground(new java.awt.Color(241, 231, 254));
+        lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTieude.setForeground(new java.awt.Color(247, 239, 232));
+        lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTieude.setText("Vắn tắt độc giả");
+        lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 170, 57));
+        pnlHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 20, -1));
+
+        lblSystemIC1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSystemIC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia64.png"))); // NOI18N
+        pnlHeader.add(lblSystemIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 60, 57));
+
+        getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, -1));
+
+        jPanel1.setBackground(new java.awt.Color(247, 239, 232));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(211, 84, 0)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(211, 84, 0)));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 140, 180));
+
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(211, 84, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("Mã độc giả:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 200, 25));
+
+        jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(211, 84, 0));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("Tên độc giả:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 200, 25));
+
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(211, 84, 0));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("Số điện thoại:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 200, 25));
+
+        jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(211, 84, 0));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel13.setText("Email:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 200, 25));
+
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(211, 84, 0));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setText("Giới tính:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 200, 25));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
+        // TODO add your handling code here:
+        // Dong form
+        this.dispose();
+    }//GEN-LAST:event_lblSystemICMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +159,17 @@ public class frmCardMember extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblSystemIC;
+    private javax.swing.JLabel lblSystemIC1;
+    private javax.swing.JLabel lblTieude;
+    private javax.swing.JPanel pnlHeader;
     // End of variables declaration//GEN-END:variables
 }

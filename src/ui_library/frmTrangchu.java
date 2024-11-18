@@ -135,7 +135,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         lblTrangchu.setText("     Trang chủ");
         pnlHome.add(lblTrangchu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 220, 60));
 
-        pnlLeftBar.add(pnlHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 42, 262, 60));
+        pnlLeftBar.add(pnlHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 42, 266, 60));
 
         pnlBooks.setBackground(new java.awt.Color(241, 231, 254));
         pnlBooks.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -154,7 +154,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         });
         pnlBooks.add(btnQLSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 280, 262, 60));
+        pnlLeftBar.add(pnlBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 280, 266, 60));
 
         pnlAuthors.setBackground(new java.awt.Color(241, 231, 254));
         pnlAuthors.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -173,7 +173,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         });
         pnlAuthors.add(btnQLTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlAuthors, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 220, 262, 60));
+        pnlLeftBar.add(pnlAuthors, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 220, 266, 60));
 
         pnlRIList.setBackground(new java.awt.Color(241, 231, 254));
         pnlRIList.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,7 +192,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         });
         pnlRIList.add(btnDSMuonTra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlRIList, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 580, 262, 60));
+        pnlLeftBar.add(pnlRIList, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 580, 266, 60));
 
         pnlGenres.setBackground(new java.awt.Color(241, 231, 254));
         pnlGenres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -211,7 +211,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         });
         pnlGenres.add(btnQLTheLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlGenres, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 160, 262, 60));
+        pnlLeftBar.add(pnlGenres, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 160, 266, 60));
 
         lblFeature.setBackground(new java.awt.Color(102, 51, 153));
         lblFeature.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
@@ -237,7 +237,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         });
         pnlReader.add(btnQLDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 340, 262, 60));
+        pnlLeftBar.add(pnlReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 340, 266, 60));
 
         pnlBookIssue.setBackground(new java.awt.Color(241, 231, 254));
         pnlBookIssue.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -256,7 +256,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         });
         pnlBookIssue.add(btnQLMuonSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlBookIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 400, 262, 60));
+        pnlLeftBar.add(pnlBookIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 400, 266, 60));
 
         pnlReturnBook.setBackground(new java.awt.Color(241, 231, 254));
         pnlReturnBook.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -275,7 +275,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         });
         pnlReturnBook.add(btnTraSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlReturnBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 460, 262, 60));
+        pnlLeftBar.add(pnlReturnBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 460, 266, 60));
 
         pnlViewReader.setBackground(new java.awt.Color(241, 231, 254));
         pnlViewReader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -294,7 +294,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         });
         pnlViewReader.add(btnDSDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
-        pnlLeftBar.add(pnlViewReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 520, 262, 60));
+        pnlLeftBar.add(pnlViewReader, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 520, 266, 60));
 
         getContentPane().add(pnlLeftBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 270, 840));
 

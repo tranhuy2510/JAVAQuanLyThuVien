@@ -15,6 +15,9 @@ public class frmCardSach extends javax.swing.JFrame {
      */
     public frmCardSach() {
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -26,21 +29,128 @@ public class frmCardSach extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        pnlHeader = new javax.swing.JPanel();
+        lblSystemIC = new javax.swing.JLabel();
+        lblTieude = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblSystemIC1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlHeader.setBackground(new java.awt.Color(4, 147, 114));
+        pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseClicked(evt);
+            }
+        });
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 60, 57));
+
+        lblTieude.setBackground(new java.awt.Color(241, 231, 254));
+        lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTieude.setForeground(new java.awt.Color(247, 239, 232));
+        lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTieude.setText("Tóm tắt sách");
+        lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 170, 57));
+        pnlHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 20, -1));
+
+        lblSystemIC1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSystemIC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia64.png"))); // NOI18N
+        pnlHeader.add(lblSystemIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 60, 57));
+
+        getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, -1));
+
+        jPanel1.setBackground(new java.awt.Color(200, 247, 197));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(4, 147, 114)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(4, 147, 114)));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 140, 210));
+
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel9.setText("Ngày nhận:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 165, 25));
+
+        jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("Mã sách:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 165, 25));
+
+        jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("Tên sách:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 165, 25));
+
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("Tác giả:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 165, 25));
+
+        jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel13.setText("Thể loại:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 165, 25));
+
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setText("Nhà xuất bản:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 165, 25));
+
+        jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel15.setText("Giá:");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 165, 25));
+
+        jLabel16.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("Số lượng:");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 165, 25));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 370, 140));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
+        // TODO add your handling code here:
+        // Dong form
+        this.dispose();
+    }//GEN-LAST:event_lblSystemICMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +188,22 @@ public class frmCardSach extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblSystemIC;
+    private javax.swing.JLabel lblSystemIC1;
+    private javax.swing.JLabel lblTieude;
+    private javax.swing.JPanel pnlHeader;
     // End of variables declaration//GEN-END:variables
 }
