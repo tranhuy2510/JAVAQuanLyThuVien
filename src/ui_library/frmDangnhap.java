@@ -187,30 +187,32 @@ public class frmDangnhap extends javax.swing.JFrame {
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
         try {
-            // TODO add your handling code here:
-            String taikhoan = txtTaikhoanDN.getText();
-            String matkhau = new String(txtMatkhauDN.getPassword());
-            String loainguoidung = cmbTypeUser.getSelectedItem().toString();
+        // Lấy dữ liệu từ giao diện
+        String taikhoan = txtTaikhoanDN.getText().trim();
+        String matkhau = new String(txtMatkhauDN.getPassword()).trim();
+        String loainguoidung = cmbTypeUser.getSelectedItem().toString();
+
+        // Gọi phương thức đăng nhập từ controller
+        NguoiDungController nguoiDungCtrl = new NguoiDungController();
+
+        // Kiểm tra đăng nhập
+        boolean isSuccess = nguoiDungCtrl.kiemTraDangNhap(taikhoan, matkhau, loainguoidung);
+
+        if (isSuccess) {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
             
-            // Gọi phương thức đăng nhập từ controller
-            NguoiDungController nguoiDungCtrl = new NguoiDungController();
+            // Chuyển đến màn hình chính
+            frmTrangchu home = new frmTrangchu();
+            home.setVisible(true);
             
-            // Kiểm tra đăng nhập
-            boolean isSuccess = nguoiDungCtrl.kiemTraDangNhap(taikhoan, matkhau, loainguoidung);
-            
-            if (isSuccess) {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                // Chuyển đến màn hình tiếp theo tùy theo loại người dùng
-                // Mở giao diện trang chủ và truyền loại người dùng
-                frmTrangchu home = new frmTrangchu();
-                home.setVisible(true);
-                // Đóng form đăng nhập
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            }
+            // Đóng form đăng nhập
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
         } catch (SQLException ex) {
             Logger.getLogger(frmDangnhap.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Lỗi hệ thống! Vui lòng thử lại sau.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
