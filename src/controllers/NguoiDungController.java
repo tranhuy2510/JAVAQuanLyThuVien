@@ -22,8 +22,8 @@ public class NguoiDungController {
             }
             return hexString.toString();  // Trả về mật khẩu đã mã hóa dưới dạng chuỗi hex
         } catch (NoSuchAlgorithmException e) {
-        }
-        return null;
+            throw new RuntimeException("Lỗi mã hóa mật khẩu!", e);
+        }        
     }
 
     // Phương thức kiểm tra đăng nhập
@@ -32,7 +32,7 @@ public class NguoiDungController {
         String matkhauHash = hashPassword(matkhau);
 
         // Câu lệnh SQL lấy dữ liệu người dùng theo tài khoản và loại người dùng
-        String sql = "SELECT * FROM tbl_NguoiDung WHERE username = ? AND loaiuser = ?";
+        String sql = "SELECT * FROM tbl_NguoiDung WHERE taikhoan = ? AND loaiuser = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, taikhoan);
             stmt.setString(2, loaiNguoiDung);
@@ -47,7 +47,7 @@ public class NguoiDungController {
             }
             return false; // Đăng nhập thất bại
     }
-
+    /*
     // Phương thức đăng ký tài khoản mới
     public boolean dangKyNguoiDung(String hoten, String taikhoan, String matkhau, String loaiuser) throws SQLException {
 
@@ -92,6 +92,7 @@ public class NguoiDungController {
             }
         return nguoiDung;  // Nếu không tìm thấy người dùng, trả về null
     }
+*/
 //     // Phương thức kiểm tra
 //    public static void main(String[] args) {
 //        // Kiểm tra chức năng đăng nhập
@@ -99,4 +100,21 @@ public class NguoiDungController {
 //        String hashedPassword = NguoiDungController.hashPassword(plainPassword);
 //        System.out.println("Mật khẩu mã hóa: " + hashedPassword);
 //    }
+    // Thêm mới người dùng vào cơ sở dữ liệu
+    public boolean InsertData(NguoiDungModel user) {
+         String sql = "INSERT INTO tbl_NguoiDung (hoten, taikhoan, matkhau, loaiuser) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user.getHoten());
+            pstmt.setString(2, user.getTaikhoan());
+            pstmt.setString(3, hashPassword(user.getMatkhau())); // Mã hóa mật khẩu trước khi lưu
+            pstmt.setString(4, user.getLoaiuser());
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+    
+    
 }
