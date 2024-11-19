@@ -17,7 +17,7 @@ public class DBConnect {
     public Connection connectSQL() throws SQLException { 
         try { 
             String userName ="sa"; 
-            String password = "tomo1912"; 
+            String password = "25102004"; 
             String url = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyThuVienSach;encrypt=false;"; 
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
             conn = java.sql.DriverManager.getConnection(url,userName,password); 

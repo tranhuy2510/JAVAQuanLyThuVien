@@ -4,10 +4,164 @@
  */
 package controllers;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import models.SachModel;
+
 /**
  *
  * @author ADMIN
  */
 public class SachController {
-    
+    Connection conn;
+
+    /**
+     *
+     * @throws SQLException
+     */
+    public SachController() throws SQLException{
+        conn = new DBConnect().connectSQL();
+    }
+    // Lay danh sach Sach
+    public List<SachModel> getAllSach() {
+        List<SachModel> list = new ArrayList<>();
+        String query = "SELECT " +
+                       "    s.id_sach, " +
+                       "    s.tensach, " +
+                       "    tg.id_tacgia, " +
+                       "    tg.tentacgia, " +
+                       "    tl.tentheloai, " +
+                       "    s.nhaxuatban, " +
+                       "    s.giasach, " +
+                       "    s.soluong, " +
+                       "    s.ngaynhan, " +
+                       "    s.mota " +
+                       "FROM tbl_sach s " +
+                       "JOIN tbl_tacgia tg ON s.id_tacgia = tg.id_tacgia " +
+                       "JOIN tbl_theloai tl ON s.id_theloai = tl.id_theloai";
+        try (PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                SachModel sach = new SachModel(
+                    rs.getInt("id_sach"),
+                    rs.getString("tensach"),
+                    rs.getInt("id_tacgia"),    
+                    rs.getString("tentacgia"),
+                    rs.getString("tentheloai"),
+                    rs.getString("nhaxuatban"),
+                    rs.getDouble("giasach"),
+                    rs.getInt("soluong"),
+                    rs.getString("ngaynhan"),
+                    rs.getString("mota")
+                );
+                list.add(sach);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+     // Lấy thông tin mô tả dựa trên id_sach
+    public String getMoTaById(int idSach) {
+        String query = "SELECT mota FROM tbl_sach WHERE id_sach = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, idSach);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString("mota");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+     // Phương thức lấy danh sách thể loại
+    public List<String> getAllTheLoai() {
+        List<String> theLoaiList = new ArrayList<>();
+        String query = "SELECT tentheloai FROM tbl_theloai";
+        try (PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                theLoaiList.add(rs.getString("tentheloai"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return theLoaiList;
+    }
+    //Luu anh vao co so du lieu
+    public void LuuAnhBia(int masach, String imgAnh) {
+        String query = "UPDATE tbl_sach SET anhsach = ? WHERE id_sach = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query);
+             FileInputStream file = new FileInputStream(new File(imgAnh))) {
+            ps.setBinaryStream(1, file, (int) new File(imgAnh).length());
+            ps.setInt(2, masach);
+            int rows = ps.executeUpdate();
+            if (rows > 0) {
+                System.out.println("Ảnh bìa đã được lưu thành công.");
+            } else {
+                System.out.println("Không tìm thấy sách để cập nhật ảnh bìa.");
+            }
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Phuong thuc lay anh tu co so du lieu ra
+    public ImageIcon getBookImage(int masach) {
+        String query = "SELECT anhsach FROM tbl_sach WHERE id_sach = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, masach);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    byte[] imageData = rs.getBytes("anhsach");
+                    if (imageData != null) {
+                        ByteArrayInputStream bis = new ByteArrayInputStream(imageData);
+                        BufferedImage img = ImageIO.read(bis);
+                        return new ImageIcon(img); // Trả về hình ảnh
+                    }
+                }
+            }
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+        return null; // Trả về null nếu không tìm thấy
+    }
+    public boolean updateSach(SachModel sach, String imagePath) {
+        String query = "UPDATE tbl_sach " +
+                       "SET tensach = ?, id_tacgia = ?, id_theloai = ?, nhaxuatban = ?, " +
+                       "    giasach = ?, soluong = ?, ngaynhan = ?, mota = ?, anhsach = ? " +
+                       "WHERE id_sach = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, sach.getTenSach());
+            ps.setInt(2, sach.getIdTacGia());
+            ps.setInt(3, sach.getIdTheLoai());
+            ps.setString(4, sach.getNhaXuatBan());
+            ps.setDouble(5, sach.getGiaSach());
+            ps.setInt(6, sach.getSoLuong());
+            ps.setString(7, sach.getNgayNhan());
+            ps.setString(8, sach.getMoTa());
+
+            // Đọc và lưu ảnh
+            FileInputStream fis = new FileInputStream(imagePath);
+            ps.setBinaryStream(9, fis, (int) new File(imagePath).length());
+
+            ps.setInt(10, sach.getIdSach());
+
+            int rowsUpdated = ps.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

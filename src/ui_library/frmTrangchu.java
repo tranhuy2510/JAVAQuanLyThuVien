@@ -4,6 +4,10 @@
  */
 package ui_library;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -586,7 +590,12 @@ public class frmTrangchu extends javax.swing.JFrame {
 
     private void btnQLSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLSachMouseClicked
         // TODO add your handling code here:
-        frmQLSach book = new frmQLSach();
+        frmQLSach book = null;
+        try {
+            book = new frmQLSach();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangchu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         book.setVisible(true);
     }//GEN-LAST:event_btnQLSachMouseClicked
 
