@@ -9,13 +9,13 @@ package ui_library;
  *
  * @author ADMIN
  */
-public class frmQLTacGia extends javax.swing.JFrame  {
+public class frmQLTacGia extends javax.swing.JFrame {
 
     /**
      * Creates new form frmQLTacGia
      */
     public frmQLTacGia() {
-    
+        
         initComponents();
         // can giua cho form
         this.setLocationRelativeTo(null);
@@ -122,7 +122,7 @@ public class frmQLTacGia extends javax.swing.JFrame  {
                 {null, null, null, null}
             },
             new String [] {
-                "Mã ", "Tên thể loại", "Chuyên môn", "Giới thiệu"
+                "Mã ", "Tên tác giả", "Chuyên môn", "Giới thiệu"
             }
         ) {
             Class[] types = new Class [] {
