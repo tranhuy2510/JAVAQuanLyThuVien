@@ -583,7 +583,7 @@ public class frmTrangchu extends javax.swing.JFrame {
     private void btnQLTacGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLTacGiaMouseClicked
         // TODO add your handling code here:
         frmQLTacGia author = new frmQLTacGia();
-        author.setVisible(true);
+        author.setVisible(true); // Hiển thị form
     }//GEN-LAST:event_btnQLTacGiaMouseClicked
 
     private void btnQLSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLSachMouseClicked

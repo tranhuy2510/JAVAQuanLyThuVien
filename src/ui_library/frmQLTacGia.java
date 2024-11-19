@@ -9,27 +9,29 @@ package ui_library;
  *
  * @author ADMIN
  */
-public class frmQLTacGia extends javax.swing.JFrame {
+public class frmQLTacGia extends javax.swing.JFrame  {
 
     /**
      * Creates new form frmQLTacGia
      */
     public frmQLTacGia() {
+    
         initComponents();
         // can giua cho form
         this.setLocationRelativeTo(null);
+      
         
         //set UI
         jTable1.getTableHeader().setBackground(new java.awt.Color(213, 184, 255));
         jTable1.getTableHeader().setForeground(new java.awt.Color(90, 34, 139));
         jTable1.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 16));
         jTable1.getTableHeader().setOpaque(false);
+   
 
-
-
-
-        
     }
+
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
