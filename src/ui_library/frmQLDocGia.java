@@ -151,6 +151,7 @@ public class frmQLDocGia extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(4, 147, 114));
         jLabel16.setText("Lựa chọn file ảnh cho hồ sơ...");
+        jLabel16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 380, 20));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -162,11 +163,13 @@ public class frmQLDocGia extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(4, 147, 114));
         jComboBox1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(4, 147, 114)));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 140, 32));
 
         jButton4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(4, 147, 114));
         jButton4.setText("Chọn file");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 160, 20));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
@@ -187,11 +190,13 @@ public class frmQLDocGia extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton6.setForeground(new java.awt.Color(4, 147, 114));
         jButton6.setText("Thêm");
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 540, 120, 32));
 
         jButton7.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton7.setForeground(new java.awt.Color(4, 147, 114));
         jButton7.setText("Hủy bỏ");
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 540, 120, 32));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 530, 595));
@@ -201,6 +206,7 @@ public class frmQLDocGia extends javax.swing.JFrame {
 
         lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSystemICMouseClicked(evt);
@@ -255,6 +261,7 @@ public class frmQLDocGia extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.setGridColor(new java.awt.Color(4, 147, 114));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(4, 147, 114));
@@ -266,7 +273,7 @@ public class frmQLDocGia extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(4, 147, 114));
         jLabel9.setText("Nhập mã người dùng:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 200, 32));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 220, 32));
 
         jTextField5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(140, 20, 252));
@@ -278,26 +285,31 @@ public class frmQLDocGia extends javax.swing.JFrame {
         jButton2.setText("Hiển thi tất cả");
         jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(4, 147, 114)));
         jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 100, 20));
 
         jButton5.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton5.setForeground(new java.awt.Color(4, 147, 114));
         jButton5.setText("Sửa");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 120, 32));
 
         jButton1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(4, 147, 114));
         jButton1.setText("Xóa");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 120, 32));
 
         jButton3.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton3.setForeground(new java.awt.Color(4, 147, 114));
         jButton3.setText("Lưu");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 120, 32));
 
         jButton8.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton8.setForeground(new java.awt.Color(4, 147, 114));
         jButton8.setText("Tìm kiếm");
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 100, 32));
 

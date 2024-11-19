@@ -32,13 +32,13 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
         
         // can giua cho form
         
-        this.setSize(1105,519);
+        this.setSize(1102,519);
         this.setLocationRelativeTo(null);
         // tao vien xam cho khung panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(30, 130, 76));
         
         jPanel_Theloaisach.setBorder(panelHeaderBorder);
-        tblQLNguoidung.setSelectionBackground(new Color(198, 226, 255));
+        tblQLNguoidung.setSelectionBackground(new Color(217, 237, 191));
         tblQLNguoidung.setSelectionForeground(Color.white);
         tblQLNguoidung.setRowHeight(30);
         tblQLNguoidung.setShowGrid(true);
@@ -102,7 +102,7 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
         lbl_CloseFormTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_CloseFormTL.setForeground(new java.awt.Color(255, 255, 255));
         lbl_CloseFormTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_CloseFormTL.setText("X");
+        lbl_CloseFormTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
         lbl_CloseFormTL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_CloseFormTL.setOpaque(true);
         lbl_CloseFormTL.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -189,9 +189,11 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
 
         btnThem.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnThem.setText("Thêm ");
+        btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnHuy.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnHuy.setText("Hủy bỏ");
+        btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblTieudeTL.setBackground(new java.awt.Color(30, 130, 76));
         lblTieudeTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -202,6 +204,7 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton1.setText("Sửa");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         pwMatkhau.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
@@ -213,6 +216,7 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
         jCheckBox1.setText("Đặt làm quản trị viên");
         jCheckBox1.setBorder(null);
         jCheckBox1.setContentAreaFilled(false);
+        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox1.setFocusPainted(false);
 
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
@@ -239,7 +243,7 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
                     .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblTieudeTL, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -259,21 +263,13 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
                                             .addComponent(lblTensach)
                                             .addComponent(lblTacgia)
                                             .addComponent(lblTheloai))
+                                        .addGap(66, 66, 66)
                                         .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                                                .addGap(66, 66, 66)
-                                                .addComponent(jLabel1))
-                                            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                                                .addGap(66, 66, 66)
-                                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                                                .addGap(66, 66, 66)
-                                                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtHoten, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                                                .addGap(66, 66, 66)
-                                                .addComponent(txtTentaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(jLabel1)
+                                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtHoten, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTentaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
                                         .addComponent(lblSoluong)
                                         .addGap(28, 28, 28)
