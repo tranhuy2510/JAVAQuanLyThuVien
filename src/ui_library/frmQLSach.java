@@ -202,6 +202,11 @@ public class frmQLSach extends javax.swing.JFrame {
         btnXoa.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         btnSua.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnSua.setText("Sửa");
@@ -242,7 +247,6 @@ public class frmQLSach extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSua)
@@ -327,6 +331,12 @@ public class frmQLSach extends javax.swing.JFrame {
         lblChonanhbia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblChonanhbiaMouseClicked(evt);
+            }
+        });
+
+        cmbTheloai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTheloaiActionPerformed(evt);
             }
         });
 
@@ -447,7 +457,6 @@ public class frmQLSach extends javax.swing.JFrame {
                                 .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtNhaxuatban, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
                                 .addGap(0, 1, Short.MAX_VALUE)
@@ -557,26 +566,44 @@ public class frmQLSach extends javax.swing.JFrame {
             try {
                 // Lấy thông tin từ các trường dữ liệu
                 int idSach = Integer.parseInt(tblQuanlysach.getValueAt(selectedRow, 0).toString());
-                String tensach = txtTenSach.getText(); // Tên sách
-                // Lấy id_tacgia từ đối tượng SachModel đã được chọn
-                SachController sachCtrl = new SachController();
-                List<SachModel> sachList = sachCtrl.getAllSach();
-                SachModel sach = null;
-                for (SachModel s : sachList) {
-                    if (s.getIdSach() == idSach) {
-                        sach = s;
-                        break;
-                    }
+                String tensach = txtTenSach.getText().trim(); // Tên sách
+                if (tensach.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Tên sách không được để trống.");
+                    return;
                 }
-                int idTacgia = sach != null ? sach.getIdTacGia(): -1; // Lấy ID tác giả từ đối tượng SachModel
+
+                // Lấy ID tác giả từ đối tượng SachModel đã được chọn
+                SachController sachCtrl = new SachController();
+                SachModel sach = sachCtrl.getSachById(idSach); // Giả sử bạn có phương thức getSachById để tìm sách theo ID
+                int idTacgia = (sach != null) ? sach.getIdTacGia() : -1; // Lấy ID tác giả
 
                 int idTheloai = cmbTheloai.getSelectedIndex() + 1; // Lấy ID thể loại từ comboBox
-                String nhaxuatban = txtNhaxuatban.getText(); // Nhà xuất bản
-                double giasach = Double.parseDouble(txtGia.getText()); // Giá sách
-                int soluong = Integer.parseInt(txtSoLuong.getText()); // Số lượng
-                String ngaynhan = txtNgaynhap.getText(); // Ngày nhận
-                String mota = txtAreaQLsach.getText(); // Mô tả sách
-                String imagePath = "src/images/book" + idSach + ".jpg"; // Lấy đường dẫn ảnh tương ứng
+                String nhaxuatban = txtNhaxuatban.getText().trim(); // Nhà xuất bản
+                if (nhaxuatban.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Nhà xuất bản không được để trống.");
+                    return;
+                }
+
+                double giasach = Double.parseDouble(txtGia.getText().trim()); // Giá sách
+//                if (giasach <= 0) {
+//                    JOptionPane.showMessageDialog(this, "Giá sách phải lớn hơn 0.");
+//                    return;
+//                }
+
+                int soluong = Integer.parseInt(txtSoLuong.getText().trim()); // Số lượng
+                String ngaynhan = txtNgaynhap.getText().trim(); // Ngày nhận
+                String mota = txtAreaQLsach.getText().trim(); // Mô tả sách
+                String imagePath = "src\\image" + idSach  + ".jpg"; // Đường dẫn ảnh tương ứng
+
+                // In ra đường dẫn ảnh
+            System.out.println("Đường dẫn ảnh là: " + imagePath); // In đường dẫn ảnh ra console
+            JOptionPane.showMessageDialog(this, "Đường dẫn ảnh: " + imagePath); 
+                // Kiểm tra nếu ảnh tồn tại không
+                File imageFile = new File(imagePath);
+                if (!imageFile.exists()) {
+                    JOptionPane.showMessageDialog(this, "Ảnh bìa không tồn tại.");
+                    return;
+                }
 
                 // Tạo đối tượng SachModel
                 SachModel updatedSach = new SachModel(idSach, tensach, idTacgia, idTheloai, nhaxuatban, giasach, soluong, ngaynhan, mota, imagePath);
@@ -669,6 +696,43 @@ public class frmQLSach extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_btnThemActionPerformed
+
+    private void cmbTheloaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTheloaiActionPerformed
+        // TODO add your handling code here:
+        try {
+         SachController sachController = new SachController();
+         String tenTheLoai = (String) cmbTheloai.getSelectedItem(); // Lấy tên thể loại từ combo box
+         int idTheLoai = sachController.getIdTheLoaiFromName(tenTheLoai);
+         System.out.println("ID thể loại: " + idTheLoai);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_cmbTheloaiActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        // Xóa nội dung của các JTextField
+        txtTenSach.setText(""); // Xóa tên sách
+        txtMasach.setText("");
+        txtIDTacgia.setText("");
+        txtTenTacGia.setText("");
+        txtNhaxuatban.setText(""); // Xóa nhà xuất bản
+        txtGia.setText(""); // Xóa giá sách
+        txtSoLuong.setText(""); // Xóa số lượng
+        txtNgaynhap.setText(""); // Xóa ngày nhập
+        
+        // Xóa nội dung của JTextArea
+        txtAreaQLsach.setText("");
+
+        // Đặt lại lựa chọn trong JComboBox về mặc định (chỉ số 0)
+        cmbTheloai.setSelectedIndex(-1);
+
+        // Đặt lại hình ảnh mặc định (nếu có JLabel để hiển thị ảnh)
+        lblAnhQLsach.setIcon(null);
+
+        // Hiển thị thông báo nếu cần
+        JOptionPane.showMessageDialog(this, "Đã xóa toàn bộ dữ liệu.");
+    }//GEN-LAST:event_btnXoaActionPerformed
         private void hienthiDStheloai() {
         try {
             SachController sachController = new SachController();
@@ -710,6 +774,7 @@ public class frmQLSach extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

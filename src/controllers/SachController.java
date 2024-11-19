@@ -70,6 +70,33 @@ public class SachController {
         }
         return list;
     }
+    public SachModel getSachById(int idSach) {
+        SachModel sach = null;
+        String query = "SELECT * FROM tbl_sach WHERE id_sach = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, idSach);  // Gán giá trị idSach vào câu lệnh SQL
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    // Lấy thông tin sách từ ResultSet
+                    String tensach = rs.getString("tensach");
+                    int idTacgia = rs.getInt("id_tacgia");
+                    int idTheloai = rs.getInt("id_theloai");
+                    String nhaxuatban = rs.getString("nhaxuatban");
+                    double giasach = rs.getDouble("giasach");
+                    int soluong = rs.getInt("soluong");
+                    String ngaynhan = rs.getString("ngaynhan");
+                    String mota = rs.getString("mota");
+                    String anhsach = rs.getString("anhsach");
+
+                    // Tạo đối tượng SachModel và trả về
+                    sach = new SachModel(idSach, tensach, idTacgia, idTheloai, nhaxuatban, giasach, soluong, ngaynhan, mota, anhsach);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sach; // Trả về đối tượng SachModel, hoặc null nếu không tìm thấy
+    }
      // Lấy thông tin mô tả dựa trên id_sach
     public String getMoTaById(int idSach) {
         String query = "SELECT mota FROM tbl_sach WHERE id_sach = ?";
@@ -84,6 +111,26 @@ public class SachController {
         }
         return "";
     }
+    
+    // Phương thức lấy id_theloai từ cơ sở dữ liệu theo tên thể loại
+    // Phương thức lấy id_theloai từ cơ sở dữ liệu theo tên thể loại
+    // Phương thức lấy id_theloai từ cơ sở dữ liệu theo tên thể loại
+    public int getIdTheLoaiFromName(String tenTheLoai) {
+        String query = "SELECT id_theloai FROM tbl_theloai WHERE tentheloai = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, tenTheLoai);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id_theloai");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; // Trả về -1 nếu không tìm thấy thể loại
+    }
+
+
+
      // Phương thức lấy danh sách thể loại
     public List<String> getAllTheLoai() {
         List<String> theLoaiList = new ArrayList<>();
@@ -99,12 +146,26 @@ public class SachController {
         return theLoaiList;
     }
     //Luu anh vao co so du lieu
+    // Hàm lưu ảnh bìa vào cơ sở dữ liệu
     public void LuuAnhBia(int masach, String imgAnh) {
+        // Kiểm tra file có tồn tại không
+        File file = new File(imgAnh);
+        if (!file.exists()) {
+            System.err.println("File không tồn tại: " + file.getAbsolutePath());
+            return; // Thoát nếu file không tồn tại
+        }
+        // Kiểm tra ID sách và đường dẫn file
+        System.out.println("Đang cập nhật ảnh cho sách có ID: " + masach);
+        System.out.println("Đường dẫn file: " + imgAnh);
+        // Câu lệnh SQL để cập nhật ảnh bìa
         String query = "UPDATE tbl_sach SET anhsach = ? WHERE id_sach = ?";
         try (PreparedStatement ps = conn.prepareStatement(query);
-             FileInputStream file = new FileInputStream(new File(imgAnh))) {
-            ps.setBinaryStream(1, file, (int) new File(imgAnh).length());
+             FileInputStream fis = new FileInputStream(file)) {
+            // Truyền dữ liệu vào câu lệnh SQL
+            ps.setBinaryStream(1, fis, (int) file.length());
             ps.setInt(2, masach);
+
+            // Thực thi câu lệnh
             int rows = ps.executeUpdate();
             if (rows > 0) {
                 System.out.println("Ảnh bìa đã được lưu thành công.");
@@ -112,9 +173,11 @@ public class SachController {
                 System.out.println("Không tìm thấy sách để cập nhật ảnh bìa.");
             }
         } catch (SQLException | IOException e) {
+            // Xử lý ngoại lệ và in lỗi
             e.printStackTrace();
         }
     }
+
 
     // Phuong thuc lay anh tu co so du lieu ra
     public ImageIcon getBookImage(int masach) {
