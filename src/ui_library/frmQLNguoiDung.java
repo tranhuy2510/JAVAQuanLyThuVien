@@ -189,9 +189,11 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
 
         btnThem.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnThem.setText("Thêm ");
+        btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnHuy.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnHuy.setText("Hủy bỏ");
+        btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblTieudeTL.setBackground(new java.awt.Color(30, 130, 76));
         lblTieudeTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -202,6 +204,7 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton1.setText("Sửa");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         pwMatkhau.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
@@ -213,6 +216,7 @@ public class frmQLNguoiDung extends javax.swing.JFrame {
         jCheckBox1.setText("Đặt làm quản trị viên");
         jCheckBox1.setBorder(null);
         jCheckBox1.setContentAreaFilled(false);
+        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBox1.setFocusPainted(false);
 
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));

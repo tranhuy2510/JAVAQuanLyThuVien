@@ -75,6 +75,7 @@ public class frmQLTraSach extends javax.swing.JFrame {
 
         lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSystemICMouseClicked(evt);
@@ -115,6 +116,7 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jButton8.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton8.setForeground(new java.awt.Color(103, 65, 114));
         jButton8.setText("Tìm kiếm");
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 100, 32));
 
@@ -131,6 +133,7 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jButton9.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton9.setForeground(new java.awt.Color(103, 65, 114));
         jButton9.setText("Tìm kiếm");
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 100, 32));
 
@@ -199,6 +202,7 @@ public class frmQLTraSach extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.setGridColor(new java.awt.Color(102, 102, 102));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(190, 144, 212));
@@ -210,11 +214,13 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(90, 34, 139));
         jButton1.setText("Thêm");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 510, 90, 30));
 
         jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(90, 34, 139));
         jButton2.setText("Trả sách");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 110, 30));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
@@ -226,6 +232,7 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(103, 65, 114));
         jComboBox1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(103, 65, 114)));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 140, 32));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 620));

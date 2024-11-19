@@ -153,17 +153,21 @@ public class frmQLSach extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblQuanlysach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tblQuanlysach.setShowGrid(true);
         jScrollPane1.setViewportView(tblQuanlysach);
 
         btnLuu.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnLuu.setText("Lưu");
+        btnLuu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnXoa.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnXoa.setText("Xóa");
+        btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnSua.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -215,9 +219,11 @@ public class frmQLSach extends javax.swing.JFrame {
 
         btnThem.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnThem.setText("Thêm ");
+        btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnHuy.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnHuy.setText("Hủy bỏ");
+        btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         txtAreaQLsach.setColumns(20);
         txtAreaQLsach.setRows(5);
@@ -243,6 +249,7 @@ public class frmQLSach extends javax.swing.JFrame {
         lblChonanhbia.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
         lblChonanhbia.setForeground(new java.awt.Color(51, 51, 255));
         lblChonanhbia.setText("Chọn ảnh bìa");
+        lblChonanhbia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         cmbTheloai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 

@@ -139,6 +139,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         btnThem.setBackground(new java.awt.Color(204, 204, 204));
         btnThem.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnThem.setText("Thêm");
+        btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
@@ -148,6 +149,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         btnSua.setBackground(new java.awt.Color(204, 204, 204));
         btnSua.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnSua.setText("Sửa");
+        btnSua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSua.setOpaque(true);
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +160,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         btnXoa.setBackground(new java.awt.Color(204, 204, 204));
         btnXoa.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnXoa.setText("Xóa");
+        btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnXoa.setOpaque(true);
 
         tblTheloai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -180,6 +183,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblTheloai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tblTheloai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblTheloaiMouseClicked(evt);

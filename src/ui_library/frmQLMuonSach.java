@@ -372,8 +372,10 @@ public class frmQLMuonSach extends javax.swing.JFrame {
         jLabel15.setText("Ngày trả:");
 
         jSpinner1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jSpinner1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jSpinner2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jSpinner2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         date1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -389,6 +391,7 @@ public class frmQLMuonSach extends javax.swing.JFrame {
         btnTimsach.setBackground(new java.awt.Color(0, 153, 255));
         btnTimsach.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnTimsach.setText("Tìm sách");
+        btnTimsach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTimsach.setOpaque(true);
         btnTimsach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -399,15 +402,18 @@ public class frmQLMuonSach extends javax.swing.JFrame {
         btnTimdocgia.setBackground(new java.awt.Color(0, 153, 255));
         btnTimdocgia.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnTimdocgia.setText("Tìm độc giả");
+        btnTimdocgia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTimdocgia.setOpaque(true);
 
         btnPhatphieu.setBackground(new java.awt.Color(25, 87, 199));
         btnPhatphieu.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnPhatphieu.setText("Phát phiếu");
+        btnPhatphieu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnHuy.setBackground(new java.awt.Color(255, 51, 51));
         btnHuy.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnHuy.setText("Hủy");
+        btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHuy.setOpaque(true);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
