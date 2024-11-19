@@ -201,6 +201,7 @@ public class frmQLDocGia extends javax.swing.JFrame {
 
         lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSystemICMouseClicked(evt);

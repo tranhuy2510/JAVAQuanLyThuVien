@@ -35,13 +35,13 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         // can giua cho form
         this.setLocationRelativeTo(null);
         // tao vien xam cho khung panel
-        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, Color.gray);
+        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(54,94,50));
         jPanel_Theloaisach.setBorder(panelHeaderBorder);
         
         controllers.Func_Class func = new controllers.Func_Class();
         func.displayImage(50,50,"/image/img-Dangnhap.png", lblTieudeTL );
         // thiet ke cho bang the loai
-        tblTheloai.setSelectionBackground(new Color(198, 226, 255));
+        tblTheloai.setSelectionBackground(new Color(161,214,178));
         tblTheloai.setSelectionForeground(Color.white);
         tblTheloai.setRowHeight(30);
         tblTheloai.setShowGrid(true);
@@ -57,7 +57,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         }
         
         // thiet ke cho hang tren dau cua bang
-        tblTheloai.getTableHeader().setBackground(Color.GRAY);
+        tblTheloai.getTableHeader().setBackground(new Color(111, 194, 103));
         tblTheloai.getTableHeader().setForeground(Color.WHITE);
         tblTheloai.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 18));
         tblTheloai.getTableHeader().setOpaque(false);
@@ -95,7 +95,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
 
         jPanel_Theloaisach.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblTieudeTL.setBackground(java.awt.Color.gray);
+        lblTieudeTL.setBackground(new java.awt.Color(54, 94, 50));
         lblTieudeTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTieudeTL.setForeground(new java.awt.Color(255, 255, 255));
         lblTieudeTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -113,11 +113,11 @@ public class frmQLTheLoai extends javax.swing.JFrame {
             .addComponent(lblTieudeTL, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        lbl_CloseFormTL.setBackground(java.awt.Color.gray);
+        lbl_CloseFormTL.setBackground(new java.awt.Color(54, 94, 50));
         lbl_CloseFormTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_CloseFormTL.setForeground(new java.awt.Color(255, 255, 255));
         lbl_CloseFormTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_CloseFormTL.setText("X");
+        lbl_CloseFormTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
         lbl_CloseFormTL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_CloseFormTL.setOpaque(true);
         lbl_CloseFormTL.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -196,9 +196,8 @@ public class frmQLTheLoai extends javax.swing.JFrame {
             jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_CloseFormTL, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(lbl_CloseFormTL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
                 .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
@@ -217,7 +216,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
                                     .addComponent(txtTenTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(21, Short.MAX_VALUE)
                         .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,7 +234,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
                     .addComponent(lbl_CloseFormTL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIDTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,11 +244,11 @@ public class frmQLTheLoai extends javax.swing.JFrame {
                             .addComponent(txtTenTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCanhbao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnThem)
                             .addComponent(btnSua)
-                            .addComponent(btnXoa)
-                            .addComponent(btnThem)))
+                            .addComponent(btnXoa)))
                     .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -262,7 +261,7 @@ public class frmQLTheLoai extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel_Theloaisach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

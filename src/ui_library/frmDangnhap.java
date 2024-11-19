@@ -7,9 +7,6 @@ import controllers.NguoiDungController;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 
 /**
@@ -100,6 +97,7 @@ public class frmDangnhap extends javax.swing.JFrame {
         btnDangnhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangnhap.setText("Đăng nhập");
         btnDangnhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 153)));
+        btnDangnhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangnhapActionPerformed(evt);

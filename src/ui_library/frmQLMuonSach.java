@@ -92,7 +92,7 @@ public class frmQLMuonSach extends javax.swing.JFrame {
         lbl_CloseFormTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_CloseFormTL.setForeground(new java.awt.Color(255, 255, 255));
         lbl_CloseFormTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_CloseFormTL.setText("X");
+        lbl_CloseFormTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
         lbl_CloseFormTL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_CloseFormTL.setOpaque(true);
         lbl_CloseFormTL.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -506,7 +506,7 @@ public class frmQLMuonSach extends javax.swing.JFrame {
                 .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
                         .addComponent(lblTieudeTL, javax.swing.GroupLayout.PREFERRED_SIZE, 1023, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

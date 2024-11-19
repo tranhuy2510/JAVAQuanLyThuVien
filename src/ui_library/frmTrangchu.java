@@ -115,6 +115,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         lblDangXuat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_exit_color.png"))); // NOI18N
         lblDangXuat.setText("  Đăng xuất");
+        lblDangXuat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         lblDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -154,6 +155,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         lblTrangchu.setForeground(new java.awt.Color(255, 255, 255));
         lblTrangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_home.png"))); // NOI18N
         lblTrangchu.setText("     Trang chủ");
+        lblTrangchu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlHome.add(lblTrangchu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 220, 60));
 
         pnlLeftBar.add(pnlHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 42, 266, 60));
@@ -166,6 +168,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnQLSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_sach.png"))); // NOI18N
         btnQLSach.setText("    Quản lý sách");
         btnQLSach.setContentAreaFilled(false);
+        btnQLSach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnQLSach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLSach.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnQLSach.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -185,6 +188,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnQLTacGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_author.png"))); // NOI18N
         btnQLTacGia.setText("    Quản lý tác giả");
         btnQLTacGia.setContentAreaFilled(false);
+        btnQLTacGia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnQLTacGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLTacGia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnQLTacGia.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -204,6 +208,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnQLNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_user32.png"))); // NOI18N
         btnQLNguoiDung.setText("   Quản lý người dùng");
         btnQLNguoiDung.setContentAreaFilled(false);
+        btnQLNguoiDung.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnQLNguoiDung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLNguoiDung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnQLNguoiDung.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,6 +228,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnQLTheLoai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_muc.png"))); // NOI18N
         btnQLTheLoai.setText("    Quản lý thế loại");
         btnQLTheLoai.setContentAreaFilled(false);
+        btnQLTheLoai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnQLTheLoai.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLTheLoai.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnQLTheLoai.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -249,6 +255,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnQLDocGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_team.png"))); // NOI18N
         btnQLDocGia.setText("    Quản lý độc giả");
         btnQLDocGia.setContentAreaFilled(false);
+        btnQLDocGia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnQLDocGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLDocGia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnQLDocGia.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -268,6 +275,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnQLMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_muons.png"))); // NOI18N
         btnQLMuonSach.setText("    Sách mượn");
         btnQLMuonSach.setContentAreaFilled(false);
+        btnQLMuonSach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnQLMuonSach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQLMuonSach.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnQLMuonSach.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -287,6 +295,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnTraSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_returnbook.png"))); // NOI18N
         btnTraSach.setText("    Trả lại sách");
         btnTraSach.setContentAreaFilled(false);
+        btnTraSach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTraSach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnTraSach.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnTraSach.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -306,6 +315,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnDSDocGia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_profile.png"))); // NOI18N
         btnDSDocGia.setText("    Hồ sơ độc giả");
         btnDSDocGia.setContentAreaFilled(false);
+        btnDSDocGia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDSDocGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDSDocGia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnDSDocGia.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -325,6 +335,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         btnDSMuonTra1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_DsChiTiet.png"))); // NOI18N
         btnDSMuonTra1.setText("    Danh sách mượn");
         btnDSMuonTra1.setContentAreaFilled(false);
+        btnDSMuonTra1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDSMuonTra1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDSMuonTra1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnDSMuonTra1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -383,6 +394,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlSystem.add(pnlLstBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 1130, 310));
 
         pnlCAuthor.setBackground(new java.awt.Color(241, 231, 254));
+        pnlCAuthor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCAuthor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSTacGia.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -400,6 +412,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlSystem.add(pnlCAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 240, 140));
 
         pnlCBooks.setBackground(new java.awt.Color(241, 231, 254));
+        pnlCBooks.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCBooks.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSSach.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -417,6 +430,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlSystem.add(pnlCBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 230, 140));
 
         pnlIssue.setBackground(new java.awt.Color(241, 231, 254));
+        pnlIssue.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlIssue.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblMuonS.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -498,6 +512,7 @@ public class frmTrangchu extends javax.swing.JFrame {
         pnlSystem.add(scrollSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 540, 240));
 
         pnlCReader1.setBackground(new java.awt.Color(241, 231, 254));
+        pnlCReader1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlCReader1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDocGia1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
