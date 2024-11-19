@@ -5,6 +5,9 @@
 package ui_library;
 import controllers.NguoiDungController;
 import java.awt.Image;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -55,8 +58,8 @@ public class frmDangnhap extends javax.swing.JFrame {
         txtTaikhoanDN = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        pwMatkhauDN = new javax.swing.JPasswordField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtMatkhauDN = new javax.swing.JPasswordField();
+        cmbTypeUser = new javax.swing.JComboBox<>();
         btnDangnhap = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -80,16 +83,16 @@ public class frmDangnhap extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Kiểu người dùng:");
 
-        pwMatkhauDN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMatkhauDN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(51, 51, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), null));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cmbTypeUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbTypeUser.setForeground(new java.awt.Color(51, 51, 255));
+        cmbTypeUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
+        cmbTypeUser.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), null));
+        cmbTypeUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmbTypeUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cmbTypeUserActionPerformed(evt);
             }
         });
 
@@ -116,9 +119,9 @@ public class frmDangnhap extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, 396, Short.MAX_VALUE)
+                    .addComponent(cmbTypeUser, 0, 396, Short.MAX_VALUE)
                     .addComponent(txtTaikhoanDN, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pwMatkhauDN, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtMatkhauDN, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -148,11 +151,11 @@ public class frmDangnhap extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pwMatkhauDN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMatkhauDN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbTypeUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -183,33 +186,37 @@ public class frmDangnhap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
-        // TODO add your handling code here:
-        String taikhoan = txtTaikhoanDN.getText();
-        String matkhau = new String(pwMatkhauDN.getPassword());
-        String loainguoidung = jComboBox1.getSelectedItem().toString();
-
-        // Gọi phương thức đăng nhập từ controller
-        NguoiDungController nguoiDungCtrl = new NguoiDungController();
-    
-        // Kiểm tra đăng nhập
-        boolean isSuccess = nguoiDungCtrl.kiemTraDangNhap(taikhoan, matkhau, loainguoidung);
-
-        if (isSuccess) {
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            // Chuyển đến màn hình tiếp theo tùy theo loại người dùng
-            // Mở giao diện trang chủ và truyền loại người dùng
-            frmTrangchu home = new frmTrangchu();
-            home.setVisible(true);
-             // Đóng form đăng nhập
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        try {
+            // TODO add your handling code here:
+            String taikhoan = txtTaikhoanDN.getText();
+            String matkhau = new String(txtMatkhauDN.getPassword());
+            String loainguoidung = cmbTypeUser.getSelectedItem().toString();
+            
+            // Gọi phương thức đăng nhập từ controller
+            NguoiDungController nguoiDungCtrl = new NguoiDungController();
+            
+            // Kiểm tra đăng nhập
+            boolean isSuccess = nguoiDungCtrl.kiemTraDangNhap(taikhoan, matkhau, loainguoidung);
+            
+            if (isSuccess) {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                // Chuyển đến màn hình tiếp theo tùy theo loại người dùng
+                // Mở giao diện trang chủ và truyền loại người dùng
+                frmTrangchu home = new frmTrangchu();
+                home.setVisible(true);
+                // Đóng form đăng nhập
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frmDangnhap.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnDangnhapActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmbTypeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTypeUserActionPerformed
         // TODO add your handling code here:
-        String loaiNguoiDung = jComboBox1.getSelectedItem().toString();
+        String loaiNguoiDung = cmbTypeUser.getSelectedItem().toString();
 
         // Kiểm tra loại người dùng và thực hiện các hành động tương ứng
         switch (loaiNguoiDung) {
@@ -217,7 +224,7 @@ public class frmDangnhap extends javax.swing.JFrame {
             case "User" -> System.out.println("Ban da chon doc gia");
             default -> System.out.println("Vui long chon loai nguoi dung hop le");
         }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmbTypeUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,7 +261,7 @@ public class frmDangnhap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangnhap;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbTypeUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -262,7 +269,7 @@ public class frmDangnhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_Dangnhap_logo;
-    private javax.swing.JPasswordField pwMatkhauDN;
+    private javax.swing.JPasswordField txtMatkhauDN;
     private javax.swing.JTextField txtTaikhoanDN;
     // End of variables declaration//GEN-END:variables
 }

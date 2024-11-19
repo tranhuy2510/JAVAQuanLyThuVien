@@ -28,32 +28,32 @@ public class frmDangKy extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton2 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        pnlSignIn = new javax.swing.JPanel();
+        lblHeader = new javax.swing.JLabel();
+        lblReview = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
+        lblDPassword = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        lblPhone = new javax.swing.JLabel();
+        lblUserIc = new javax.swing.JLabel();
+        lblPasswordIc = new javax.swing.JLabel();
+        lblEmailIc = new javax.swing.JLabel();
+        lblPhoneIc = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
+        txtDPassword = new javax.swing.JPasswordField();
+        btnDangki = new javax.swing.JButton();
+        lblResult = new javax.swing.JLabel();
+        lblThoat = new javax.swing.JLabel();
+        lblPwIc = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        btnDangNhap = new javax.swing.JButton();
+        pnlWelcome = new javax.swing.JPanel();
+        lblWel = new javax.swing.JLabel();
+        lblPic = new javax.swing.JLabel();
+        lblCome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -62,180 +62,192 @@ public class frmDangKy extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(137, 196, 244));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlSignIn.setBackground(new java.awt.Color(137, 196, 244));
+        pnlSignIn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlSignIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(40, 67, 135));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Đăng ký thành viên");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 72, -1, 48));
+        lblHeader.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        lblHeader.setForeground(new java.awt.Color(40, 67, 135));
+        lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHeader.setText("Đăng ký thành viên");
+        pnlSignIn.add(lblHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 72, -1, 48));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(75, 119, 190));
-        jLabel4.setText("Tham gia cộng đồng yêu sách của chúng tôi");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 126, -1, -1));
+        lblReview.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        lblReview.setForeground(new java.awt.Color(75, 119, 190));
+        lblReview.setText("Tham gia cộng đồng yêu sách của chúng tôi");
+        pnlSignIn.add(lblReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 126, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(40, 67, 135));
-        jLabel5.setText("Tên người dùng:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 182, 298, 32));
+        lblUsername.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(40, 67, 135));
+        lblUsername.setText("Tên người dùng:");
+        pnlSignIn.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 182, 298, 32));
 
-        jLabel6.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(40, 67, 135));
-        jLabel6.setText("Nhập lại mật khẩu:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 298, 32));
+        lblDPassword.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        lblDPassword.setForeground(new java.awt.Color(40, 67, 135));
+        lblDPassword.setText("Nhập lại mật khẩu:");
+        pnlSignIn.add(lblDPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 298, 32));
 
-        jLabel7.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(40, 67, 135));
-        jLabel7.setText("Email:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 428, 298, 32));
+        lblEmail.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(40, 67, 135));
+        lblEmail.setText("Email:");
+        pnlSignIn.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 428, 298, 32));
 
-        jLabel8.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(40, 67, 135));
-        jLabel8.setText("Số điện thoại:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 508, 298, 32));
+        lblPhone.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        lblPhone.setForeground(new java.awt.Color(40, 67, 135));
+        lblPhone.setText("Số điện thoại:");
+        pnlSignIn.add(lblPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 508, 298, 32));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Account.png"))); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        lblUserIc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Account.png"))); // NOI18N
+        pnlSignIn.add(lblUserIc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Baomat.png"))); // NOI18N
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+        lblPasswordIc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Baomat.png"))); // NOI18N
+        pnlSignIn.add(lblPasswordIc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Secured_Letter.png"))); // NOI18N
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, 42));
+        lblEmailIc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEmailIc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Secured_Letter.png"))); // NOI18N
+        pnlSignIn.add(lblEmailIc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, 42));
 
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_dienthoai.png"))); // NOI18N
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 50, 45));
+        lblPhoneIc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPhoneIc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_dienthoai.png"))); // NOI18N
+        pnlSignIn.add(lblPhoneIc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 50, 45));
 
-        jTextField1.setBackground(new java.awt.Color(137, 196, 244));
-        jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(40, 67, 135));
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtUserName.setBackground(new java.awt.Color(137, 196, 244));
+        txtUserName.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(40, 67, 135));
+        txtUserName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
+        txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                txtUserNameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                txtUserNameFocusLost(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 216, 298, 32));
+        pnlSignIn.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 216, 298, 32));
 
-        jTextField3.setBackground(new java.awt.Color(137, 196, 244));
-        jTextField3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(40, 67, 135));
-        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 298, 32));
+        txtEmail.setBackground(new java.awt.Color(137, 196, 244));
+        txtEmail.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(40, 67, 135));
+        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
+        pnlSignIn.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 298, 32));
 
-        jTextField4.setBackground(new java.awt.Color(137, 196, 244));
-        jTextField4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(40, 67, 135));
-        jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 298, 32));
+        txtPhone.setBackground(new java.awt.Color(137, 196, 244));
+        txtPhone.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtPhone.setForeground(new java.awt.Color(40, 67, 135));
+        txtPhone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
+        pnlSignIn.add(txtPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 540, 298, 32));
 
-        jPasswordField1.setBackground(new java.awt.Color(137, 196, 244));
-        jPasswordField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(40, 67, 135));
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 298, 32));
+        txtDPassword.setBackground(new java.awt.Color(137, 196, 244));
+        txtDPassword.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtDPassword.setForeground(new java.awt.Color(40, 67, 135));
+        txtDPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
+        pnlSignIn.add(txtDPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 298, 32));
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
-        jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Đăng ký");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, 193, 44));
+        btnDangki.setBackground(new java.awt.Color(255, 102, 102));
+        btnDangki.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnDangki.setForeground(new java.awt.Color(255, 255, 255));
+        btnDangki.setText("Đăng ký");
+        btnDangki.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlSignIn.add(btnDangki, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, 193, 44));
 
-        jLabel13.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(68, 108, 179));
-        jLabel13.setText("Bạn đã có tài khoản?");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, 140, 24));
+        lblResult.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        lblResult.setForeground(new java.awt.Color(68, 108, 179));
+        lblResult.setText("Bạn đã có tài khoản?");
+        pnlSignIn.add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, 140, 24));
 
-        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(68, 108, 179));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_exit_color.png"))); // NOI18N
-        jLabel15.setText("Thoát");
-        jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblThoat.setBackground(new java.awt.Color(255, 255, 255));
+        lblThoat.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblThoat.setForeground(new java.awt.Color(68, 108, 179));
+        lblThoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_exit_color.png"))); // NOI18N
+        lblThoat.setText("Thoát");
+        lblThoat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblThoat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
+                lblThoatMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 680, 98, 50));
+        pnlSignIn.add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 680, 98, 50));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Baomat.png"))); // NOI18N
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, -1));
+        lblPwIc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Baomat.png"))); // NOI18N
+        pnlSignIn.add(lblPwIc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, -1));
 
-        jLabel18.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(40, 67, 135));
-        jLabel18.setText("Mật khẩu:");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 268, 298, 30));
+        lblPassword.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(40, 67, 135));
+        lblPassword.setText("Mật khẩu:");
+        pnlSignIn.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 268, 298, 30));
 
-        jPasswordField2.setBackground(new java.awt.Color(137, 196, 244));
-        jPasswordField2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jPasswordField2.setForeground(new java.awt.Color(40, 67, 135));
-        jPasswordField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
-        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 298, 298, 32));
+        txtPassword.setBackground(new java.awt.Color(137, 196, 244));
+        txtPassword.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(40, 67, 135));
+        txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
+        pnlSignIn.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 298, 298, 32));
 
-        jButton1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(68, 108, 179));
-        jButton1.setText("Đăng nhập");
-        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 102, 102)));
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 670, -1, 24));
+        btnDangNhap.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnDangNhap.setForeground(new java.awt.Color(68, 108, 179));
+        btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 102, 102)));
+        btnDangNhap.setContentAreaFilled(false);
+        btnDangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDangNhapMouseClicked(evt);
+            }
+        });
+        pnlSignIn.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 670, -1, 24));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 484, 730));
+        getContentPane().add(pnlSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 484, 730));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlWelcome.setBackground(new java.awt.Color(255, 255, 255));
+        pnlWelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(40, 67, 135));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("CHÀO MỪNG BẠN");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, 52));
+        lblWel.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        lblWel.setForeground(new java.awt.Color(40, 67, 135));
+        lblWel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWel.setText("CHÀO MỪNG BẠN");
+        pnlWelcome.add(lblWel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, 52));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/signup-library.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 191, 510, 510));
+        lblPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/signup-library.png"))); // NOI18N
+        pnlWelcome.add(lblPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 191, 510, 510));
 
-        jLabel14.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(40, 67, 135));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText(" ĐẾN VỚI THẾ GIỚI SÁCH");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 295, 47));
+        lblCome.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        lblCome.setForeground(new java.awt.Color(40, 67, 135));
+        lblCome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCome.setText(" ĐẾN VỚI THẾ GIỚI SÁCH");
+        pnlWelcome.add(lblCome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 295, 47));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 730));
+        getContentPane().add(pnlWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+    private void txtUserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusGained
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("Nhập tên của bạn")) {
-            jTextField1.setText("");  // Xóa placeholder khi người dùng bắt đầu nhập
+        if (txtUserName.getText().equals("Nhập tên của bạn")) {
+            txtUserName.setText("");  // Xóa placeholder khi người dùng bắt đầu nhập
         }
-    }//GEN-LAST:event_jTextField1FocusGained
+    }//GEN-LAST:event_txtUserNameFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+    private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("")) {
-            jTextField1.setText("Nhập tên của bạn");  // Đặt lại placeholder nếu trường còn trống
+        if (txtUserName.getText().equals("")) {
+            txtUserName.setText("Nhập tên của bạn");  // Đặt lại placeholder nếu trường còn trống
         }
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_txtUserNameFocusLost
 
-    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+    private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
         // TODO add your handling code here:
         // Dong form 
+        System.exit(0);
+    }//GEN-LAST:event_lblThoatMouseClicked
+
+    private void btnDangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseClicked
+        // TODO add your handling code here:
+        frmDangnhap login = new frmDangnhap();
+        login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel15MouseClicked
+    }//GEN-LAST:event_btnDangNhapMouseClicked
 
     /**
      * @param args the command line arguments
@@ -269,31 +281,31 @@ public class frmDangKy extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton btnDangNhap;
+    private javax.swing.JButton btnDangki;
+    private javax.swing.JLabel lblCome;
+    private javax.swing.JLabel lblDPassword;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEmailIc;
+    private javax.swing.JLabel lblHeader;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPasswordIc;
+    private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblPhoneIc;
+    private javax.swing.JLabel lblPic;
+    private javax.swing.JLabel lblPwIc;
+    private javax.swing.JLabel lblResult;
+    private javax.swing.JLabel lblReview;
+    private javax.swing.JLabel lblThoat;
+    private javax.swing.JLabel lblUserIc;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblWel;
+    private javax.swing.JPanel pnlSignIn;
+    private javax.swing.JPanel pnlWelcome;
+    private javax.swing.JPasswordField txtDPassword;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }

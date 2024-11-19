@@ -3,10 +3,13 @@ package controllers;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
-import javax.swing.JOptionPane;
 import models.NguoiDungModel;
 
 public class NguoiDungController {
+    Connection conn;
+    public NguoiDungController() throws SQLException{
+        conn = new DBConnect().connectSQL();
+    }
 
     // Phương thức mã hóa mật khẩu với SHA-256
     public static String hashPassword(String password) {
@@ -24,50 +27,29 @@ public class NguoiDungController {
     }
 
     // Phương thức kiểm tra đăng nhập
-    public boolean kiemTraDangNhap(String taikhoan, String matkhau, String loaiNguoiDung) {
-        DBConnect dbConnect = new DBConnect();
-        Connection conn = null;
-        try {
-            // Kết nối với cơ sở dữ liệu
-            conn = dbConnect.connectSQL();
-            if (conn == null) {
-                return false; // Nếu không thể kết nối, trả về false
-            }
+    public boolean kiemTraDangNhap(String taikhoan, String matkhau, String loaiNguoiDung) throws SQLException {
+        // Mã hóa mật khẩu người dùng nhập vào
+        String matkhauHash = hashPassword(matkhau);
 
-            // Mã hóa mật khẩu người dùng nhập vào
-            String matkhauHash = hashPassword(matkhau);
+        // Câu lệnh SQL lấy dữ liệu người dùng theo tài khoản và loại người dùng
+        String sql = "SELECT * FROM tbl_NguoiDung WHERE username = ? AND loaiuser = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, taikhoan);
+            stmt.setString(2, loaiNguoiDung);
+            ResultSet rs = stmt.executeQuery();
 
-            // Câu lệnh SQL lấy dữ liệu người dùng theo tài khoản và loại người dùng
-            String sql = "SELECT * FROM tbl_NguoiDung WHERE username = ? AND loaiuser = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, taikhoan);
-                stmt.setString(2, loaiNguoiDung);
-                ResultSet rs = stmt.executeQuery();
-
-                // Kiểm tra nếu có dữ liệu người dùng
-                if (rs.next()) {
-                    String matkhauDB = rs.getString("matkhau"); // Lấy mật khẩu từ CSDL
-                    if (matkhauHash.equals(matkhauDB)) {
-                        return true; // Đăng nhập thành công
-                    }
+            // Kiểm tra nếu có dữ liệu người dùng
+            if (rs.next()) {
+                String matkhauDB = rs.getString("matkhau"); // Lấy mật khẩu từ CSDL
+                if (matkhauHash.equals(matkhauDB)) {
+                    return true; // Đăng nhập thành công
                 }
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối cơ sở dữ liệu: " + e.getMessage(), "Thông báo", JOptionPane.ERROR_MESSAGE);
-        }
-        return false; // Đăng nhập thất bại
+            return false; // Đăng nhập thất bại
     }
 
     // Phương thức đăng ký tài khoản mới
-    public boolean dangKyNguoiDung(String hoten, String taikhoan, String matkhau, String loaiuser) {
-        DBConnect dbConnect = new DBConnect();
-        Connection conn = null;
-        try {
-            // Kết nối với cơ sở dữ liệu
-            conn = dbConnect.connectSQL();
-            if (conn == null) {
-                return false; // Nếu không thể kết nối, trả về false
-            }
+    public boolean dangKyNguoiDung(String hoten, String taikhoan, String matkhau, String loaiuser) throws SQLException {
 
             // Mã hóa mật khẩu người dùng nhập vào
             String matkhauHash = hashPassword(matkhau);
@@ -86,22 +68,10 @@ public class NguoiDungController {
                     return true;  // Đăng ký thành công
                 }
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi kết nối cơ sở dữ liệu: " + e.getMessage(), "Thông báo", JOptionPane.ERROR_MESSAGE);
-        }
         return false;  // Đăng ký thất bại
     }
-    public static NguoiDungModel dangNhap(String taikhoan, String matkhau) {
+    public NguoiDungModel dangNhap(String taikhoan, String matkhau) throws SQLException {
         NguoiDungModel nguoiDung = null;
-        DBConnect dbConnect = new DBConnect();
-        Connection conn = null;
-        try {
-            // Kết nối với cơ sở dữ liệu
-            conn = dbConnect.connectSQL();
-            if (conn == null) {
-                return null; // Nếu không thể kết nối, trả về null
-            }
-
             // Mã hóa mật khẩu người dùng nhập vào
             String matkhauHash = hashPassword(matkhau);
 
@@ -120,8 +90,6 @@ public class NguoiDungController {
                     nguoiDung.setLoaiuser(rs.getString("LoaiNguoiDung"));
                 }
             }
-        } catch (SQLException e) {
-        }
         return nguoiDung;  // Nếu không tìm thấy người dùng, trả về null
     }
 //     // Phương thức kiểm tra
