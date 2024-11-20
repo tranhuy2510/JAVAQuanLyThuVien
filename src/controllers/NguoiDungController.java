@@ -47,59 +47,44 @@ public class NguoiDungController {
             }
             return false; // Đăng nhập thất bại
     }
-    /*
-    // Phương thức đăng ký tài khoản mới
-    public boolean dangKyNguoiDung(String hoten, String taikhoan, String matkhau, String loaiuser) throws SQLException {
+    
+    public boolean isValidAccount(String taikhoan) throws SQLException {
+        String sql = "SELECT * FROM tbl_NguoiDung WHERE taikhoan = ?";
 
-            // Mã hóa mật khẩu người dùng nhập vào
-            String matkhauHash = hashPassword(matkhau);
-
-            // Câu lệnh SQL chèn người dùng mới vào cơ sở dữ liệu
-            String sql = "INSERT INTO tbl_NguoiDung (hoten_user, username, matkhau, loaiuser) VALUES (?, ?, ?, ?)";
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, hoten);
-                stmt.setString(2, taikhoan);
-                stmt.setString(3, matkhauHash);  // Lưu mật khẩu đã mã hóa vào CSDL
-                stmt.setString(4, loaiuser);
-
-                // Thực thi câu lệnh SQL và kiểm tra kết quả
-                int result = stmt.executeUpdate();
-                if (result > 0) {
-                    return true;  // Đăng ký thành công
-                }
-            }
-        return false;  // Đăng ký thất bại
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setString(1, taikhoan);
+            ResultSet rs = pst.executeQuery();
+            return rs.next();  // If account exists, return true
+        }
     }
-    public NguoiDungModel dangNhap(String taikhoan, String matkhau) throws SQLException {
-        NguoiDungModel nguoiDung = null;
-            // Mã hóa mật khẩu người dùng nhập vào
-            String matkhauHash = hashPassword(matkhau);
 
-            // Câu lệnh SQL lấy dữ liệu người dùng theo tài khoản và mật khẩu
-            String sql = "SELECT * FROM NguoiDung WHERE TaiKhoan = ? AND MatKhau = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, taikhoan);
-                stmt.setString(2, matkhauHash);  // Lưu mật khẩu đã mã hóa vào CSDL
-                ResultSet rs = stmt.executeQuery();
+    // Check if password matches for a given account
+    public boolean isValidPassword(String matkhau, String taikhoan) throws SQLException {
+        String sql = "SELECT * FROM tbl_NguoiDung WHERE taikhoan = ? AND matkhau = ?";
 
-                // Kiểm tra nếu có dữ liệu người dùng
-                if (rs.next()) {
-                    nguoiDung = new NguoiDungModel();
-                    nguoiDung.setTaikhoan(rs.getString("TaiKhoan"));
-                    nguoiDung.setMatkhau(rs.getString("MatKhau"));
-                    nguoiDung.setLoaiuser(rs.getString("LoaiNguoiDung"));
-                }
-            }
-        return nguoiDung;  // Nếu không tìm thấy người dùng, trả về null
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setString(1, taikhoan);
+            pst.setString(2, matkhau);
+            ResultSet rs = pst.executeQuery();
+            return rs.next();  // If password matches, return true
+        }
     }
-*/
-//     // Phương thức kiểm tra
-//    public static void main(String[] args) {
-//        // Kiểm tra chức năng đăng nhập
-//        String plainPassword = "123";
-//        String hashedPassword = NguoiDungController.hashPassword(plainPassword);
-//        System.out.println("Mật khẩu mã hóa: " + hashedPassword);
-//    }
+
+    public boolean isValidUserType(String loainguoidung, String taikhoan) throws SQLException {
+        String sql = "SELECT 1 FROM tbl_NguoiDung WHERE taikhoan = ? AND loainguoidung = ?";  // Sử dụng SELECT 1 thay vì SELECT *
+
+        try (PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setString(1, taikhoan);
+            pst.setString(2, loainguoidung);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                return rs.next();  // Nếu tìm thấy kết quả, trả về true
+            }
+        }
+    }
+
+
+    
     // Thêm mới người dùng vào cơ sở dữ liệu
     public boolean InsertData(NguoiDungModel user) {
          String sql = "INSERT INTO tbl_NguoiDung (hoten, taikhoan, matkhau, loaiuser) VALUES (?, ?, ?, ?)";

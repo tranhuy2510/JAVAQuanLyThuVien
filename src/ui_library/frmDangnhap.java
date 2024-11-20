@@ -24,11 +24,25 @@ public class frmDangnhap extends javax.swing.JFrame {
      */
     public frmDangnhap() {
         initComponents();
-       // can giua form
-       this.setLocationRelativeTo(null);
-       
-       // Hien thi anh
-       displayImage();
+        // can giua form
+        this.setLocationRelativeTo(null);
+        
+        // Hiển thị hình ảnh logo
+        displayImage();
+        
+         // Cài đặt biểu tượng show/hide mật khẩu
+        lblShowMK.setVisible(true); // Hiển thị biểu tượng mở mắt ban đầu
+        lblHideMK.setVisible(false); // Ẩn biểu tượng đóng mắt ban đầu
+        // Đặt ký tự ẩn mật khẩu mặc định
+        txtMatkhau.setEchoChar('*');
+        
+        //set thong bao
+        lblWtkExist.setVisible(false);
+        lblWmkExist.setVisible(false);
+        lblWdtg.setVisible(false);
+        lblWtk.setVisible(false);
+        lblWmk.setVisible(false);
+        
     }
     
     // Tao ham hien thi hinh anh trong jlabel2
@@ -43,6 +57,8 @@ public class frmDangnhap extends javax.swing.JFrame {
             lbl_logo.setIcon(new ImageIcon(image));
         }
     }
+    
+
      
 
     /**
@@ -60,13 +76,19 @@ public class frmDangnhap extends javax.swing.JFrame {
         txtTaikhoanDN = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtMatkhauDN = new javax.swing.JPasswordField();
+        txtMatkhau = new javax.swing.JPasswordField();
         cmbTypeUser = new javax.swing.JComboBox<>();
         btnDangnhap = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnDangki = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        lblWdtg = new javax.swing.JLabel();
+        lblShowMK = new javax.swing.JLabel();
+        lblHideMK = new javax.swing.JLabel();
+        lblWtkExist = new javax.swing.JLabel();
+        lblWmkExist = new javax.swing.JLabel();
+        lblWtk = new javax.swing.JLabel();
+        lblWmk = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         lblClose = new javax.swing.JLabel();
@@ -79,31 +101,45 @@ public class frmDangnhap extends javax.swing.JFrame {
 
         lbl_logo.setBackground(new java.awt.Color(255, 255, 255));
         lbl_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_logo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 3, new java.awt.Color(255, 153, 0)));
         lbl_logo.setName(""); // NOI18N
         getContentPane().add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 480, 190));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(255, 153, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tài Khoản:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 33, 103, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 103, 30));
 
-        txtTaikhoanDN.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        jPanel1.add(txtTaikhoanDN, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 66, 396, -1));
+        txtTaikhoanDN.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtTaikhoanDN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTaikhoanDNKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtTaikhoanDN, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 40, 320, 30));
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Mật khẩu:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 109, 99, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 99, 30));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        jLabel4.setText("Kiểu người dùng:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 180, 123, 30));
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel4.setText("Bạn là ai ?");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 123, 30));
 
-        txtMatkhauDN.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        jPanel1.add(txtMatkhauDN, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 144, 396, -1));
+        txtMatkhau.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtMatkhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMatkhauKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 120, 320, 30));
 
-        cmbTypeUser.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        cmbTypeUser.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         cmbTypeUser.setForeground(new java.awt.Color(51, 51, 255));
         cmbTypeUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
         cmbTypeUser.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), null));
@@ -113,55 +149,94 @@ public class frmDangnhap extends javax.swing.JFrame {
                 cmbTypeUserActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbTypeUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 216, 396, -1));
+        jPanel1.add(cmbTypeUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 200, 320, 30));
 
-        btnDangnhap.setBackground(new java.awt.Color(255, 153, 0));
-        btnDangnhap.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnDangnhap.setBackground(new java.awt.Color(255, 102, 102));
+        btnDangnhap.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         btnDangnhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangnhap.setText("Đăng nhập");
-        btnDangnhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 153)));
         btnDangnhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangnhapActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDangnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 273, 274, 32));
+        jPanel1.add(btnDangnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 150, 40));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-key.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 109, 30, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 30, 30));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-BlackUser.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 33, 30, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 30, 30));
 
-        btnDangki.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        btnDangki.setForeground(new java.awt.Color(255, 153, 0));
-        btnDangki.setText("Đăng kí");
+        btnDangki.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
+        btnDangki.setForeground(new java.awt.Color(255, 102, 102));
+        btnDangki.setText("Bạn chưa có tài khoản ? Đăng kí");
         btnDangki.setContentAreaFilled(false);
         btnDangki.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDangki.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDangki.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangkiActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDangki, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 317, 101, 32));
+        jPanel1.add(btnDangki, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 280, 30));
 
-        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel6.setText("Kiểu người dùng:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 323, 123, -1));
+        lblWdtg.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblWdtg.setForeground(new java.awt.Color(255, 51, 51));
+        lblWdtg.setText("* Hãy chọn đúng đối tượng");
+        jPanel1.add(lblWdtg, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 280, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 480, 380));
+        lblShowMK.setBackground(new java.awt.Color(255, 102, 102));
+        lblShowMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeopen.png"))); // NOI18N
+        lblShowMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblShowMKMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblShowMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 32, 30));
+
+        lblHideMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeclose.png"))); // NOI18N
+        lblHideMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHideMKMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblHideMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 32, 30));
+
+        lblWtkExist.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblWtkExist.setForeground(new java.awt.Color(255, 51, 51));
+        lblWtkExist.setText("* Tài khoản không tồn tại");
+        jPanel1.add(lblWtkExist, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 280, -1));
+
+        lblWmkExist.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblWmkExist.setForeground(new java.awt.Color(255, 51, 51));
+        lblWmkExist.setText("* Mật khẩu không khớp");
+        jPanel1.add(lblWmkExist, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 280, -1));
+
+        lblWtk.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblWtk.setForeground(new java.awt.Color(255, 51, 51));
+        lblWtk.setText("* Tài khoản không được để trống");
+        jPanel1.add(lblWtk, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 280, -1));
+
+        lblWmk.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblWmk.setForeground(new java.awt.Color(255, 51, 51));
+        lblWmk.setText("* Mật khẩu không được để trống");
+        jPanel1.add(lblWmk, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 280, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 480, 375));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 0, 3, new java.awt.Color(255, 153, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 153, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Đăng nhập");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 210, 60));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 210, 60));
 
         lblClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close.png"))); // NOI18N
@@ -174,6 +249,11 @@ public class frmDangnhap extends javax.swing.JFrame {
 
         lblMinFrm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMinFrm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_zoom24.png"))); // NOI18N
+        lblMinFrm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinFrmMouseClicked(evt);
+            }
+        });
         jPanel2.add(lblMinFrm, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 20, 20));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 60));
@@ -195,15 +275,55 @@ public class frmDangnhap extends javax.swing.JFrame {
 
     private void btnDangkiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangkiActionPerformed
         // TODO add your handling code here:
+        frmDangKy register = new frmDangKy();
+        register.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDangkiActionPerformed
 
+    // Phương thức kiểm tra tên tài khoản hợp lệ 
+    private boolean isValidUsername(String username) { 
+        // Quy tắc: ít nhất 3 ký tự, không quá 15 ký tự, không khoảng trắng, chỉ chứa chữ cái và số 
+        return username.matches("^[a-zA-Z0-9]{3,15}$"); 
+    } 
+    // Phương thức kiểm tra mật khẩu hợp lệ 
+    private boolean isValidPassword(String password) {
+        // Quy tắc: ít nhất 8 ký tự, chứa ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt 
+        return password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*]).{8,}$"); 
+    }
+    
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
         try {
             // Lấy dữ liệu từ giao diện
             String taikhoan = txtTaikhoanDN.getText().trim();
-            String matkhau = new String(txtMatkhauDN.getPassword()).trim();
+            String matkhau = new String(txtMatkhau.getPassword()).trim();
             String loainguoidung = cmbTypeUser.getSelectedItem().toString();
 
+            // Kiểm tra nếu tài khoản chưa được nhập 
+            if (taikhoan.isEmpty()) { 
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên tài khoản!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                lblWtk.setVisible(true);
+                return;
+            }
+            // Kiểm tra điều kiện tên tài khoản 
+            if (!isValidUsername(taikhoan)) { 
+                JOptionPane.showMessageDialog(this, "Tên tài khoản không hợp lệ! Vui lòng sử dụng từ 3 đến 15 ký tự, không có khoảng trắng và chỉ chứa chữ cái và số.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return; 
+            } 
+            // Kiểm tra nếu mật khẩu chưa được nhập 
+            if (matkhau.isEmpty()) { 
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu!", "Thông báo", JOptionPane.WARNING_MESSAGE); 
+                lblWmk.setVisible(true);
+                return; 
+            }
+            /*
+            // Kiểm tra điều kiện mật khẩu 
+            if (!isValidPassword(matkhau)) { 
+                JOptionPane.showMessageDialog(this, "Mật khẩu không hợp lệ! Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return; 
+            }
+                */
+
+            
             // Gọi phương thức đăng nhập từ controller
             NguoiDungController nguoiDungCtrl = new NguoiDungController();
 
@@ -221,6 +341,18 @@ public class frmDangnhap extends javax.swing.JFrame {
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                /*
+                // Hiển thị thông báo cho từng trường hợp cụ thể
+                if (!nguoiDungCtrl.isValidAccount(taikhoan)) {
+                    lblWtkExist.setVisible(true);  // Tài khoản không tồn tại
+                }
+                if (!nguoiDungCtrl.isValidPassword(matkhau, taikhoan)) {
+                    lblWmkExist.setVisible(true);  // Mật khẩu không khớp
+                }
+                if (!nguoiDungCtrl.isValidUserType(loainguoidung, taikhoan)) {
+                    lblWdtg.setVisible(true);  // Loại người dùng không khớp
+                }
+                */
             }
         } catch (SQLException ex) {
             Logger.getLogger(frmDangnhap.class.getName()).log(Level.SEVERE, null, ex);
@@ -230,8 +362,52 @@ public class frmDangnhap extends javax.swing.JFrame {
 
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
         // TODO add your handling code here:
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_lblCloseMouseClicked
+
+    private void lblMinFrmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinFrmMouseClicked
+        // TODO add your handling code here:
+        // Thu nhỏ form lại
+        this.setState(javax.swing.JFrame.ICONIFIED);
+    }//GEN-LAST:event_lblMinFrmMouseClicked
+
+    private void lblShowMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowMKMouseClicked
+        // TODO add your handling code here:
+        txtMatkhau.setEchoChar((char) 0); // Hiển thị mật khẩu
+        lblShowMK.setVisible(false); // Ẩn biểu tượng mở mắt
+        lblHideMK.setVisible(true); // Hiển thị biểu tượng đóng mắt
+    }//GEN-LAST:event_lblShowMKMouseClicked
+
+    private void lblHideMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHideMKMouseClicked
+        // TODO add your handling code here:
+        // Ẩn mật khẩu (trở về dạng ***)
+        txtMatkhau.setEchoChar('*'); // Ẩn mật khẩu (dạng ***)
+        lblShowMK.setVisible(true); // Hiển thị biểu tượng mở mắt
+        lblHideMK.setVisible(false); // Ẩn biểu tượng đóng mắt
+        
+    }//GEN-LAST:event_lblHideMKMouseClicked
+
+    private void txtTaikhoanDNKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaikhoanDNKeyReleased
+        // TODO add your handling code here:
+        String taikhoan = txtTaikhoanDN.getText().trim();
+        // Nếu tài khoản không rỗng, ẩn lblWtk
+        if (!taikhoan.isEmpty()) {
+            lblWtk.setVisible(false);  // Ẩn lblWtk nếu tài khoản đã được nhập
+        } else {
+            lblWtk.setVisible(true);   // Hiển thị lblWtk nếu tài khoản vẫn rỗng
+        }
+    }//GEN-LAST:event_txtTaikhoanDNKeyReleased
+
+    private void txtMatkhauKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatkhauKeyReleased
+        // TODO add your handling code here:
+        String matkhau = new String(txtMatkhau.getPassword()).trim();
+        // Nếu tài khoản không rỗng, ẩn lblWtk
+        if (!matkhau.isEmpty()) {
+            lblWmk.setVisible(false);  // Ẩn lblWtk nếu tài khoản đã được nhập
+        } else {
+            lblWmk.setVisible(true);   // Hiển thị lblWtk nếu tài khoản vẫn rỗng
+        }
+    }//GEN-LAST:event_txtMatkhauKeyReleased
 
     /**
      * @param args the command line arguments
@@ -245,20 +421,16 @@ public class frmDangnhap extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmDangnhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmDangnhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmDangnhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(frmDangnhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -276,14 +448,20 @@ public class frmDangnhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel lblHideMK;
     private javax.swing.JLabel lblMinFrm;
+    private javax.swing.JLabel lblShowMK;
+    private javax.swing.JLabel lblWdtg;
+    private javax.swing.JLabel lblWmk;
+    private javax.swing.JLabel lblWmkExist;
+    private javax.swing.JLabel lblWtk;
+    private javax.swing.JLabel lblWtkExist;
     private javax.swing.JLabel lbl_logo;
-    private javax.swing.JPasswordField txtMatkhauDN;
+    private javax.swing.JPasswordField txtMatkhau;
     private javax.swing.JTextField txtTaikhoanDN;
     // End of variables declaration//GEN-END:variables
 }

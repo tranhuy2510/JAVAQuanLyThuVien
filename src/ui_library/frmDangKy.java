@@ -259,7 +259,7 @@ public class frmDangKy extends javax.swing.JFrame {
             return;
         }
 
-        if (fullname.length() > 100 || taikhoan.length() > 120 || matkhau.length() > 64) {
+        if (fullname.length() <3  || taikhoan.length() < 3 || matkhau.length() < 8) {
             JOptionPane.showMessageDialog(null, "Thông tin vượt quá độ dài cho phép!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             return;
         }
