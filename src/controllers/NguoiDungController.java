@@ -48,6 +48,22 @@ public class NguoiDungController {
             return false; // Đăng nhập thất bại
     }
     
+     // Thêm mới người dùng vào cơ sở dữ liệu
+    public boolean InsertData(NguoiDungModel user) {
+         String sql = "INSERT INTO tbl_NguoiDung (hoten, taikhoan, matkhau, loaiuser) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user.getHoten());
+            pstmt.setString(2, user.getTaikhoan());
+            pstmt.setString(3, hashPassword(user.getMatkhau())); // Mã hóa mật khẩu trước khi lưu
+            pstmt.setString(4, user.getLoaiuser());
+
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+    
     public boolean isValidAccount(String taikhoan) throws SQLException {
         String sql = "SELECT * FROM tbl_NguoiDung WHERE taikhoan = ?";
 
@@ -85,21 +101,7 @@ public class NguoiDungController {
 
 
     
-    // Thêm mới người dùng vào cơ sở dữ liệu
-    public boolean InsertData(NguoiDungModel user) {
-         String sql = "INSERT INTO tbl_NguoiDung (hoten, taikhoan, matkhau, loaiuser) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, user.getHoten());
-            pstmt.setString(2, user.getTaikhoan());
-            pstmt.setString(3, hashPassword(user.getMatkhau())); // Mã hóa mật khẩu trước khi lưu
-            pstmt.setString(4, user.getLoaiuser());
-
-            int rowsAffected = pstmt.executeUpdate();
-            return rowsAffected > 0;
-        } catch (SQLException e) {
-            return false;
-        }
-    }
+   
     
     
 }
