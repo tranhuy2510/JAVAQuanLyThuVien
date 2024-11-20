@@ -7,6 +7,7 @@ package ui_library;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -540,10 +541,14 @@ public class frmTrangchu extends javax.swing.JFrame {
 
     private void lblDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseClicked
         // TODO add your handling code here:
-        frmDangnhap login = new frmDangnhap();
-        login.setVisible(true);
-        // Dong form 
-        this.dispose();
+        int confirmed = JOptionPane.showConfirmDialog(null, "Bạn có muốn rời khỏi hệ thống?", "Xác Nhận Đăng Xuất", JOptionPane.YES_NO_OPTION); 
+        if (confirmed == JOptionPane.YES_OPTION) { 
+        // Quay về màn hình đăng nhập // Đóng màn hình chính }
+            frmDangnhap login = new frmDangnhap();
+            login.setVisible(true);
+            // Dong form 
+            this.dispose();
+        }
     }//GEN-LAST:event_lblDangXuatMouseClicked
 
     private void btnQLTheLoaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLTheLoaiMouseClicked
@@ -590,13 +595,8 @@ public class frmTrangchu extends javax.swing.JFrame {
 
     private void btnQLSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLSachMouseClicked
         // TODO add your handling code here:
-        frmQLSach book = null;
-        try {
-            book = new frmQLSach();
-        } catch (SQLException ex) {
-            Logger.getLogger(frmTrangchu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        book.setVisible(true);
+        //frmQLSach book = new frmQLSach();
+        //book.setVisible(true);
     }//GEN-LAST:event_btnQLSachMouseClicked
 
     private void btnDSMuonTra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSMuonTra1MouseClicked

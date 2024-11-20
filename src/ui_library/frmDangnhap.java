@@ -5,6 +5,7 @@
 package ui_library;
 import controllers.NguoiDungController;
 import java.awt.Image;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,9 +23,7 @@ public class frmDangnhap extends javax.swing.JFrame {
      * Creates new form frmDangnhap
      */
     public frmDangnhap() {
-        
         initComponents();
-        
        // can giua form
        this.setLocationRelativeTo(null);
        
@@ -34,12 +33,15 @@ public class frmDangnhap extends javax.swing.JFrame {
     
     // Tao ham hien thi hinh anh trong jlabel2
     public final void displayImage() {
-        // lay anh
-        ImageIcon imgIco = new ImageIcon(getClass().getResource("/image/library-2.png"));
-        // lam anh vua voi jlabel
-        Image image = imgIco.getImage().getScaledInstance(lbl_Dangnhap_logo.getWidth(),lbl_Dangnhap_logo.getHeight(), Image.SCALE_SMOOTH);
-        // dat hinh anh vao jlabel
-        lbl_Dangnhap_logo.setIcon(new ImageIcon(image));
+        // Lấy ảnh từ thư mục image
+        URL imgUrl = getClass().getResource("/image/library-2.png");
+        if (imgUrl != null) {
+            ImageIcon imgIco = new ImageIcon(imgUrl);
+            // Thay đổi kích thước ảnh cho phù hợp với JLabel
+            Image image = imgIco.getImage().getScaledInstance(lbl_logo.getWidth(), lbl_logo.getHeight(), Image.SCALE_SMOOTH);
+            // Đặt ảnh vào JLabel
+            lbl_logo.setIcon(new ImageIcon(image));
+        }
     }
      
 
@@ -52,7 +54,7 @@ public class frmDangnhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_Dangnhap_logo = new javax.swing.JLabel();
+        lbl_logo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtTaikhoanDN = new javax.swing.JTextField();
@@ -63,29 +65,45 @@ public class frmDangnhap extends javax.swing.JFrame {
         btnDangnhap = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btnDangki = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        lblClose = new javax.swing.JLabel();
+        lblMinFrm = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_Dangnhap_logo.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_Dangnhap_logo.setName(""); // NOI18N
+        lbl_logo.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_logo.setName(""); // NOI18N
+        getContentPane().add(lbl_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 480, 190));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jLabel1.setText("Tài Khoản:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 33, 103, 30));
 
-        txtTaikhoanDN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTaikhoanDN.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jPanel1.add(txtTaikhoanDN, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 66, 396, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jLabel3.setText("Mật khẩu:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 109, 99, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jLabel4.setText("Kiểu người dùng:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 180, 123, 30));
 
-        txtMatkhauDN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMatkhauDN.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jPanel1.add(txtMatkhauDN, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 144, 396, -1));
 
-        cmbTypeUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbTypeUser.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         cmbTypeUser.setForeground(new java.awt.Color(51, 51, 255));
         cmbTypeUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
         cmbTypeUser.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), null));
@@ -95,9 +113,10 @@ public class frmDangnhap extends javax.swing.JFrame {
                 cmbTypeUserActionPerformed(evt);
             }
         });
+        jPanel1.add(cmbTypeUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 216, 396, -1));
 
         btnDangnhap.setBackground(new java.awt.Color(255, 153, 0));
-        btnDangnhap.setFont(new java.awt.Font("Segoe UI Variable", 0, 14)); // NOI18N
+        btnDangnhap.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         btnDangnhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangnhap.setText("Đăng nhập");
         btnDangnhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 153)));
@@ -107,114 +126,60 @@ public class frmDangnhap extends javax.swing.JFrame {
                 btnDangnhapActionPerformed(evt);
             }
         });
+        jPanel1.add(btnDangnhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 273, 274, 32));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-key.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 109, 30, 30));
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-BlackUser.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 33, 30, 30));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbTypeUser, 0, 396, Short.MAX_VALUE)
-                    .addComponent(txtTaikhoanDN, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtMatkhauDN, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(btnDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTaikhoanDN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatkhauDN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbTypeUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        btnDangki.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnDangki.setForeground(new java.awt.Color(255, 153, 0));
+        btnDangki.setText("Đăng kí");
+        btnDangki.setContentAreaFilled(false);
+        btnDangki.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDangki.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangkiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDangki, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 317, 101, 32));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_Dangnhap_logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(10, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_Dangnhap_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel6.setText("Kiểu người dùng:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 323, 123, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 480, 380));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 153, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Đăng nhập");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 210, 60));
+
+        lblClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close.png"))); // NOI18N
+        lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCloseMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lblClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 20, 20));
+
+        lblMinFrm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMinFrm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_zoom24.png"))); // NOI18N
+        jPanel2.add(lblMinFrm, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 20, 20));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
-        try {
-        // Lấy dữ liệu từ giao diện
-        String taikhoan = txtTaikhoanDN.getText().trim();
-        String matkhau = new String(txtMatkhauDN.getPassword()).trim();
-        String loainguoidung = cmbTypeUser.getSelectedItem().toString();
-
-        // Gọi phương thức đăng nhập từ controller
-        NguoiDungController nguoiDungCtrl = new NguoiDungController();
-
-        // Kiểm tra đăng nhập
-        boolean isSuccess = nguoiDungCtrl.kiemTraDangNhap(taikhoan, matkhau, loainguoidung);
-
-        if (isSuccess) {
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            
-            // Chuyển đến màn hình chính
-            frmTrangchu home = new frmTrangchu();
-            home.setVisible(true);
-            
-            // Đóng form đăng nhập
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-        }
-        } catch (SQLException ex) {
-            Logger.getLogger(frmDangnhap.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Lỗi hệ thống! Vui lòng thử lại sau.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnDangnhapActionPerformed
 
     private void cmbTypeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTypeUserActionPerformed
         // TODO add your handling code here:
@@ -228,6 +193,46 @@ public class frmDangnhap extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbTypeUserActionPerformed
 
+    private void btnDangkiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangkiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDangkiActionPerformed
+
+    private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
+        try {
+            // Lấy dữ liệu từ giao diện
+            String taikhoan = txtTaikhoanDN.getText().trim();
+            String matkhau = new String(txtMatkhauDN.getPassword()).trim();
+            String loainguoidung = cmbTypeUser.getSelectedItem().toString();
+
+            // Gọi phương thức đăng nhập từ controller
+            NguoiDungController nguoiDungCtrl = new NguoiDungController();
+
+            // Kiểm tra đăng nhập
+            boolean isSuccess = nguoiDungCtrl.kiemTraDangNhap(taikhoan, matkhau, loainguoidung);
+
+            if (isSuccess) {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+                // Chuyển đến màn hình chính
+                frmTrangchu home = new frmTrangchu();
+                home.setVisible(true);
+
+                // Đóng form đăng nhập
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frmDangnhap.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Lỗi hệ thống! Vui lòng thử lại sau.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDangnhapActionPerformed
+
+    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_lblCloseMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -240,7 +245,8 @@ public class frmDangnhap extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
@@ -262,6 +268,7 @@ public class frmDangnhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDangki;
     private javax.swing.JButton btnDangnhap;
     private javax.swing.JComboBox<String> cmbTypeUser;
     private javax.swing.JLabel jLabel1;
@@ -269,8 +276,13 @@ public class frmDangnhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lbl_Dangnhap_logo;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel lblMinFrm;
+    private javax.swing.JLabel lbl_logo;
     private javax.swing.JPasswordField txtMatkhauDN;
     private javax.swing.JTextField txtTaikhoanDN;
     // End of variables declaration//GEN-END:variables
