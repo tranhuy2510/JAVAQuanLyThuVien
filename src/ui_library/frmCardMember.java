@@ -33,15 +33,14 @@ public class frmCardMember extends javax.swing.JFrame {
         pnlHeader = new javax.swing.JPanel();
         lblSystemIC = new javax.swing.JLabel();
         lblTieude = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         lblSystemIC1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        pnlRiview = new javax.swing.JPanel();
+        lblAnh = new javax.swing.JLabel();
+        lblMadg = new javax.swing.JLabel();
+        lblTendg = new javax.swing.JLabel();
+        lblSdt = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        lblGioiTinh = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -66,7 +65,6 @@ public class frmCardMember extends javax.swing.JFrame {
         lblTieude.setText("Vắn tắt độc giả");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 170, 57));
-        pnlHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 20, -1));
 
         lblSystemIC1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSystemIC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia64.png"))); // NOI18N
@@ -74,45 +72,45 @@ public class frmCardMember extends javax.swing.JFrame {
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, -1));
 
-        jPanel1.setBackground(new java.awt.Color(247, 239, 232));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(211, 84, 0)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlRiview.setBackground(new java.awt.Color(247, 239, 232));
+        pnlRiview.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(211, 84, 0)));
+        pnlRiview.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(211, 84, 0)));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 140, 180));
+        lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAnh.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(211, 84, 0)));
+        pnlRiview.add(lblAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 140, 180));
 
-        jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(211, 84, 0));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel10.setText("Mã độc giả:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 200, 25));
+        lblMadg.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblMadg.setForeground(new java.awt.Color(211, 84, 0));
+        lblMadg.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblMadg.setText("Mã độc giả:");
+        pnlRiview.add(lblMadg, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 200, 25));
 
-        jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(211, 84, 0));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel11.setText("Tên độc giả:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 200, 25));
+        lblTendg.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblTendg.setForeground(new java.awt.Color(211, 84, 0));
+        lblTendg.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTendg.setText("Tên độc giả:");
+        pnlRiview.add(lblTendg, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 200, 25));
 
-        jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(211, 84, 0));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText("Số điện thoại:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 200, 25));
+        lblSdt.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblSdt.setForeground(new java.awt.Color(211, 84, 0));
+        lblSdt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblSdt.setText("Số điện thoại:");
+        pnlRiview.add(lblSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 200, 25));
 
-        jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(211, 84, 0));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel13.setText("Email:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 200, 25));
+        lblEmail.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(211, 84, 0));
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEmail.setText("Email:");
+        pnlRiview.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 200, 25));
 
-        jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(211, 84, 0));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("Giới tính:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 200, 25));
+        lblGioiTinh.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblGioiTinh.setForeground(new java.awt.Color(211, 84, 0));
+        lblGioiTinh.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblGioiTinh.setText("Giới tính:");
+        pnlRiview.add(lblGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 200, 25));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 310));
+        getContentPane().add(pnlRiview, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -159,17 +157,16 @@ public class frmCardMember extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblAnh;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblGioiTinh;
+    private javax.swing.JLabel lblMadg;
+    private javax.swing.JLabel lblSdt;
     private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblSystemIC1;
+    private javax.swing.JLabel lblTendg;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel pnlRiview;
     // End of variables declaration//GEN-END:variables
 }

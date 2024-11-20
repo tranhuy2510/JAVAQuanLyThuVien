@@ -22,10 +22,10 @@ public class frmQLTacGia extends javax.swing.JFrame {
       
         
         //set UI
-        jTable1.getTableHeader().setBackground(new java.awt.Color(213, 184, 255));
-        jTable1.getTableHeader().setForeground(new java.awt.Color(90, 34, 139));
-        jTable1.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 16));
-        jTable1.getTableHeader().setOpaque(false);
+        tbl_Ttin.getTableHeader().setBackground(new java.awt.Color(213, 184, 255));
+        tbl_Ttin.getTableHeader().setForeground(new java.awt.Color(90, 34, 139));
+        tbl_Ttin.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 16));
+        tbl_Ttin.getTableHeader().setOpaque(false);
    
 
     }
@@ -42,26 +42,25 @@ public class frmQLTacGia extends javax.swing.JFrame {
         pnlHeader = new javax.swing.JPanel();
         lblSystemIC = new javax.swing.JLabel();
         lblTieude = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         lblSystemIC1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        pnlNoidung = new javax.swing.JPanel();
+        lblTentg = new javax.swing.JLabel();
+        lblMatg = new javax.swing.JLabel();
+        scrollInfomation = new javax.swing.JScrollPane();
+        tbl_Ttin = new javax.swing.JTable();
+        txtTentg = new javax.swing.JTextField();
+        txtMatg = new javax.swing.JTextField();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnHuy = new javax.swing.JButton();
+        lblThongbao = new javax.swing.JLabel();
+        txtChuyenmon = new javax.swing.JTextField();
+        lblChuyenmon = new javax.swing.JLabel();
+        lblGioithieu = new javax.swing.JLabel();
+        scrollGioithieu = new javax.swing.JScrollPane();
+        txtAreaGioithieu = new javax.swing.JTextArea();
+        btnLuu = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -87,7 +86,6 @@ public class frmQLTacGia extends javax.swing.JFrame {
         lblTieude.setText("   Quản lý tác giả");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 390, 57));
-        pnlHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 20, -1));
 
         lblSystemIC1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSystemIC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia64.png"))); // NOI18N
@@ -95,26 +93,26 @@ public class frmQLTacGia extends javax.swing.JFrame {
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(241, 231, 254));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 34, 139), 3));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlNoidung.setBackground(new java.awt.Color(241, 231, 254));
+        pnlNoidung.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 34, 139), 3));
+        pnlNoidung.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(90, 34, 139));
-        jLabel2.setText("Tên tác giả:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 150, 30));
+        lblTentg.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblTentg.setForeground(new java.awt.Color(90, 34, 139));
+        lblTentg.setText("Tên tác giả:");
+        pnlNoidung.add(lblTentg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 150, 30));
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(90, 34, 139));
-        jLabel3.setText("Mã tác giả:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 150, 30));
+        lblMatg.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblMatg.setForeground(new java.awt.Color(90, 34, 139));
+        lblMatg.setText("Mã tác giả:");
+        pnlNoidung.add(lblMatg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 150, 30));
 
-        jScrollPane1.setBackground(new java.awt.Color(213, 184, 255));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        scrollInfomation.setBackground(new java.awt.Color(213, 184, 255));
+        scrollInfomation.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(90, 34, 139));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Ttin.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tbl_Ttin.setForeground(new java.awt.Color(90, 34, 139));
+        tbl_Ttin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -133,79 +131,79 @@ public class frmQLTacGia extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(102, 102, 102));
-        jTable1.setRowHeight(25);
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
+        tbl_Ttin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_Ttin.setGridColor(new java.awt.Color(102, 102, 102));
+        tbl_Ttin.setRowHeight(25);
+        tbl_Ttin.setShowGrid(true);
+        scrollInfomation.setViewportView(tbl_Ttin);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 490, 400));
+        pnlNoidung.add(scrollInfomation, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 490, 400));
 
-        jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(90, 34, 139));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 290, 30));
+        txtTentg.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtTentg.setForeground(new java.awt.Color(90, 34, 139));
+        pnlNoidung.add(txtTentg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 290, 30));
 
-        jTextField2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(90, 34, 139));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 150, 30));
+        txtMatg.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtMatg.setForeground(new java.awt.Color(90, 34, 139));
+        pnlNoidung.add(txtMatg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 150, 30));
 
-        jButton1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(90, 34, 139));
-        jButton1.setText("Thêm");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 90, 30));
+        btnThem.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnThem.setForeground(new java.awt.Color(90, 34, 139));
+        btnThem.setText("Thêm");
+        btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlNoidung.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 90, 30));
 
-        jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(90, 34, 139));
-        jButton2.setText("Sửa");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, 90, -1));
+        btnSua.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnSua.setForeground(new java.awt.Color(90, 34, 139));
+        btnSua.setText("Sửa");
+        btnSua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlNoidung.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, 90, -1));
 
-        jButton3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(90, 34, 139));
-        jButton3.setText("Hủy bỏ");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 100, -1));
+        btnHuy.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnHuy.setForeground(new java.awt.Color(90, 34, 139));
+        btnHuy.setText("Hủy bỏ");
+        btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlNoidung.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 100, -1));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel4.setText("* Nhập tên tác giả");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 240, 20));
+        lblThongbao.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        lblThongbao.setForeground(new java.awt.Color(255, 102, 102));
+        lblThongbao.setText("* Nhập tên tác giả");
+        pnlNoidung.add(lblThongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 240, 20));
 
-        jTextField3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(90, 34, 139));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 290, 30));
+        txtChuyenmon.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtChuyenmon.setForeground(new java.awt.Color(90, 34, 139));
+        pnlNoidung.add(txtChuyenmon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 290, 30));
 
-        jLabel6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(90, 34, 139));
-        jLabel6.setText("Chuyên môn:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 150, 30));
+        lblChuyenmon.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblChuyenmon.setForeground(new java.awt.Color(90, 34, 139));
+        lblChuyenmon.setText("Chuyên môn:");
+        pnlNoidung.add(lblChuyenmon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 150, 30));
 
-        jLabel7.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(90, 34, 139));
-        jLabel7.setText("Giới thiệu:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 140, 30));
+        lblGioithieu.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblGioithieu.setForeground(new java.awt.Color(90, 34, 139));
+        lblGioithieu.setText("Giới thiệu:");
+        pnlNoidung.add(lblGioithieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 140, 30));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtAreaGioithieu.setColumns(20);
+        txtAreaGioithieu.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtAreaGioithieu.setRows(5);
+        scrollGioithieu.setViewportView(txtAreaGioithieu);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 290, 100));
+        pnlNoidung.add(scrollGioithieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 290, 100));
 
-        jButton4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(90, 34, 139));
-        jButton4.setText("Lưu");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 90, -1));
+        btnLuu.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnLuu.setForeground(new java.awt.Color(90, 34, 139));
+        btnLuu.setText("Lưu");
+        btnLuu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlNoidung.add(btnLuu, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 90, -1));
 
-        jButton5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(90, 34, 139));
-        jButton5.setText("Xóa");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 90, -1));
+        btnXoa.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnXoa.setForeground(new java.awt.Color(90, 34, 139));
+        btnXoa.setText("Xóa");
+        btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlNoidung.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 90, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 890, 524));
+        getContentPane().add(pnlNoidung, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 890, 524));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -253,28 +251,27 @@ public class frmQLTacGia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton btnHuy;
+    private javax.swing.JButton btnLuu;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
+    private javax.swing.JLabel lblChuyenmon;
+    private javax.swing.JLabel lblGioithieu;
+    private javax.swing.JLabel lblMatg;
     private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblSystemIC1;
+    private javax.swing.JLabel lblTentg;
+    private javax.swing.JLabel lblThongbao;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel pnlNoidung;
+    private javax.swing.JScrollPane scrollGioithieu;
+    private javax.swing.JScrollPane scrollInfomation;
+    private javax.swing.JTable tbl_Ttin;
+    private javax.swing.JTextArea txtAreaGioithieu;
+    private javax.swing.JTextField txtChuyenmon;
+    private javax.swing.JTextField txtMatg;
+    private javax.swing.JTextField txtTentg;
     // End of variables declaration//GEN-END:variables
 }

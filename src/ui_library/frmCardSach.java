@@ -32,20 +32,19 @@ public class frmCardSach extends javax.swing.JFrame {
         pnlHeader = new javax.swing.JPanel();
         lblSystemIC = new javax.swing.JLabel();
         lblTieude = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         lblSystemIC1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        pnlReview = new javax.swing.JPanel();
+        lblAnh = new javax.swing.JLabel();
+        lblNgaynhan = new javax.swing.JLabel();
+        lblMasach = new javax.swing.JLabel();
+        lblTensach = new javax.swing.JLabel();
+        lblTacgia = new javax.swing.JLabel();
+        lblTheloai = new javax.swing.JLabel();
+        lblnxb = new javax.swing.JLabel();
+        lblGia = new javax.swing.JLabel();
+        lblSoluong = new javax.swing.JLabel();
+        scrollDescrip = new javax.swing.JScrollPane();
+        txtAreaMota = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -70,7 +69,6 @@ public class frmCardSach extends javax.swing.JFrame {
         lblTieude.setText("Tóm tắt sách");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 170, 57));
-        pnlHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 20, -1));
 
         lblSystemIC1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSystemIC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_tacgia64.png"))); // NOI18N
@@ -78,70 +76,70 @@ public class frmCardSach extends javax.swing.JFrame {
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, -1));
 
-        jPanel1.setBackground(new java.awt.Color(200, 247, 197));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(4, 147, 114)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlReview.setBackground(new java.awt.Color(200, 247, 197));
+        pnlReview.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(4, 147, 114)));
+        pnlReview.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(4, 147, 114)));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 140, 210));
+        lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAnh.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(4, 147, 114)));
+        pnlReview.add(lblAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 140, 210));
 
-        jLabel9.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(4, 147, 114));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel9.setText("Ngày nhận:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 165, 25));
+        lblNgaynhan.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblNgaynhan.setForeground(new java.awt.Color(4, 147, 114));
+        lblNgaynhan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNgaynhan.setText("Ngày nhận:");
+        pnlReview.add(lblNgaynhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 165, 25));
 
-        jLabel10.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(4, 147, 114));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel10.setText("Mã sách:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 165, 25));
+        lblMasach.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblMasach.setForeground(new java.awt.Color(4, 147, 114));
+        lblMasach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblMasach.setText("Mã sách:");
+        pnlReview.add(lblMasach, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 165, 25));
 
-        jLabel11.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(4, 147, 114));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel11.setText("Tên sách:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 165, 25));
+        lblTensach.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblTensach.setForeground(new java.awt.Color(4, 147, 114));
+        lblTensach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTensach.setText("Tên sách:");
+        pnlReview.add(lblTensach, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 165, 25));
 
-        jLabel12.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(4, 147, 114));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText("Tác giả:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 165, 25));
+        lblTacgia.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblTacgia.setForeground(new java.awt.Color(4, 147, 114));
+        lblTacgia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTacgia.setText("Tác giả:");
+        pnlReview.add(lblTacgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 165, 25));
 
-        jLabel13.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(4, 147, 114));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel13.setText("Thể loại:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 165, 25));
+        lblTheloai.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblTheloai.setForeground(new java.awt.Color(4, 147, 114));
+        lblTheloai.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTheloai.setText("Thể loại:");
+        pnlReview.add(lblTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 165, 25));
 
-        jLabel14.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(4, 147, 114));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("Nhà xuất bản:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 165, 25));
+        lblnxb.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblnxb.setForeground(new java.awt.Color(4, 147, 114));
+        lblnxb.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblnxb.setText("Nhà xuất bản:");
+        pnlReview.add(lblnxb, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 165, 25));
 
-        jLabel15.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(4, 147, 114));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setText("Giá:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 165, 25));
+        lblGia.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblGia.setForeground(new java.awt.Color(4, 147, 114));
+        lblGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblGia.setText("Giá:");
+        pnlReview.add(lblGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 165, 25));
 
-        jLabel16.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(4, 147, 114));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel16.setText("Số lượng:");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 165, 25));
+        lblSoluong.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        lblSoluong.setForeground(new java.awt.Color(4, 147, 114));
+        lblSoluong.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblSoluong.setText("Số lượng:");
+        pnlReview.add(lblSoluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 165, 25));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtAreaMota.setColumns(20);
+        txtAreaMota.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtAreaMota.setRows(5);
+        scrollDescrip.setViewportView(txtAreaMota);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 370, 140));
+        pnlReview.add(scrollDescrip, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 370, 140));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 500));
+        getContentPane().add(pnlReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,22 +186,21 @@ public class frmCardSach extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblAnh;
+    private javax.swing.JLabel lblGia;
+    private javax.swing.JLabel lblMasach;
+    private javax.swing.JLabel lblNgaynhan;
+    private javax.swing.JLabel lblSoluong;
     private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblSystemIC1;
+    private javax.swing.JLabel lblTacgia;
+    private javax.swing.JLabel lblTensach;
+    private javax.swing.JLabel lblTheloai;
     private javax.swing.JLabel lblTieude;
+    private javax.swing.JLabel lblnxb;
     private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel pnlReview;
+    private javax.swing.JScrollPane scrollDescrip;
+    private javax.swing.JTextArea txtAreaMota;
     // End of variables declaration//GEN-END:variables
 }

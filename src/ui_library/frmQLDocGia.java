@@ -64,7 +64,6 @@ public class frmQLDocGia extends javax.swing.JFrame {
         pnlHeader = new javax.swing.JPanel();
         lblSystemIC = new javax.swing.JLabel();
         lblTieude = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -222,7 +221,6 @@ public class frmQLDocGia extends javax.swing.JFrame {
         lblTieude.setText("   Quản lý độc giả");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 270, 60));
-        pnlHeader.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 20, -1));
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
 
@@ -371,7 +369,6 @@ public class frmQLDocGia extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
