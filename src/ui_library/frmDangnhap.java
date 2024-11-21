@@ -310,23 +310,24 @@ public class frmDangnhap extends javax.swing.JFrame {
     
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
          try {
-        // Lấy dữ liệu từ giao diện
-        String taikhoan = txtTaikhoanDN.getText().trim();
-        String matkhau = new String(txtMatkhau.getPassword()).trim();
-        String loainguoidung = cmbTypeUser.getSelectedItem().toString();
+            // Lấy dữ liệu từ giao diện
+            String taikhoan = txtTaikhoanDN.getText().trim();
+            String matkhau = new String(txtMatkhau.getPassword()).trim();
+            String loainguoidung = cmbTypeUser.getSelectedItem().toString();
         
+            /*
             // Kiểm tra nếu tài khoản chưa được nhập
             if (taikhoan.isEmpty()) {
                 lblWtk.setVisible(true);  // Hiển thị thông báo lỗi tài khoản
                 return;
             }
-
+           
             // Kiểm tra nếu mật khẩu chưa được nhập
             if (matkhau.isEmpty()) {
                 lblWmk.setVisible(true);  // Hiển thị thông báo lỗi mật khẩu
                 return;
             }
-
+ */
             // Kiểm tra nếu loại người dùng chưa được chọn
             if (loainguoidung.equals("Chọn đối tượng")) {
                 lblWdtg.setVisible(true);  // Hiển thị thông báo lỗi loại người dùng
@@ -356,15 +357,20 @@ public class frmDangnhap extends javax.swing.JFrame {
                 } else {
                     // Nếu loại người dùng không đúng
                     lblWdtg.setVisible(true);  // Hiển thị thông báo loại người dùng không khớp
-                    lblWtkExist.setVisible(false);  // Ẩn thông báo tài khoản không tồn tại
-                    lblWmkExist.setVisible(false);
                 }
             } else {
                 // Đăng nhập thất bại, kiểm tra nguyên nhân
                 if (!nguoiDungCtrl.isValidAccount(taikhoan)) {
-                    lblWtkExist.setVisible(true);  // Hiển thị thông báo tài khoản không tồn tại
-                    lblWdtg.setVisible(false);  // Ẩn thông báo loại người dùng không hợp lệ
-                    lblWmkExist.setVisible(false);  // Ẩn thông báo mật khẩu sai
+                    if (taikhoan.isEmpty()) {
+                        lblWtk.setVisible(true);  
+
+                    } else {
+                        lblWtk.setVisible(false);  
+                        lblWtkExist.setVisible(true);  // Hiển thị thông báo tài khoản không tồn tại
+                        lblWdtg.setVisible(false);  // Ẩn thông báo loại người dùng không hợp lệ
+                        lblWmkExist.setVisible(false);  // Ẩn thông báo mật khẩu sai
+                    }
+                    
                 } else if (!nguoiDungCtrl.isValidPassword(matkhau, taikhoan)) {
                     lblWmkExist.setVisible(true);  // Hiển thị thông báo mật khẩu sai
                     lblWtkExist.setVisible(false);  // Ẩn thông báo tài khoản không tồn tại
@@ -417,9 +423,10 @@ public class frmDangnhap extends javax.swing.JFrame {
         // Nếu tài khoản không rỗng, ẩn lblWtk
         if (!taikhoan.isEmpty()) {
             lblWtk.setVisible(false);  // Ẩn lblWtk nếu tài khoản đã được nhập
+            
         } else {
             lblWtk.setVisible(true);   // Hiển thị lblWtk nếu tài khoản vẫn rỗng
-            
+            lblWtkExist.setVisible(false);
         }
         
     }//GEN-LAST:event_txtTaikhoanDNKeyReleased
@@ -432,6 +439,7 @@ public class frmDangnhap extends javax.swing.JFrame {
         // Nếu tài khoản không rỗng, ẩn lblWtk
         if (!matkhau.isEmpty()) {
             lblWmk.setVisible(false);  // Ẩn lblWtk nếu tài khoản đã được nhập
+            
         } else {
             lblWmk.setVisible(true);   // Hiển thị lblWtk nếu tài khoản vẫn rỗng
             lblWmkExist.setVisible(false);
