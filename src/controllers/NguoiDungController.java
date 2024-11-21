@@ -1,5 +1,7 @@
 package controllers;
 
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
@@ -64,44 +66,62 @@ public class NguoiDungController {
         }
     }
     
+    // Kiểm tra tài khoản tồn tại
     public boolean isValidAccount(String taikhoan) throws SQLException {
-        String sql = "SELECT * FROM tbl_NguoiDung WHERE taikhoan = ?";
-
-        try (PreparedStatement pst = conn.prepareStatement(sql)) {
-            pst.setString(1, taikhoan);
-            ResultSet rs = pst.executeQuery();
-            return rs.next();  // If account exists, return true
-        }
-    }
-
-    // Check if password matches for a given account
-    public boolean isValidPassword(String matkhau, String taikhoan) throws SQLException {
-        String sql = "SELECT * FROM tbl_NguoiDung WHERE taikhoan = ? AND matkhau = ?";
-
-        try (PreparedStatement pst = conn.prepareStatement(sql)) {
-            pst.setString(1, taikhoan);
-            pst.setString(2, matkhau);
-            ResultSet rs = pst.executeQuery();
-            return rs.next();  // If password matches, return true
-        }
-    }
-
-    public boolean isValidUserType(String loainguoidung, String taikhoan) throws SQLException {
-        String sql = "SELECT 1 FROM tbl_NguoiDung WHERE taikhoan = ? AND loainguoidung = ?";  // Sử dụng SELECT 1 thay vì SELECT *
-
-        try (PreparedStatement pst = conn.prepareStatement(sql)) {
-            pst.setString(1, taikhoan);
-            pst.setString(2, loainguoidung);
-
-            try (ResultSet rs = pst.executeQuery()) {
-                return rs.next();  // Nếu tìm thấy kết quả, trả về true
+        String sql = "SELECT COUNT(*) FROM tbl_NguoiDung WHERE taikhoan = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, taikhoan);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
             }
         }
+        return false;
+    }
+
+    // Kiểm tra mật khẩu
+    public boolean isValidPassword(String matkhau, String taikhoan) throws SQLException {
+        String sql = "SELECT matkhau FROM tbl_NguoiDung WHERE taikhoan = ?";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, taikhoan);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return matkhau.equals(rs.getString("matkhau"));
+                }
+            }
+        }
+        return false;
+    }
+
+    // Kiểm tra loại người dùng
+    public boolean kiemTraLoaiNguoiDung(String taikhoan, String loainguoidung) throws SQLException {
+        // Kiểm tra nếu kết nối hợp lệ
+        if (conn == null || conn.isClosed()) {
+            throw new SQLException("Kết nối cơ sở dữ liệu không hợp lệ.");
+        }
+
+        // Truy vấn để lấy loại người dùng từ cơ sở dữ liệu
+        String query = "SELECT loaiuser FROM tbl_NguoiDung WHERE taikhoan = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, taikhoan);  // Thiết lập giá trị cho tham số tài khoản
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    // Lấy giá trị loại người dùng từ kết quả truy vấn
+                    String storedRole = rs.getString("loaiuser");
+                    // Kiểm tra xem loại người dùng có khớp với loại người dùng đã nhập không
+                    return storedRole.equals(loainguoidung);
+                } else {
+                    // Nếu không tìm thấy tài khoản trong cơ sở dữ liệu
+                    return false;
+                }
+            }
+        } catch (SQLException ex) {
+            // Xử lý lỗi khi thực hiện truy vấn
+            System.err.println("Lỗi khi kiểm tra loại người dùng: " + ex.getMessage());
+            throw ex;  // Ném lại lỗi để có thể xử lý ở nơi gọi phương thức
+        }
     }
 
 
-    
-   
-    
-    
 }

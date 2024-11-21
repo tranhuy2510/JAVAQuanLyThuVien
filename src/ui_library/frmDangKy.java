@@ -37,8 +37,8 @@ public class frmDangKy extends javax.swing.JFrame {
                 textField.setForeground(Color.GRAY); // Đổi về màu placeholder khi trống
             }
         }
-    });
-}
+        });
+    }
 
     //Ham xoa cac TextField 
     private void setNull() { 
@@ -246,6 +246,17 @@ public class frmDangKy extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnDangNhapMouseClicked
 
+     // Phương thức kiểm tra tên tài khoản hợp lệ 
+    private boolean isValidUsername(String username) { 
+        // Quy tắc: ít nhất 3 ký tự, không quá 15 ký tự, không khoảng trắng, chỉ chứa chữ cái và số 
+        return username.matches("^[a-zA-Z0-9]{3,15}$"); 
+    } 
+    // Phương thức kiểm tra mật khẩu hợp lệ 
+    private boolean isValidPassword(String password) {
+        // Quy tắc: ít nhất 8 ký tự, chứa ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt 
+        return password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*]).{8,}$"); 
+    }
+    
     private void btnDangkiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangkiActionPerformed
         // TODO add your handling code here:
         // Lấy dữ liệu từ các trường nhập
@@ -270,7 +281,7 @@ public class frmDangKy extends javax.swing.JFrame {
             user.setHoten(fullname);
             user.setTaikhoan(taikhoan);
             user.setMatkhau(matkhau); // Mật khẩu sẽ được mã hóa trong controller
-            user.setLoaiuser("user"); // Mặc định loại người dùng là 'user'
+            user.setLoaiuser("User"); // Mặc định loại người dùng là 'user'
 
             // Gọi controller để thêm người dùng
             NguoiDungController controller = new NguoiDungController();

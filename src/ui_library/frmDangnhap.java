@@ -4,6 +4,7 @@
  */
 package ui_library;
 import controllers.NguoiDungController;
+import java.awt.Color;
 import java.awt.Image;
 import java.net.URL;
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 
 /**
@@ -30,6 +32,9 @@ public class frmDangnhap extends javax.swing.JFrame {
         // Hiển thị hình ảnh logo
         displayImage();
         
+        // Thêm placeholder cho từng JTextField
+        addPlaceholder(txtTaikhoanDN, "Nhập tài khoản");
+        addPlaceholder(txtMatkhau, "**************");
          // Cài đặt biểu tượng show/hide mật khẩu
         lblShowMK.setVisible(true); // Hiển thị biểu tượng mở mắt ban đầu
         lblHideMK.setVisible(false); // Ẩn biểu tượng đóng mắt ban đầu
@@ -58,7 +63,28 @@ public class frmDangnhap extends javax.swing.JFrame {
         }
     }
     
+    private void addPlaceholder(JTextField textField, String placeholder) {
+        textField.setText(placeholder);
+        textField.setForeground(Color.GRAY); // Gợi ý hiển thị màu nhạt
 
+        textField.addFocusListener(new java.awt.event.FocusListener() {
+        @Override
+        public void focusGained(java.awt.event.FocusEvent e) {
+            if (textField.getText().equals(placeholder)) {
+                textField.setText("");
+                textField.setForeground(Color.BLACK); // Đổi về màu bình thường khi người dùng nhập
+            }
+        }
+
+        @Override
+        public void focusLost(java.awt.event.FocusEvent e) {
+            if (textField.getText().isEmpty()) {
+                textField.setText(placeholder);
+                textField.setForeground(Color.GRAY); // Đổi về màu placeholder khi trống
+            }
+        }
+        });
+    }
      
 
     /**
@@ -264,7 +290,7 @@ public class frmDangnhap extends javax.swing.JFrame {
     private void cmbTypeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTypeUserActionPerformed
         // TODO add your handling code here:
         String loaiNguoiDung = cmbTypeUser.getSelectedItem().toString();
-
+        
         // Kiểm tra loại người dùng và thực hiện các hành động tương ứng
         switch (loaiNguoiDung) {
             case "Admin" -> System.out.println("Ban da chon Quan tri vien");
@@ -280,81 +306,78 @@ public class frmDangnhap extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnDangkiActionPerformed
 
-    // Phương thức kiểm tra tên tài khoản hợp lệ 
-    private boolean isValidUsername(String username) { 
-        // Quy tắc: ít nhất 3 ký tự, không quá 15 ký tự, không khoảng trắng, chỉ chứa chữ cái và số 
-        return username.matches("^[a-zA-Z0-9]{3,15}$"); 
-    } 
-    // Phương thức kiểm tra mật khẩu hợp lệ 
-    private boolean isValidPassword(String password) {
-        // Quy tắc: ít nhất 8 ký tự, chứa ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt 
-        return password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*]).{8,}$"); 
-    }
+   
     
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangnhapActionPerformed
-        try {
-            // Lấy dữ liệu từ giao diện
-            String taikhoan = txtTaikhoanDN.getText().trim();
-            String matkhau = new String(txtMatkhau.getPassword()).trim();
-            String loainguoidung = cmbTypeUser.getSelectedItem().toString();
-
-            // Kiểm tra nếu tài khoản chưa được nhập 
-            if (taikhoan.isEmpty()) { 
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên tài khoản!", "Thông báo", JOptionPane.WARNING_MESSAGE);
-                lblWtk.setVisible(true);
+         try {
+        // Lấy dữ liệu từ giao diện
+        String taikhoan = txtTaikhoanDN.getText().trim();
+        String matkhau = new String(txtMatkhau.getPassword()).trim();
+        String loainguoidung = cmbTypeUser.getSelectedItem().toString();
+        
+            // Kiểm tra nếu tài khoản chưa được nhập
+            if (taikhoan.isEmpty()) {
+                lblWtk.setVisible(true);  // Hiển thị thông báo lỗi tài khoản
                 return;
             }
-            // Kiểm tra điều kiện tên tài khoản 
-            if (!isValidUsername(taikhoan)) { 
-                JOptionPane.showMessageDialog(this, "Tên tài khoản không hợp lệ! Vui lòng sử dụng từ 3 đến 15 ký tự, không có khoảng trắng và chỉ chứa chữ cái và số.", "Thông báo", JOptionPane.WARNING_MESSAGE);
-                return; 
-            } 
-            // Kiểm tra nếu mật khẩu chưa được nhập 
-            if (matkhau.isEmpty()) { 
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu!", "Thông báo", JOptionPane.WARNING_MESSAGE); 
-                lblWmk.setVisible(true);
-                return; 
-            }
-            /*
-            // Kiểm tra điều kiện mật khẩu 
-            if (!isValidPassword(matkhau)) { 
-                JOptionPane.showMessageDialog(this, "Mật khẩu không hợp lệ! Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.", "Thông báo", JOptionPane.WARNING_MESSAGE);
-                return; 
-            }
-                */
 
-            
-            // Gọi phương thức đăng nhập từ controller
+            // Kiểm tra nếu mật khẩu chưa được nhập
+            if (matkhau.isEmpty()) {
+                lblWmk.setVisible(true);  // Hiển thị thông báo lỗi mật khẩu
+                return;
+            }
+
+            // Kiểm tra nếu loại người dùng chưa được chọn
+            if (loainguoidung.equals("Chọn đối tượng")) {
+                lblWdtg.setVisible(true);  // Hiển thị thông báo lỗi loại người dùng
+                return;
+            }
+
+            // Gọi phương thức kiểm tra đăng nhập từ controller
             NguoiDungController nguoiDungCtrl = new NguoiDungController();
 
             // Kiểm tra đăng nhập
             boolean isSuccess = nguoiDungCtrl.kiemTraDangNhap(taikhoan, matkhau, loainguoidung);
 
+            // Nếu đăng nhập thành công, kiểm tra thêm loại người dùng
             if (isSuccess) {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                // Kiểm tra xem loại người dùng có khớp với tài khoản đã đăng nhập không
+                boolean isRoleValid = nguoiDungCtrl.kiemTraLoaiNguoiDung(taikhoan, loainguoidung);
 
-                // Chuyển đến màn hình chính
-                frmTrangchu home = new frmTrangchu();
-                home.setVisible(true);
+                if (isRoleValid) {
+                    // Đăng nhập thành công và loại người dùng đúng
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
-                // Đóng form đăng nhập
-                this.dispose();
+                    // Chuyển đến màn hình chính
+                    frmTrangchu home = new frmTrangchu();
+                    home.setVisible(true);
+                    // Đóng form đăng nhập
+                    this.dispose();     
+                } else {
+                    // Nếu loại người dùng không đúng
+                    lblWdtg.setVisible(true);  // Hiển thị thông báo loại người dùng không khớp
+                    lblWtkExist.setVisible(false);  // Ẩn thông báo tài khoản không tồn tại
+                    lblWmkExist.setVisible(false);
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                /*
-                // Hiển thị thông báo cho từng trường hợp cụ thể
+                // Đăng nhập thất bại, kiểm tra nguyên nhân
                 if (!nguoiDungCtrl.isValidAccount(taikhoan)) {
-                    lblWtkExist.setVisible(true);  // Tài khoản không tồn tại
+                    lblWtkExist.setVisible(true);  // Hiển thị thông báo tài khoản không tồn tại
+                    lblWdtg.setVisible(false);  // Ẩn thông báo loại người dùng không hợp lệ
+                    lblWmkExist.setVisible(false);  // Ẩn thông báo mật khẩu sai
+                } else if (!nguoiDungCtrl.isValidPassword(matkhau, taikhoan)) {
+                    lblWmkExist.setVisible(true);  // Hiển thị thông báo mật khẩu sai
+                    lblWtkExist.setVisible(false);  // Ẩn thông báo tài khoản không tồn tại
+                    lblWdtg.setVisible(false);  // Ẩn thông báo loại người dùng không hợp lệ
+                } else {
+                    lblWdtg.setVisible(false);
+                    lblWtkExist.setVisible(false);
+                    lblWmkExist.setVisible(false);
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
-                if (!nguoiDungCtrl.isValidPassword(matkhau, taikhoan)) {
-                    lblWmkExist.setVisible(true);  // Mật khẩu không khớp
-                }
-                if (!nguoiDungCtrl.isValidUserType(loainguoidung, taikhoan)) {
-                    lblWdtg.setVisible(true);  // Loại người dùng không khớp
-                }
-                */
-            }
+            }         
         } catch (SQLException ex) {
+            // Xử lý lỗi cơ sở dữ liệu
             Logger.getLogger(frmDangnhap.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Lỗi hệ thống! Vui lòng thử lại sau.", "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
@@ -390,23 +413,31 @@ public class frmDangnhap extends javax.swing.JFrame {
     private void txtTaikhoanDNKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaikhoanDNKeyReleased
         // TODO add your handling code here:
         String taikhoan = txtTaikhoanDN.getText().trim();
+        // Kiểm tra điều kiện tên tài khoản 
         // Nếu tài khoản không rỗng, ẩn lblWtk
         if (!taikhoan.isEmpty()) {
             lblWtk.setVisible(false);  // Ẩn lblWtk nếu tài khoản đã được nhập
         } else {
             lblWtk.setVisible(true);   // Hiển thị lblWtk nếu tài khoản vẫn rỗng
+            
         }
+        
     }//GEN-LAST:event_txtTaikhoanDNKeyReleased
 
     private void txtMatkhauKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatkhauKeyReleased
         // TODO add your handling code here:
+        String taikhoan = txtTaikhoanDN.getText().trim();
         String matkhau = new String(txtMatkhau.getPassword()).trim();
+        
         // Nếu tài khoản không rỗng, ẩn lblWtk
         if (!matkhau.isEmpty()) {
             lblWmk.setVisible(false);  // Ẩn lblWtk nếu tài khoản đã được nhập
         } else {
             lblWmk.setVisible(true);   // Hiển thị lblWtk nếu tài khoản vẫn rỗng
+            lblWmkExist.setVisible(false);
         }
+        
+        
     }//GEN-LAST:event_txtMatkhauKeyReleased
 
     /**
