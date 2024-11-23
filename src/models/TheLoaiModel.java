@@ -4,37 +4,49 @@
  */
 package models;
 
+import java.sql.*;
+
 /**
  *
  * @author ADMIN
  */
 public class TheLoaiModel {
     
-    private int id;
-    private String name;
+    private String maTheLoai;
+    private String tenTheLoai;
+
+    public TheLoaiModel() {
+    }
+
     
-    // constractors
-    public TheLoaiModel(){};
+    public TheLoaiModel(String maTheLoai, String tenTheLoai) {
+        this.maTheLoai = maTheLoai;
+        this.tenTheLoai = tenTheLoai;
+    }
+
+      //khoi tao nhanh khi lam viec voi giao dien
+    public TheLoaiModel(ResultSet rs) throws SQLException{
+        this.maTheLoai= rs.getString("id_theloai");
+        this.tenTheLoai = rs.getString("tentheloai");  
+    }
+
+    public String getMaTheLoai() {
+        return maTheLoai;
+    }
+
+    public String getTenTheLoai() {
+        return tenTheLoai;
+    }
+
+    public void setMaTheLoai(String maTheLoai) {
+        this.maTheLoai = maTheLoai;
+    }
+
+    public void setTenTheLoai(String tenTheLoai) {
+        this.tenTheLoai = tenTheLoai;
+    }
     
-    public TheLoaiModel(int _id, String _name){
-        this.id = _id;
-        this.name = _name;
-    }
-
-    // getters va setters
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setId(int _id) {
-        this.id = _id;
-    }
-
-    public void setName(String _name) {
-        this.name = _name;
-    }
+    
+    
+    
 }

@@ -1,70 +1,102 @@
-/*//GEN-FIRST:event_btnThemActionPerformed
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license//GEN-LAST:event_btnThemActionPerformed
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui_library;
 
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.BorderFactory;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.Border;
-import javax.swing.table.DefaultTableCellRenderer;
+import controllers.TheLoaiController;
+import java.util.List;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import models.TheLoaiModel;
 
 /**
  *
- * @author ADMIN
+ * @author admin
  */
-public class frmQLTheLoai extends javax.swing.JFrame {
-
+public final class frmQLTheLoai extends javax.swing.JFrame {    
+    
     /**
-     * Creates new form frmQLTheLoai
+     * Creates new form frmQLTheloai
      */
-    public frmQLTheLoai() {
-        
-        try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                SwingUtilities.updateComponentTreeUI(this);
-            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-            }
+    
+   // Khai báo tableModel
+    private final DefaultTableModel tableModel; 
+    private final TheLoaiController dstheloai;
+    private final boolean cothem = true; 
+
+    
+    public frmQLTheLoai() throws SQLException {
         initComponents();
-        
         // can giua cho form
         this.setLocationRelativeTo(null);
-        // tao vien xam cho khung panel
-        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(54,94,50));
-        jPanel_Theloaisach.setBorder(panelHeaderBorder);
         
-        controllers.Func_Class func = new controllers.Func_Class();
-        func.displayImage(50,50,"/image/img-Dangnhap.png", lblTieudeTL );
-        // thiet ke cho bang the loai
-        tblTheloai.setSelectionBackground(new Color(161,214,178));
-        tblTheloai.setSelectionForeground(Color.white);
-        tblTheloai.setRowHeight(30);
-        tblTheloai.setShowGrid(true);
-        tblTheloai.setBackground(new Color(238, 233, 233));
-        tblTheloai.getColumnModel().getColumn(0).setPreferredWidth(60);
-        tblTheloai.getColumnModel().getColumn(1).setPreferredWidth(300);
-        // can giua phan tu trong bang
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-        centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
-        for (int i = 0; i < tblTheloai.getColumnCount(); i++) {
-            tblTheloai.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-        }
+        setupTableUI();
+                
+        // Cấu hình bảng và controller
+        tableModel = (DefaultTableModel) tblTheloai.getModel();
+        dstheloai = new TheLoaiController();
         
-        // thiet ke cho hang tren dau cua bang
-        tblTheloai.getTableHeader().setBackground(new Color(111, 194, 103));
-        tblTheloai.getTableHeader().setForeground(Color.WHITE);
-        tblTheloai.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 18));
-        tblTheloai.getTableHeader().setOpaque(false);
+        // Khởi tạo các components trên JFrame
+        String[] colsName = {"Mã", "Tên thể loại"};
+        // đặt tiêu đề cột cho tableModel
+        tableModel.setColumnIdentifiers(colsName);
+        // Kết nối JTable với tableModel
+        tblTheloai.setModel(tableModel);
+        // Gọi hàm showDataOnTable() để hiển thị dữ liệu lên bảng
+        ShowData();
         
-        // An label canh bao khi nguoi dung khong nhap ten the loai
-        lblCanhbao.setVisible(false);
+        lblThongbao.setVisible(false);
+     
+        this.txtMa. setEnabled (false); 
+        this.txtTheloai. setEnabled (true);
+        
     }
+    
+    private void setupTableUI() {
+        // Tùy chỉnh giao diện của tiêu đề bảng
+        tblTheloai.getTableHeader().setForeground(new java.awt.Color(4, 147, 114));
+        tblTheloai.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 15));
+        tblTheloai.getTableHeader().setOpaque(false);
+        // Lấy TableColumnModel từ JTable
+        TableColumnModel columnModel = tblTheloai.getColumnModel();
+
+       
+    }
+
+    
+    public void ShowData() throws SQLException{ 
+        List<TheLoaiModel> lst = dstheloai.getTheloaiSach(); 
+        // Duyệt qua ArrayList data
+        for (TheLoaiModel theloai : lst) { 
+            // Tạo một dòng mới chứa 2 cột (Mã Loại và Tên Loại)
+            String rows[] = new String[2];
+            rows[0] = theloai.getMaTheLoai();  
+            rows[1] = theloai.getTenTheLoai(); 
+
+            // Đưa dòng dữ liệu vào tableModel
+            tableModel.addRow(rows);
+        }
+    }
+    
+    //Ham xoa du lieu trong tableModel 
+    public void ClearData() throws SQLException{ 
+        int rowCount = tableModel.getRowCount(); // Lấy số lượng dòng hiện tại
+        for (int i = rowCount - 1; i >= 0; i--) {
+            tableModel.removeRow(i); // Xóa từng dòng
+        }
+    } 
+    
+ 
+   
+ 
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,72 +104,80 @@ public class frmQLTheLoai extends javax.swing.JFrame {
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel_Theloaisach = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        lblTieudeTL = new javax.swing.JLabel();
-        lbl_CloseFormTL = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtTenTheloai = new javax.swing.JTextField();
-        txtIDTheloai = new javax.swing.JTextField();
+        pnlHeader = new javax.swing.JPanel();
+        lblSystemIC = new javax.swing.JLabel();
+        lblTieude = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        txtTheloai = new javax.swing.JTextField();
+        lblThongbao = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
+        txtMa = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTheloai = new javax.swing.JTable();
-        lblCanhbao = new javax.swing.JLabel();
+        btnHuy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel_Theloaisach.setBackground(new java.awt.Color(255, 255, 255));
+        pnlHeader.setBackground(new java.awt.Color(4, 147, 114));
+        pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTieudeTL.setBackground(new java.awt.Color(54, 94, 50));
-        lblTieudeTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTieudeTL.setForeground(new java.awt.Color(255, 255, 255));
-        lblTieudeTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTieudeTL.setText("Quản lý thể loại sách");
-        lblTieudeTL.setOpaque(true);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTieudeTL, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTieudeTL, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        lbl_CloseFormTL.setBackground(new java.awt.Color(54, 94, 50));
-        lbl_CloseFormTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_CloseFormTL.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_CloseFormTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_CloseFormTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lbl_CloseFormTL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbl_CloseFormTL.setOpaque(true);
-        lbl_CloseFormTL.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_CloseFormTLMouseClicked(evt);
+                lblSystemICMouseClicked(evt);
             }
         });
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 0, 70, 60));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel1.setText("Tên:");
+        lblTieude.setBackground(new java.awt.Color(241, 231, 254));
+        lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTieude.setForeground(new java.awt.Color(255, 255, 255));
+        lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTieude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_menu.png"))); // NOI18N
+        lblTieude.setText("   Quản lý thể loại");
+        lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 270, 60));
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel2.setText("ID:");
+        getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 695, 60));
 
-        txtTenTheloai.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(4, 147, 114)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtIDTheloai.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtTheloai.setBackground(new java.awt.Color(200, 247, 197));
+        txtTheloai.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        txtTheloai.setForeground(new java.awt.Color(4, 147, 114));
+        txtTheloai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(4, 147, 114)));
+        txtTheloai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTheloaiKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 280, 32));
 
-        btnThem.setBackground(new java.awt.Color(204, 204, 204));
-        btnThem.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblThongbao.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        lblThongbao.setForeground(new java.awt.Color(255, 102, 102));
+        lblThongbao.setText("* Tên thể loại không được để trống");
+        jPanel1.add(lblThongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 200, 30));
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel8.setText("Tên thể loại:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 120, 30));
+
+        btnThem.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnThem.setForeground(new java.awt.Color(4, 147, 114));
         btnThem.setText("Thêm");
         btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -145,34 +185,49 @@ public class frmQLTheLoai extends javax.swing.JFrame {
                 btnThemActionPerformed(evt);
             }
         });
+        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 100, 32));
 
-        btnSua.setBackground(new java.awt.Color(204, 204, 204));
-        btnSua.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnSua.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnSua.setForeground(new java.awt.Color(4, 147, 114));
         btnSua.setText("Sửa");
         btnSua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSua.setOpaque(true);
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 100, 32));
 
-        btnXoa.setBackground(new java.awt.Color(204, 204, 204));
-        btnXoa.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnXoa.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnXoa.setForeground(new java.awt.Color(4, 147, 114));
         btnXoa.setText("Xóa");
         btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnXoa.setOpaque(true);
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 100, 32));
 
-        tblTheloai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMa.setBackground(new java.awt.Color(200, 247, 197));
+        txtMa.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        txtMa.setForeground(new java.awt.Color(4, 147, 114));
+        txtMa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(4, 147, 114)));
+        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 170, 32));
+
+        jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(4, 147, 114));
+        jLabel9.setText("Mã thể loại:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 120, 32));
+
+        tblTheloai.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        tblTheloai.setForeground(new java.awt.Color(4, 147, 114));
         tblTheloai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"123", "khoa học"},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "ID:", "Thể Loại:"
+                "Mã ", "Tên thể loại"
             }
         ) {
             Class[] types = new Class [] {
@@ -184,6 +239,11 @@ public class frmQLTheLoai extends javax.swing.JFrame {
             }
         });
         tblTheloai.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblTheloai.setRowHeight(25);
+        tblTheloai.setSelectionBackground(new java.awt.Color(200, 247, 197));
+        tblTheloai.setSelectionForeground(new java.awt.Color(4, 147, 114));
+        tblTheloai.setShowGrid(true);
+        tblTheloai.setSurrendersFocusOnKeystroke(true);
         tblTheloai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblTheloaiMouseClicked(evt);
@@ -191,126 +251,166 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblTheloai);
 
-        lblCanhbao.setForeground(new java.awt.Color(255, 0, 51));
-        lblCanhbao.setText("* Vui lòng nhập thể loại sách");
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 310, 190));
 
-        javax.swing.GroupLayout jPanel_TheloaisachLayout = new javax.swing.GroupLayout(jPanel_Theloaisach);
-        jPanel_Theloaisach.setLayout(jPanel_TheloaisachLayout);
-        jPanel_TheloaisachLayout.setHorizontalGroup(
-            jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(lbl_CloseFormTL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtIDTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCanhbao, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTenTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                        .addContainerGap(21, Short.MAX_VALUE)
-                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-        );
-        jPanel_TheloaisachLayout.setVerticalGroup(
-            jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_CloseFormTL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIDTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTenTheloai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCanhbao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnThem)
-                            .addComponent(btnSua)
-                            .addComponent(btnXoa)))
-                    .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        btnHuy.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnHuy.setForeground(new java.awt.Color(4, 147, 114));
+        btnHuy.setText("Hủy");
+        btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 100, 32));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel_Theloaisach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel_Theloaisach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 695, 360));
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void lbl_CloseFormTLMouseClicked(java.awt.event.MouseEvent evt) {                                             
+    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
         // TODO add your handling code here:
-        // Dong form the loai sach
+        // Dong form
         this.dispose();
-    }                                            
+    }//GEN-LAST:event_lblSystemICMouseClicked
 
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        // Khai bao thloai
-        String thloai = txtTenTheloai.getText();
-        // kiem tra textfield co rong hay khong
-        if(thloai.isEmpty()){
-            lblCanhbao.setVisible(true);
-        } else{
-            //
-        }
-    }                                       
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
+        txtMa.setText("");
+        txtTheloai.setText("");
+        String maTheloai = txtMa.getText().trim();
+        String tenTheloai = txtTheloai.getText().trim();
         
-        int id = Integer.getInteger(txtIDTheloai.getText());
-        String name = txtIDTheloai.getText();
-        // kiem tra textfield co rong hay khong
-        if(name.isEmpty()){
-            lblCanhbao.setVisible(true);
-        } else{
-            //
+        if (tenTheloai.isEmpty()) {
+            lblThongbao.setVisible(true);
+        }else{
+            try {
+                TheLoaiModel obj = new TheLoaiModel();
+                obj.setTenTheLoai(tenTheloai);
+                if (cothem) { // Add new category
+                    if (dstheloai.InsertData(obj)) {
+                        JOptionPane.showMessageDialog(null, "Thêm mới thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Thêm mới thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else { 
+                    if (dstheloai.EditData(obj)) {
+                        JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Cập nhật thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                ClearData(); //goi ham xoa du lieu tron tableModel 
+                ShowData();
+            } catch (SQLException ex) {
+                Logger.getLogger(frmQLTheLoai.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-    }                                      
+    }//GEN-LAST:event_btnThemActionPerformed
 
-    private void tblTheloaiMouseClicked(java.awt.event.MouseEvent evt) {                                        
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-    }                                       
+        String ml = txtMa.getText();
+        String tenTL = txtTheloai.getText();
+
+        if (ml.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn loại cần sửa", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (tenTL.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Tên thể loại không được để trống", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            TheLoaiModel theLoai = new TheLoaiModel();
+            theLoai.setMaTheLoai(ml); 
+            theLoai.setTenTheLoai(tenTL); 
+
+            if (dstheloai.EditData(theLoai)) {
+                JOptionPane.showMessageDialog(null, "Sửa thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+                ClearData();
+                ShowData();
+            } else {
+                JOptionPane.showMessageDialog(null, "Sửa thất bại", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Lỗi khi sửa dữ liệu: " + ex.getMessage(), "Thông báo", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        String maLoai = txtMa.getText().trim();
+
+        try {
+            if (maLoai.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn một thế loại để xóa.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Confirm the deletion
+            int confirm = JOptionPane.showConfirmDialog(this, 
+                "Bạn có chắc chắn muốn xóa thể loại có mã \"" + maLoai + "\" không?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                boolean isDeleted = dstheloai.DeleteData(maLoai);
+
+                if (isDeleted) {
+                    JOptionPane.showMessageDialog(this,  "Xóa thành công thể loại có mã \"" + maLoai + "\".", 
+                        "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+                    ClearData();  
+                    ShowData();   
+                } else {
+                    JOptionPane.showMessageDialog(this, 
+                        "Không thể xóa thể loại . Vui lòng thử lại.", "Lỗi",  JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (SQLException ex) {
+            // Handle SQL exceptions
+            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi khi xóa thể loại : " + ex.getMessage(), 
+                "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void tblTheloaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTheloaiMouseClicked
+        // TODO add your handling code here:
+        this.txtTheloai. setEnabled (true);
+        int selectedRow = tblTheloai.getSelectedRow();
+        if (selectedRow != -1) {
+            // Get the selected category data
+            String maTheLoai = (String) tblTheloai.getValueAt(selectedRow, 0);
+            String tenTheLoai = (String) tblTheloai.getValueAt(selectedRow, 1);
+
+            // Populate text fields with selected data
+            txtMa.setText(maTheLoai);
+            txtTheloai.setText(tenTheLoai);
+           
+        }
+        
+    }//GEN-LAST:event_tblTheloaiMouseClicked
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        txtMa.setText("");
+        txtTheloai.setText("");
+        
+    }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void txtTheloaiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTheloaiKeyReleased
+        // TODO add your handling code here:
+        String tl = txtTheloai.getText().trim();
+        if (!tl.isEmpty()) {
+            lblThongbao.setVisible(false); 
+            
+        } else {
+            lblThongbao.setVisible(true); 
+        }
+    }//GEN-LAST:event_txtTheloaiKeyReleased
 
     /**
      * @param args the command line arguments
@@ -324,45 +424,47 @@ public class frmQLTheLoai extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    
                     //javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmQLTheLoai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmQLTheLoai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmQLTheLoai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(frmQLTheLoai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmQLTheLoai().setVisible(true);
+                try {
+                    new frmQLTheLoai().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(frmQLTheLoai.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel_Theloaisach;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCanhbao;
-    private javax.swing.JLabel lblTieudeTL;
-    private javax.swing.JLabel lbl_CloseFormTL;
+    private javax.swing.JLabel lblSystemIC;
+    private javax.swing.JLabel lblThongbao;
+    private javax.swing.JLabel lblTieude;
+    private javax.swing.JPanel pnlHeader;
     private javax.swing.JTable tblTheloai;
-    private javax.swing.JTextField txtIDTheloai;
-    private javax.swing.JTextField txtTenTheloai;
-    // End of variables declaration                   
+    private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtTheloai;
+    // End of variables declaration//GEN-END:variables
 }

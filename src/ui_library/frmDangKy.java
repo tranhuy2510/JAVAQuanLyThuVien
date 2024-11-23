@@ -17,34 +17,13 @@ import models.NguoiDungModel;
  */
 public class frmDangKy extends javax.swing.JFrame {
 
-    private void addPlaceholder(JTextField textField, String placeholder) {
-    textField.setText(placeholder);
-    textField.setForeground(Color.GRAY); // Gợi ý hiển thị màu nhạt
-
-    textField.addFocusListener(new java.awt.event.FocusListener() {
-        @Override
-        public void focusGained(java.awt.event.FocusEvent e) {
-            if (textField.getText().equals(placeholder)) {
-                textField.setText("");
-                textField.setForeground(Color.BLACK); // Đổi về màu bình thường khi người dùng nhập
-            }
-        }
-
-        @Override
-        public void focusLost(java.awt.event.FocusEvent e) {
-            if (textField.getText().isEmpty()) {
-                textField.setText(placeholder);
-                textField.setForeground(Color.GRAY); // Đổi về màu placeholder khi trống
-            }
-        }
-        });
-    }
+    
 
     //Ham xoa cac TextField 
     private void setNull() { 
         //Xoa trang cac JtextField 
         this.txtFullName.setText(null); 
-        this.txtTaiKhoan.setText(null);
+        this.txtSdt.setText(null);
         this.txtMatKhau.setText(null); 
         this.txtFullName.requestFocus(); 
     }
@@ -55,12 +34,55 @@ public class frmDangKy extends javax.swing.JFrame {
         initComponents();
         // can giua cho form
         this.setLocationRelativeTo(null);
+        
         // Thêm placeholder cho từng JTextField
         addPlaceholder(txtFullName, "Nhập họ và tên");
-        addPlaceholder(txtTaiKhoan, "Nhập tên tài khoản bạn muốn");
+        addPlaceholder(txtTaiKhoan1, "Nhập tên tài khoản bạn muốn");
+        addPlaceholder(txtMatKhau, "**************");
+        addPlaceholder(txtMatKhau1, "**************");
+        addPlaceholder(txtEmail, "Nhập email của bạn");
+        addPlaceholder(txtSdt, "Nhập số điện thoại của bạn");
+
+        
+         // Cài đặt biểu tượng show/hide mật khẩu
+        lblShowMK.setVisible(true); // Hiển thị biểu tượng mở mắt ban đầu
+        lblHideMK.setVisible(false); // Ẩn biểu tượng đóng mắt ban đầu
+        // Đặt ký tự ẩn mật khẩu mặc định
+        txtMatKhau.setEchoChar('*');
+        lblShowMK1.setVisible(true); // Hiển thị biểu tượng mở mắt ban đầu
+        lblHideMK1.setVisible(false); // Ẩn biểu tượng đóng mắt ban đầu
+        // Đặt ký tự ẩn mật khẩu mặc định
+        txtMatKhau1.setEchoChar('*');
+        
+        lblMinFrm.setOpaque(true); // Cho phép JLabel có background
+        lblMinFrm.setBackground(new java.awt.Color(137,196,244)); // Màu nền ban đầu
+        lblClose.setOpaque(true);
+        lblClose.setBackground(new java.awt.Color(137,196,244));
+        
         
     }
+    private void addPlaceholder(JTextField textField, String placeholder) {
+        textField.setText(placeholder);
+        textField.setForeground(Color.GRAY); // Gợi ý hiển thị màu nhạt
 
+        textField.addFocusListener(new java.awt.event.FocusListener() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (textField.getText().equals(placeholder)) {
+                    textField.setText("");
+                    textField.setForeground(Color.BLACK); // Đổi về màu bình thường khi người dùng nhập
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (textField.getText().isEmpty()) {
+                    textField.setText(placeholder);
+                    textField.setForeground(Color.GRAY); // Đổi về màu placeholder khi trống
+                }
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,16 +98,35 @@ public class frmDangKy extends javax.swing.JFrame {
         lblTaiKhoan = new javax.swing.JLabel();
         lblTKic = new javax.swing.JLabel();
         lblPasswordIc = new javax.swing.JLabel();
-        txtTaiKhoan = new javax.swing.JTextField();
+        txtSdt = new javax.swing.JTextField();
         btnDangki = new javax.swing.JButton();
         lblResult = new javax.swing.JLabel();
-        lblThoat = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JPasswordField();
         btnDangNhap = new javax.swing.JButton();
         lblName = new javax.swing.JLabel();
         txtFullName = new javax.swing.JTextField();
         lblNameu = new javax.swing.JLabel();
+        lblPassword1 = new javax.swing.JLabel();
+        txtMatKhau1 = new javax.swing.JPasswordField();
+        lblPasswordIc1 = new javax.swing.JLabel();
+        lblemailIc = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        lblsdtIc = new javax.swing.JLabel();
+        lblPassword3 = new javax.swing.JLabel();
+        lblSdt = new javax.swing.JLabel();
+        rdNam = new javax.swing.JRadioButton();
+        rdNu = new javax.swing.JRadioButton();
+        lblGender = new javax.swing.JLabel();
+        lblAnhhoso = new javax.swing.JLabel();
+        lblHideMK = new javax.swing.JLabel();
+        lblShowMK = new javax.swing.JLabel();
+        lblShowMK1 = new javax.swing.JLabel();
+        lblHideMK1 = new javax.swing.JLabel();
+        txtTaiKhoan1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        lblMinFrm = new javax.swing.JLabel();
+        lblClose = new javax.swing.JLabel();
         pnlWelcome = new javax.swing.JPanel();
         lblWel = new javax.swing.JLabel();
         lblPic = new javax.swing.JLabel();
@@ -102,36 +143,36 @@ public class frmDangKy extends javax.swing.JFrame {
         pnlSignIn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlSignIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHeader.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        lblHeader.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
         lblHeader.setForeground(new java.awt.Color(40, 67, 135));
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("Đăng ký thành viên");
-        pnlSignIn.add(lblHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, 48));
+        pnlSignIn.add(lblHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 50));
 
-        lblReview.setFont(new java.awt.Font("Roboto", 2, 18)); // NOI18N
+        lblReview.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
         lblReview.setForeground(new java.awt.Color(75, 119, 190));
         lblReview.setText("Tham gia cộng đồng yêu sách của chúng tôi");
-        pnlSignIn.add(lblReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+        pnlSignIn.add(lblReview, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 69, -1, 40));
 
-        lblTaiKhoan.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        lblTaiKhoan.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblTaiKhoan.setForeground(new java.awt.Color(40, 67, 135));
         lblTaiKhoan.setText("Tên tài khoản:");
-        pnlSignIn.add(lblTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 298, 32));
+        pnlSignIn.add(lblTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 298, 25));
 
         lblTKic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Account.png"))); // NOI18N
-        pnlSignIn.add(lblTKic, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
+        pnlSignIn.add(lblTKic, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 32, 32));
 
-        lblPasswordIc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Baomat.png"))); // NOI18N
-        pnlSignIn.add(lblPasswordIc, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+        lblPasswordIc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-key.png"))); // NOI18N
+        pnlSignIn.add(lblPasswordIc, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 32, 32));
 
-        txtTaiKhoan.setBackground(new java.awt.Color(137, 196, 244));
-        txtTaiKhoan.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        txtTaiKhoan.setForeground(new java.awt.Color(40, 67, 135));
-        txtTaiKhoan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
-        pnlSignIn.add(txtTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 298, 32));
+        txtSdt.setBackground(new java.awt.Color(137, 196, 244));
+        txtSdt.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtSdt.setForeground(new java.awt.Color(40, 67, 135));
+        txtSdt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
+        pnlSignIn.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, 340, 25));
 
         btnDangki.setBackground(new java.awt.Color(255, 102, 102));
-        btnDangki.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnDangki.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         btnDangki.setForeground(new java.awt.Color(255, 255, 255));
         btnDangki.setText("Đăng ký");
         btnDangki.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -140,37 +181,23 @@ public class frmDangKy extends javax.swing.JFrame {
                 btnDangkiActionPerformed(evt);
             }
         });
-        pnlSignIn.add(btnDangki, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 193, 44));
+        pnlSignIn.add(btnDangki, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 620, 270, 40));
 
         lblResult.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblResult.setForeground(new java.awt.Color(68, 108, 179));
         lblResult.setText("Bạn đã có tài khoản?");
-        pnlSignIn.add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 140, 24));
+        pnlSignIn.add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 670, 140, 24));
 
-        lblThoat.setBackground(new java.awt.Color(255, 255, 255));
-        lblThoat.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        lblThoat.setForeground(new java.awt.Color(68, 108, 179));
-        lblThoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_exit_color.png"))); // NOI18N
-        lblThoat.setText("Thoát");
-        lblThoat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblThoat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblThoatMouseClicked(evt);
-            }
-        });
-        pnlSignIn.add(lblThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 80, 50));
-
-        lblPassword.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        lblPassword.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(40, 67, 135));
         lblPassword.setText("Mật khẩu:");
-        pnlSignIn.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 298, 30));
+        pnlSignIn.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 298, 25));
 
         txtMatKhau.setBackground(new java.awt.Color(137, 196, 244));
         txtMatKhau.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(40, 67, 135));
         txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
-        pnlSignIn.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 298, 32));
+        pnlSignIn.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 340, 25));
 
         btnDangNhap.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnDangNhap.setForeground(new java.awt.Color(68, 108, 179));
@@ -183,61 +210,175 @@ public class frmDangKy extends javax.swing.JFrame {
                 btnDangNhapMouseClicked(evt);
             }
         });
-        pnlSignIn.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, -1, 24));
+        pnlSignIn.add(btnDangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 670, -1, 24));
 
-        lblName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_Account.png"))); // NOI18N
-        pnlSignIn.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        lblName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-BlackUser.png"))); // NOI18N
+        pnlSignIn.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 32, 32));
 
         txtFullName.setBackground(new java.awt.Color(137, 196, 244));
         txtFullName.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtFullName.setForeground(new java.awt.Color(40, 67, 135));
         txtFullName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
-        txtFullName.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtFullNameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtFullNameFocusLost(evt);
-            }
-        });
-        pnlSignIn.add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 298, 32));
+        pnlSignIn.add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 340, 25));
 
-        lblNameu.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        lblNameu.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblNameu.setForeground(new java.awt.Color(40, 67, 135));
         lblNameu.setText("Họ tên người dùng:");
-        pnlSignIn.add(lblNameu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 298, 32));
+        pnlSignIn.add(lblNameu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 298, 25));
 
-        getContentPane().add(pnlSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 484, 610));
+        lblPassword1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblPassword1.setForeground(new java.awt.Color(40, 67, 135));
+        lblPassword1.setText("Nhập lại mật khẩu:");
+        pnlSignIn.add(lblPassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 298, 25));
+
+        txtMatKhau1.setBackground(new java.awt.Color(137, 196, 244));
+        txtMatKhau1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtMatKhau1.setForeground(new java.awt.Color(40, 67, 135));
+        txtMatKhau1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
+        pnlSignIn.add(txtMatKhau1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 340, 25));
+
+        lblPasswordIc1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_confirmpw.png"))); // NOI18N
+        pnlSignIn.add(lblPasswordIc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 32, 32));
+
+        lblemailIc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_email32.png"))); // NOI18N
+        pnlSignIn.add(lblemailIc, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 32, 32));
+
+        lblEmail.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(40, 67, 135));
+        lblEmail.setText("Email:");
+        pnlSignIn.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 298, 25));
+
+        lblsdtIc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_phone32.png"))); // NOI18N
+        pnlSignIn.add(lblsdtIc, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 32, 32));
+
+        lblPassword3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblPassword3.setForeground(new java.awt.Color(40, 67, 135));
+        lblPassword3.setText("Giới tính:");
+        pnlSignIn.add(lblPassword3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, 90, 25));
+
+        lblSdt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblSdt.setForeground(new java.awt.Color(40, 67, 135));
+        lblSdt.setText("Số điện thoại:");
+        pnlSignIn.add(lblSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 298, 25));
+
+        rdNam.setText("jRadioButton1");
+        pnlSignIn.add(rdNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, -1, -1));
+
+        rdNu.setText("jRadioButton2");
+        pnlSignIn.add(rdNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 540, -1, -1));
+
+        lblGender.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblGender.setForeground(new java.awt.Color(40, 67, 135));
+        lblGender.setText("Giới tính:");
+        pnlSignIn.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, 90, 25));
+
+        lblAnhhoso.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblAnhhoso.setForeground(new java.awt.Color(40, 67, 135));
+        lblAnhhoso.setText("Ảnh hồ sơ:");
+        pnlSignIn.add(lblAnhhoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 580, 90, 25));
+
+        lblHideMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeclose.png"))); // NOI18N
+        lblHideMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHideMKMouseClicked(evt);
+            }
+        });
+        pnlSignIn.add(lblHideMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 32, 30));
+
+        lblShowMK.setBackground(new java.awt.Color(255, 102, 102));
+        lblShowMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeopen.png"))); // NOI18N
+        lblShowMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblShowMKMouseClicked(evt);
+            }
+        });
+        pnlSignIn.add(lblShowMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 32, 30));
+
+        lblShowMK1.setBackground(new java.awt.Color(255, 102, 102));
+        lblShowMK1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeopen.png"))); // NOI18N
+        lblShowMK1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblShowMK1MouseClicked(evt);
+            }
+        });
+        pnlSignIn.add(lblShowMK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 32, 30));
+
+        lblHideMK1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeclose.png"))); // NOI18N
+        lblHideMK1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHideMK1MouseClicked(evt);
+            }
+        });
+        pnlSignIn.add(lblHideMK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 32, 30));
+
+        txtTaiKhoan1.setBackground(new java.awt.Color(137, 196, 244));
+        txtTaiKhoan1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtTaiKhoan1.setForeground(new java.awt.Color(40, 67, 135));
+        txtTaiKhoan1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
+        pnlSignIn.add(txtTaiKhoan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 340, 25));
+
+        txtEmail.setBackground(new java.awt.Color(137, 196, 244));
+        txtEmail.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(40, 67, 135));
+        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(40, 67, 135)));
+        pnlSignIn.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 340, 25));
+
+        lblMinFrm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMinFrm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_zoom24.png"))); // NOI18N
+        lblMinFrm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinFrmMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblMinFrmMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinFrmMouseExited(evt);
+            }
+        });
+        pnlSignIn.add(lblMinFrm, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 30));
+
+        lblClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close.png"))); // NOI18N
+        lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCloseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblCloseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblCloseMouseExited(evt);
+            }
+        });
+        pnlSignIn.add(lblClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 40, 30));
+
+        getContentPane().add(pnlSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 550, 720));
 
         pnlWelcome.setBackground(new java.awt.Color(255, 255, 255));
+        pnlWelcome.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 0, new java.awt.Color(137, 196, 244)));
         pnlWelcome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblWel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        lblWel.setFont(new java.awt.Font("Roboto", 1, 45)); // NOI18N
         lblWel.setForeground(new java.awt.Color(40, 67, 135));
         lblWel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWel.setText("CHÀO MỪNG BẠN");
-        pnlWelcome.add(lblWel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 290, 52));
+        pnlWelcome.add(lblWel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 450, 50));
 
         lblPic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/signup-library.png"))); // NOI18N
-        pnlWelcome.add(lblPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 191, 430, 390));
+        pnlWelcome.add(lblPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 480, 490));
 
-        lblCome.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblCome.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         lblCome.setForeground(new java.awt.Color(40, 67, 135));
         lblCome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCome.setText(" ĐẾN VỚI THẾ GIỚI SÁCH");
-        pnlWelcome.add(lblCome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 290, 47));
+        pnlWelcome.add(lblCome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 450, 50));
 
-        getContentPane().add(pnlWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 610));
+        getContentPane().add(pnlWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThoatMouseClicked
-        // TODO add your handling code here:
-        // Dong form 
-        System.exit(0);
-    }//GEN-LAST:event_lblThoatMouseClicked
 
     private void btnDangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseClicked
         // TODO add your handling code here:
@@ -261,7 +402,7 @@ public class frmDangKy extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Lấy dữ liệu từ các trường nhập
         String fullname = txtFullName.getText().trim();
-        String taikhoan = txtTaiKhoan.getText().trim();
+        String taikhoan = txtSdt.getText().trim();
         String matkhau = txtMatKhau.getText().trim();
 
         // Kiểm tra dữ liệu nhập vào
@@ -301,13 +442,69 @@ public class frmDangKy extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDangkiActionPerformed
 
-    private void txtFullNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFullNameFocusGained
+    private void lblShowMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowMKMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFullNameFocusGained
+        txtMatKhau.setEchoChar((char) 0); // Hiển thị mật khẩu
+        lblShowMK.setVisible(false); // Ẩn biểu tượng mở mắt
+        lblHideMK.setVisible(true); // Hiển thị biểu tượng đóng mắt
+    }//GEN-LAST:event_lblShowMKMouseClicked
 
-    private void txtFullNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFullNameFocusLost
+    private void lblHideMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHideMKMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFullNameFocusLost
+        // Ẩn mật khẩu (trở về dạng ***)
+        txtMatKhau.setEchoChar('*'); // Ẩn mật khẩu (dạng ***)
+        lblShowMK.setVisible(true); // Hiển thị biểu tượng mở mắt
+        lblHideMK.setVisible(false); // Ẩn biểu tượng đóng mắt
+
+    }//GEN-LAST:event_lblHideMKMouseClicked
+
+    private void lblShowMK1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowMK1MouseClicked
+        // TODO add your handling code here:
+        txtMatKhau1.setEchoChar((char) 0); // Hiển thị mật khẩu
+        lblShowMK1.setVisible(false); // Ẩn biểu tượng mở mắt
+        lblHideMK1.setVisible(true); // Hiển thị biểu tượng đóng mắt
+    }//GEN-LAST:event_lblShowMK1MouseClicked
+
+    private void lblHideMK1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHideMK1MouseClicked
+        // TODO add your handling code here:
+        // Ẩn mật khẩu (trở về dạng ***)
+        txtMatKhau1.setEchoChar('*'); // Ẩn mật khẩu (dạng ***)
+        lblShowMK1.setVisible(true); // Hiển thị biểu tượng mở mắt
+        lblHideMK1.setVisible(false); // Ẩn biểu tượng đóng mắt
+
+    }//GEN-LAST:event_lblHideMK1MouseClicked
+
+    private void lblMinFrmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinFrmMouseClicked
+        // TODO add your handling code here:
+        // Thu nhỏ form lại
+
+        this.setState(javax.swing.JFrame.ICONIFIED);
+    }//GEN-LAST:event_lblMinFrmMouseClicked
+
+    private void lblMinFrmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinFrmMouseEntered
+        // TODO add your handling code here:
+        lblMinFrm.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_lblMinFrmMouseEntered
+
+    private void lblMinFrmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinFrmMouseExited
+        // TODO add your handling code here:
+        lblMinFrm.setBackground(new java.awt.Color(137,196,244));
+    }//GEN-LAST:event_lblMinFrmMouseExited
+
+    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_lblCloseMouseClicked
+
+    private void lblCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseEntered
+        // TODO add your handling code here:
+        lblClose.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_lblCloseMouseEntered
+
+    private void lblCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseExited
+        // TODO add your handling code here:
+        lblClose.setBackground(new java.awt.Color(137,196,244));
+    }//GEN-LAST:event_lblCloseMouseExited
 
     /**
      * @param args the command line arguments
@@ -343,23 +540,42 @@ public class frmDangKy extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnDangki;
+    private javax.swing.JLabel lblAnhhoso;
+    private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblCome;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblHeader;
+    private javax.swing.JLabel lblHideMK;
+    private javax.swing.JLabel lblHideMK1;
+    private javax.swing.JLabel lblMinFrm;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNameu;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPassword1;
+    private javax.swing.JLabel lblPassword3;
     private javax.swing.JLabel lblPasswordIc;
+    private javax.swing.JLabel lblPasswordIc1;
     private javax.swing.JLabel lblPic;
     private javax.swing.JLabel lblResult;
     private javax.swing.JLabel lblReview;
+    private javax.swing.JLabel lblSdt;
+    private javax.swing.JLabel lblShowMK;
+    private javax.swing.JLabel lblShowMK1;
     private javax.swing.JLabel lblTKic;
     private javax.swing.JLabel lblTaiKhoan;
-    private javax.swing.JLabel lblThoat;
     private javax.swing.JLabel lblWel;
+    private javax.swing.JLabel lblemailIc;
+    private javax.swing.JLabel lblsdtIc;
     private javax.swing.JPanel pnlSignIn;
     private javax.swing.JPanel pnlWelcome;
+    private javax.swing.JRadioButton rdNam;
+    private javax.swing.JRadioButton rdNu;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFullName;
     private javax.swing.JPasswordField txtMatKhau;
-    private javax.swing.JTextField txtTaiKhoan;
+    private javax.swing.JPasswordField txtMatKhau1;
+    private javax.swing.JTextField txtSdt;
+    private javax.swing.JTextField txtTaiKhoan1;
     // End of variables declaration//GEN-END:variables
 }

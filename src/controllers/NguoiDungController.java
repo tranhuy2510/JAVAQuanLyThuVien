@@ -1,7 +1,5 @@
 package controllers;
 
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
@@ -27,9 +25,9 @@ public class NguoiDungController {
             throw new RuntimeException("Lỗi mã hóa mật khẩu!", e);
         }        
     }
-
+    
     // Phương thức kiểm tra đăng nhập
-    public boolean kiemTraDangNhap(String taikhoan, String matkhau, String loaiNguoiDung) throws SQLException {
+    public boolean kiemTraDangNhap(String taikhoan, String matkhau) throws SQLException {
         // Mã hóa mật khẩu người dùng nhập vào
         String matkhauHash = hashPassword(matkhau);
 
@@ -37,7 +35,7 @@ public class NguoiDungController {
         String sql = "SELECT * FROM tbl_NguoiDung WHERE taikhoan = ? AND loaiuser = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, taikhoan);
-            stmt.setString(2, loaiNguoiDung);
+            stmt.setString(2, matkhau);
             ResultSet rs = stmt.executeQuery();
 
             // Kiểm tra nếu có dữ liệu người dùng
@@ -65,6 +63,23 @@ public class NguoiDungController {
             return false;
         }
     }
+    
+    // Trả về loại người dùng nếu đăng nhập thành công, null nếu thất bại
+    public String getLoaiNguoiDung(String taikhoan, String matkhau) throws SQLException {
+        String matkhauHash = hashPassword(matkhau);
+        String sql = "SELECT loaiuser FROM tbl_NguoiDung WHERE taikhoan = ? AND matkhau = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, taikhoan);
+            stmt.setString(2, matkhauHash);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("loaiuser");
+                }
+            }
+        }
+        return null; // Trả về null nếu không tìm thấy
+    }
+
     
     // Kiểm tra tài khoản tồn tại
     public boolean isValidAccount(String taikhoan) throws SQLException {
