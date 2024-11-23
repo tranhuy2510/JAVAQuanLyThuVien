@@ -10,9 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import models.TheLoaiModel;
 
 /**
@@ -62,11 +60,7 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         // Tùy chỉnh giao diện của tiêu đề bảng
         tblTheloai.getTableHeader().setForeground(new java.awt.Color(4, 147, 114));
         tblTheloai.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 15));
-        tblTheloai.getTableHeader().setOpaque(false);
-        // Lấy TableColumnModel từ JTable
-        TableColumnModel columnModel = tblTheloai.getColumnModel();
-
-       
+        tblTheloai.getTableHeader().setOpaque(false);      
     }
 
     
@@ -92,12 +86,6 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         }
     } 
     
- 
-   
- 
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -283,6 +271,8 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         String tenTheloai = txtTheloai.getText().trim();
         
         if (tenTheloai.isEmpty()) {
+            txtMa.setText("");
+            txtTheloai.setText("");
             lblThongbao.setVisible(true);
         }else{
             try {
