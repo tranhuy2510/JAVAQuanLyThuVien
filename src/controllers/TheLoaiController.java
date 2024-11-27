@@ -11,8 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.TheLoaiModel;
 
 /**
@@ -71,6 +69,25 @@ public class TheLoaiController {
             return pstmt.executeUpdate() > 0;
         }
     } 
+    
+    // Hàm kiểm tra trùng tên thể loại
+    public boolean IsDuplicate(String tenTheLoai) throws SQLException {
+        String checkQuery = "SELECT COUNT(*) FROM tbl_theloai WHERE tentheloai = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(checkQuery)) {
+            pstmt.setString(1, tenTheLoai);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0; // Trả về true nếu tồn tại
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println("Lỗi kiểm tra trùng lặp: " + ex.getMessage());
+            throw ex;
+        }
+        return false;
+    }
+
 
    public boolean DeleteData(String matl) {
         String deleteQueryLoai = "DELETE FROM tbl_theloai WHERE id_theloai = ?";
@@ -93,16 +110,16 @@ public class TheLoaiController {
             // Rollback transaction in case of an error
             try {
                 conn.rollback();
-                System.err.println("Transaction rolled back due to error: " + ex.getMessage());
+                System.err.println("Truy vấn loi Reset: " + ex.getMessage());
             } catch (SQLException rollbackEx) {
-                System.err.println("Rollback failed: " + rollbackEx.getMessage());
+                System.err.println("Lỗi: " + rollbackEx.getMessage());
             }
         } finally {
             // Restore the auto-commit mode
             try {
                 conn.setAutoCommit(true);
             } catch (SQLException ex) {
-                System.err.println("Error restoring auto-commit: " + ex.getMessage());
+                System.err.println("Lỗi : " + ex.getMessage());
             }
         }
         return false; // Return false if deletion failed

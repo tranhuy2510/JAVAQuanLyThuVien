@@ -5,6 +5,7 @@
 package ui_library;
 
 import controllers.TheLoaiController;
+import java.awt.Color;
 import java.util.List;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -34,7 +35,7 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         // can giua cho form
         this.setLocationRelativeTo(null);
         
-        setupTableUI();
+        setupUI();
                 
         // Cấu hình bảng và controller
         tableModel = (DefaultTableModel) tblTheloai.getModel();
@@ -50,17 +51,24 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         ShowData();
         
         lblThongbao.setVisible(false);
+        lblWarn.setVisible(false);
      
         this.txtMa. setEnabled (false); 
         this.txtTheloai. setEnabled (true);
         
     }
     
-    private void setupTableUI() {
+    private void setupUI() {
         // Tùy chỉnh giao diện của tiêu đề bảng
+        tblTheloai.getTableHeader().setBackground(new java.awt.Color(255, 255, 255));
         tblTheloai.getTableHeader().setForeground(new java.awt.Color(4, 147, 114));
         tblTheloai.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 15));
         tblTheloai.getTableHeader().setOpaque(false);      
+        
+        lblMinus.setOpaque(true); // Cho phép JLabel có background
+        lblMinus.setBackground(new java.awt.Color(4, 147, 114)); 
+        lblSystemIC.setOpaque(true); // Cho phép JLabel có background
+        lblSystemIC.setBackground(new java.awt.Color(4, 147, 114)); 
     }
 
     
@@ -96,8 +104,9 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlHeader = new javax.swing.JPanel();
-        lblSystemIC = new javax.swing.JLabel();
+        lblMinus = new javax.swing.JLabel();
         lblTieude = new javax.swing.JLabel();
+        lblSystemIC = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtTheloai = new javax.swing.JTextField();
         lblThongbao = new javax.swing.JLabel();
@@ -107,9 +116,10 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         btnXoa = new javax.swing.JButton();
         txtMa = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollTheloai = new javax.swing.JScrollPane();
         tblTheloai = new javax.swing.JTable();
         btnHuy = new javax.swing.JButton();
+        lblWarn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -118,15 +128,21 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         pnlHeader.setBackground(new java.awt.Color(4, 147, 114));
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblMinus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_minus.png"))); // NOI18N
+        lblMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMinus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseClicked(evt);
+                lblMinusMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblMinusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinusMouseExited(evt);
             }
         });
-        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 0, 70, 60));
+        pnlHeader.add(lblMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 60, 60));
 
         lblTieude.setBackground(new java.awt.Color(241, 231, 254));
         lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -136,6 +152,22 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         lblTieude.setText("   Quản lý thể loại");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 270, 60));
+
+        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseExited(evt);
+            }
+        });
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 0, 60, 60));
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 695, 60));
 
@@ -152,17 +184,17 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
                 txtTheloaiKeyReleased(evt);
             }
         });
-        jPanel1.add(txtTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 280, 32));
+        jPanel1.add(txtTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 280, 32));
 
         lblThongbao.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblThongbao.setForeground(new java.awt.Color(255, 102, 102));
-        lblThongbao.setText("* Tên thể loại không được để trống");
-        jPanel1.add(lblThongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 200, 30));
+        lblThongbao.setText("* Đã xóa dữ liệu, vui lòng nhập lại!");
+        jPanel1.add(lblThongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(4, 147, 114));
         jLabel8.setText("Tên thể loại:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 120, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 185, 120, 30));
 
         btnThem.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         btnThem.setForeground(new java.awt.Color(4, 147, 114));
@@ -237,9 +269,9 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
                 tblTheloaiMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblTheloai);
+        scrollTheloai.setViewportView(tblTheloai);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 310, 190));
+        jPanel1.add(scrollTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 310, 190));
 
         btnHuy.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         btnHuy.setForeground(new java.awt.Color(4, 147, 114));
@@ -252,55 +284,69 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         });
         jPanel1.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 100, 32));
 
+        lblWarn.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        lblWarn.setForeground(new java.awt.Color(255, 102, 102));
+        lblWarn.setText("* Tên thể loại không được để trống");
+        jPanel1.add(lblWarn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 695, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
+    private void lblMinusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseClicked
         // TODO add your handling code here:
-        // Dong form
-        this.dispose();
-    }//GEN-LAST:event_lblSystemICMouseClicked
+        // Thu nhỏ form lại
+        this.setState(javax.swing.JFrame.ICONIFIED);        
+    }//GEN-LAST:event_lblMinusMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        // TODO add your handling code here:
-        txtMa.setText("");
-        txtTheloai.setText("");
-        String maTheloai = txtMa.getText().trim();
-        String tenTheloai = txtTheloai.getText().trim();
-        
-        if (tenTheloai.isEmpty()) {
-            txtMa.setText("");
-            txtTheloai.setText("");
-            lblThongbao.setVisible(true);
-        }else{
-            try {
-                TheLoaiModel obj = new TheLoaiModel();
-                obj.setTenTheLoai(tenTheloai);
-                if (cothem) { // Add new category
-                    if (dstheloai.InsertData(obj)) {
-                        JOptionPane.showMessageDialog(null, "Thêm mới thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Thêm mới thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else { 
-                    if (dstheloai.EditData(obj)) {
-                        JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Cập nhật thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-                ClearData(); //goi ham xoa du lieu tron tableModel 
-                ShowData();
-            } catch (SQLException ex) {
-                Logger.getLogger(frmQLTheLoai.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            // TODO add your handling code here:
+            String maTheloai = txtMa.getText().trim();
+            String tenTheloai = txtTheloai.getText().trim();          
+            
+            if (tenTheloai.isEmpty()) {
+                txtMa.setText("");
+                txtTheloai.setText("");
+                lblWarn.setVisible(true);
+                return;
             }
+            
+            // Kiểm tra tên thể loại đã tồn tại
+            if (dstheloai.IsDuplicate(tenTheloai)) {
+                JOptionPane.showMessageDialog(null, "Thể loại này đã tồn tại!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return; // Dừng thực hiện
+            }
+            
+            // Tiến hành thêm hoặc sửa
+            TheLoaiModel obj = new TheLoaiModel();
+            obj.setTenTheLoai(tenTheloai);
+            
+            if (cothem) { // Thêm mới
+                if (dstheloai.InsertData(obj)) {
+                    JOptionPane.showMessageDialog(null, "Thêm mới thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Thêm mới thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                }
+            } else { // Sửa
+                if (dstheloai.EditData(obj)) {
+                    JOptionPane.showMessageDialog(null, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cập nhật thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            
+            ClearData(); // Xóa dữ liệu trên bảng
+            ShowData();  // Hiển thị lại dữ liệu
+        } catch (SQLException ex) {
+            Logger.getLogger(frmQLTheLoai.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        
         String ml = txtMa.getText();
         String tenTL = txtTheloai.getText();
 
@@ -335,6 +381,7 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         String maLoai = txtMa.getText().trim();
+        String tenTL = txtTheloai.getText();
 
         try {
             if (maLoai.isEmpty()) {
@@ -344,14 +391,14 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
 
             // Confirm the deletion
             int confirm = JOptionPane.showConfirmDialog(this, 
-                "Bạn có chắc chắn muốn xóa thể loại có mã \"" + maLoai + "\" không?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION, 
+                "Bạn có chắc chắn muốn xóa thể loại tên \"" + tenTL + "\" không?", "Xác nhận xóa", JOptionPane.YES_NO_OPTION, 
                 JOptionPane.QUESTION_MESSAGE);
 
             if (confirm == JOptionPane.YES_OPTION) {
                 boolean isDeleted = dstheloai.DeleteData(maLoai);
 
                 if (isDeleted) {
-                    JOptionPane.showMessageDialog(this,  "Xóa thành công thể loại có mã \"" + maLoai + "\".", 
+                    JOptionPane.showMessageDialog(this,  "Xóa thành công thể loại có tên \"" + tenTL + "\".", 
                         "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
                     ClearData();  
@@ -370,7 +417,7 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
 
     private void tblTheloaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTheloaiMouseClicked
         // TODO add your handling code here:
-        this.txtTheloai. setEnabled (true);
+        //this.txtTheloai. setEnabled (false);
         int selectedRow = tblTheloai.getSelectedRow();
         if (selectedRow != -1) {
             // Get the selected category data
@@ -395,12 +442,38 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         // TODO add your handling code here:
         String tl = txtTheloai.getText().trim();
         if (!tl.isEmpty()) {
-            lblThongbao.setVisible(false); 
+            lblWarn.setVisible(false); 
             
         } else {
-            lblThongbao.setVisible(true); 
+            lblWarn.setVisible(true); 
         }
     }//GEN-LAST:event_txtTheloaiKeyReleased
+
+    private void lblMinusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseEntered
+        // TODO add your handling code here:
+        lblMinus.setBackground(Color.LIGHT_GRAY); 
+    }//GEN-LAST:event_lblMinusMouseEntered
+
+    private void lblMinusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseExited
+        // TODO add your handling code here:
+        lblMinus.setBackground(new java.awt.Color(4, 147, 114)); 
+    }//GEN-LAST:event_lblMinusMouseExited
+
+    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
+        // TODO add your handling code here:
+        // Dong form
+        this.dispose();
+    }//GEN-LAST:event_lblSystemICMouseClicked
+
+    private void lblSystemICMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseEntered
+        // TODO add your handling code here:
+        lblSystemIC.setBackground(new java.awt.Color(255,102,102)); 
+    }//GEN-LAST:event_lblSystemICMouseEntered
+
+    private void lblSystemICMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseExited
+        // TODO add your handling code here:
+        lblSystemIC.setBackground(new java.awt.Color(4, 147, 114));
+    }//GEN-LAST:event_lblSystemICMouseExited
 
     /**
      * @param args the command line arguments
@@ -448,11 +521,13 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMinus;
     private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblThongbao;
     private javax.swing.JLabel lblTieude;
+    private javax.swing.JLabel lblWarn;
     private javax.swing.JPanel pnlHeader;
+    private javax.swing.JScrollPane scrollTheloai;
     private javax.swing.JTable tblTheloai;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtTheloai;
