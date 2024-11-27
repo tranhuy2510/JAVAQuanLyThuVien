@@ -236,16 +236,7 @@ public class frmQLDocGia extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(90, 34, 139));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Mã ", "Tên độc giả", "Số điện thoại", "Email", "Giới tính"

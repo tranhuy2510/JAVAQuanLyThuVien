@@ -50,7 +50,6 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         // Gọi hàm showDataOnTable() để hiển thị dữ liệu lên bảng
         ShowData();
         
-        lblThongbao.setVisible(false);
         lblWarn.setVisible(false);
      
         this.txtMa. setEnabled (false); 
@@ -60,7 +59,7 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
     
     private void setupUI() {
         // Tùy chỉnh giao diện của tiêu đề bảng
-        tblTheloai.getTableHeader().setBackground(new java.awt.Color(255, 255, 255));
+        tblTheloai.getTableHeader().setBackground(new java.awt.Color(200,247,197));
         tblTheloai.getTableHeader().setForeground(new java.awt.Color(4, 147, 114));
         tblTheloai.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 15));
         tblTheloai.getTableHeader().setOpaque(false);      
@@ -109,7 +108,6 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         lblSystemIC = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtTheloai = new javax.swing.JTextField();
-        lblThongbao = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
@@ -185,11 +183,6 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 280, 32));
-
-        lblThongbao.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        lblThongbao.setForeground(new java.awt.Color(255, 102, 102));
-        lblThongbao.setText("* Đã xóa dữ liệu, vui lòng nhập lại!");
-        jPanel1.add(lblThongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(4, 147, 114));
@@ -523,7 +516,6 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblMinus;
     private javax.swing.JLabel lblSystemIC;
-    private javax.swing.JLabel lblThongbao;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JLabel lblWarn;
     private javax.swing.JPanel pnlHeader;

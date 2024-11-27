@@ -592,9 +592,13 @@ public class frmTrangchu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQLDocGiaMouseClicked
 
     private void btnQLTacGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLTacGiaMouseClicked
-        // TODO add your handling code here:
-        frmQLTacGia author = new frmQLTacGia();
-        author.setVisible(true); // Hiển thị form
+        try {
+            // TODO add your handling code here:
+            frmQLTacGia author = new frmQLTacGia();
+            author.setVisible(true); // Hiển thị form
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangchu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnQLTacGiaMouseClicked
 
     private void btnQLSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLSachMouseClicked

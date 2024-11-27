@@ -29,7 +29,7 @@ public class TacGiaModel {
 
       //khoi tao nhanh khi lam viec voi giao dien
     public TacGiaModel(ResultSet rs) throws SQLException{
-        this.maTacgia= rs.getString("id_theloai");
+        this.maTacgia= rs.getString("id_tacgia");
         this.tenTacgia = rs.getString("tentacgia");
         this.Chuyenmon = rs.getString("linhvuc");
         this.Gioithieu = rs.getString("gioithieu");
