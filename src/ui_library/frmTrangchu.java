@@ -602,9 +602,13 @@ public class frmTrangchu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQLTacGiaMouseClicked
 
     private void btnQLSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLSachMouseClicked
-        // TODO add your handling code here:
-        //frmQLSach book = new frmQLSach();
-        //book.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            frmQLSach book = new frmQLSach();
+            book.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangchu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnQLSachMouseClicked
 
     private void btnDSMuonTra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSMuonTra1MouseClicked
