@@ -19,4 +19,7 @@ public class Func_Class {
         // dat hinh anh vao jlabel
         label.setIcon(new ImageIcon(image));
     }
+    
+    
+    
 }

@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import models.TacGiaModel;
-import models.TheLoaiModel;
 
 /**
  *
@@ -131,7 +131,24 @@ public class TacGiaController {
         return false; // Return false if deletion failed
     }
     
-    
+    // Hàm lấy tên tác giả từ mã tác giả
+    public String getTenTacGiaById(int matacgia) {
+        String tenTacGia = "";
+        try {
+            // Truy vấn cơ sở dữ liệu để lấy tên tác giả
+            String query = "SELECT tenTacGia FROM TacGia WHERE maTacGia = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, matacgia);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                tenTacGia = rs.getString("tenTacGia");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Lỗi khi lấy tên tác giả: " + e.getMessage(),
+                                          "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        return tenTacGia;
+    }
     
     
     

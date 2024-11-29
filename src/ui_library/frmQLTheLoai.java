@@ -74,16 +74,16 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
     public void ShowData() throws SQLException{ 
         List<TheLoaiModel> lst = dstheloai.getTheloaiSach(); 
         // Duyệt qua ArrayList data
-        for (TheLoaiModel theloai : lst) { 
-            // Tạo một dòng mới chứa 2 cột (Mã Loại và Tên Loại)
-            String rows[] = new String[2];
-            rows[0] = theloai.getMaTheLoai();  
-            rows[1] = theloai.getTenTheLoai(); 
-
+        Object[] rows = new Object[2];
+        for(int i =0; i< lst.size() ; i++){
+            rows[0] = lst.get(i).getMaTheLoai();
+            rows[1] = lst.get(i).getTenTheLoai();
             // Đưa dòng dữ liệu vào tableModel
             tableModel.addRow(rows);
-        }
+        }   
     }
+   
+    
     
     //Ham xoa du lieu trong tableModel 
     public void ClearData() throws SQLException{ 
@@ -355,7 +355,7 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
 
         try {
             TheLoaiModel theLoai = new TheLoaiModel();
-            theLoai.setMaTheLoai(ml); 
+            theLoai.setMaTheLoai(Integer.valueOf(ml));
             theLoai.setTenTheLoai(tenTL); 
 
             if (dstheloai.EditData(theLoai)) {
@@ -413,11 +413,9 @@ public final class frmQLTheLoai extends javax.swing.JFrame {
         //this.txtTheloai. setEnabled (false);
         int selectedRow = tblTheloai.getSelectedRow();
         if (selectedRow != -1) {
-            // Get the selected category data
-            String maTheLoai = (String) tblTheloai.getValueAt(selectedRow, 0);
+            Object maTheLoaiObj = tblTheloai.getValueAt(selectedRow, 0);
+            String maTheLoai = maTheLoaiObj != null ? maTheLoaiObj.toString() : ""; 
             String tenTheLoai = (String) tblTheloai.getValueAt(selectedRow, 1);
-
-            // Populate text fields with selected data
             txtMa.setText(maTheLoai);
             txtTheloai.setText(tenTheLoai);
            

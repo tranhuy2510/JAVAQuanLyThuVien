@@ -4,157 +4,138 @@
  */
 package models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author ADMIN
  */
 public class SachModel {
-    private int idSach;
+    private Integer idSach;
     private String tenSach;
-    private String tenTacGia;
-    private String tenTheLoai;
-    private int idTacGia;
-    private int idTheLoai;
+    private Integer idTacGia;
+    private Integer idTheLoai;
     private String nhaXuatBan;
     private double giaSach;
-    private int soLuong;
+    private Integer soLuong;
     private String ngayNhan;
     private String moTa;
     private byte[] anhSach;
-    
-    // Constructor
 
-    /**
-     *
-     * @param idSach
-     * @param tenSach
-     * @param idTacGia
-     * @param tenTacGia
-     * @param tenTheLoai
-     * @param nhaXuatBan
-     * @param giaSach
-     * @param soLuong
-     * @param ngayNhan
-     * @param moTa
-     */
-    // Khoi tao constructor co tham so
-    public SachModel(int idSach, String tenSach, int idTacGia, String tenTacGia, String tenTheLoai, String nhaXuatBan, double giaSach, int soLuong, String ngayNhan, String moTa) {
+    public SachModel() {
+    }
+
+    public SachModel(Integer idSach, String tenSach, Integer idTacGia, Integer idTheLoai, String nhaXuatBan, 
+            double giaSach, Integer soLuong, String ngayNhan, String moTa, byte[] anhSach) {
         this.idSach = idSach;
         this.tenSach = tenSach;
         this.idTacGia = idTacGia;
-        this.tenTacGia = tenTacGia;
-        this.tenTheLoai = tenTheLoai;
+        this.idTheLoai = idTheLoai;
         this.nhaXuatBan = nhaXuatBan;
         this.giaSach = giaSach;
         this.soLuong = soLuong;
         this.ngayNhan = ngayNhan;
         this.moTa = moTa;
         this.anhSach = anhSach;
-
     }
 
-    public SachModel(int idSach, String tensach, int idTacgia,String tenTacgia, int idTheloai, String nhaxuatban, double giasach, int soluong, String ngaynhan, String mota, String imagePath) {
-       
-    }
+    
 
-    public SachModel(int idSach, String tensach, int idTacgia, int idTheloai, String nhaxuatban, double giasach, int soluong, String ngaynhan, String mota, String imagePath) {
+      //khoi tao nhanh khi lam viec voi giao dien
+    public SachModel(ResultSet rs) throws SQLException{
+        this.idSach = rs.getInt("id_sach");
+        this.tenSach = rs.getString("tensach");
+        this.idTacGia = rs.getInt("id_tacgia");
+        this.idTheLoai = rs.getInt("id_theloai");
+        this.nhaXuatBan = rs.getString("nhaxuatban");
+        this.giaSach = rs.getDouble("giasach");
+        this.soLuong = rs.getInt("soluong");
+        this.ngayNhan = rs.getString("ngaynhan");
+        this.moTa = rs.getString("mota");
+        this.anhSach = rs.getBytes("anhsach");
         
     }
 
-    public int getIdSach() {
+    public Integer getIdSach() {
         return idSach;
-    }
-
-    public void setIdSach(int idSach) {
-        this.idSach = idSach;
     }
 
     public String getTenSach() {
         return tenSach;
     }
 
-    public void setTenSach(String tenSach) {
-        this.tenSach = tenSach;
-    }
-
-    public int getIdTacGia() {
+    public Integer getIdTacGia() {
         return idTacGia;
     }
 
-    public void setIdTacGia(int idTacGia) {
-        this.idTacGia = idTacGia;
-    }
-
-    public int getIdTheLoai() {
+    public Integer getIdTheLoai() {
         return idTheLoai;
-    }
-
-    public void setIdTheLoai(int idTheLoai) {
-        this.idTheLoai = idTheLoai;
     }
 
     public String getNhaXuatBan() {
         return nhaXuatBan;
     }
 
-    public void setNhaXuatBan(String nhaXuatBan) {
-        this.nhaXuatBan = nhaXuatBan;
-    }
-
     public double getGiaSach() {
         return giaSach;
     }
 
-    public void setGiaSach(double giaSach) {
-        this.giaSach = giaSach;
-    }
-
-    public int getSoLuong() {
+    public Integer getSoLuong() {
         return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
     }
 
     public String getNgayNhan() {
         return ngayNhan;
     }
 
-    public void setNgayNhan(String ngayNhan) {
-        this.ngayNhan = ngayNhan;
-    }
-
     public String getMoTa() {
         return moTa;
-    }
-
-    public void setMoTa(String moTa) {
-        this.moTa = moTa;
     }
 
     public byte[] getAnhSach() {
         return anhSach;
     }
 
+    public void setIdSach(Integer idSach) {
+        this.idSach = idSach;
+    }
+
+    public void setTenSach(String tenSach) {
+        this.tenSach = tenSach;
+    }
+
+    public void setIdTacGia(Integer idTacGia) {
+        this.idTacGia = idTacGia;
+    }
+
+    public void setIdTheLoai(Integer idTheLoai) {
+        this.idTheLoai = idTheLoai;
+    }
+
+    public void setNhaXuatBan(String nhaXuatBan) {
+        this.nhaXuatBan = nhaXuatBan;
+    }
+
+    public void setGiaSach(double giaSach) {
+        this.giaSach = giaSach;
+    }
+
+    public void setSoLuong(Integer soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public void setNgayNhan(String ngayNhan) {
+        this.ngayNhan = ngayNhan;
+    }
+
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
+    }
+
     public void setAnhSach(byte[] anhSach) {
         this.anhSach = anhSach;
     }
-
-    public String getTenTacGia() {
-        return tenTacGia;
-    }
-
-    public void setTenTacGia(String tenTacGia) {
-        this.tenTacGia = tenTacGia;
-    }
-
-    public String getTenTheLoai() {
-        return tenTheLoai;
-    }
-
-    public void setTenTheLoai(String tenTheLoai) {
-        this.tenTheLoai = tenTheLoai;
-    }
+    
     
 }

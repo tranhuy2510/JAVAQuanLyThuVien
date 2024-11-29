@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import javax.swing.JOptionPane;
 import models.TheLoaiModel;
 
 /**
@@ -65,7 +67,7 @@ public class TheLoaiController {
         String updateQuery = "UPDATE tbl_theloai SET tentheloai = ? WHERE id_theloai = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(updateQuery)) {
             pstmt.setString(1, obj.getTenTheLoai());
-            pstmt.setString(2, obj.getMaTheLoai());
+            pstmt.setInt(2, obj.getMaTheLoai());
             return pstmt.executeUpdate() > 0;
         }
     } 
@@ -89,7 +91,7 @@ public class TheLoaiController {
     }
 
 
-   public boolean DeleteData(String matl) {
+    public boolean DeleteData(String matl) {
         String deleteQueryLoai = "DELETE FROM tbl_theloai WHERE id_theloai = ?";
 
         try {
@@ -125,5 +127,43 @@ public class TheLoaiController {
         return false; // Return false if deletion failed
     }
 
+    public HashMap<String, Integer> GetTheloaiMap (){
+        HashMap<String, Integer> map = new HashMap<>();
+        String query = "SELECT * FROM tbl_theloai";
+        
+        try {
+            try (Statement stmt = conn.createStatement(); 
+                ResultSet rs = stmt.executeQuery(query)) {
+                
+                // Lấy dữ liệu từ ResultSet và thêm vào danh sách
+                while (rs.next()) {
+                    TheLoaiModel theloai = new TheLoaiModel(rs); // Sử dụng constructor của LoaiSanPham
+                    map.put(theloai.getTenTheLoai(), theloai.getMaTheLoai());
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy dữ liệu the loai: " + e.getMessage());
+        }
+        return map;
+    }
+    
+    // Hàm lấy tên thể loại từ mã thể loại
+    public String getTenTheLoaiById(int matheloai) {
+        String tenTheLoai = "";
+        try {
+            // Truy vấn cơ sở dữ liệu để lấy tên thể loại
+            String query = "SELECT tenTheLoai FROM TheLoai WHERE maTheLoai = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, matheloai);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                tenTheLoai = rs.getString("tenTheLoai");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Lỗi khi lấy tên thể loại: " + e.getMessage(),
+                                          "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        return tenTheLoai;
+    }
     
 }

@@ -12,25 +12,25 @@ import java.sql.*;
  */
 public class TheLoaiModel {
     
-    private String maTheLoai;
+    private Integer maTheLoai;
     private String tenTheLoai;
 
     public TheLoaiModel() {
     }
 
     
-    public TheLoaiModel(String maTheLoai, String tenTheLoai) {
+    public TheLoaiModel(Integer maTheLoai, String tenTheLoai) {
         this.maTheLoai = maTheLoai;
         this.tenTheLoai = tenTheLoai;
     }
 
       //khoi tao nhanh khi lam viec voi giao dien
     public TheLoaiModel(ResultSet rs) throws SQLException{
-        this.maTheLoai= rs.getString("id_theloai");
+        this.maTheLoai= rs.getInt("id_theloai");
         this.tenTheLoai = rs.getString("tentheloai");  
     }
 
-    public String getMaTheLoai() {
+    public Integer getMaTheLoai() {
         return maTheLoai;
     }
 
@@ -38,7 +38,7 @@ public class TheLoaiModel {
         return tenTheLoai;
     }
 
-    public void setMaTheLoai(String maTheLoai) {
+    public void setMaTheLoai(Integer maTheLoai) {
         this.maTheLoai = maTheLoai;
     }
 
