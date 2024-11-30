@@ -12,14 +12,18 @@ import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Insets;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -38,15 +42,18 @@ import models.SachModel;
  */
 public final class frmQLSach extends javax.swing.JFrame {
 
-    private Object fileChooser;
+    //private Object filename;
+    String filename =null;
+    byte[] book_img = null;
     private final TheLoaiController theLoai; // Đối tượng để kết nối dữ liệu thể loại
     private final TacGiaController tacGia;
+    private final HashMap<String, String> tacGiaMap; // Map lưu trữ dữ liệu mã và tên tác giả
     private HashMap<String, Integer> theLoaiMap; // Lưu trữ dữ liệu thể loại
     // Khai báo tableModel
     private final DefaultTableModel tableModel;
     private final SachController dssach;
     private final boolean cothem = true;
-    String imagePath ="";
+    
     /**
      * Creates new form frmQLTheLoai
      * @throws java.sql.SQLException
@@ -60,8 +67,10 @@ public final class frmQLSach extends javax.swing.JFrame {
         tableModel = (DefaultTableModel) tblsach.getModel();
         dssach = new SachController();
         tacGia = new TacGiaController();
+        // Tải dữ liệu tác giả vào Map
+        tacGiaMap = tacGia.getTacGiaMap();
         // Khởi tạo các components trên JFrame
-        String[] colsName = {"ID", "Tên", "Tác giả", "Thể loại", "Nhà xuất bản", "Số lượng", "Giá", "Ngày nhập", "Mô tả", "Đường dẫn ảnh"};
+        String[] colsName = {"ID", "Tên", "Tác giả", "Thể loại", "Nhà xuất bản", "Số lượng", "Giá", "Ngày nhập","Mô tả", "Ảnh"};
         // đặt tiêu đề cột cho tableModel
         tableModel.setColumnIdentifiers(colsName);
         // Kết nối JTable với tableModel
@@ -75,6 +84,7 @@ public final class frmQLSach extends javax.swing.JFrame {
         lblWarn.setVisible(false);
         lblWarn1.setVisible(false);
         lblWarn2.setVisible(false);
+        lblWarn3.setVisible(false);
     }
 
     private void setupUI(){
@@ -197,6 +207,7 @@ public final class frmQLSach extends javax.swing.JFrame {
         lblWarn = new javax.swing.JLabel();
         lblWarn1 = new javax.swing.JLabel();
         lblWarn2 = new javax.swing.JLabel();
+        lblWarn3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -295,10 +306,16 @@ public final class frmQLSach extends javax.swing.JFrame {
 
         txtTenSach.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txtTenSach.setForeground(new java.awt.Color(255, 102, 51));
+        txtTenSach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTenSachKeyReleased(evt);
+            }
+        });
         jPanel_Theloaisach.add(txtTenSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 430, 32));
 
         txtTenTacGia.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txtTenTacGia.setForeground(new java.awt.Color(255, 102, 51));
+        txtTenTacGia.setEnabled(false);
         jPanel_Theloaisach.add(txtTenTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 182, 240, 32));
 
         txtGia.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -327,6 +344,11 @@ public final class frmQLSach extends javax.swing.JFrame {
                 cmbTheloaiActionPerformed(evt);
             }
         });
+        cmbTheloai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cmbTheloaiKeyReleased(evt);
+            }
+        });
         jPanel_Theloaisach.add(cmbTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 235, 240, 32));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -342,6 +364,11 @@ public final class frmQLSach extends javax.swing.JFrame {
 
         txtNhaxuatban.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txtNhaxuatban.setForeground(new java.awt.Color(255, 102, 51));
+        txtNhaxuatban.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNhaxuatbanKeyReleased(evt);
+            }
+        });
         jPanel_Theloaisach.add(txtNhaxuatban, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 395, 240, 32));
 
         tblsach.setBackground(new java.awt.Color(247, 239, 232));
@@ -382,6 +409,11 @@ public final class frmQLSach extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblsach);
+        if (tblsach.getColumnModel().getColumnCount() > 0) {
+            tblsach.getColumnModel().getColumn(8).setHeaderValue("Mô tả");
+            tblsach.getColumnModel().getColumn(9).setResizable(false);
+            tblsach.getColumnModel().getColumn(9).setHeaderValue("Ảnh");
+        }
 
         jPanel_Theloaisach.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 125, 570, 495));
 
@@ -389,12 +421,22 @@ public final class frmQLSach extends javax.swing.JFrame {
         btnXoa.setForeground(new java.awt.Color(255, 102, 51));
         btnXoa.setText("Xóa");
         btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         jPanel_Theloaisach.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 640, 110, 32));
 
         btnSua.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 102, 51));
         btnSua.setText("Sửa");
         btnSua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
         jPanel_Theloaisach.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 640, 110, 32));
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
@@ -457,9 +499,12 @@ public final class frmQLSach extends javax.swing.JFrame {
         jPanel_Theloaisach.add(lblPathAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 170, 20));
 
         Matg.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        Matg.setAutoscrolls(false);
+        Matg.setEnabled(false);
         jPanel_Theloaisach.add(Matg, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 182, 35, 32));
 
         Matl.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        Matl.setEnabled(false);
         jPanel_Theloaisach.add(Matl, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 235, 35, 32));
 
         btnChon_Tacgia.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -468,6 +513,11 @@ public final class frmQLSach extends javax.swing.JFrame {
         btnChon_Tacgia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChon_TacgiaActionPerformed(evt);
+            }
+        });
+        btnChon_Tacgia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnChon_TacgiaKeyReleased(evt);
             }
         });
         jPanel_Theloaisach.add(btnChon_Tacgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 182, 140, 30));
@@ -485,13 +535,18 @@ public final class frmQLSach extends javax.swing.JFrame {
 
         lblWarn1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWarn1.setForeground(new java.awt.Color(255, 102, 102));
-        lblWarn1.setText("* Tên sách không được để trống");
-        jPanel_Theloaisach.add(lblWarn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 265, 240, 20));
+        lblWarn1.setText("* Hãy chọn một tác giả");
+        jPanel_Theloaisach.add(lblWarn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 215, 240, 20));
 
         lblWarn2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWarn2.setForeground(new java.awt.Color(255, 102, 102));
-        lblWarn2.setText("* Tên sách không được để trống");
-        jPanel_Theloaisach.add(lblWarn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 215, 240, 20));
+        lblWarn2.setText("* Hãy chọn một thể loại");
+        jPanel_Theloaisach.add(lblWarn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 268, 240, 20));
+
+        lblWarn3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        lblWarn3.setForeground(new java.awt.Color(255, 102, 102));
+        lblWarn3.setText("* Nhà xuất bản không được để trống");
+        jPanel_Theloaisach.add(lblWarn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 425, 240, 20));
 
         getContentPane().add(jPanel_Theloaisach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
 
@@ -531,12 +586,18 @@ public final class frmQLSach extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSystemICMouseExited
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        try {                                        
+                                                
             // TODO add your handling code here:
             //Them sach moi
             //Lay gia tri
             String masach = txtMasach.getText();
             String tensach = txtTenSach.getText();
+            if (tensach.isEmpty()) {
+                txtMasach.setText("");
+                txtTenSach.setText("");
+                lblWarn.setVisible(true);
+                return;
+            }
             String nhaxuatban = txtNhaxuatban.getText();
             String mota = txtmota.getText();
             
@@ -545,21 +606,30 @@ public final class frmQLSach extends javax.swing.JFrame {
 
             int soluong= Integer.parseInt(spnSoluong.getValue().toString());
             
+            
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String ngaynhap = dateFormat.format(NgayNhap.getDate());
+            
             double giasach = Double.parseDouble(txtGia.getText());
             
+            if (book_img == null) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn ảnh bìa sách!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            /*
             // Kiểm tra ảnh sách
             byte[] anhSach = null;
             if (lblPathAnh.getText() != null && !lblPathAnh.getText().isEmpty()) {
                 anhSach = Files.readAllBytes(Paths.get(lblPathAnh.getText()));
             }
+            
+            
             // Kiểm tra thông tin
             if (tensach.isEmpty() || matacgia <= 0 || matheloai <= 0 || nhaxuatban.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!", "Thông báo", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
+            */
             // Tạo đối tượng SachModel
             SachModel sach = new SachModel();
             sach.setTenSach(tensach);
@@ -570,24 +640,27 @@ public final class frmQLSach extends javax.swing.JFrame {
             sach.setSoLuong(soluong);
             sach.setNgayNhan(ngaynhap);
             sach.setMoTa(mota);
-            sach.setAnhSach(anhSach);
+            sach.setAnhSach(book_img);
             
             if (cothem) {
-                // Thêm sách vào cơ sở dữ liệu
-                if (dssach.InsertBook(sach)) {
-                    JOptionPane.showMessageDialog(this, "Thêm sách thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                // Reset form hoặc cập nhật lại danh sách sách hiển thị
-                ClearData();
-                ShowData();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Thêm sách thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                try {
+                    // Thêm sách vào cơ sở dữ liệu
+                    if (dssach.InsertBook(sach)) {
+                        try {
+                            JOptionPane.showMessageDialog(this, "Thêm sách thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                            // Reset form hoặc cập nhật lại danh sách sách hiển thị
+                            ClearData();
+                            ShowData();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Thêm sách thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-            
-          
-        } catch (SQLException | IOException ex) {
-            Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }          
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -609,28 +682,26 @@ public final class frmQLSach extends javax.swing.JFrame {
     private void btnChonanhbiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonanhbiaActionPerformed
         // TODO add your handling code here:
         // Tạo JFileChooser để chọn tệp ảnh
-        JFileChooser chonfile = new JFileChooser();
-        chonfile.setDialogTitle("Chọn ảnh bìa sách");
-        chonfile.setCurrentDirectory(new File("D:\\img_books")); // Đặt thư mục mặc định
-
-        // Thêm bộ lọc tệp để chỉ cho phép chọn ảnh (jpg, png, jpeg)
-        FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Image Files", "jpg", "png", "jpeg");
-        chonfile.setFileFilter(extensionFilter);
-
-        // Hiển thị hộp thoại chọn tệp
-        int fileState = chonfile.showOpenDialog(this);
-        // Lấy đường dẫn tệp ảnh được chọn
-        String path = chonfile.getSelectedFile().getAbsolutePath();
-        if (fileState == JFileChooser.APPROVE_OPTION) {
-            
-            
-            lblPathAnh.setText(path); // Hiển thị đường dẫn ảnh trong lblPathAnh
-
-            // Hiển thị ảnh trong lblAnh
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(lblAnh.getWidth(), lblAnh.getHeight(), Image.SCALE_SMOOTH));
-            lblAnh.setIcon(imageIcon); // Gắn hình ảnh vào JLabel
+        JFileChooser choose = new JFileChooser();
+        choose.setDialogTitle("Chọn ảnh bìa sách");
+        choose.showOpenDialog(null);
+        File f = choose.getSelectedFile();
+        filename = f.getAbsolutePath();
+        // Hiển thị ảnh trong lblAnh
+        ImageIcon imgIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lblAnh.getWidth(), lblAnh.getHeight(), Image.SCALE_SMOOTH));
+        lblAnh.setIcon(imgIcon); // Gắn hình ảnh vào JLabel
+        try{
+            File anh = new File(filename);
+            FileInputStream fis = new FileInputStream(anh);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] buf = new byte[1024];
+            for(int readNum; (readNum=fis.read(buf))!= -1;){
+                bos.write(buf,0,readNum);
+            }
+            book_img = bos.toByteArray() ;
+        }catch (IOException e) {
+            JOptionPane.showMessageDialog(null,e);
         }
-        imagePath = path;
     }//GEN-LAST:event_btnChonanhbiaActionPerformed
 
     private void btnChon_TacgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChon_TacgiaActionPerformed
@@ -652,7 +723,7 @@ public final class frmQLSach extends javax.swing.JFrame {
             Matl.setText(String.valueOf(maTheLoai));
         }
     }//GEN-LAST:event_cmbTheloaiActionPerformed
-
+  
     private void tblsachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblsachMouseClicked
         // TODO add your handling code here:
         // Lấy hàng được chọn trong bảng
@@ -668,17 +739,35 @@ public final class frmQLSach extends javax.swing.JFrame {
                 txtMasach.setText(model.getValueAt(selectedRow, 0).toString());   // Cột 0: ID
                 txtTenSach.setText(model.getValueAt(selectedRow, 1).toString()); // Cột 1: Tên sách
 
-                // Lấy mã tác giả (Cột 2)
-                int matacgia = Integer.parseInt(model.getValueAt(selectedRow, 2).toString());
-                // Sử dụng SachController để lấy tên tác giả từ mã tác giả
-                String tenTacGia = tacGia.getTenTacGiaById(matacgia);
-                txtTenTacGia.setText(tenTacGia);  // Hiển thị tên tác giả trong text field
+                //txtTenTacGia.setText(model.getValueAt(selectedRow, 2).toString()); // Cột 2: Tác giả
+                //Matg.setText(model.getValueAt(selectedRow, 2).toString());        // Gán lại tác giả vào label/field riêng
+                // Lấy mã tác giả và tra cứu tên tác giả
+                String maTacGiaStr = model.getValueAt(selectedRow, 2).toString(); // Cột 2: Mã tác giả
+                Matg.setText(maTacGiaStr); // Gán mã tác giả vào Matg
+                 // Tìm tên tác giả từ Map
+                String tenTacGia = tacGiaMap.getOrDefault(maTacGiaStr, "Không tìm thấy tác giả");
+                txtTenTacGia.setText(tenTacGia); // Hiển thị tên tác giả
 
-                // Lấy mã thể loại (Cột 3)
-                int matheloai = Integer.parseInt(model.getValueAt(selectedRow, 3).toString());
-                // Sử dụng SachController để lấy tên thể loại từ mã thể loại
-                String tenTheLoai = theLoai.getTenTheLoaiById(matheloai);
-                cmbTheloai.setSelectedItem(tenTheLoai); // Hiển thị thể loại tương ứng trong combobox
+                
+                
+                //cmbTheloai.setSelectedItem(model.getValueAt(selectedRow, 3));     // Cột 3: Thể loại
+                //String theLoai = model.getValueAt(selectedRow, 3).toString();
+                // Lấy mã thể loại (cột 3) và tìm tên thể loại tương ứng
+                String maTheLoaiStr = model.getValueAt(selectedRow, 3).toString();
+                int maTheLoai = Integer.parseInt(maTheLoaiStr); // Chuyển đổi mã thể loại từ String sang int
+                Matl.setText(maTheLoaiStr);
+                // Tìm tên thể loại tương ứng trong theLoaiMap
+                String tenTheLoai = theLoaiMap.entrySet()
+                                              .stream()
+                                              .filter(entry -> entry.getValue() == maTheLoai)
+                                              .map(Map.Entry::getKey)
+                                              .findFirst()
+                                              .orElse("Chọn thể loại");
+
+                // Đặt giá trị vào ComboBox
+                cmbTheloai.setSelectedItem(tenTheLoai);
+                
+                //Matl.setText(model.getValueAt(selectedRow, 3).toString());        // Gán thể loại (nếu cần vào label khác)
 
                 // Gán Nhà xuất bản (cột 4)
                 txtNhaxuatban.setText(model.getValueAt(selectedRow, 4).toString()); 
@@ -699,21 +788,13 @@ public final class frmQLSach extends javax.swing.JFrame {
                 ((JTextField) NgayNhap.getDateEditor().getUiComponent()).setText(ngayNhapStr);
                 txtmota.setText(model.getValueAt(selectedRow, 8).toString());
                 
-                // Kiểm tra đường dẫn ảnh
-                String imagePath = model.getValueAt(selectedRow, 9).toString();
-                File file = new File(imagePath);
-                if (!file.exists() || !file.isFile()) {
-                    JOptionPane.showMessageDialog(this, "File ảnh không tồn tại: " + imagePath, "Lỗi", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-                lblPathAnh.setText(imagePath);
-
-                // Hiển thị ảnh
-                ImageIcon icon = new ImageIcon(imagePath);
-                Image img = icon.getImage();
-                Image resizedImg = img.getScaledInstance(lblAnh.getWidth(), lblAnh.getHeight(), Image.SCALE_SMOOTH);
-                lblAnh.setIcon(new ImageIcon(resizedImg));
+                // Lấy đường dẫn ảnh từ cột ảnh
+                byte[] imagePath = (byte[]) model.getValueAt(selectedRow, 9); // Cột 9: Đường dẫn ảnh
+                // Hiển thị ảnh trong lblAnh
+                ImageIcon imgIcon = new ImageIcon(new ImageIcon(imagePath).getImage().getScaledInstance(lblAnh.getWidth(), lblAnh.getHeight(), Image.SCALE_SMOOTH));
+                lblAnh.setIcon(imgIcon); // Gắn hình ảnh vào JLabel
+                                              
+                
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Dữ liệu không hợp lệ: " + e.getMessage(),
                                               "Lỗi dữ liệu", JOptionPane.ERROR_MESSAGE);
@@ -725,6 +806,148 @@ public final class frmQLSach extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn một hàng!", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_tblsachMouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        try {
+            // TODO add your handling code here:
+            String masach = txtMasach.getText();
+            String tensach = txtTenSach.getText();
+            String nhaxuatban = txtNhaxuatban.getText();
+            if (masach.length() == 0) {
+                JOptionPane.showMessageDialog(null, "Vui lòng chọn loại cần sửa", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (tensach.isEmpty()) {
+                lblWarn.setVisible(true);
+                return;
+            }
+            if (nhaxuatban.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Nhà xuất bản không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            String mota = txtmota.getText();
+            
+            int matacgia = Integer.parseInt(Matg.getText());
+            int matheloai = Integer.parseInt(Matl.getText());
+
+            int soluong= Integer.parseInt(spnSoluong.getValue().toString());
+            
+            // Kiểm tra ngày nhập
+            if (NgayNhap.getDate() == null) {
+                JOptionPane.showMessageDialog(this, "Ngày nhập không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String ngaynhap = dateFormat.format(NgayNhap.getDate());
+            double giasach = Double.parseDouble(txtGia.getText());
+            // Kiểm tra hình ảnh
+            if (book_img == null) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn ảnh bìa!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            // Tạo đối tượng SachModel
+            SachModel sach = new SachModel();
+            sach.setTenSach(tensach);
+            sach.setIdTacGia(matacgia);
+            sach.setIdTheLoai(matheloai);
+            sach.setNhaXuatBan(nhaxuatban);
+            sach.setGiaSach(giasach);
+            sach.setSoLuong(soluong);
+            sach.setNgayNhan(ngaynhap);
+            sach.setMoTa(mota);
+            sach.setAnhSach(book_img);
+            
+            
+            // Thêm sách vào cơ sở dữ liệu
+            if (!dssach.EditData(sach)) {
+                JOptionPane.showMessageDialog(this, "Thêm sách thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm sách thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                ClearData();
+                ShowData();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        // Kiểm tra trường mã sách
+        String masachStr = txtMasach.getText();
+
+        if (masachStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một cuốn sách để xóa.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Xác nhận xóa
+        int confirm = JOptionPane.showConfirmDialog(this,
+                "Bạn có chắc chắn muốn xóa cuốn sách này không?", 
+                "Xác nhận xóa", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                // Chuyển đổi mã sách sang kiểu Integer
+                Integer masach = Integer.valueOf(masachStr);
+
+                // Gọi phương thức DeleteData
+                boolean isDeleted = dssach.DeleteData(masach);
+
+                if (isDeleted) {
+                    JOptionPane.showMessageDialog(this, 
+                            "Xóa thành công cuốn sách.", 
+                            "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+                    // Làm mới dữ liệu hiển thị
+                    ClearData();   
+                    ShowData();
+                } else {
+                    JOptionPane.showMessageDialog(this, 
+                            "Không thể xóa sách. Vui lòng thử lại.", 
+                            "Lỗi", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, 
+                        "Mã sách không hợp lệ.", 
+                        "Lỗi", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, 
+                        "Lỗi khi tải lại dữ liệu: " + ex.getMessage(), 
+                        "Lỗi", JOptionPane.ERROR_MESSAGE);
+                Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void txtTenSachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenSachKeyReleased
+        // TODO add your handling code here:
+        String tensach = txtTenSach.getText();
+        if (!tensach.isEmpty()) {
+            lblWarn.setVisible(false); 
+            
+        } else {
+            lblWarn.setVisible(true); 
+        }
+    }//GEN-LAST:event_txtTenSachKeyReleased
+
+    private void btnChon_TacgiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnChon_TacgiaKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnChon_TacgiaKeyReleased
+
+    private void cmbTheloaiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbTheloaiKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTheloaiKeyReleased
+
+    private void txtNhaxuatbanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNhaxuatbanKeyReleased
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_txtNhaxuatbanKeyReleased
     
 
     
@@ -801,6 +1024,7 @@ public final class frmQLSach extends javax.swing.JFrame {
     private javax.swing.JLabel lblWarn;
     private javax.swing.JLabel lblWarn1;
     private javax.swing.JLabel lblWarn2;
+    private javax.swing.JLabel lblWarn3;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JSpinner spnSoluong;
     private javax.swing.JTable tblsach;

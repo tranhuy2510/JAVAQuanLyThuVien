@@ -94,41 +94,81 @@ public class SachController {
         }
     }
 
-    
-    /*
-     //Dieu chinh 1 dong du lieu vao table LoaiSP 
-    public boolean EditData(SachModel obj) throws SQLException{  
-        String updateQuery = "UPDATE tbl_tacgia SET tentacgia = ?, linhvuc = ?, gioithieu = ? WHERE id_tacgia = ?";
+    //Dieu chinh 1 dong du lieu vao table LoaiSP 
+    public boolean EditData(SachModel obj) throws SQLException {  
+        String updateQuery = "UPDATE tbl_sach SET tensach = ?, matacgia = ?, matheloai = ?, nhaxuatban = ?, soluong = ?, gia = ?, ngaynhap = ?, mota = ?, duongdananh = ? WHERE masach = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(updateQuery)) {
-            pstmt.setString(1, obj.getTenTacgia());
-            pstmt.setString(2, obj.getChuyenmon()); // Lĩnh vực
-            pstmt.setString(3, obj.getGioithieu());
-            pstmt.setString(4, obj.getMaTacgia()); // ID tác giả
-            
+            // Gán giá trị cho các tham số
+            pstmt.setString(1, obj.getTenSach());        // Tên sách
+            pstmt.setInt(2, obj.getIdTacGia());      // Mã tác giả
+            pstmt.setInt(3, obj.getIdTheLoai());        // Mã thể loại
+            pstmt.setString(4, obj.getNhaXuatBan());    // Nhà xuất bản
+            pstmt.setInt(5, obj.getSoLuong());          // Số lượng
+            pstmt.setDouble(6, obj.getGiaSach());           // Giá
+            pstmt.setString(7, obj.getNgayNhan());
+            pstmt.setString(8, obj.getMoTa());          // Mô tả
+            pstmt.setBytes(9, obj.getAnhSach());   // Đường dẫn ảnh
+
+            // Thực thi lệnh cập nhật
             return pstmt.executeUpdate() > 0;
         }
-    } 
-    
-    */
+    }
+
     // Hàm kiểm tra trùng tên 
-    public boolean IsDuplicate(String tenTacgia) throws SQLException {
-        String checkQuery = "SELECT COUNT(*) FROM tbl_tacgia WHERE tentacgia = ?";
+    public boolean IsDuplicateBook(String tenSach) throws SQLException {
+        String checkQuery = "SELECT COUNT(*) FROM tbl_sach WHERE tensach = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(checkQuery)) {
-            pstmt.setString(1, tenTacgia);
+            pstmt.setString(1, tenSach); // Gán giá trị tên sách cần kiểm tra
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getInt(1) > 0; // Trả về true nếu tồn tại
+                    return rs.getInt(1) > 0; // Trả về true nếu tên sách đã tồn tại
                 }
             }
         } catch (SQLException ex) {
-            System.err.println("Lỗi kiểm tra trùng lặp: " + ex.getMessage());
-            throw ex;
+            System.err.println("Lỗi kiểm tra trùng lặp tên sách: " + ex.getMessage());
+            throw ex; // Ném lại lỗi để xử lý bên ngoài
         }
-        return false;
+        return false; // Trả về false nếu không có lỗi và không tìm thấy trùng lặp
     }
 
+
     
+    public boolean DeleteData(Integer maSach) {
+        String deleteQuery = "DELETE FROM tbl_sach WHERE id_sach = ?";
+
+        try {
+            // Bắt đầu transaction
+            conn.setAutoCommit(false);
+
+            // Chuẩn bị và thực thi câu lệnh DELETE
+            try (PreparedStatement pstmt = conn.prepareStatement(deleteQuery)) {
+                pstmt.setInt(1, maSach);
+                int rowsAffected = pstmt.executeUpdate();
+
+                // Commit transaction nếu thành công
+                conn.commit();
+                return rowsAffected > 0;
+            }
+
+        } catch (SQLException ex) {
+            // Rollback nếu có lỗi
+            try {
+                conn.rollback();
+                System.err.println("Lỗi khi xóa sách: " + ex.getMessage());
+            } catch (SQLException rollbackEx) {
+                System.err.println("Lỗi khi rollback: " + rollbackEx.getMessage());
+            }
+        } finally {
+            // Khôi phục chế độ tự động commit
+            try {
+                conn.setAutoCommit(true);
+            } catch (SQLException ex) {
+                System.err.println("Lỗi khi đặt lại auto-commit: " + ex.getMessage());
+            }
+        }
+        return false; // Trả về false nếu xóa thất bại
+    }
 
     
 

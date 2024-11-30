@@ -10,8 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import javax.swing.JOptionPane;
 import models.TacGiaModel;
 
 /**
@@ -131,24 +131,24 @@ public class TacGiaController {
         return false; // Return false if deletion failed
     }
     
-    // Hàm lấy tên tác giả từ mã tác giả
-    public String getTenTacGiaById(int matacgia) {
-        String tenTacGia = "";
-        try {
-            // Truy vấn cơ sở dữ liệu để lấy tên tác giả
-            String query = "SELECT tenTacGia FROM TacGia WHERE maTacGia = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, matacgia);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                tenTacGia = rs.getString("tenTacGia");
+    public HashMap<String, String> getTacGiaMap() {
+        HashMap<String, String> map = new HashMap<>();
+        String query = "SELECT id_tacgia, tentacgia FROM tbl_tacgia";
+
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                String maTacGia = rs.getString("id_tacgia");
+                String tenTacGia = rs.getString("tentacgia");
+                map.put(maTacGia, tenTacGia);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi khi lấy tên tác giả: " + e.getMessage(),
-                                          "Lỗi", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Lỗi khi lấy dữ liệu tác giả: " + e.getMessage());
         }
-        return tenTacGia;
+        return map;
     }
+
     
     
     

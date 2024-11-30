@@ -147,23 +147,5 @@ public class TheLoaiController {
         return map;
     }
     
-    // Hàm lấy tên thể loại từ mã thể loại
-    public String getTenTheLoaiById(int matheloai) {
-        String tenTheLoai = "";
-        try {
-            // Truy vấn cơ sở dữ liệu để lấy tên thể loại
-            String query = "SELECT tenTheLoai FROM TheLoai WHERE maTheLoai = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, matheloai);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                tenTheLoai = rs.getString("tenTheLoai");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Lỗi khi lấy tên thể loại: " + e.getMessage(),
-                                          "Lỗi", JOptionPane.ERROR_MESSAGE);
-        }
-        return tenTheLoai;
-    }
-    
+ 
 }
