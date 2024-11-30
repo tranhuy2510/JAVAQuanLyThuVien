@@ -96,7 +96,7 @@ public class SachController {
 
     //Dieu chinh 1 dong du lieu vao table LoaiSP 
     public boolean EditData(SachModel obj) throws SQLException {  
-        String updateQuery = "UPDATE tbl_sach SET tensach = ?, matacgia = ?, matheloai = ?, nhaxuatban = ?, soluong = ?, gia = ?, ngaynhap = ?, mota = ?, duongdananh = ? WHERE masach = ?";
+        String updateQuery = "UPDATE tbl_sach SET tensach = ?, id_tacgia = ?, id_theloai = ?, nhaxuatban = ?, soluong = ?, giasach = ?, ngaynhan = ?, mota = ?, anhsach = ? WHERE id_sach = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(updateQuery)) {
             // Gán giá trị cho các tham số
             pstmt.setString(1, obj.getTenSach());        // Tên sách
@@ -108,7 +108,7 @@ public class SachController {
             pstmt.setString(7, obj.getNgayNhan());
             pstmt.setString(8, obj.getMoTa());          // Mô tả
             pstmt.setBytes(9, obj.getAnhSach());   // Đường dẫn ảnh
-
+            pstmt.setString(10, obj.getIdSach());
             // Thực thi lệnh cập nhật
             return pstmt.executeUpdate() > 0;
         }

@@ -4,6 +4,8 @@
  */
 package ui_library;
 
+import java.awt.Color;
+
 /**
  *
  * @author ADMIN
@@ -20,11 +22,15 @@ public class frmQLDocGia extends javax.swing.JFrame {
         
         
         //set UI
-        jTable1.getTableHeader().setBackground(new java.awt.Color(200,247,197));
-        jTable1.getTableHeader().setForeground(new java.awt.Color(4,147,114));
-        jTable1.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 14));
-        jTable1.getTableHeader().setOpaque(false);
+        tbldocgia.getTableHeader().setBackground(new java.awt.Color(200,247,197));
+        tbldocgia.getTableHeader().setForeground(new java.awt.Color(4,147,114));
+        tbldocgia.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 14));
+        tbldocgia.getTableHeader().setOpaque(false);
         
+        lblMinus.setOpaque(true); // Cho phép JLabel có background
+        lblMinus.setBackground(new java.awt.Color(238,180,34)); 
+        lblSystemIC.setOpaque(true); // Cho phép JLabel có background
+        lblSystemIC.setBackground(new java.awt.Color(238,180,34)); 
         
         
     }
@@ -64,13 +70,13 @@ public class frmQLDocGia extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         txtTen = new javax.swing.JTextField();
         pnlHeader = new javax.swing.JPanel();
-        lblSystemIC = new javax.swing.JLabel();
         lblTieude = new javax.swing.JLabel();
+        lblSystemIC = new javax.swing.JLabel();
+        lblMinus = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbldocgia = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
 
@@ -225,16 +231,6 @@ public class frmQLDocGia extends javax.swing.JFrame {
         pnlHeader.setBackground(new java.awt.Color(4, 147, 114));
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseClicked(evt);
-            }
-        });
-        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, 70, 60));
-
         lblTieude.setBackground(new java.awt.Color(241, 231, 254));
         lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblTieude.setForeground(new java.awt.Color(255, 255, 255));
@@ -243,6 +239,38 @@ public class frmQLDocGia extends javax.swing.JFrame {
         lblTieude.setText("   Quản lý độc giả");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 270, 60));
+
+        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseExited(evt);
+            }
+        });
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, 60, 60));
+
+        lblMinus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_minus.png"))); // NOI18N
+        lblMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMinus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinusMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblMinusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinusMouseExited(evt);
+            }
+        });
+        pnlHeader.add(lblMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 60, 60));
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
 
@@ -253,10 +281,10 @@ public class frmQLDocGia extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(213, 184, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setBackground(new java.awt.Color(200, 247, 197));
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(90, 34, 139));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbldocgia.setBackground(new java.awt.Color(200, 247, 197));
+        tbldocgia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tbldocgia.setForeground(new java.awt.Color(90, 34, 139));
+        tbldocgia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -272,12 +300,12 @@ public class frmQLDocGia extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(4, 147, 114));
-        jTable1.setRowHeight(25);
-        jTable1.setSelectionBackground(new java.awt.Color(4, 147, 114));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
+        tbldocgia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbldocgia.setGridColor(new java.awt.Color(4, 147, 114));
+        tbldocgia.setRowHeight(25);
+        tbldocgia.setSelectionBackground(new java.awt.Color(4, 147, 114));
+        tbldocgia.setShowGrid(true);
+        jScrollPane1.setViewportView(tbldocgia);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 510, 450));
 
@@ -285,14 +313,6 @@ public class frmQLDocGia extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(4, 147, 114));
         jLabel9.setText("Thông tin độc giả");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 220, 50));
-
-        jButton2.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(4, 147, 114));
-        jButton2.setText("Hiển thi tất cả");
-        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(4, 147, 114)));
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 100, 20));
 
         btnSua.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         btnSua.setForeground(new java.awt.Color(4, 147, 114));
@@ -316,6 +336,32 @@ public class frmQLDocGia extends javax.swing.JFrame {
         // Dong form
         this.dispose();
     }//GEN-LAST:event_lblSystemICMouseClicked
+
+    private void lblSystemICMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseEntered
+        // TODO add your handling code here:
+        lblSystemIC.setBackground(new java.awt.Color(255,102,102));
+    }//GEN-LAST:event_lblSystemICMouseEntered
+
+    private void lblSystemICMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseExited
+        // TODO add your handling code here:
+        lblSystemIC.setBackground(new java.awt.Color(238,180,34));
+    }//GEN-LAST:event_lblSystemICMouseExited
+
+    private void lblMinusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseClicked
+        // TODO add your handling code here:
+        // Thu nhỏ form lại
+        this.setState(javax.swing.JFrame.ICONIFIED);
+    }//GEN-LAST:event_lblMinusMouseClicked
+
+    private void lblMinusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseEntered
+        // TODO add your handling code here:
+        lblMinus.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_lblMinusMouseEntered
+
+    private void lblMinusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseExited
+        // TODO add your handling code here:
+        lblMinus.setBackground(new java.awt.Color(238,180,34));
+    }//GEN-LAST:event_lblMinusMouseExited
 
     /**
      * @param args the command line arguments
@@ -360,7 +406,6 @@ public class frmQLDocGia extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cmbGioitinh;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -382,10 +427,11 @@ public class frmQLDocGia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblMinus;
     private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JPanel pnlHeader;
+    private javax.swing.JTable tbldocgia;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtSdt;

@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * @author ADMIN
  */
 public class SachModel {
-    private Integer idSach;
+    private String idSach;
     private String tenSach;
     private Integer idTacGia;
     private Integer idTheLoai;
@@ -26,7 +26,7 @@ public class SachModel {
     public SachModel() {
     }
 
-    public SachModel(Integer idSach, String tenSach, Integer idTacGia, Integer idTheLoai, String nhaXuatBan, 
+    public SachModel(String idSach, String tenSach, Integer idTacGia, Integer idTheLoai, String nhaXuatBan, 
             double giaSach, Integer soLuong, String ngayNhan, String moTa, byte[] anhSach) {
         this.idSach = idSach;
         this.tenSach = tenSach;
@@ -44,7 +44,7 @@ public class SachModel {
 
       //khoi tao nhanh khi lam viec voi giao dien
     public SachModel(ResultSet rs) throws SQLException{
-        this.idSach = rs.getInt("id_sach");
+        this.idSach = rs.getString("id_sach");
         this.tenSach = rs.getString("tensach");
         this.idTacGia = rs.getInt("id_tacgia");
         this.idTheLoai = rs.getInt("id_theloai");
@@ -57,7 +57,7 @@ public class SachModel {
         
     }
 
-    public Integer getIdSach() {
+    public String getIdSach() {
         return idSach;
     }
 
@@ -97,7 +97,7 @@ public class SachModel {
         return anhSach;
     }
 
-    public void setIdSach(Integer idSach) {
+    public void setIdSach(String idSach) {
         this.idSach = idSach;
     }
 
