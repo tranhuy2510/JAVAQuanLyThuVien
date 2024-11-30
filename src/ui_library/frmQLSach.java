@@ -66,7 +66,7 @@ public final class frmQLSach extends javax.swing.JFrame {
         // Tải dữ liệu tác giả vào Map
         tacGiaMap = tacGia.getTacGiaMap();
         // Khởi tạo các components trên JFrame
-        String[] colsName = {"ID", "Tên", "Tác giả", "Thể loại", "Nhà xuất bản", "Số lượng", "Giá", "Ngày nhập","Mô tả", "Ảnh"};
+        String[] colsName = {"Mã", "Tên", "Tác giả", "Thể loại", "Nhà xuất bản", "Số lượng", "Giá", "Ngày nhập","Mô tả", "Ảnh"};
         // đặt tiêu đề cột cho tableModel
         tableModel.setColumnIdentifiers(colsName);
         // Kết nối JTable với tableModel
@@ -204,7 +204,6 @@ public final class frmQLSach extends javax.swing.JFrame {
         NgayNhap = new com.toedter.calendar.JDateChooser();
         spnSoluong = new javax.swing.JSpinner();
         btnChonanhbia = new javax.swing.JButton();
-        lblPathAnh = new javax.swing.JLabel();
         Matg = new javax.swing.JTextField();
         Matl = new javax.swing.JTextField();
         btnChon_Tacgia = new javax.swing.JButton();
@@ -275,37 +274,37 @@ public final class frmQLSach extends javax.swing.JFrame {
         lblMasach.setForeground(new java.awt.Color(255, 102, 51));
         lblMasach.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMasach.setText("ID sách:   ");
-        jPanel_Theloaisach.add(lblMasach, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 120, 30));
+        jPanel_Theloaisach.add(lblMasach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, 30));
 
         lblTensach.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lblTensach.setForeground(new java.awt.Color(255, 102, 51));
         lblTensach.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTensach.setText("Tên sách:   ");
-        jPanel_Theloaisach.add(lblTensach, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 120, 30));
+        jPanel_Theloaisach.add(lblTensach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 120, 30));
 
         lblTacgia.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lblTacgia.setForeground(new java.awt.Color(255, 102, 51));
         lblTacgia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTacgia.setText("Tác giả:   ");
-        jPanel_Theloaisach.add(lblTacgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 182, 120, 30));
+        jPanel_Theloaisach.add(lblTacgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 120, 30));
 
         lblTheloai.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lblTheloai.setForeground(new java.awt.Color(255, 102, 51));
         lblTheloai.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTheloai.setText("Thể loại:   ");
-        jPanel_Theloaisach.add(lblTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 235, 120, 30));
+        jPanel_Theloaisach.add(lblTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 235, 120, 30));
 
         lblSoluong.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lblSoluong.setForeground(new java.awt.Color(255, 102, 51));
         lblSoluong.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSoluong.setText("Số Lượng:   ");
-        jPanel_Theloaisach.add(lblSoluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 120, 30));
+        jPanel_Theloaisach.add(lblSoluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 120, 30));
 
         lblGia.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lblGia.setForeground(new java.awt.Color(255, 102, 51));
         lblGia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGia.setText("Giá:   ");
-        jPanel_Theloaisach.add(lblGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 120, 30));
+        jPanel_Theloaisach.add(lblGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 120, 30));
 
         txtMasach.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txtMasach.setForeground(new java.awt.Color(255, 102, 51));
@@ -362,7 +361,7 @@ public final class frmQLSach extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 102, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Ngày nhập:   ");
-        jPanel_Theloaisach.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 120, 30));
+        jPanel_Theloaisach.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 120, 30));
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 102, 51));
@@ -481,7 +480,7 @@ public final class frmQLSach extends javax.swing.JFrame {
 
         NgayNhap.setForeground(new java.awt.Color(255, 102, 51));
         NgayNhap.setDateFormatString("yyyy-MM-dd");
-        NgayNhap.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        NgayNhap.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
         NgayNhap.setMaxSelectableDate(null);
         jPanel_Theloaisach.add(NgayNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 240, 32));
 
@@ -498,21 +497,16 @@ public final class frmQLSach extends javax.swing.JFrame {
                 btnChonanhbiaActionPerformed(evt);
             }
         });
-        jPanel_Theloaisach.add(btnChonanhbia, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 150, 30));
+        jPanel_Theloaisach.add(btnChonanhbia, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 530, 150, 30));
 
-        lblPathAnh.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
-        lblPathAnh.setForeground(new java.awt.Color(255, 102, 51));
-        lblPathAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPathAnh.setText("Lựa chọn ảnh bìa sách");
-        lblPathAnh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel_Theloaisach.add(lblPathAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 170, 20));
-
-        Matg.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        Matg.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        Matg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Matg.setAutoscrolls(false);
         Matg.setEnabled(false);
         jPanel_Theloaisach.add(Matg, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 182, 35, 32));
 
-        Matl.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        Matl.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        Matl.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Matl.setEnabled(false);
         Matl.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1046,7 +1040,7 @@ public final class frmQLSach extends javax.swing.JFrame {
 
                 if (isDeleted) {
                     JOptionPane.showMessageDialog(this, 
-                            "Xóa thành công cuốn sách"+ tensach +".", 
+                            "Xóa thành công cuốn sách "+ tensach +".", 
                             "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
                     // Làm mới dữ liệu hiển thị
@@ -1056,13 +1050,9 @@ public final class frmQLSach extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Không thể xóa sách. Vui lòng thử lại.", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, 
-                        "Mã sách không hợp lệ.", 
-                        "Lỗi", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Mã sách không hợp lệ.","Lỗi", JOptionPane.ERROR_MESSAGE);
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, 
-                        "Lỗi khi tải lại dữ liệu: " + ex.getMessage(), 
-                        "Lỗi", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Lỗi khi tải lại dữ liệu: " + ex.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
                 Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -1193,7 +1183,6 @@ public final class frmQLSach extends javax.swing.JFrame {
     private javax.swing.JLabel lblGia;
     private javax.swing.JLabel lblMasach;
     private javax.swing.JLabel lblMinus;
-    private javax.swing.JLabel lblPathAnh;
     private javax.swing.JLabel lblSoluong;
     private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblTacgia;
