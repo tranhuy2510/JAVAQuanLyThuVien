@@ -308,6 +308,7 @@ public final class frmQLSach extends javax.swing.JFrame {
 
         txtMasach.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txtMasach.setForeground(new java.awt.Color(255, 102, 51));
+        txtMasach.setEnabled(false);
         jPanel_Theloaisach.add(txtMasach, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 170, 32));
 
         txtTenSach.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -322,7 +323,7 @@ public final class frmQLSach extends javax.swing.JFrame {
         txtTenTacGia.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txtTenTacGia.setForeground(new java.awt.Color(255, 102, 51));
         txtTenTacGia.setEnabled(false);
-        jPanel_Theloaisach.add(txtTenTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 182, 240, 32));
+        jPanel_Theloaisach.add(txtTenTacGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 182, 250, 32));
 
         txtGia.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         txtGia.setForeground(new java.awt.Color(255, 102, 51));
@@ -331,7 +332,7 @@ public final class frmQLSach extends javax.swing.JFrame {
                 txtGiaKeyReleased(evt);
             }
         });
-        jPanel_Theloaisach.add(txtGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 240, 32));
+        jPanel_Theloaisach.add(txtGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 250, 32));
 
         txtmota.setColumns(20);
         txtmota.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -339,7 +340,7 @@ public final class frmQLSach extends javax.swing.JFrame {
         txtmota.setRows(5);
         jScrollPane2.setViewportView(txtmota);
 
-        jPanel_Theloaisach.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 505, 240, 115));
+        jPanel_Theloaisach.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 505, 250, 115));
 
         lblAnh.setBackground(new java.awt.Color(255, 148, 112));
         lblAnh.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -355,7 +356,7 @@ public final class frmQLSach extends javax.swing.JFrame {
                 cmbTheloaiActionPerformed(evt);
             }
         });
-        jPanel_Theloaisach.add(cmbTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 235, 240, 32));
+        jPanel_Theloaisach.add(cmbTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 235, 250, 32));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 102, 51));
@@ -375,7 +376,7 @@ public final class frmQLSach extends javax.swing.JFrame {
                 txtNhaxuatbanKeyReleased(evt);
             }
         });
-        jPanel_Theloaisach.add(txtNhaxuatban, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 395, 240, 32));
+        jPanel_Theloaisach.add(txtNhaxuatban, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 395, 250, 32));
 
         tblsach.setBackground(new java.awt.Color(247, 239, 232));
         tblsach.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -482,7 +483,7 @@ public final class frmQLSach extends javax.swing.JFrame {
         NgayNhap.setDateFormatString("yyyy-MM-dd");
         NgayNhap.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
         NgayNhap.setMaxSelectableDate(null);
-        jPanel_Theloaisach.add(NgayNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 240, 32));
+        jPanel_Theloaisach.add(NgayNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 250, 32));
 
         spnSoluong.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jPanel_Theloaisach.add(spnSoluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 80, 32));
@@ -503,7 +504,7 @@ public final class frmQLSach extends javax.swing.JFrame {
         Matg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Matg.setAutoscrolls(false);
         Matg.setEnabled(false);
-        jPanel_Theloaisach.add(Matg, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 182, 35, 32));
+        jPanel_Theloaisach.add(Matg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 182, 32, 32));
 
         Matl.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         Matl.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -513,7 +514,7 @@ public final class frmQLSach extends javax.swing.JFrame {
                 MatlKeyReleased(evt);
             }
         });
-        jPanel_Theloaisach.add(Matl, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 235, 35, 32));
+        jPanel_Theloaisach.add(Matl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 235, 32, 32));
 
         btnChon_Tacgia.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnChon_Tacgia.setForeground(new java.awt.Color(255, 102, 51));
@@ -895,10 +896,15 @@ public final class frmQLSach extends javax.swing.JFrame {
                 txtmota.setText(model.getValueAt(selectedRow, 8).toString());
                 
                 // Lấy đường dẫn ảnh từ cột ảnh
-                byte[] imagePath = (byte[]) model.getValueAt(selectedRow, 9); // Cột 9: Đường dẫn ảnh
-                // Hiển thị ảnh trong lblAnh
-                ImageIcon imgIcon = new ImageIcon(new ImageIcon(imagePath).getImage().getScaledInstance(lblAnh.getWidth(), lblAnh.getHeight(), Image.SCALE_SMOOTH));
-                lblAnh.setIcon(imgIcon); // Gắn hình ảnh vào JLabel
+                byte[] imagePath = (byte[]) model.getValueAt(selectedRow, 9);
+                if (imagePath != null) {
+                    ImageIcon imgIcon = new ImageIcon(new ImageIcon(imagePath).getImage()
+                            .getScaledInstance(lblAnh.getWidth(), lblAnh.getHeight(), Image.SCALE_SMOOTH));
+                    lblAnh.setIcon(imgIcon);
+                } else {
+                    lblAnh.setIcon(null);
+                    JOptionPane.showMessageDialog(this, "Ảnh không xác định.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                }
                                               
                 
             } catch (NumberFormatException e) {

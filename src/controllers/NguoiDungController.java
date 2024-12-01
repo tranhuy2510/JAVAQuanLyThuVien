@@ -27,25 +27,25 @@ public class NguoiDungController {
     }
     
     // Phương thức kiểm tra đăng nhập
-    public boolean kiemTraDangNhap(String taikhoan, String matkhau) throws SQLException {
+    public String kiemTraDangNhap(String taikhoan, String matkhau) throws SQLException {
+        String role = null;
         // Mã hóa mật khẩu người dùng nhập vào
         String matkhauHash = hashPassword(matkhau);
 
         // Câu lệnh SQL lấy dữ liệu người dùng theo tài khoản và loại người dùng
-        String sql = "SELECT * FROM tbl_NguoiDung WHERE taikhoan = ? AND loaiuser = ?";
+        String sql = "SELECT matkhau, loaiuser FROM tbl_NguoiDung WHERE taikhoan = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, taikhoan);
-            stmt.setString(2, matkhau);
             ResultSet rs = stmt.executeQuery();
 
             // Kiểm tra nếu có dữ liệu người dùng
             if (rs.next()) {
                 String matkhauDB = rs.getString("matkhau"); // Lấy mật khẩu từ CSDL
                 if (matkhauHash.equals(matkhauDB)) {
-                    return true; // Đăng nhập thành công
+                    role = rs.getString("loaiuser"); // Lấy quyền (user/admin)
                 }
             }
-            return false; // Đăng nhập thất bại
+        return role; // Trả về quyền nếu đăng nhập thành công, null nếu thất bại
     }
     
      // Thêm mới người dùng vào cơ sở dữ liệu

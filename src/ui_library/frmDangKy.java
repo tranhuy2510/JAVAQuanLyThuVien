@@ -7,6 +7,8 @@ package ui_library;
 import controllers.NguoiDungController;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import models.NguoiDungModel;
@@ -381,10 +383,14 @@ public class frmDangKy extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseClicked
-        // TODO add your handling code here:
-        frmDangnhap login = new frmDangnhap();
-        login.setVisible(true);
-        this.dispose();
+        try {
+            // TODO add your handling code here:
+            frmDangnhap login = new frmDangnhap();
+            login.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmDangKy.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnDangNhapMouseClicked
 
      // Phương thức kiểm tra tên tài khoản hợp lệ 
@@ -531,6 +537,7 @@ public class frmDangKy extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new frmDangKy().setVisible(true);
             }
