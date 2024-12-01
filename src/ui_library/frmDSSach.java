@@ -52,7 +52,7 @@ public class frmDSSach extends javax.swing.JFrame {
         tblDanhsach.getTableHeader().repaint();
         //CODE LOI TAM THOI NOTE
         controllers.Func_Class func = new controllers.Func_Class();
-        func.displayImage(60,60,"/image/ic-QLynguoidung.png", lblTieudeTL );
+        func.displayImage(60,60,"/image/DSsach.png", lblTieudeTL );
     
     }
 
