@@ -416,9 +416,7 @@ public final class frmQLSach extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblsach);
         if (tblsach.getColumnModel().getColumnCount() > 0) {
-            tblsach.getColumnModel().getColumn(8).setHeaderValue("Mô tả");
             tblsach.getColumnModel().getColumn(9).setResizable(false);
-            tblsach.getColumnModel().getColumn(9).setHeaderValue("Ảnh");
         }
 
         jPanel_Theloaisach.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 125, 570, 495));

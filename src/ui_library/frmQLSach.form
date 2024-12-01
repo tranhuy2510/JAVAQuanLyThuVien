@@ -505,12 +505,12 @@
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title value="M&#xf4; t&#x1ea3;"/>
+                      <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                      <Title value="&#x1ea2;nh"/>
+                      <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
