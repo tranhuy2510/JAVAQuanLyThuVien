@@ -625,9 +625,6 @@ public final class frmQLSach extends javax.swing.JFrame {
                 txtmota.setText("");
                 lblAnh.setIcon(null);  // Gán null cho icon của lblAnh
 
-                // Reset lại các biến liên quan đến ảnh
-                book_img = null;  // Đặt lại biến ảnh về null
-                filename = null;  // Đặt lại biến filename về null
                 return; // Dừng thực hiện
             } 
             // Kiểm tra Tên Tác Giả

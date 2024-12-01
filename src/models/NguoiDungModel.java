@@ -28,10 +28,11 @@ public class NguoiDungModel {
     
      //khoi tao nhanh khi lam viec voi giao dien
     public NguoiDungModel(ResultSet rs) throws SQLException{
+        this.manguoidung = rs.getString("id_user");
         this.taikhoan = rs.getString("taikhoan");
         this.hoten= rs.getString("hoten");  
         this.matkhau = rs.getString("matkhau");
-        this.loaiuser = rs.getString(loaiuser);
+        this.loaiuser = rs.getString("loaiuser");
     }
    
 

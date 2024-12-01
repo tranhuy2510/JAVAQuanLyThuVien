@@ -50,12 +50,11 @@ public class NguoiDungController {
     
      // Thêm mới người dùng vào cơ sở dữ liệu
     public boolean InsertData(NguoiDungModel user) {
-         String sql = "INSERT INTO tbl_NguoiDung (hoten, taikhoan, matkhau, loaiuser) VALUES (?, ?, ?, ?)";
+         String sql = "INSERT INTO tbl_NguoiDung (taikhoan, matkhau, loaiuser) VALUES (?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, user.getHoten());
-            pstmt.setString(2, user.getTaikhoan());
-            pstmt.setString(3, hashPassword(user.getMatkhau())); // Mã hóa mật khẩu trước khi lưu
-            pstmt.setString(4, user.getLoaiuser());
+            pstmt.setString(1, user.getTaikhoan());
+            pstmt.setString(2, hashPassword(user.getMatkhau())); // Mã hóa mật khẩu trước khi lưu
+            pstmt.setString(3, user.getLoaiuser());
 
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
