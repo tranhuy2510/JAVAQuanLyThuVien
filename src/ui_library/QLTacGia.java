@@ -5,7 +5,6 @@
 package ui_library;
 
 import controllers.TacGiaController;
-import java.awt.Color;
 import java.awt.Insets;
 import java.sql.SQLException;
 import java.util.List;
@@ -58,11 +57,6 @@ public final class QLTacGia extends javax.swing.JDialog {
         tblTacgia.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 16));
         tblTacgia.getTableHeader().setOpaque(false);
         
-        lblMinus.setOpaque(true); // Cho phép JLabel có background
-        lblMinus.setBackground(new java.awt.Color(90,34,139)); 
-        lblSystemIC.setOpaque(true); // Cho phép JLabel có background
-        lblSystemIC.setBackground(new java.awt.Color(90,34,139)); 
-        
         txtAreaGioithieu.setLineWrap(true); // Tự động xuống dòng
         txtAreaGioithieu.setWrapStyleWord(true); // Ngắt từ hợp lý
         txtAreaGioithieu.setMargin(new Insets(10, 10, 10, 5)); // Khoảng cách nội dung với biên
@@ -105,8 +99,6 @@ public final class QLTacGia extends javax.swing.JDialog {
 
         pnlHeader = new javax.swing.JPanel();
         lblTieude = new javax.swing.JLabel();
-        lblMinus = new javax.swing.JLabel();
-        lblSystemIC = new javax.swing.JLabel();
         pnlNoidung = new javax.swing.JPanel();
         lblTentg = new javax.swing.JLabel();
         lblMatg = new javax.swing.JLabel();
@@ -126,7 +118,6 @@ public final class QLTacGia extends javax.swing.JDialog {
         btnXoa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlHeader.setBackground(new java.awt.Color(90, 34, 139));
@@ -140,38 +131,6 @@ public final class QLTacGia extends javax.swing.JDialog {
         lblTieude.setText("   Quản lý tác giả");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 310, 57));
-
-        lblMinus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_minus.png"))); // NOI18N
-        lblMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblMinus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMinusMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblMinusMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblMinusMouseExited(evt);
-            }
-        });
-        pnlHeader.add(lblMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(765, 0, 60, 60));
-
-        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseExited(evt);
-            }
-        });
-        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(827, 0, 60, 60));
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, -1));
 
@@ -314,41 +273,6 @@ public final class QLTacGia extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblMinusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseClicked
-        // TODO add your handling code here:
-        // Thu nhỏ form lại
-        //this.setState(javax.swing.JFrame.ICONIFIED);
-    }//GEN-LAST:event_lblMinusMouseClicked
-
-    private void lblMinusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseEntered
-        // TODO add your handling code here:
-        lblMinus.setBackground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_lblMinusMouseEntered
-
-    private void lblMinusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseExited
-        // TODO add your handling code here:
-        lblMinus.setBackground(new java.awt.Color(90,34,139));
-    }//GEN-LAST:event_lblMinusMouseExited
-
-    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
-        // TODO add your handling code here:
-        int confirmed = JOptionPane.showConfirmDialog(null, "Bạn có muốn tắt Form này?", "Xác Nhận Đóng Form", JOptionPane.YES_NO_OPTION); 
-        if (confirmed == JOptionPane.YES_OPTION) { 
-            // Dong form 
-            this.dispose();
-        }
-    }//GEN-LAST:event_lblSystemICMouseClicked
-
-    private void lblSystemICMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseEntered
-        // TODO add your handling code here:
-        lblSystemIC.setBackground(new java.awt.Color(255,102,102));
-    }//GEN-LAST:event_lblSystemICMouseEntered
-
-    private void lblSystemICMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseExited
-        // TODO add your handling code here:
-        lblSystemIC.setBackground(new java.awt.Color(90,34,139));
-    }//GEN-LAST:event_lblSystemICMouseExited
 
     private void tblTacgiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTacgiaMouseClicked
         // TODO add your handling code here:
@@ -560,8 +484,6 @@ public final class QLTacGia extends javax.swing.JDialog {
     private javax.swing.JLabel lblChuyenmon;
     private javax.swing.JLabel lblGioithieu;
     private javax.swing.JLabel lblMatg;
-    private javax.swing.JLabel lblMinus;
-    private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblTentg;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JLabel lblWarn;

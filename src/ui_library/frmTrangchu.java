@@ -373,27 +373,27 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(241, 231, 254));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlLstBook.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 160, 210));
+        pnlLstBook.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 160, 210));
 
         jPanel3.setBackground(new java.awt.Color(241, 231, 254));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlLstBook.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 160, 210));
+        pnlLstBook.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 160, 210));
 
         jPanel4.setBackground(new java.awt.Color(241, 231, 254));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlLstBook.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 160, 210));
+        pnlLstBook.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 160, 210));
 
         jPanel5.setBackground(new java.awt.Color(241, 231, 254));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlLstBook.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 160, 210));
+        pnlLstBook.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 160, 210));
 
         jPanel6.setBackground(new java.awt.Color(241, 231, 254));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlLstBook.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 70, 160, 210));
+        pnlLstBook.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 70, 160, 210));
 
         jPanel7.setBackground(new java.awt.Color(241, 231, 254));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlLstBook.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 70, 160, 210));
+        pnlLstBook.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 70, 160, 210));
 
         pnlSystem.add(pnlLstBook, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 1130, 310));
 
@@ -533,10 +533,9 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         pnlSystem.add(pnlCReader1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 240, 140));
 
-        getContentPane().add(pnlSystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 1260, 840));
+        getContentPane().add(pnlSystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 1270, 840));
 
-        setSize(new java.awt.Dimension(1530, 910));
-        setLocationRelativeTo(null);
+        setBounds(0, 0, 1540, 920);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseClicked
@@ -591,7 +590,7 @@ public class frmTrangchu extends javax.swing.JFrame {
 
     private void btnQLDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLDocGiaMouseClicked
         // TODO add your handling code here:
-        frmQLDocGia mreader = new frmQLDocGia();
+        QLDocGia mreader = new QLDocGia(this, true);
         mreader.setVisible(true);
     }//GEN-LAST:event_btnQLDocGiaMouseClicked
 
@@ -608,7 +607,7 @@ public class frmTrangchu extends javax.swing.JFrame {
     private void btnQLSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLSachMouseClicked
         try {
             // TODO add your handling code here:
-            frmQLSach book = new frmQLSach();
+            QLSach book = new QLSach(this, true);
             book.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(frmTrangchu.class.getName()).log(Level.SEVERE, null, ex);
@@ -650,10 +649,8 @@ public class frmTrangchu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmTrangchu().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new frmTrangchu().setVisible(true);
         });
     }
 

@@ -18,7 +18,7 @@ import models.TheLoaiModel;
  *
  * @author admin
  */
-public class QLTheLoai extends javax.swing.JDialog {
+public final class QLTheLoai extends javax.swing.JDialog {
 
     /**
      * Creates new form NewJDialog
@@ -61,9 +61,7 @@ public class QLTheLoai extends javax.swing.JDialog {
         tblTheloai.getTableHeader().setForeground(new java.awt.Color(4, 147, 114));
         tblTheloai.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 15));
         tblTheloai.getTableHeader().setOpaque(false);      
-        
-        lblSystemIC.setOpaque(true); // Cho phép JLabel có background
-        lblSystemIC.setBackground(new java.awt.Color(4, 147, 114)); 
+       
     }
 
     
@@ -99,7 +97,6 @@ public class QLTheLoai extends javax.swing.JDialog {
 
         pnlHeader = new javax.swing.JPanel();
         lblTieude = new javax.swing.JLabel();
-        lblSystemIC = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtTheloai = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -114,7 +111,6 @@ public class QLTheLoai extends javax.swing.JDialog {
         lblWarn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlHeader.setBackground(new java.awt.Color(4, 147, 114));
@@ -128,22 +124,6 @@ public class QLTheLoai extends javax.swing.JDialog {
         lblTieude.setText("   Quản lý thể loại");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 270, 60));
-
-        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseExited(evt);
-            }
-        });
-        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 0, 60, 60));
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 695, 60));
 
@@ -264,22 +244,6 @@ public class QLTheLoai extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
-        // TODO add your handling code here:
-        // Dong form
-        this.dispose();
-    }//GEN-LAST:event_lblSystemICMouseClicked
-
-    private void lblSystemICMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseEntered
-        // TODO add your handling code here:
-        lblSystemIC.setBackground(new java.awt.Color(255,102,102));
-    }//GEN-LAST:event_lblSystemICMouseEntered
-
-    private void lblSystemICMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseExited
-        // TODO add your handling code here:
-        lblSystemIC.setBackground(new java.awt.Color(4, 147, 114));
-    }//GEN-LAST:event_lblSystemICMouseExited
 
     private void txtTheloaiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTheloaiKeyReleased
         // TODO add your handling code here:
@@ -483,7 +447,6 @@ public class QLTheLoai extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JLabel lblWarn;
     private javax.swing.JPanel pnlHeader;

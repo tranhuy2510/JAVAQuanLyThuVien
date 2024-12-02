@@ -1,40 +1,38 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package ui_library;
 
-import java.awt.Color;
-
 /**
  *
- * @author ADMIN
+ * @author admin
  */
-public class frmQLDocGia extends javax.swing.JFrame {
+public class QLDocGia extends javax.swing.JDialog {
 
     /**
-     * Creates new form frmQuanLyDocGia
+     * Creates new form QLDocGia
      */
-    public frmQLDocGia() {
+    public QLDocGia(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         // can giua cho form
         this.setLocationRelativeTo(null);
+        //set UI
+        setupUI();
         
         
+    }
+
+    private void setupUI(){
         //set UI
         tbldocgia.getTableHeader().setBackground(new java.awt.Color(200,247,197));
         tbldocgia.getTableHeader().setForeground(new java.awt.Color(4,147,114));
         tbldocgia.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 14));
         tbldocgia.getTableHeader().setOpaque(false);
         
-        lblMinus.setOpaque(true); // Cho phép JLabel có background
-        lblMinus.setBackground(new java.awt.Color(238,180,34)); 
-        lblSystemIC.setOpaque(true); // Cho phép JLabel có background
-        lblSystemIC.setBackground(new java.awt.Color(238,180,34)); 
-        
         
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,8 +44,6 @@ public class frmQLDocGia extends javax.swing.JFrame {
 
         pnlHeader = new javax.swing.JPanel();
         lblTieude = new javax.swing.JLabel();
-        lblSystemIC = new javax.swing.JLabel();
-        lblMinus = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -78,8 +74,7 @@ public class frmQLDocGia extends javax.swing.JFrame {
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlHeader.setBackground(new java.awt.Color(4, 147, 114));
@@ -92,39 +87,7 @@ public class frmQLDocGia extends javax.swing.JFrame {
         lblTieude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_nhom.png"))); // NOI18N
         lblTieude.setText("   Quản lý độc giả");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 270, 60));
-
-        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseExited(evt);
-            }
-        });
-        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 60, 60));
-
-        lblMinus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_minus.png"))); // NOI18N
-        lblMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblMinus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMinusMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblMinusMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblMinusMouseExited(evt);
-            }
-        });
-        pnlHeader.add(lblMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 0, 60, 60));
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 270, 60));
 
         getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 60));
 
@@ -274,15 +237,22 @@ public class frmQLDocGia extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã ", "Tên độc giả", "Số điện thoại", "Email", "Giới tính"
+                "Mã ", "Tên độc giả", "Số điện thoại", "Email", "Giới tính", "Ảnh"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tbldocgia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -316,38 +286,6 @@ public class frmQLDocGia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblSystemICMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseExited
-        // TODO add your handling code here:
-        lblSystemIC.setBackground(new java.awt.Color(238,180,34));
-    }//GEN-LAST:event_lblSystemICMouseExited
-
-    private void lblSystemICMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseEntered
-        // TODO add your handling code here:
-        lblSystemIC.setBackground(new java.awt.Color(255,102,102));
-    }//GEN-LAST:event_lblSystemICMouseEntered
-
-    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
-        // TODO add your handling code here:
-        // Dong form
-        this.dispose();
-    }//GEN-LAST:event_lblSystemICMouseClicked
-
-    private void lblMinusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseExited
-        // TODO add your handling code here:
-        lblMinus.setBackground(new java.awt.Color(238,180,34));
-    }//GEN-LAST:event_lblMinusMouseExited
-
-    private void lblMinusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseEntered
-        // TODO add your handling code here:
-        lblMinus.setBackground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_lblMinusMouseEntered
-
-    private void lblMinusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseClicked
-        // TODO add your handling code here:
-        // Thu nhỏ form lại
-        this.setState(javax.swing.JFrame.ICONIFIED);
-    }//GEN-LAST:event_lblMinusMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -360,28 +298,27 @@ public class frmQLDocGia extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmQLDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmQLDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmQLDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmQLDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(QLDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmQLDocGia().setVisible(true);
-            }
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(() -> {
+            QLDocGia dialog = new QLDocGia(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
@@ -410,8 +347,6 @@ public class frmQLDocGia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblMinus;
-    private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JTable tbldocgia;

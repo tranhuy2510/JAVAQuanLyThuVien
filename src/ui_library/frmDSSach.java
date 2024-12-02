@@ -4,9 +4,6 @@ package ui_library;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 
 /**
@@ -19,21 +16,15 @@ public class frmDSSach extends javax.swing.JFrame {
      * Creates new form frmQLTheLoai
      */
     public frmDSSach() {
-        
-        // Dòng lệnh dưới dùng để khắc phục lỗi mở bảng trong trang chủ
-        
-        try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                SwingUtilities.updateComponentTreeUI(this);
-            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-            }
-        
         initComponents();
-        
         // can giua cho form
-        
         //this.setSize(1102,519);
         this.setLocationRelativeTo(null);
+        setupUI();
+    
+    }
+    
+    private void setupUI(){
         // tao vien xam cho khung panel
         Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(30, 130, 76));
         
@@ -51,11 +42,13 @@ public class frmDSSach extends javax.swing.JFrame {
 
         tblDanhsach.getTableHeader().repaint();
         //CODE LOI TAM THOI NOTE
-        controllers.Func_Class func = new controllers.Func_Class();
-        func.displayImage(60,60,"/image/DSsach.png", lblTieudeTL );
-    
+        //controllers.Func_Class func = new controllers.Func_Class();
+        //func.displayImage(60,60,"/image/DSsach.png", lblTieudeTL );
+        lblMinus.setOpaque(true); // Cho phép JLabel có background
+        lblMinus.setBackground(new java.awt.Color(30,130,76)); 
+        lblSystemIC.setOpaque(true); // Cho phép JLabel có background
+        lblSystemIC.setBackground(new java.awt.Color(30,130,76)); 
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,9 +59,6 @@ public class frmDSSach extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel_Theloaisach = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        lbl_CloseFormTL = new javax.swing.JLabel();
-        lblTieudeTL = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDanhsach = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -83,58 +73,24 @@ public class frmDSSach extends javax.swing.JFrame {
         Ngaydau = new com.toedter.calendar.JDateChooser();
         Ngaycuoi = new com.toedter.calendar.JDateChooser();
         btnTim2 = new javax.swing.JButton();
-        lblMinus = new javax.swing.JLabel();
         Anhbia = new javax.swing.JLabel();
         matg = new javax.swing.JLabel();
         tentg = new javax.swing.JLabel();
         theloai = new javax.swing.JLabel();
         nhaxb = new javax.swing.JLabel();
         gia = new javax.swing.JLabel();
+        pnlHeader = new javax.swing.JPanel();
+        lblTieude = new javax.swing.JLabel();
+        lblSystemIC = new javax.swing.JLabel();
+        lblMinus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_Theloaisach.setBackground(new java.awt.Color(200, 247, 197));
-
-        lbl_CloseFormTL.setBackground(new java.awt.Color(30, 130, 76));
-        lbl_CloseFormTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_CloseFormTL.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_CloseFormTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_CloseFormTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lbl_CloseFormTL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbl_CloseFormTL.setOpaque(true);
-        lbl_CloseFormTL.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_CloseFormTLMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbl_CloseFormTLMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbl_CloseFormTLMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lbl_CloseFormTL, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_CloseFormTL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        lblTieudeTL.setBackground(new java.awt.Color(30, 130, 76));
-        lblTieudeTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTieudeTL.setForeground(new java.awt.Color(255, 255, 255));
-        lblTieudeTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTieudeTL.setText("Danh sách sách");
-        lblTieudeTL.setOpaque(true);
+        jPanel_Theloaisach.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDanhsach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,6 +113,8 @@ public class frmDSSach extends javax.swing.JFrame {
         });
         tblDanhsach.setShowGrid(true);
         jScrollPane1.setViewportView(tblDanhsach);
+
+        jPanel_Theloaisach.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 206, 952, 449));
 
         lblMasach.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lblMasach.setText("Tìm kiếm:");
@@ -201,6 +159,8 @@ public class frmDSSach extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
+        jPanel_Theloaisach.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 84, -1, -1));
+
         lblTensach.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lblTensach.setText("Từ ngày:");
 
@@ -239,24 +199,83 @@ public class frmDSSach extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblTensach)
-                        .addComponent(lblTensach1))
+                    .addComponent(lblTensach1)
+                    .addComponent(lblTensach)
                     .addComponent(Ngaydau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Ngaycuoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTim2))
                 .addGap(17, 17, 17))
         );
 
-        lblMinus.setBackground(new java.awt.Color(30, 130, 76));
+        jPanel_Theloaisach.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 84, -1, 104));
+
+        Anhbia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Anhbia.setText("Ảnh bìa");
+        Anhbia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Anhbia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Anhbia.setOpaque(true);
+        jPanel_Theloaisach.add(Anhbia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 206, 154, 190));
+
+        matg.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        matg.setForeground(new java.awt.Color(51, 51, 255));
+        matg.setText("Mã tác giả");
+        jPanel_Theloaisach.add(matg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 419, 191, -1));
+
+        tentg.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        tentg.setForeground(new java.awt.Color(51, 51, 255));
+        tentg.setText("Tên tác giả");
+        jPanel_Theloaisach.add(tentg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 449, 191, -1));
+
+        theloai.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        theloai.setForeground(new java.awt.Color(51, 51, 255));
+        theloai.setText("Thể loại");
+        jPanel_Theloaisach.add(theloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 479, 191, -1));
+
+        nhaxb.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        nhaxb.setForeground(new java.awt.Color(51, 51, 255));
+        nhaxb.setText("Nhà xuất bản");
+        jPanel_Theloaisach.add(nhaxb, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 509, 191, -1));
+
+        gia.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        gia.setForeground(new java.awt.Color(51, 51, 255));
+        gia.setText("Giá");
+        jPanel_Theloaisach.add(gia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 539, 191, -1));
+
+        pnlHeader.setBackground(new java.awt.Color(30, 130, 76));
+        pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTieude.setBackground(new java.awt.Color(241, 231, 254));
+        lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTieude.setForeground(new java.awt.Color(255, 255, 255));
+        lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTieude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_nhom.png"))); // NOI18N
+        lblTieude.setText("   Quản lý độc giả");
+        lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 270, 60));
+
+        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
+        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblSystemICMouseExited(evt);
+            }
+        });
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 60, 60));
+
         lblMinus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_minus.png"))); // NOI18N
         lblMinus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblMinus.setOpaque(true);
         lblMinus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMinusMouseClicked(evt);
@@ -268,117 +287,34 @@ public class frmDSSach extends javax.swing.JFrame {
                 lblMinusMouseExited(evt);
             }
         });
+        pnlHeader.add(lblMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 0, 60, 60));
 
-        Anhbia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Anhbia.setText("Ảnh bìa");
-        Anhbia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Anhbia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Anhbia.setOpaque(true);
+        jPanel_Theloaisach.add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 60));
 
-        matg.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        matg.setForeground(new java.awt.Color(51, 51, 255));
-        matg.setText("Mã tác giả");
-
-        tentg.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        tentg.setForeground(new java.awt.Color(51, 51, 255));
-        tentg.setText("Tên tác giả");
-
-        theloai.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        theloai.setForeground(new java.awt.Color(51, 51, 255));
-        theloai.setText("Thể loại");
-
-        nhaxb.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        nhaxb.setForeground(new java.awt.Color(51, 51, 255));
-        nhaxb.setText("Nhà xuất bản");
-
-        gia.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        gia.setForeground(new java.awt.Color(51, 51, 255));
-        gia.setText("Giá");
-
-        javax.swing.GroupLayout jPanel_TheloaisachLayout = new javax.swing.GroupLayout(jPanel_Theloaisach);
-        jPanel_Theloaisach.setLayout(jPanel_TheloaisachLayout);
-        jPanel_TheloaisachLayout.setHorizontalGroup(
-            jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_TheloaisachLayout.createSequentialGroup()
-                .addComponent(lblTieudeTL, javax.swing.GroupLayout.PREFERRED_SIZE, 1084, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(lblMinus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(matg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tentg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(theloai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                                .addComponent(Anhbia, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(nhaxb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(gia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(24, 24, 24))
-        );
-        jPanel_TheloaisachLayout.setVerticalGroup(
-            jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTieudeTL, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                    .addComponent(lblMinus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                        .addComponent(Anhbia, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(matg)
-                        .addGap(12, 12, 12)
-                        .addComponent(tentg)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(theloai)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nhaxb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(gia)))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel_Theloaisach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Theloaisach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel_Theloaisach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lbl_CloseFormTLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_CloseFormTLMouseClicked
+    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
         // TODO add your handling code here:
-        // Dong form the loai sach
+        // Dong form
         this.dispose();
-    }//GEN-LAST:event_lbl_CloseFormTLMouseClicked
+    }//GEN-LAST:event_lblSystemICMouseClicked
+
+    private void lblSystemICMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseEntered
+        // TODO add your handling code here:
+        lblSystemIC.setBackground(new java.awt.Color(255,102,102));
+    }//GEN-LAST:event_lblSystemICMouseEntered
+
+    private void lblSystemICMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseExited
+        // TODO add your handling code here:
+        lblSystemIC.setBackground(new java.awt.Color(30,130,76));
+    }//GEN-LAST:event_lblSystemICMouseExited
 
     private void lblMinusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinusMouseClicked
         // TODO add your handling code here:
+        // Thu nhỏ form lại
         this.setState(javax.swing.JFrame.ICONIFIED);
     }//GEN-LAST:event_lblMinusMouseClicked
 
@@ -392,16 +328,6 @@ public class frmDSSach extends javax.swing.JFrame {
         lblMinus.setBackground(new java.awt.Color(30,130,76));
     }//GEN-LAST:event_lblMinusMouseExited
 
-    private void lbl_CloseFormTLMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_CloseFormTLMouseEntered
-        // TODO add your handling code here:
-        lbl_CloseFormTL.setBackground(Color.RED);
-    }//GEN-LAST:event_lbl_CloseFormTLMouseEntered
-
-    private void lbl_CloseFormTLMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_CloseFormTLMouseExited
-        // TODO add your handling code here:
-        lbl_CloseFormTL.setBackground(new java.awt.Color(30,130,76));
-    }//GEN-LAST:event_lbl_CloseFormTLMouseExited
-
     /**
      * @param args the command line arguments
      */
@@ -414,21 +340,23 @@ public class frmDSSach extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    
                     //javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmDSSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmDSSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmDSSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(frmDSSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -440,6 +368,7 @@ public class frmDSSach extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new frmDSSach().setVisible(true);
             }
@@ -455,19 +384,19 @@ public class frmDSSach extends javax.swing.JFrame {
     private javax.swing.JLabel gia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel_Theloaisach;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMasach;
     private javax.swing.JLabel lblMinus;
+    private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblTensach;
     private javax.swing.JLabel lblTensach1;
-    private javax.swing.JLabel lblTieudeTL;
-    private javax.swing.JLabel lbl_CloseFormTL;
+    private javax.swing.JLabel lblTieude;
     private javax.swing.JLabel matg;
     private javax.swing.JLabel nhaxb;
+    private javax.swing.JPanel pnlHeader;
     private javax.swing.JTable tblDanhsach;
     private javax.swing.JLabel tentg;
     private javax.swing.JLabel theloai;
