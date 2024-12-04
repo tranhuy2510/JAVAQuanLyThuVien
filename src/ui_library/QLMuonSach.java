@@ -36,8 +36,6 @@ public class QLMuonSach extends javax.swing.JDialog {
         
         lblWsach.setVisible(false);
         lblWdocgia.setVisible(false);
-        lbldateNhap.setVisible(false);
-        lbldateXuat.setVisible(false);
     }
     
     
@@ -88,8 +86,6 @@ public class QLMuonSach extends javax.swing.JDialog {
         btnHuy = new javax.swing.JButton();
         txtmadg = new javax.swing.JTextField();
         txtSach = new javax.swing.JTextField();
-        lbldateNhap = new javax.swing.JLabel();
-        lbldateXuat = new javax.swing.JLabel();
         lblWsach = new javax.swing.JLabel();
         lblWdocgia = new javax.swing.JLabel();
 
@@ -356,21 +352,21 @@ public class QLMuonSach extends javax.swing.JDialog {
 
         txtmadg.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         txtmadg.setForeground(new java.awt.Color(74, 98, 138));
+        txtmadg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtmadgKeyReleased(evt);
+            }
+        });
         jPanel6.add(txtmadg, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 150, 30));
 
         txtSach.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         txtSach.setForeground(new java.awt.Color(74, 98, 138));
+        txtSach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSachKeyReleased(evt);
+            }
+        });
         jPanel6.add(txtSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 150, 30));
-
-        lbldateNhap.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        lbldateNhap.setForeground(new java.awt.Color(255, 255, 255));
-        lbldateNhap.setText("* Ngày nhập không được để trống");
-        jPanel6.add(lbldateNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 200, 20));
-
-        lbldateXuat.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        lbldateXuat.setForeground(new java.awt.Color(255, 255, 255));
-        lbldateXuat.setText("* Ngày trả không được để trống");
-        jPanel6.add(lbldateXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 200, 20));
 
         lblWsach.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         lblWsach.setForeground(new java.awt.Color(255, 255, 255));
@@ -404,8 +400,7 @@ public class QLMuonSach extends javax.swing.JDialog {
             }
 
             if (datemuon.getDate() == null) {
-                //JOptionPane.showMessageDialog(this, "Vui lòng chọn ngày mượn!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                lbldateNhap.setVisible(false);
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn ngày mượn!", "Lỗi", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -543,6 +538,28 @@ public class QLMuonSach extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnTimdocgiaActionPerformed
 
+    private void txtSachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSachKeyReleased
+        // TODO add your handling code here:
+        String sach = txtSach.getText();
+        if (!sach.isEmpty()) {
+            lblWsach.setVisible(false);
+
+        } else {
+            lblWsach.setVisible(true);
+        }
+    }//GEN-LAST:event_txtSachKeyReleased
+
+    private void txtmadgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmadgKeyReleased
+        // TODO add your handling code here:
+        String tensach = txtmadg.getText();
+        if (!tensach.isEmpty()) {
+            lblWdocgia.setVisible(false);
+
+        } else {
+            lblWdocgia.setVisible(true);
+        }
+    }//GEN-LAST:event_txtmadgKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -615,8 +632,6 @@ public class QLMuonSach extends javax.swing.JDialog {
     private javax.swing.JLabel lblTieudeTL;
     private javax.swing.JLabel lblWdocgia;
     private javax.swing.JLabel lblWsach;
-    private javax.swing.JLabel lbldateNhap;
-    private javax.swing.JLabel lbldateXuat;
     private javax.swing.JTextField txtDocgia;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtIDDocgia1;
