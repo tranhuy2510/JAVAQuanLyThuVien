@@ -4,8 +4,6 @@
  */
 package ui_library;
 
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -399,15 +397,13 @@ public class frmUserHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnQLSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLSachMouseClicked
-        
         try {
             // TODO add your handling code here:
-            frmQLSach book = new frmQLSach();
+            QLSach book = new QLSach(this, true);
             book.setVisible(true);
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(frmUserHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmTrangchu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_btnQLSachMouseClicked
 
     private void btnQLTacGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLTacGiaMouseClicked

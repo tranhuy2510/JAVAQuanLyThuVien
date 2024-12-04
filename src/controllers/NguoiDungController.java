@@ -48,6 +48,67 @@ public class NguoiDungController {
         return role; // Trả về quyền nếu đăng nhập thành công, null nếu thất bại
     }
     
+    //----------------------------------------------------------------------------------------------------
+
+    public boolean kiemTraTaiKhoanTonTai(String username) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM tbl_nguoidung WHERE taikhoan = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0; // Nếu số lượng > 0 nghĩa là đã tồn tại
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean dangKyTaiKhoan(String username, String password, String hoTen, String soDT) throws SQLException {
+        conn.setAutoCommit(false); // Bắt đầu transaction
+        try {
+            // 1. Mã hóa mật khẩu
+            String hashedPassword = hashPassword(password);
+
+            // 2. Thêm vào bảng tbl_nguoidung
+            String insertNguoiDungSQL = "INSERT INTO tbl_nguoidung (taikhoan, matkhau, loaiuser) VALUES (?, ?, 'user')";
+            try (PreparedStatement stmtNguoiDung = conn.prepareStatement(insertNguoiDungSQL, Statement.RETURN_GENERATED_KEYS)) {
+                stmtNguoiDung.setString(1, username);
+                stmtNguoiDung.setString(2, hashedPassword);
+                stmtNguoiDung.executeUpdate();
+
+                // Lấy id_user vừa tạo
+                try (ResultSet rs = stmtNguoiDung.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        int idUser = rs.getInt(1);
+
+                        // 3. Thêm vào bảng tbl_docgia
+                        String insertDocGiaSQL = "INSERT INTO tbl_docgia (hoten, sodt, id_user) VALUES (?, ?, ?)";
+                        try (PreparedStatement stmtDocGia = conn.prepareStatement(insertDocGiaSQL)) {
+                            stmtDocGia.setString(1, hoTen);
+                            stmtDocGia.setString(2, soDT);
+                            stmtDocGia.setInt(3, idUser);
+                            stmtDocGia.executeUpdate();
+                        }
+                    }
+                }
+            }
+
+            conn.commit(); // Xác nhận transaction
+            return true;
+        } catch (SQLException ex) {
+            conn.rollback(); // Hoàn tác nếu xảy ra lỗi
+            throw ex;
+        } finally {
+            conn.setAutoCommit(true);
+        }
+    }
+
+
+    
+    
+    
+    
+
      // Thêm mới người dùng vào cơ sở dữ liệu
     public boolean InsertData(NguoiDungModel user) {
          String sql = "INSERT INTO tbl_NguoiDung (taikhoan, matkhau, loaiuser) VALUES (?, ?, ?)";
@@ -63,79 +124,5 @@ public class NguoiDungController {
         }
     }
     
-    // Trả về loại người dùng nếu đăng nhập thành công, null nếu thất bại
-    public String getLoaiNguoiDung(String taikhoan, String matkhau) throws SQLException {
-        String matkhauHash = hashPassword(matkhau);
-        String sql = "SELECT loaiuser FROM tbl_NguoiDung WHERE taikhoan = ? AND matkhau = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, taikhoan);
-            stmt.setString(2, matkhauHash);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getString("loaiuser");
-                }
-            }
-        }
-        return null; // Trả về null nếu không tìm thấy
-    }
-
     
-    // Kiểm tra tài khoản tồn tại
-    public boolean isValidAccount(String taikhoan) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM tbl_NguoiDung WHERE taikhoan = ?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, taikhoan);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt(1) > 0;
-                }
-            }
-        }
-        return false;
-    }
-
-    // Kiểm tra mật khẩu
-    public boolean isValidPassword(String matkhau, String taikhoan) throws SQLException {
-        String sql = "SELECT matkhau FROM tbl_NguoiDung WHERE taikhoan = ?";
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, taikhoan);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return matkhau.equals(rs.getString("matkhau"));
-                }
-            }
-        }
-        return false;
-    }
-
-    // Kiểm tra loại người dùng
-    public boolean kiemTraLoaiNguoiDung(String taikhoan, String loainguoidung) throws SQLException {
-        // Kiểm tra nếu kết nối hợp lệ
-        if (conn == null || conn.isClosed()) {
-            throw new SQLException("Kết nối cơ sở dữ liệu không hợp lệ.");
-        }
-
-        // Truy vấn để lấy loại người dùng từ cơ sở dữ liệu
-        String query = "SELECT loaiuser FROM tbl_NguoiDung WHERE taikhoan = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, taikhoan);  // Thiết lập giá trị cho tham số tài khoản
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    // Lấy giá trị loại người dùng từ kết quả truy vấn
-                    String storedRole = rs.getString("loaiuser");
-                    // Kiểm tra xem loại người dùng có khớp với loại người dùng đã nhập không
-                    return storedRole.equals(loainguoidung);
-                } else {
-                    // Nếu không tìm thấy tài khoản trong cơ sở dữ liệu
-                    return false;
-                }
-            }
-        } catch (SQLException ex) {
-            // Xử lý lỗi khi thực hiện truy vấn
-            System.err.println("Lỗi khi kiểm tra loại người dùng: " + ex.getMessage());
-            throw ex;  // Ném lại lỗi để có thể xử lý ở nơi gọi phương thức
-        }
-    }
-
-
 }

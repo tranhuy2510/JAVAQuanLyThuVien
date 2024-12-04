@@ -255,10 +255,14 @@ public class frmDangnhap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangkiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangkiActionPerformed
-        // TODO add your handling code here:
-        frmDangKy register = new frmDangKy();
-        register.setVisible(true);
-        this.dispose();
+        try {
+            // TODO add your handling code here:
+            frmDangKy register = new frmDangKy();
+            register.setVisible(true);
+            this.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmDangnhap.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnDangkiActionPerformed
 
    
@@ -289,7 +293,7 @@ public class frmDangnhap extends javax.swing.JFrame {
                     // Chuyển hướng tới giao diện phù hợp
                     if (role.equals("Admin")) {
                         new frmTrangchu().setVisible(true);
-                    } else if (role.equals("User")) {
+                    } else if (role.equals("user")) {
                         new frmUserHome().setVisible(true);
                     }
                     this.dispose(); // Đóng giao diện đăng nhập
@@ -297,78 +301,7 @@ public class frmDangnhap extends javax.swing.JFrame {
             }
             
             
-            
-            /*
-            // Kiểm tra nếu loại người dùng chưa được chọn
-            if (loainguoidung.equals("Chọn đối tượng")) {
-                lblWdtg.setVisible(true);  // Hiển thị thông báo lỗi loại người dùng
-                return;
-            }
-            
-            String loaiNguoiDung = controller.getLoaiNguoiDung(taikhoan, matkhau);
-
-            if (loaiNguoiDung == null) {
-                JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu không chính xác!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            } else {
-                if (loaiNguoiDung.equals("admin")) {
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công! Chuyển đến trang quản trị.");
-                    new frmTrangchu().setVisible(true);
-                } else if (loaiNguoiDung.equals("user")) {
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công! Chuyển đến giao diện người dùng.");
-                    new frmCardMember().setVisible(true);
-                }
-                this.dispose(); // Đóng form đăng nhập
-            }
-            
-            NguoiDungController nguoiDungCtrl = new NguoiDungController();
-
-            // Kiểm tra đăng nhập
-            boolean isSuccess = nguoiDungCtrl.kiemTraDangNhap(taikhoan, matkhau, loainguoidung);
-
-            // Nếu đăng nhập thành công, kiểm tra thêm loại người dùng
-            if (isSuccess) {
-                // Kiểm tra xem loại người dùng có khớp với tài khoản đã đăng nhập không
-                boolean isRoleValid = nguoiDungCtrl.kiemTraLoaiNguoiDung(taikhoan, loainguoidung);
-
-                if (isRoleValid) {
-                    // Đăng nhập thành công và loại người dùng đúng
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-
-                    // Chuyển đến màn hình chính
-                    frmTrangchu home = new frmTrangchu();
-                    home.setVisible(true);
-                    // Đóng form đăng nhập
-                    this.dispose();     
-                } else {
-                    // Nếu loại người dùng không đúng
-                    lblWdtg.setVisible(true);  // Hiển thị thông báo loại người dùng không khớp
-                }
-            } else {
-                // Đăng nhập thất bại, kiểm tra nguyên nhân
-                if (!nguoiDungCtrl.isValidAccount(taikhoan)) {
-                    if (taikhoan.isEmpty()) {
-                        lblWtk.setVisible(true);  
-
-                    } else { 
-                        lblWtkExist.setVisible(true);  // Hiển thị thông báo tài khoản không tồn tại                        
-                    }
-                    
-                } else if (!nguoiDungCtrl.isValidPassword(matkhau, taikhoan)) {
-                    if (matkhau.isEmpty()) {
-                        lblWmk.setVisible(true);  
-
-                    } else{
-                        lblWmkExist.setVisible(true); 
-                    } 
-                    
-                } else {
-                    lblWdtg.setVisible(false);
-                    lblWtkExist.setVisible(false);
-                    lblWmkExist.setVisible(false);
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                }
-            } 
-            */
+           
         } catch (SQLException ex) {
             // Xử lý lỗi cơ sở dữ liệu
             Logger.getLogger(frmDangnhap.class.getName()).log(Level.SEVERE, null, ex);

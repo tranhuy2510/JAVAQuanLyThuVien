@@ -4,10 +4,21 @@
  */
 package controllers;
 
+import java.sql.*;
+import models.DocGiaModel;
+
 /**
  *
  * @author ADMIN
  */
 public class DocGiaController {
+    Connection conn;
+    public DocGiaController() throws SQLException{
+        conn = new DBConnect().connectSQL();
+    }
+
+    
+    
+    
     
 }

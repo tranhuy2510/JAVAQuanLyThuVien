@@ -704,7 +704,7 @@ public final class QLSach extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Mã sách không hợp lệ.","Lỗi", JOptionPane.ERROR_MESSAGE);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Lỗi khi tải lại dữ liệu: " + ex.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
-                Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(QLSach.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -804,7 +804,7 @@ public final class QLSach extends javax.swing.JDialog {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Có lỗi xảy ra: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QLSach.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -961,17 +961,17 @@ public final class QLSach extends javax.swing.JDialog {
                             ClearData();
                             ShowData();
                         } catch (SQLException ex) {
-                            Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(QLSach.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     } else {
                         JOptionPane.showMessageDialog(this, "Thêm sách thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(QLSach.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(frmQLSach.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QLSach.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
