@@ -5,6 +5,8 @@
 package ui_library;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -437,14 +439,18 @@ public class frmUserHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQLTheLoaiMouseClicked
 
     private void btnQLDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLDocGiaMouseClicked
-        // TODO add your handling code here:
-        frmQLDocGia mreader = new frmQLDocGia();
-        mreader.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            QLDocGia mreader = new QLDocGia(this, true);
+            mreader.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmUserHome.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnQLDocGiaMouseClicked
 
     private void btnQLMuonSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLMuonSachMouseClicked
         // TODO add your handling code here:
-        frmQLMuonSach issue = new frmQLMuonSach();
+        QLMuonSach issue = new QLMuonSach(this, true);
         issue.setVisible(true);
     }//GEN-LAST:event_btnQLMuonSachMouseClicked
 

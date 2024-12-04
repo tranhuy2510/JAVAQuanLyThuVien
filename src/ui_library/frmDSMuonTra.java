@@ -58,23 +58,26 @@ public class frmDSMuonTra extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Ngaytra = new com.toedter.calendar.JDateChooser();
         btnTim = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSachmuon = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_Theloaisach.setBackground(new java.awt.Color(148, 170, 214));
+        jPanel_Theloaisach.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(74, 98, 138)));
         jPanel_Theloaisach.setPreferredSize(new java.awt.Dimension(1105, 636));
+        jPanel_Theloaisach.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTieudeTL.setBackground(new java.awt.Color(74, 98, 138));
         lblTieudeTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTieudeTL.setForeground(new java.awt.Color(255, 255, 255));
         lblTieudeTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTieudeTL.setText("Danh sách sách mượn");
+        lblTieudeTL.setText("        Danh sách sách mượn");
         lblTieudeTL.setOpaque(true);
+        jPanel_Theloaisach.add(lblTieudeTL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 57));
 
         lblMinus.setBackground(new java.awt.Color(74, 98, 138));
         lblMinus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -92,6 +95,7 @@ public class frmDSMuonTra extends javax.swing.JFrame {
                 lblMinusMouseExited(evt);
             }
         });
+        jPanel_Theloaisach.add(lblMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 60, 57));
 
         lbl_Close.setBackground(new java.awt.Color(74, 98, 138));
         lbl_Close.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -111,49 +115,28 @@ public class frmDSMuonTra extends javax.swing.JFrame {
                 lbl_CloseMouseExited(evt);
             }
         });
+        jPanel_Theloaisach.add(lbl_Close, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 60, 57));
 
         jPanel1.setBackground(new java.awt.Color(191, 202, 230));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Ngày mượn:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 27, 102, -1));
+        jPanel1.add(Ngaymuon, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 23, 173, -1));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setText("Ngày trả:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 27, 90, -1));
+        jPanel1.add(Ngaytra, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 23, 164, -1));
 
         btnTim.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnTim.setText("Tìm");
+        jPanel1.add(btnTim, new org.netbeans.lib.awtextra.AbsoluteConstraints(772, 23, 91, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Ngaymuon, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Ngaytra, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addComponent(btnTim)
-                .addContainerGap(56, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTim)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Ngaymuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
-                        .addComponent(Ngaytra, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18))
-        );
+        jPanel_Theloaisach.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 65, 919, 70));
 
+        tblSachmuon.setBackground(new java.awt.Color(191, 202, 230));
         tblSachmuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -176,60 +159,9 @@ public class frmDSMuonTra extends javax.swing.JFrame {
         tblSachmuon.setSelectionBackground(new java.awt.Color(191, 202, 230));
         jScrollPane1.setViewportView(tblSachmuon);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jPanel_Theloaisach.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 145, 900, -1));
 
-        javax.swing.GroupLayout jPanel_TheloaisachLayout = new javax.swing.GroupLayout(jPanel_Theloaisach);
-        jPanel_Theloaisach.setLayout(jPanel_TheloaisachLayout);
-        jPanel_TheloaisachLayout.setHorizontalGroup(
-            jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                .addComponent(lblTieudeTL, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(lblMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(lbl_Close, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
-            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel_TheloaisachLayout.setVerticalGroup(
-            jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TheloaisachLayout.createSequentialGroup()
-                .addGroup(jPanel_TheloaisachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTieudeTL, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                    .addComponent(lbl_Close, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblMinus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 31, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Theloaisach, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Theloaisach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel_Theloaisach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -317,7 +249,6 @@ public class frmDSMuonTra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel_Theloaisach;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMinus;

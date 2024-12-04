@@ -102,13 +102,13 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(30, 3, 3, 3, new java.awt.Color(103, 65, 114)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(103, 65, 114));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Mã sách:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 110, 32));
 
-        jTextField5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(103, 65, 114));
         jTextField5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(103, 65, 114)));
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 90, 32));
@@ -120,12 +120,12 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 100, 32));
 
-        jLabel10.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(103, 65, 114));
         jLabel10.setText("Ngày mượn:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 110, 32));
 
-        jTextField6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextField6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(103, 65, 114));
         jTextField6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(103, 65, 114)));
         jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 90, 32));
@@ -146,7 +146,7 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jDateChooser1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 200, 32));
 
-        jLabel12.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(103, 65, 114));
         jLabel12.setText("Ngày mượn:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 110, 32));
@@ -165,7 +165,7 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jLabel5.setText("Tên sách");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 125, 200, 20));
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(103, 65, 114));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Mô tả: ");
@@ -185,21 +185,28 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(90, 34, 139));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã ", "Tên thể loại", "Chuyên môn", "Giới thiệu"
+                "Mã sách", "Tên độc giả", "Ngày mượn", "Ngày trả", "Mô tả"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -223,19 +230,19 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 110, 30));
 
-        jLabel13.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(103, 65, 114));
         jLabel13.setText("Mã độc giả:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 110, 32));
 
         jComboBox1.setBackground(new java.awt.Color(190, 144, 212));
-        jComboBox1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(103, 65, 114));
         jComboBox1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(103, 65, 114)));
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 140, 32));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 620));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

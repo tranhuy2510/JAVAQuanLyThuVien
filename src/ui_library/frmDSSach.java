@@ -166,7 +166,7 @@ public class frmDSSach extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel2.setText("Tìm kiếm sách theo ngày mượn");
+        jLabel2.setText("Tìm kiếm sách theo ngày nhập");
 
         lblTensach1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lblTensach1.setText("Đến ngày:");
@@ -218,32 +218,32 @@ public class frmDSSach extends javax.swing.JFrame {
         Anhbia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Anhbia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Anhbia.setOpaque(true);
-        jPanel_Theloaisach.add(Anhbia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 206, 154, 190));
+        jPanel_Theloaisach.add(Anhbia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 260, 154, 190));
 
         matg.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         matg.setForeground(new java.awt.Color(51, 51, 255));
         matg.setText("Mã tác giả");
-        jPanel_Theloaisach.add(matg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 419, 191, -1));
+        jPanel_Theloaisach.add(matg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 470, 191, -1));
 
         tentg.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         tentg.setForeground(new java.awt.Color(51, 51, 255));
         tentg.setText("Tên tác giả");
-        jPanel_Theloaisach.add(tentg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 449, 191, -1));
+        jPanel_Theloaisach.add(tentg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 500, 191, -1));
 
         theloai.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         theloai.setForeground(new java.awt.Color(51, 51, 255));
         theloai.setText("Thể loại");
-        jPanel_Theloaisach.add(theloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 479, 191, -1));
+        jPanel_Theloaisach.add(theloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 530, 191, -1));
 
         nhaxb.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         nhaxb.setForeground(new java.awt.Color(51, 51, 255));
         nhaxb.setText("Nhà xuất bản");
-        jPanel_Theloaisach.add(nhaxb, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 509, 191, -1));
+        jPanel_Theloaisach.add(nhaxb, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 560, 191, -1));
 
         gia.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         gia.setForeground(new java.awt.Color(51, 51, 255));
         gia.setText("Giá");
-        jPanel_Theloaisach.add(gia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1024, 539, 191, -1));
+        jPanel_Theloaisach.add(gia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 590, 191, -1));
 
         pnlHeader.setBackground(new java.awt.Color(30, 130, 76));
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -252,10 +252,10 @@ public class frmDSSach extends javax.swing.JFrame {
         lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblTieude.setForeground(new java.awt.Color(255, 255, 255));
         lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblTieude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_nhom.png"))); // NOI18N
-        lblTieude.setText("   Quản lý độc giả");
+        lblTieude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/book.png"))); // NOI18N
+        lblTieude.setText("    Kho sách");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 270, 60));
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 270, 70));
 
         lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
@@ -271,7 +271,7 @@ public class frmDSSach extends javax.swing.JFrame {
                 lblSystemICMouseExited(evt);
             }
         });
-        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 60, 60));
+        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 5, 60, 60));
 
         lblMinus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_minus.png"))); // NOI18N
@@ -287,9 +287,9 @@ public class frmDSSach extends javax.swing.JFrame {
                 lblMinusMouseExited(evt);
             }
         });
-        pnlHeader.add(lblMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 0, 60, 60));
+        pnlHeader.add(lblMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 5, 60, 60));
 
-        jPanel_Theloaisach.add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 60));
+        jPanel_Theloaisach.add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 70));
 
         getContentPane().add(jPanel_Theloaisach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 680));
 

@@ -5,6 +5,7 @@
 package ui_library;
 
 import controllers.DocGiaController;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -160,9 +161,9 @@ public final class QLDocGia extends javax.swing.JDialog {
         lblTieude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_nhom.png"))); // NOI18N
         lblTieude.setText("   Quản lý độc giả");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 270, 50));
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 270, 50));
 
-        getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 50));
+        getContentPane().add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 50));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(4, 147, 114)));
@@ -170,12 +171,12 @@ public final class QLDocGia extends javax.swing.JDialog {
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-BlackUser.png"))); // NOI18N
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 32, 32));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 32, 32));
 
         lblWname.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWname.setForeground(new java.awt.Color(255, 102, 102));
         lblWname.setText("* Nhập tên độc giả");
-        jPanel1.add(lblWname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 240, 25));
+        jPanel1.add(lblWname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 240, 25));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(4, 147, 114));
@@ -187,7 +188,7 @@ public final class QLDocGia extends javax.swing.JDialog {
         txtMa.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtMa.setForeground(new java.awt.Color(4, 147, 114));
         txtMa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(4, 147, 114)));
-        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 130, 32));
+        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 125, 100, 32));
 
         txtEmail.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(4, 147, 114));
@@ -197,23 +198,23 @@ public final class QLDocGia extends javax.swing.JDialog {
                 txtEmailKeyReleased(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 260, 32));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 260, 32));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_email32.png"))); // NOI18N
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 40, 30));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 40, 30));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(4, 147, 114));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Email:");
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 130, 32));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 130, 32));
 
         lblWemail.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWemail.setForeground(new java.awt.Color(255, 102, 102));
         lblWemail.setText("* Nhập email");
-        jPanel1.add(lblWemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 190, 25));
+        jPanel1.add(lblWemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 190, 25));
 
         txtSdt.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtSdt.setForeground(new java.awt.Color(4, 147, 114));
@@ -223,7 +224,7 @@ public final class QLDocGia extends javax.swing.JDialog {
                 txtSdtKeyReleased(evt);
             }
         });
-        jPanel1.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 260, 32));
+        jPanel1.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 402, 260, 32));
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_phone32.png"))); // NOI18N
@@ -234,21 +235,21 @@ public final class QLDocGia extends javax.swing.JDialog {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Số điện thoại:");
         jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 130, 32));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 130, 32));
 
         lblWsdt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWsdt.setForeground(new java.awt.Color(255, 102, 102));
         lblWsdt.setText("* Nhập tên số điện thoại");
-        jPanel1.add(lblWsdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 150, 25));
+        jPanel1.add(lblWsdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 432, 150, 25));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_gender32.png"))); // NOI18N
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 40, 40));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 40, 40));
 
         lblWgioitinh.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWgioitinh.setForeground(new java.awt.Color(255, 102, 102));
         lblWgioitinh.setText("*Chọn giới tính");
-        jPanel1.add(lblWgioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 150, 25));
+        jPanel1.add(lblWgioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 150, 25));
 
         cmbGioitinh.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         cmbGioitinh.setForeground(new java.awt.Color(4, 147, 114));
@@ -259,34 +260,36 @@ public final class QLDocGia extends javax.swing.JDialog {
                 cmbGioitinhActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbGioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 260, 32));
+        jPanel1.add(cmbGioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 260, 32));
 
         btnChonAnhoso.setBackground(new java.awt.Color(200, 247, 197));
-        btnChonAnhoso.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnChonAnhoso.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         btnChonAnhoso.setForeground(new java.awt.Color(4, 147, 114));
-        btnChonAnhoso.setText("Chọn ảnh hồ sơ");
+        btnChonAnhoso.setText("Chọn ảnh ");
+        btnChonAnhoso.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(4, 147, 114)));
+        btnChonAnhoso.setContentAreaFilled(false);
         btnChonAnhoso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnChonAnhoso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChonAnhosoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnChonAnhoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 180, 30));
+        jPanel1.add(btnChonAnhoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 550, 90, 30));
 
         jLabel17.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(4, 147, 114));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel17.setText("Ảnh hồ sơ:");
         jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 560, 110, 32));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 550, 110, 32));
 
         lblAnh.setBackground(new java.awt.Color(200, 247, 197));
         lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user_128.png"))); // NOI18N
         lblAnh.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(4, 147, 114)));
-        jPanel1.add(lblAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 150, 180));
+        jPanel1.add(lblAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 130, 160));
 
-        btnHuy.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnHuy.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         btnHuy.setForeground(new java.awt.Color(4, 147, 114));
         btnHuy.setText("Hủy bỏ");
         btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -295,14 +298,14 @@ public final class QLDocGia extends javax.swing.JDialog {
                 btnHuyActionPerformed(evt);
             }
         });
-        jPanel1.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 630, 120, 32));
+        jPanel1.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 100, 32));
 
         jLabel19.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(4, 147, 114));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel19.setText("Tên độc giả:");
         jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 178, 130, 32));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 130, 32));
 
         txtTen.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtTen.setForeground(new java.awt.Color(4, 147, 114));
@@ -312,7 +315,7 @@ public final class QLDocGia extends javax.swing.JDialog {
                 txtTenKeyReleased(evt);
             }
         });
-        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 260, 32));
+        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 260, 32));
 
         jScrollPane1.setBackground(new java.awt.Color(213, 184, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -355,14 +358,14 @@ public final class QLDocGia extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbldocgia);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 650, 560));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 650, 540));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(4, 147, 114));
         jLabel9.setText("Thông tin độc giả");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, 240, 50));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, 240, 50));
 
-        btnSua.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnSua.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         btnSua.setForeground(new java.awt.Color(4, 147, 114));
         btnSua.setText("Sửa");
         btnSua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -371,9 +374,9 @@ public final class QLDocGia extends javax.swing.JDialog {
                 btnSuaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 630, 120, 32));
+        jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 100, 32));
 
-        btnXoa.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnXoa.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         btnXoa.setForeground(new java.awt.Color(4, 147, 114));
         btnXoa.setText("Xóa");
         btnXoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -382,16 +385,16 @@ public final class QLDocGia extends javax.swing.JDialog {
                 btnXoaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 630, 120, 32));
+        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 610, 100, 32));
 
         jLabel18.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(4, 147, 114));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel18.setText("Giới tính:");
         jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 130, 32));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 130, 32));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -474,17 +477,17 @@ public final class QLDocGia extends javax.swing.JDialog {
                 }
 
                 // Cột 5: Ảnh hồ sơ (byte[])
-                Object imageValue = model.getValueAt(selectedRow, 5);
-                if (imageValue != null && imageValue instanceof byte[]) {
-                    byte[] imageBytes = (byte[]) imageValue;
-                    ImageIcon imgIcon = new ImageIcon(new ImageIcon(imageBytes).getImage()
-                            .getScaledInstance(lblAnh.getWidth(), lblAnh.getHeight(), Image.SCALE_SMOOTH));
+                byte[] imagePath = (byte[]) model.getValueAt(selectedRow, 5);
+                if (imagePath != null) {
+                    ImageIcon imgIcon = new ImageIcon(new ImageIcon(imagePath).getImage()
+                        .getScaledInstance(lblAnh.getWidth(), lblAnh.getHeight(), Image.SCALE_SMOOTH));
                     lblAnh.setIcon(imgIcon);
                 } else {
                     lblAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user_128.png"))); // Không hiển thị ảnh nếu null
+                    JOptionPane.showMessageDialog(this, "Ảnh không xác định.", "Thông báo", JOptionPane.WARNING_MESSAGE);
                 }
-
-            } catch (Exception e) {
+                
+            } catch (HeadlessException e) {
                 JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi khi đọc dữ liệu: " + e.getMessage(),
                     "Lỗi", JOptionPane.ERROR_MESSAGE);
             }

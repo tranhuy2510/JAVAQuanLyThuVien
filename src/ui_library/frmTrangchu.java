@@ -584,7 +584,7 @@ public class frmTrangchu extends javax.swing.JFrame {
 
     private void btnQLMuonSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLMuonSachMouseClicked
         // TODO add your handling code here:
-        frmQLMuonSach issue = new frmQLMuonSach();
+        QLMuonSach issue = new QLMuonSach(this, true);
         issue.setVisible(true);
     }//GEN-LAST:event_btnQLMuonSachMouseClicked
 
