@@ -1,32 +1,21 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package ui_library;
 
 /**
  *
- * @author ADMIN
+ * @author admin
  */
-public class frmQLTraSach extends javax.swing.JFrame {
+public class QlTraSach extends javax.swing.JDialog {
 
     /**
-     * Creates new form frmQuanLyTraSach
+     * Creates new form QlTraSach
      */
-    public frmQLTraSach() {
+    public QlTraSach(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        // can giua cho form
-        this.setLocationRelativeTo(null);
-        
-        
-        //set UI
-        jTable1.getTableHeader().setBackground(new java.awt.Color(220, 198, 224));
-        jTable1.getTableHeader().setForeground(new java.awt.Color(90, 34, 139));
-        jTable1.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 16));
-        jTable1.getTableHeader().setOpaque(false);
-        
-        
-        
     }
 
     /**
@@ -66,8 +55,7 @@ public class frmQLTraSach extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlHeader.setBackground(new java.awt.Color(103, 65, 114));
@@ -265,28 +253,31 @@ public class frmQLTraSach extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmQLTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QlTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmQLTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QlTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmQLTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QlTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmQLTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QlTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmQLTraSach().setVisible(true);
-            }
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(() -> {
+            QlTraSach dialog = new QlTraSach(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 

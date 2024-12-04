@@ -591,7 +591,7 @@ public class frmDangKy extends javax.swing.JFrame {
 
     private void lblCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseEntered
         // TODO add your handling code here:
-        lblClose.setBackground(Color.LIGHT_GRAY);
+        lblClose.setBackground(new java.awt.Color(255,51,51));
     }//GEN-LAST:event_lblCloseMouseEntered
 
     private void lblCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseExited
@@ -601,7 +601,11 @@ public class frmDangKy extends javax.swing.JFrame {
 
     private void lblReLoadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReLoadMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        txtFullName.setText("");
+        txtTaiKhoan1.setText("");
+        txtMatKhau.setText("");
+        txtMatKhau1.setText("");
+        txtSdt.setText("");
     }//GEN-LAST:event_lblReLoadMouseClicked
 
     private void txtFullNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFullNameKeyReleased

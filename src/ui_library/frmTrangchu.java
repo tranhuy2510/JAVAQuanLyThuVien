@@ -566,19 +566,19 @@ public class frmTrangchu extends javax.swing.JFrame {
 
     private void btnQLNguoiDungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLNguoiDungMouseClicked
         // TODO add your handling code here:
-        frmQLNguoiDung users = new frmQLNguoiDung();
+        QLNguoiDung users = new QLNguoiDung(this, true);
         users.setVisible(true);
     }//GEN-LAST:event_btnQLNguoiDungMouseClicked
 
     private void btnDSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSDocGiaMouseClicked
         // TODO add your handling code here:
-        frmDSDocGia lstreader = new frmDSDocGia();
+        DSDocGia lstreader = new DSDocGia(this, true);
         lstreader.setVisible(true);
     }//GEN-LAST:event_btnDSDocGiaMouseClicked
 
     private void btnTraSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTraSachMouseClicked
         // TODO add your handling code here:
-        frmQLTraSach returns = new frmQLTraSach();
+        QlTraSach returns = new QlTraSach(this, true);
         returns.setVisible(true);
     }//GEN-LAST:event_btnTraSachMouseClicked
 
@@ -624,7 +624,7 @@ public class frmTrangchu extends javax.swing.JFrame {
 
     private void btnDSMuonTra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSMuonTra1MouseClicked
         // TODO add your handling code here:
-        frmDSMuonTra lstRI = new frmDSMuonTra();
+        DSMuonTra lstRI = new DSMuonTra(this, true);
         lstRI.setVisible(true);
     }//GEN-LAST:event_btnDSMuonTra1MouseClicked
 

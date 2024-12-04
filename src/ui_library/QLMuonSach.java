@@ -499,6 +499,14 @@ public class QLMuonSach extends javax.swing.JDialog {
         txtTensach.setText("");
         txtTacgia.setText(""); // Lấy tên tác giả
         txtSoluong.setText("");
+        txtIDDocgia1.setText("");
+        txtDocgia.setText("");
+        txtEmail.setText("");
+        txtLienhe.setText("");
+        txtSach.setText("");
+        txtmadg.setText("");
+        datemuon.setDate(null);
+        datetra.setDate(null);
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnTimdocgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimdocgiaActionPerformed
