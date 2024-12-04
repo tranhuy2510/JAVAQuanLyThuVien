@@ -589,9 +589,13 @@ public class frmTrangchu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQLMuonSachMouseClicked
 
     private void btnQLDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLDocGiaMouseClicked
-        // TODO add your handling code here:
-        QLDocGia mreader = new QLDocGia(this, true);
-        mreader.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            QLDocGia mreader = new QLDocGia(this, true);
+            mreader.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangchu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnQLDocGiaMouseClicked
 
     private void btnQLTacGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLTacGiaMouseClicked

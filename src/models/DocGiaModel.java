@@ -37,7 +37,7 @@ public class DocGiaModel {
         this.madocgia = rs.getString("id_docgia");
         this.hoten = rs.getString("hoten");
         this.email = rs.getString("email");
-        this.sodienthoai = rs.getString("sodienthoai");
+        this.sodienthoai = rs.getString("sodt");
         this.gioitinh = rs.getString("gioitinh");
         this.anhhoso = rs.getBytes("anhhoso");
     }
