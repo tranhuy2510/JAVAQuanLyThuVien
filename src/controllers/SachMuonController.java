@@ -72,6 +72,53 @@ public class SachMuonController {
         return null; // Nếu không tìm thấy sách
     }
 
+    public SachMuonModel getDocGiaById(int idDocGia) throws SQLException {
+        String query = """
+            SELECT 
+                id_docgia, 
+                hoten, 
+                email, 
+                sodt
+            FROM 
+                tbl_docgia
+            WHERE 
+                id_docgia = ?;
+        """;
+
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, idDocGia);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new SachMuonModel(rs); // Trả về độc giả nếu tìm thấy
+            }
+        }
+
+        return null; // Nếu không tìm thấy
+    }
+
+    public SachMuonModel getDocGiaByHoTen(String hoTen) throws SQLException {
+        String query = """
+            SELECT 
+                id_docgia, 
+                hoten, 
+                email, 
+                sodt
+            FROM 
+                tbl_docgia
+            WHERE 
+                hoten LIKE ?;
+        """;
+
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, "%" + hoTen + "%"); // Tìm kiếm gần đúng
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new SachMuonModel(rs); // Trả về độc giả nếu tìm thấy
+            }
+        }
+
+        return null; // Nếu không tìm thấy
+    }
 
 
     

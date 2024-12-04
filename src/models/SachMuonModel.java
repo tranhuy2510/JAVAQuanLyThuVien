@@ -18,17 +18,27 @@ public class SachMuonModel {
     private String tenTacGia;
     private Integer soLuong;
     
+    private String madocgia;
+    private String hoten;
+    private String email;
+    private String sodienthoai;
 
     public SachMuonModel() {
     }
 
-    public SachMuonModel(String idSach, String tenSach, String idTacGia, String tenTacGia, Integer soLuong) {
+    public SachMuonModel(String idSach, String tenSach, String idTacGia, String tenTacGia, Integer soLuong, String madocgia, String hoten, String email, String sodienthoai) {
         this.idSach = idSach;
         this.tenSach = tenSach;
         this.idTacGia = idTacGia;
         this.tenTacGia = tenTacGia;
         this.soLuong = soLuong;
+        this.madocgia = madocgia;
+        this.hoten = hoten;
+        this.email = email;
+        this.sodienthoai = sodienthoai;
     }
+
+    
     
      //khoi tao nhanh khi lam viec voi giao dien
     public SachMuonModel(ResultSet rs) throws SQLException{
@@ -37,6 +47,7 @@ public class SachMuonModel {
         this.idTacGia = rs.getString("id_tacgia");
         this.tenTacGia = rs.getString("tentacgia");
         this.soLuong = rs.getInt("soluong");
+        this.sodienthoai = rs.getString("sodt");
         
     }
 
@@ -60,6 +71,22 @@ public class SachMuonModel {
         return soLuong;
     }
 
+    public String getMadocgia() {
+        return madocgia;
+    }
+
+    public String getHoten() {
+        return hoten;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSodienthoai() {
+        return sodienthoai;
+    }
+
     public void setIdSach(String idSach) {
         this.idSach = idSach;
     }
@@ -78,6 +105,22 @@ public class SachMuonModel {
 
     public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
+    }
+
+    public void setMadocgia(String madocgia) {
+        this.madocgia = madocgia;
+    }
+
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSodienthoai(String sodienthoai) {
+        this.sodienthoai = sodienthoai;
     }
     
     

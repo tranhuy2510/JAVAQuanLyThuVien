@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import models.DocGiaModel;
 import models.SachMuonModel;
 
 /**
@@ -267,27 +268,27 @@ public class QLMuonSach extends javax.swing.JDialog {
 
         jLabel12.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Sách:");
-        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 120, 30));
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 210, 80, 30));
 
         jLabel13.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("ID độc giả:");
-        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 120, 30));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel13.setText("Độc giả:");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 270, 80, 30));
 
         jLabel14.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Ngày mượn:");
-        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 120, 30));
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 330, 115, 30));
 
         jLabel15.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel15.setText("Ngày trả:");
-        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 120, 30));
+        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 390, 115, 30));
 
         datemuon.setBackground(new java.awt.Color(255, 255, 255));
         datemuon.setForeground(new java.awt.Color(74, 98, 138));
@@ -300,9 +301,9 @@ public class QLMuonSach extends javax.swing.JDialog {
 
         jLabel16.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel16.setText("Note:");
-        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 120, 30));
+        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 450, 80, 30));
 
         txtNote.setColumns(20);
         txtNote.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -310,7 +311,7 @@ public class QLMuonSach extends javax.swing.JDialog {
         txtNote.setRows(5);
         jScrollPane1.setViewportView(txtNote);
 
-        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 250, 90));
+        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 300, 90));
 
         btnTimsach.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnTimsach.setForeground(new java.awt.Color(74, 98, 138));
@@ -329,6 +330,11 @@ public class QLMuonSach extends javax.swing.JDialog {
         btnTimdocgia.setText("Tìm độc giả");
         btnTimdocgia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTimdocgia.setOpaque(true);
+        btnTimdocgia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimdocgiaActionPerformed(evt);
+            }
+        });
         jPanel6.add(btnTimdocgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 130, 30));
 
         btnPhatphieu.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -356,11 +362,11 @@ public class QLMuonSach extends javax.swing.JDialog {
 
         txtmadg.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         txtmadg.setForeground(new java.awt.Color(74, 98, 138));
-        jPanel6.add(txtmadg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 100, 30));
+        jPanel6.add(txtmadg, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 150, 30));
 
         txtSach.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         txtSach.setForeground(new java.awt.Color(74, 98, 138));
-        jPanel6.add(txtSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 100, 30));
+        jPanel6.add(txtSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 150, 30));
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 430, 650));
 
@@ -418,6 +424,43 @@ public class QLMuonSach extends javax.swing.JDialog {
         txtTacgia.setText(""); // Lấy tên tác giả
         txtSoluong.setText("");
     }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void btnTimdocgiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimdocgiaActionPerformed
+        // TODO add your handling code here:
+        String input = txtmadg.getText().trim();
+
+        // Kiểm tra nếu ID sách không hợp lệ
+        if (input.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã độc giả hoặc tên độc giả để tìm kiếm!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            SachMuonModel docGia = null;
+
+            // Kiểm tra xem input là mã độc giả hay họ tên
+            if (input.matches("\\d+")) {
+                // Nếu input là số, tìm theo mã độc giả
+                int idDocGia = Integer.parseInt(input);
+                docGia = sachmuon.getDocGiaById(idDocGia);
+            } else {
+                // Nếu input là chữ, tìm theo họ tên
+                docGia = sachmuon.getDocGiaByHoTen(input);
+            }
+
+            // Kiểm tra kết quả và hiển thị thông tin
+            if (docGia != null) {
+                txtIDDocgia1.setText(docGia.getMadocgia());
+                txtDocgia.setText(docGia.getHoten());
+                txtEmail.setText(docGia.getEmail());
+                txtLienhe.setText(docGia.getSodienthoai());
+            } else {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy độc giả với thông tin: " + input, "Thông báo", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi tìm độc giả: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnTimdocgiaActionPerformed
 
     /**
      * @param args the command line arguments
