@@ -197,9 +197,153 @@ public class SachMuonController {
         }
         return dsSach;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+    public SachMuonModel getSachByMa(int maSach) throws SQLException {
+        String query = "SELECT s.tensach, dg.hoten, pm.ngaymuon, pm.ngaytra, pm.mota " +
+                       "FROM tbl_sachmuon pm " +
+                       "INNER JOIN tbl_sach s ON pm.id_sach = s.id_sach " +
+                       "INNER JOIN tbl_docgia dg ON pm.id_docgia = dg.id_docgia " +
+                       "WHERE s.id_sach = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, maSach);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return new SachMuonModel(
+                            null,                   //id sach
+                        rs.getString("tensach"),    //ten sach
+                            null,                   //id tac gia
+                            null,                   //ten tac gia
+                            null,                   //so luong
+                            null,                   //id doc gia
+                        rs.getString("hoten"),
+                            null,                   //email
+                            null,                   //sdt
+                        rs.getString("ngaymuon"),   //ngay muon
+                        rs.getString("ngaytra"),    //ngay tra
+                        rs.getString("trangthai"),   // trangthai
+                        rs.getString("status")       // mota
+                    );
+                }
+            }
+        }
+        return null;
+    }
 
+    public List<SachMuonModel> getSachByTen(String tenSach) throws SQLException {
+        List<SachMuonModel> dsSach = new ArrayList<>();
+        String query = "SELECT s.tensach, dg.hoten, pm.ngaymuon, pm.ngaytra, pm.mota " +
+                       "FROM tbl_sachmuon pm " +
+                       "INNER JOIN tbl_sach s ON pm.id_sach = s.id_sach " +
+                       "INNER JOIN tbl_docgia dg ON pm.id_docgia = dg.id_docgia " +
+                       "WHERE s.tensach LIKE ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, "%" + tenSach + "%");
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    dsSach.add(new SachMuonModel(
+                            null,                   //id sach
+                        rs.getString("tensach"),    //ten sach
+                            null,                   //id tac gia
+                            null,                   //ten tac gia
+                            null,                   //so luong
+                            null,                   //id doc gia
+                        rs.getString("hoten"),
+                            null,                   //email
+                            null,                   //sdt
+                        rs.getString("ngaymuon"),   //ngay muon
+                        rs.getString("ngaytra"),    //ngay tra
+                        rs.getString("trangthai"),   // trangthai
+                        rs.getString("status")       // mota
+                    ));
+                }
+            }
+        }
+        return dsSach;
+    }
 
+    public SachMuonModel getDocGiaByMa(int maDocGia) throws SQLException {
+    String query = "SELECT s.tensach, dg.hoten, pm.ngaymuon, pm.ngaytra, pm.mota " +
+                   "FROM tbl_sachmuon pm " +
+                   "INNER JOIN tbl_sach s ON pm.id_sach = s.id_sach " +
+                   "INNER JOIN tbl_docgia dg ON pm.id_docgia = dg.id_docgia " +
+                   "WHERE dg.id_docgia = ?";
+    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+        pstmt.setInt(1, maDocGia);
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                return new SachMuonModel(
+                            null,                   //id sach
+                        rs.getString("tensach"),    //ten sach
+                            null,                   //id tac gia
+                            null,                   //ten tac gia
+                            null,                   //so luong
+                            null,                   //id doc gia
+                        rs.getString("hoten"),
+                            null,                   //email
+                            null,                   //sdt
+                        rs.getString("ngaymuon"),   //ngay muon
+                        rs.getString("ngaytra"),    //ngay tra
+                        rs.getString("trangthai"),   // trangthai
+                        rs.getString("status")       // mota
+                );
+            }
+        }
+    }
+    return null;
+}
 
+    public List<SachMuonModel> getDocGiaByHoTen(String hoTen) throws SQLException {
+        List<SachMuonModel> dsDocGia = new ArrayList<>();
+        String query = "SELECT s.tensach, dg.hoten, pm.ngaymuon, pm.ngaytra, pm.mota " +
+                       "FROM tbl_sachmuon pm " +
+                       "INNER JOIN tbl_sach s ON pm.id_sach = s.id_sach " +
+                       "INNER JOIN tbl_docgia dg ON pm.id_docgia = dg.id_docgia " +
+                       "WHERE dg.hoten LIKE ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, "%" + hoTen + "%");
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    dsDocGia.add(new SachMuonModel(
+                            null,                   //id sach
+                        rs.getString("tensach"),    //ten sach
+                            null,                   //id tac gia
+                            null,                   //ten tac gia
+                            null,                   //so luong
+                            null,                   //id doc gia
+                        rs.getString("hoten"),
+                            null,                   //email
+                            null,                   //sdt
+                        rs.getString("ngaymuon"),   //ngay muon
+                        rs.getString("ngaytra"),    //ngay tra
+                        rs.getString("trangthai"),   // trangthai
+                        rs.getString("status")       // mota
+                    ));
+                }
+            }
+        }
+        return dsDocGia;
+    }
+    */
     
 
     

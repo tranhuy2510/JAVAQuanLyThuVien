@@ -171,24 +171,24 @@ public final class QLDocGia extends javax.swing.JDialog {
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic-BlackUser.png"))); // NOI18N
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 32, 32));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 32, 32));
 
         lblWname.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWname.setForeground(new java.awt.Color(255, 102, 102));
         lblWname.setText("* Nhập tên độc giả");
-        jPanel1.add(lblWname, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 240, 25));
+        jPanel1.add(lblWname, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 220, 25));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(4, 147, 114));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Mã độc giả:");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 130, 32));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 130, 32));
 
         txtMa.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtMa.setForeground(new java.awt.Color(4, 147, 114));
         txtMa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(4, 147, 114)));
-        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 125, 100, 32));
+        jPanel1.add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 100, 32));
 
         txtEmail.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(4, 147, 114));
@@ -198,23 +198,23 @@ public final class QLDocGia extends javax.swing.JDialog {
                 txtEmailKeyReleased(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 260, 32));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 260, 32));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_email32.png"))); // NOI18N
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 40, 30));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 40, 30));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(4, 147, 114));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Email:");
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 130, 32));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 130, 32));
 
         lblWemail.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWemail.setForeground(new java.awt.Color(255, 102, 102));
         lblWemail.setText("* Nhập email");
-        jPanel1.add(lblWemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 190, 25));
+        jPanel1.add(lblWemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 342, 190, 25));
 
         txtSdt.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtSdt.setForeground(new java.awt.Color(4, 147, 114));
@@ -224,32 +224,32 @@ public final class QLDocGia extends javax.swing.JDialog {
                 txtSdtKeyReleased(evt);
             }
         });
-        jPanel1.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 402, 260, 32));
+        jPanel1.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 260, 32));
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_phone32.png"))); // NOI18N
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 40, 40));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 40, 40));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(4, 147, 114));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Số điện thoại:");
         jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 130, 32));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 130, 32));
 
         lblWsdt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWsdt.setForeground(new java.awt.Color(255, 102, 102));
         lblWsdt.setText("* Nhập tên số điện thoại");
-        jPanel1.add(lblWsdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 432, 150, 25));
+        jPanel1.add(lblWsdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 150, 25));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_gender32.png"))); // NOI18N
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 40, 40));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 40, 40));
 
         lblWgioitinh.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         lblWgioitinh.setForeground(new java.awt.Color(255, 102, 102));
         lblWgioitinh.setText("*Chọn giới tính");
-        jPanel1.add(lblWgioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 150, 25));
+        jPanel1.add(lblWgioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 150, 25));
 
         cmbGioitinh.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         cmbGioitinh.setForeground(new java.awt.Color(4, 147, 114));
@@ -260,7 +260,7 @@ public final class QLDocGia extends javax.swing.JDialog {
                 cmbGioitinhActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbGioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 260, 32));
+        jPanel1.add(cmbGioitinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 260, 32));
 
         btnChonAnhoso.setBackground(new java.awt.Color(200, 247, 197));
         btnChonAnhoso.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
@@ -281,13 +281,13 @@ public final class QLDocGia extends javax.swing.JDialog {
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel17.setText("Ảnh hồ sơ:");
         jLabel17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 550, 110, 32));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 110, 32));
 
         lblAnh.setBackground(new java.awt.Color(200, 247, 197));
         lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user_128.png"))); // NOI18N
         lblAnh.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(4, 147, 114)));
-        jPanel1.add(lblAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 130, 160));
+        jPanel1.add(lblAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 130, 160));
 
         btnHuy.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         btnHuy.setForeground(new java.awt.Color(4, 147, 114));
@@ -305,7 +305,7 @@ public final class QLDocGia extends javax.swing.JDialog {
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel19.setText("Tên độc giả:");
         jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 130, 32));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 130, 32));
 
         txtTen.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         txtTen.setForeground(new java.awt.Color(4, 147, 114));
@@ -315,7 +315,7 @@ public final class QLDocGia extends javax.swing.JDialog {
                 txtTenKeyReleased(evt);
             }
         });
-        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 260, 32));
+        jPanel1.add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 220, 32));
 
         jScrollPane1.setBackground(new java.awt.Color(213, 184, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -358,7 +358,7 @@ public final class QLDocGia extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tbldocgia);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 650, 540));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 650, 540));
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(4, 147, 114));
@@ -392,7 +392,7 @@ public final class QLDocGia extends javax.swing.JDialog {
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel18.setText("Giới tính:");
         jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 130, 32));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 130, 32));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 670));
 

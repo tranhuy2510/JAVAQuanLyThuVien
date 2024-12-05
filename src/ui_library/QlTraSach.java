@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Insets;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -104,8 +105,9 @@ public final class QlTraSach extends javax.swing.JDialog {
         cmbStatus.removeAllItems(); // Xóa dữ liệu cũ 
         cmbStatus.addItem("Chọn trạng thái"); // Thêm mục mặc định
         cmbStatus.addItem("Tất cả"); 
-        cmbStatus.addItem("Đang mượn"); 
-        cmbStatus.addItem("Đã mất"); 
+        cmbStatus.addItem("Đang mượn");
+        cmbStatus.addItem("Đã hoàn");         
+        cmbStatus.addItem("Thất lạc"); 
     }
     
     /**
@@ -122,18 +124,14 @@ public final class QlTraSach extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         lblSystemIC1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        lblTtinSach = new javax.swing.JLabel();
         txtMas = new javax.swing.JTextField();
-        btnTimsach = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtMadg = new javax.swing.JTextField();
-        btnTimDocGia = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         datemuon = new com.toedter.calendar.JDateChooser();
         jLabel12 = new javax.swing.JLabel();
         datetra = new com.toedter.calendar.JDateChooser();
-        lblWdg = new javax.swing.JLabel();
-        lblWsach = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtmota = new javax.swing.JTextArea();
@@ -144,6 +142,8 @@ public final class QlTraSach extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         cmbStatus = new javax.swing.JComboBox<>();
         btnHuy = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        lblTtinSach1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,28 +170,21 @@ public final class QlTraSach extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(30, 3, 3, 3, new java.awt.Color(103, 65, 114)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(103, 65, 114));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("Mã sách:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 110, 32));
+        lblTtinSach.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblTtinSach.setForeground(new java.awt.Color(190, 144, 212));
+        lblTtinSach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTtinSach.setText("Tên độc giả");
+        lblTtinSach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTtinSachMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblTtinSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 195, 180, 25));
 
         txtMas.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         txtMas.setForeground(new java.awt.Color(103, 65, 114));
         txtMas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(103, 65, 114)));
-        jPanel1.add(txtMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 90, 32));
-
-        btnTimsach.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        btnTimsach.setForeground(new java.awt.Color(103, 65, 114));
-        btnTimsach.setText("Tìm kiếm");
-        btnTimsach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTimsach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnTimsach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimsachActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnTimsach, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 100, 32));
+        jPanel1.add(txtMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 140, 32));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(103, 65, 114));
@@ -201,24 +194,12 @@ public final class QlTraSach extends javax.swing.JDialog {
         txtMadg.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         txtMadg.setForeground(new java.awt.Color(103, 65, 114));
         txtMadg.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(103, 65, 114)));
-        jPanel1.add(txtMadg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 90, 32));
-
-        btnTimDocGia.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        btnTimDocGia.setForeground(new java.awt.Color(103, 65, 114));
-        btnTimDocGia.setText("Tìm kiếm");
-        btnTimDocGia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTimDocGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnTimDocGia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimDocGiaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnTimDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 100, 32));
+        jPanel1.add(txtMadg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 140, 32));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(103, 65, 114));
         jLabel11.setText("Trạng thái sách:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 150, 32));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 75, 150, 32));
 
         datemuon.setForeground(new java.awt.Color(103, 65, 114));
         datemuon.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
@@ -232,16 +213,6 @@ public final class QlTraSach extends javax.swing.JDialog {
         datetra.setForeground(new java.awt.Color(103, 65, 114));
         datetra.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
         jPanel1.add(datetra, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 200, 32));
-
-        lblWdg.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        lblWdg.setForeground(new java.awt.Color(255, 102, 102));
-        lblWdg.setText("Tên độc giả");
-        jPanel1.add(lblWdg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 200, 20));
-
-        lblWsach.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        lblWsach.setForeground(new java.awt.Color(255, 102, 102));
-        lblWsach.setText("* Chọn một cuốn sách");
-        jPanel1.add(lblWsach, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 125, 200, 20));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(103, 65, 114));
@@ -259,7 +230,7 @@ public final class QlTraSach extends javax.swing.JDialog {
         jScrollPane1.setBackground(new java.awt.Color(213, 184, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tblSachMuon.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tblSachMuon.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         tblSachMuon.setForeground(new java.awt.Color(90, 34, 139));
         tblSachMuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -296,18 +267,18 @@ public final class QlTraSach extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblSachMuon);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 490, 420));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 490, 410));
 
         btnMatSach.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         btnMatSach.setForeground(new java.awt.Color(90, 34, 139));
-        btnMatSach.setText("Mất");
+        btnMatSach.setText("Thất lạc");
         btnMatSach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMatSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMatSachActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMatSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 120, 32));
+        jPanel1.add(btnMatSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, 120, 32));
 
         btnTraSach.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         btnTraSach.setForeground(new java.awt.Color(90, 34, 139));
@@ -318,7 +289,7 @@ public final class QlTraSach extends javax.swing.JDialog {
                 btnTraSachActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTraSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 120, 32));
+        jPanel1.add(btnTraSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 120, 32));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(103, 65, 114));
@@ -330,7 +301,7 @@ public final class QlTraSach extends javax.swing.JDialog {
         cmbStatus.setForeground(new java.awt.Color(103, 65, 114));
         cmbStatus.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(103, 65, 114)));
         cmbStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(cmbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 140, 32));
+        jPanel1.add(cmbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 75, 140, 32));
 
         btnHuy.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         btnHuy.setForeground(new java.awt.Color(90, 34, 139));
@@ -341,70 +312,29 @@ public final class QlTraSach extends javax.swing.JDialog {
                 btnHuyActionPerformed(evt);
             }
         });
-        jPanel1.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 180, 32));
+        jPanel1.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 510, 180, 32));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 570));
+        jLabel14.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(103, 65, 114));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setText("Mã sách:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 110, 32));
+
+        lblTtinSach1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        lblTtinSach1.setForeground(new java.awt.Color(190, 144, 212));
+        lblTtinSach1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTtinSach1.setText("Tên sách");
+        lblTtinSach1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTtinSach1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblTtinSach1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 115, 180, 25));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnTimsachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimsachActionPerformed
-        // TODO add your handling code here:
-        String input = txtMas.getText().trim();
-        if (input.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên sách!");
-            return;
-        }
-
-        try {
-            SachMuonModel sach = null;
-            
-            if (input.matches("\\d+")) {
-                // Tìm theo mã sách
-                sach = sachmuon.getSachById(Integer.parseInt(input));
-            } else {
-                // Tìm theo tên sách
-                sach = sachmuon.getSachByTen(input);
-            }
-            if (sach != null) {
-                // Hiển thị sách trong bảng (tbl_phieumuon)
-                ShowData();
-            } else {
-                JOptionPane.showMessageDialog(this, "Không tìm thấy sách!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Lỗi khi tìm sách: " + ex.getMessage());
-        }
-    }//GEN-LAST:event_btnTimsachActionPerformed
-
-    private void btnTimDocGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimDocGiaActionPerformed
-        // TODO add your handling code here:
-        String input = txtMadg.getText().trim();
-        if (input.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên độc giả!");
-            return;
-        }
-
-        try {
-            SachMuonModel docGia = null;
-
-            // Kiểm tra xem input là mã độc giả hay họ tên
-            if (input.matches("\\d+")) {
-                // Nếu input là số, tìm theo mã độc giả
-                int idDocGia = Integer.parseInt(input);
-                docGia = sachmuon.getDocGiaById(idDocGia);
-            } else {
-                // Nếu input là chữ, tìm theo họ tên
-                docGia = sachmuon.getDocGiaByHoTen(input);
-            }            if (docGia != null) {
-                ShowData();
-            } else {
-                JOptionPane.showMessageDialog(this, "Không tìm thấy độc giả!");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Lỗi khi tìm độc giả: " + ex.getMessage());
-        }
-    }//GEN-LAST:event_btnTimDocGiaActionPerformed
 
     private void btnTraSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraSachActionPerformed
         // TODO add your handling code here:
@@ -423,6 +353,14 @@ public final class QlTraSach extends javax.swing.JDialog {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_tblSachMuonMouseClicked
+
+    private void lblTtinSach1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTtinSach1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblTtinSach1MouseClicked
+
+    private void lblTtinSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTtinSachMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblTtinSachMouseClicked
 
     /**
      * @param args the command line arguments
@@ -468,8 +406,6 @@ public final class QlTraSach extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnMatSach;
-    private javax.swing.JButton btnTimDocGia;
-    private javax.swing.JButton btnTimsach;
     private javax.swing.JButton btnTraSach;
     private javax.swing.JComboBox<String> cmbStatus;
     private com.toedter.calendar.JDateChooser datemuon;
@@ -479,15 +415,15 @@ public final class QlTraSach extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblSystemIC1;
     private javax.swing.JLabel lblTieude;
-    private javax.swing.JLabel lblWdg;
-    private javax.swing.JLabel lblWsach;
+    private javax.swing.JLabel lblTtinSach;
+    private javax.swing.JLabel lblTtinSach1;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JTable tblSachMuon;
     private javax.swing.JTextField txtMadg;
