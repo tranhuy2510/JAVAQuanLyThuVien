@@ -25,12 +25,15 @@ public class SachMuonModel {
     
     private String ngaymuon;
     private String ngaytra;
-    private String status;
+    private String trangthai;
+    private String mota;
     
     public SachMuonModel() {
     }
 
-    public SachMuonModel(String idSach, String tenSach, String idTacGia, String tenTacGia, Integer soLuong, String madocgia, String hoten, String email, String sodienthoai, String ngaymuon, String ngaytra, String status) {
+    public SachMuonModel(String idSach, String tenSach, String idTacGia,
+            String tenTacGia, Integer soLuong, String madocgia, String hoten,
+            String email, String sodienthoai, String ngaymuon, String ngaytra, String trangthai, String mota) {
         this.idSach = idSach;
         this.tenSach = tenSach;
         this.idTacGia = idTacGia;
@@ -42,34 +45,36 @@ public class SachMuonModel {
         this.sodienthoai = sodienthoai;
         this.ngaymuon = ngaymuon;
         this.ngaytra = ngaytra;
-        this.status = status;
+        this.trangthai = trangthai;
+        this.mota = mota;
     }
-
-    
-
-    
-    
-     //khoi tao nhanh khi lam viec voi giao dien
+     // Constructor khởi tạo nhanh từ ResultSet
     public SachMuonModel(ResultSet rs, boolean isDocGia) throws SQLException {
-        try {
-            if (isDocGia) {
-                this.madocgia = rs.getString("id_docgia");
-                this.hoten = rs.getString("hoten");
-                this.email = rs.getString("email");
-                this.sodienthoai = rs.getString("sodt");
-            } else {
-                this.idSach = rs.getString("id_sach");
-                this.tenSach = rs.getString("tensach");
-                this.idTacGia = rs.getString("id_tacgia");
-                this.tenTacGia = rs.getString("tentacgia");
-                this.soLuong = rs.getInt("soluong");
-            }
-        } catch (SQLException ex) {
-            throw new SQLException("Lỗi khi khởi tạo SachMuonModel từ ResultSet: " + ex.getMessage());
+        if (rs == null) {
+            throw new SQLException("ResultSet is null");
         }
+
+        if (isDocGia) {
+            this.madocgia = rs.getString("id_docgia");
+            this.hoten = rs.getString("hoten");
+            this.email = rs.getString("email");
+            this.sodienthoai = rs.getString("sodt");
+        } else {
+            this.idSach = rs.getString("id_sach");
+            this.tenSach = rs.getString("tensach");
+            this.idTacGia = rs.getString("id_tacgia");
+            this.tenTacGia = rs.getString("tentacgia");
+            this.soLuong = rs.getObject("soluong") != null ? rs.getInt("soluong") : null;
+        }
+
+        this.ngaymuon = rs.getString("ngaymuon") != null ? rs.getString("ngaymuon") : "";
+        this.ngaytra = rs.getString("ngaytra") != null ? rs.getString("ngaytra") : "";
+        this.trangthai = rs.getString("trangthai") != null ? rs.getString("trangthai") : "";
+        this.mota = rs.getString("mota") != null ? rs.getString("mota") : "";
     }
 
-
+    
+     
     public String getIdSach() {
         return idSach;
     }
@@ -142,6 +147,14 @@ public class SachMuonModel {
         this.sodienthoai = sodienthoai;
     }
 
+    public void setMota(String mota) {
+        this.mota = mota;
+    }
+
+    public String getMota() {
+        return mota;
+    }
+
     public String getNgaymuon() {
         return ngaymuon;
     }
@@ -150,9 +163,11 @@ public class SachMuonModel {
         return ngaytra;
     }
 
-    public String getStatus() {
-        return status;
+    public String getTrangthai() {
+        return trangthai;
     }
+
+    
 
     public void setNgaymuon(String ngaymuon) {
         this.ngaymuon = ngaymuon;
@@ -162,9 +177,10 @@ public class SachMuonModel {
         this.ngaytra = ngaytra;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTrangthai(String trangthai) {
+        this.trangthai = trangthai;
     }
+
     
     
     

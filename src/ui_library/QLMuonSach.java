@@ -467,18 +467,15 @@ public class QLMuonSach extends javax.swing.JDialog {
 
         try {
             SachMuonModel sach = null;
-
-            // Kiểm tra xem input là mã sách hay tên sách
+            
             if (input.matches("\\d+")) {
-                // Nếu input là số, tìm theo mã sách
-                int idSach = Integer.parseInt(input);
-                sach = sachmuon.getSachById(idSach);
+                // Tìm theo mã sách
+                sach = sachmuon.getSachById(Integer.parseInt(input));
             } else {
-                // Nếu input là chữ, tìm theo tên sách
+                // Tìm theo tên sách
                 sach = sachmuon.getSachByTen(input);
             }
 
-            // Kiểm tra kết quả và hiển thị thông tin
             if (sach != null) {
                 txtIDSach1.setText(sach.getIdSach());
                 txtTensach.setText(sach.getTenSach());
@@ -543,7 +540,27 @@ public class QLMuonSach extends javax.swing.JDialog {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Lỗi khi tìm độc giả: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
-        
+        try {
+            SachMuonModel docGia = null;
+            if (input.matches("\\d+")) {
+                // Tìm theo mã độc giả
+                docGia = sachmuon.getDocGiaById(Integer.parseInt(input));
+            } else {
+                // Tìm theo tên độc giả
+                docGia = sachmuon.getDocGiaByHoTen(input);
+            }
+
+            if (docGia != null) {
+                txtIDDocgia1.setText(docGia.getMadocgia());
+                txtDocgia.setText(docGia.getHoten());
+                txtEmail.setText(docGia.getEmail());
+                txtLienhe.setText(docGia.getSodienthoai());
+            } else {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy độc giả với thông tin: " + input, "Thông báo", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi tìm độc giả: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnTimdocgiaActionPerformed
 
     private void txtSachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSachKeyReleased

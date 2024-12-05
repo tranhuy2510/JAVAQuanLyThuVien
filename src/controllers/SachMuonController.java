@@ -5,6 +5,8 @@
 package controllers;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import models.SachMuonModel;
 
 /**
@@ -19,107 +21,79 @@ public class SachMuonController {
     
     public SachMuonModel getSachById(int idSach) throws SQLException {
         String query = """
-            SELECT 
-                s.id_sach, 
-                s.tensach, 
-                tg.tentacgia, 
-                s.id_tacgia, -- Thêm cột này
-                s.soluong
-            FROM 
-                tbl_sach s
-            INNER JOIN 
-                tbl_tacgia tg ON s.id_tacgia = tg.id_tacgia
-            WHERE 
-                s.id_sach = ?;
+            SELECT s.id_sach, s.tensach, tg.tentacgia, s.id_tacgia, s.soluong
+            FROM tbl_sach s
+            INNER JOIN tbl_tacgia tg ON s.id_tacgia = tg.id_tacgia
+            WHERE s.id_sach = ?;
         """;
 
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, idSach);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return new SachMuonModel(rs,false); // Trả về sách nếu tìm thấy
-            }
+            if (rs.next()) return new SachMuonModel(rs, false);
         }
 
-        return null; // Nếu không tìm thấy sách
+        return null;
     }
 
     
     public SachMuonModel getSachByTen(String tenSach) throws SQLException {
         String query = """
-            SELECT 
-                s.id_sach, 
-                s.tensach, 
-                tg.tentacgia,
-                s.id_tacgia,
-                s.soluong
-            FROM 
-                tbl_sach s
-            INNER JOIN 
-                tbl_tacgia tg ON s.id_tacgia = tg.id_tacgia
-            WHERE 
-                s.tensach LIKE ?;
+            SELECT s.id_sach, s.tensach, tg.tentacgia, s.id_tacgia, s.soluong
+            FROM tbl_sach s
+            INNER JOIN tbl_tacgia tg ON s.id_tacgia = tg.id_tacgia
+            WHERE s.tensach LIKE ?;
         """;
 
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, "%" + tenSach + "%"); // Tìm kiếm gần đúng
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
-                return new SachMuonModel(rs, false); // Trả về sách nếu tìm thấy
+                return new SachMuonModel(rs, false);
             }
         }
 
-        return null; // Nếu không tìm thấy sách
+        return null; // Không tìm thấy sách
     }
+
 
     public SachMuonModel getDocGiaById(int idDocGia) throws SQLException {
         String query = """
-            SELECT 
-                id_docgia, 
-                hoten, 
-                email, 
-                sodt
-            FROM 
-                tbl_docgia
-            WHERE 
-                id_docgia = ?;
+            SELECT id_docgia, hoten, email, sodt
+            FROM tbl_docgia
+            WHERE id_docgia = ?;
         """;
 
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, idDocGia);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                return new SachMuonModel(rs, true); // Truyền true vì đây là độc giả
-            }
+            if (rs.next()) return new SachMuonModel(rs, true);
         }
 
-        return null; // Nếu không tìm thấy độc giả
+        return null;
     }
 
 
     public SachMuonModel getDocGiaByHoTen(String hoTen) throws SQLException {
         String query = """
-            SELECT 
-                id_docgia, 
-                hoten, 
-                email, 
-                sodt
-            FROM 
-                tbl_docgia
-            WHERE 
-                hoten LIKE ?;
+            SELECT id_docgia, hoten, email, sodt
+            FROM tbl_docgia
+            WHERE hoten LIKE ?;
         """;
 
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, "%" + hoTen + "%"); // Tìm kiếm gần đúng
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
-                return new SachMuonModel(rs, true); // Truyền true vì đây là độc giả
+                return new SachMuonModel(rs, true);
             }
         }
 
-        return null; // Nếu không tìm thấy độc giả
+        return null; // Không tìm thấy độc giả
     }
+
 
     public boolean isSachAvailable(int idSach) throws SQLException {
         String query = "SELECT soluong FROM tbl_sach WHERE id_sach = ?";
@@ -172,6 +146,59 @@ public class SachMuonController {
         }
         return false; // Thêm phiếu thất bại
     }
+
+    //-------------------------------------------TRẢ SÁCH-----------------------
+    
+    public List<SachMuonModel> getdsSachMuon() throws SQLException {
+        List<SachMuonModel> dsSach = new ArrayList<>();
+        String query = """
+            SELECT s.id_sach, 
+                   s.tensach, 
+                   dg.id_docgia, 
+                   dg.hoten, 
+                   pm.ngaymuon, 
+                   pm.ngaytra, 
+                   pm.trangthai, 
+                   pm.status
+            FROM tbl_sachmuon pm
+            INNER JOIN tbl_sach s ON pm.id_sach = s.id_sach
+            INNER JOIN tbl_docgia dg ON pm.id_docgia = dg.id_docgia;
+        """;
+
+        try (Statement stmt = conn.createStatement(); 
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                // Chuyển đổi ngày sang String (nếu null thì để chuỗi rỗng)
+                String ngayMuon = rs.getDate("ngaymuon") != null ? rs.getDate("ngaymuon").toString() : "";
+                String ngayTra = rs.getDate("ngaytra") != null ? rs.getDate("ngaytra").toString() : "";
+
+                // Tạo đối tượng SachMuonModel từ ResultSet
+                SachMuonModel sach = new SachMuonModel(
+                    rs.getString("id_sach"),      // idSach
+                    rs.getString("tensach"),     // tenSach
+                    null,                        // idTacGia (không có trong query)
+                    null,                        // tenTacGia (không có trong query)
+                    null,                        // soLuong (không có trong query)
+                    rs.getString("id_docgia"),   // madocgia
+                    rs.getString("hoten"),       // hoten
+                    null,                        // email (không có trong query)
+                    null,                        // sodienthoai (không có trong query)
+                    ngayMuon,                    // ngaymuon
+                    ngayTra,                     // ngaytra
+                    rs.getString("trangthai"),   // trangthai
+                    rs.getString("status")         // mota
+                );
+
+                dsSach.add(sach);
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy dữ liệu từ bảng phiếu mượn: " + e.getMessage());
+        }
+        return dsSach;
+    }
+
+
 
     
 

@@ -459,9 +459,13 @@ public class frmUserHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQLMuonSachMouseClicked
 
     private void btnTraSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTraSachMouseClicked
-        // TODO add your handling code here:
-        QlTraSach returns = new QlTraSach(this, true);
-        returns.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            QlTraSach returns = new QlTraSach(this, true);
+            returns.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmUserHome.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnTraSachMouseClicked
 
     private void btnDSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSDocGiaMouseClicked

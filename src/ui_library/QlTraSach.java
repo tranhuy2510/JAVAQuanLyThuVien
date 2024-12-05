@@ -4,20 +4,110 @@
  */
 package ui_library;
 
+import controllers.SachMuonController;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Insets;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
+import models.SachMuonModel;
+
 /**
  *
  * @author admin
  */
-public class QlTraSach extends javax.swing.JDialog {
+public final class QlTraSach extends javax.swing.JDialog {
 
     /**
      * Creates new form QlTraSach
      */
-    public QlTraSach(java.awt.Frame parent, boolean modal) {
+    // Khai báo tableModel
+    private final DefaultTableModel tableModel;
+    private final SachMuonController sachmuon;
+    
+    
+    public QlTraSach(java.awt.Frame parent, boolean modal) throws SQLException {
         super(parent, modal);
         initComponents();
+        // can giua cho form     
+        this.setLocationRelativeTo(null);
+        setupUI();
+        sachmuon = new SachMuonController();
+        // Cấu hình bảng và controller
+        tableModel = (DefaultTableModel) tblSachMuon.getModel();
+        // Khởi tạo các components trên JFrame
+        String[] colsName = {"Tên sách","Tên độc giả", "Ngày mượn","Ngày trả","Mô tả"};
+        // đặt tiêu đề cột cho tableModel
+        tableModel.setColumnIdentifiers(colsName);
+        // Kết nối JTable với tableModel
+        tblSachMuon.setModel(tableModel);
+        // Gọi hàm showDataOnTable() để hiển thị dữ liệu lên bảng
+        ShowData();
+        
+        insertCmbtrangthai();
+        
+        
     }
+    private void setupUI(){
+        //this.setSize(1400,725);
+        // tao vien xam cho khung panel
+        Border panelHeaderBorder = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(255, 255, 255));
+        
+        // thiet ke cho hang tren dau cua bang
+        tblSachMuon.getTableHeader().setBackground(new Color(103,65,114)); 
+        tblSachMuon.getTableHeader().setForeground(Color.white);
+        tblSachMuon.getTableHeader().setFont(new Font("Verdana", Font.BOLD, 12));
+        tblSachMuon.getTableHeader().setOpaque(false);
 
+        tblSachMuon.getTableHeader().repaint();
+       
+        tblSachMuon.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tblSachMuon.getColumnModel().getColumn(3).setPreferredWidth(40);
+        tblSachMuon.getColumnModel().getColumn(4).setPreferredWidth(40);
+        
+        txtmota.setLineWrap(true); // Tự động xuống dòng
+        txtmota.setWrapStyleWord(true); // Ngắt từ hợp lý
+        txtmota.setMargin(new Insets(10, 10, 10, 5)); // Khoảng cách nội dung với biên
+
+    }
+    public void ShowData() throws SQLException{ 
+        List<SachMuonModel> lst = sachmuon.getdsSachMuon();
+        // Duyệt qua ArrayList data
+        Object[] rows = new Object[5];
+        for(int i =0; i< lst.size() ; i++){
+            rows[0] = lst.get(i).getTenSach();
+            rows[1] = lst.get(i).getHoten();
+            rows[2] = lst.get(i).getNgaymuon();
+            rows[3] = lst.get(i).getNgaytra();
+            rows[4] = lst.get(i).getMota();
+            // Đưa dòng dữ liệu vào tableModel
+            tableModel.addRow(rows);
+        }     
+    }
+    
+    //Ham xoa du lieu trong tableModel 
+    public void ClearData() throws SQLException{ 
+        int rowCount = tableModel.getRowCount(); // Lấy số lượng dòng hiện tại
+        for (int i = rowCount - 1; i >= 0; i--) {
+            tableModel.removeRow(i); // Xóa từng dòng
+        }
+    } 
+    
+    // Phương thức tải dữ liệu giới tính vào ComboBox
+    public void insertCmbtrangthai() { 
+        cmbStatus.removeAllItems(); // Xóa dữ liệu cũ 
+        cmbStatus.addItem("Chọn trạng thái"); // Thêm mục mặc định
+        cmbStatus.addItem("Tất cả"); 
+        cmbStatus.addItem("Đang mượn"); 
+        cmbStatus.addItem("Đã mất"); 
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,48 +118,38 @@ public class QlTraSach extends javax.swing.JDialog {
     private void initComponents() {
 
         pnlHeader = new javax.swing.JPanel();
-        lblSystemIC = new javax.swing.JLabel();
         lblTieude = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblSystemIC1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
+        txtMas = new javax.swing.JTextField();
+        btnTimsach = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
+        txtMadg = new javax.swing.JTextField();
+        btnTimDocGia = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        datemuon = new com.toedter.calendar.JDateChooser();
         jLabel12 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        datetra = new com.toedter.calendar.JDateChooser();
+        lblWdg = new javax.swing.JLabel();
+        lblWsach = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtAreaQLsach = new javax.swing.JTextArea();
+        txtmota = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tblSachMuon = new javax.swing.JTable();
+        btnMatSach = new javax.swing.JButton();
+        btnTraSach = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbStatus = new javax.swing.JComboBox<>();
+        btnHuy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlHeader.setBackground(new java.awt.Color(103, 65, 114));
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseClicked(evt);
-            }
-        });
-        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 60, 57));
 
         lblTieude.setBackground(new java.awt.Color(241, 231, 254));
         lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
@@ -96,62 +176,72 @@ public class QlTraSach extends javax.swing.JDialog {
         jLabel9.setText("Mã sách:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 110, 32));
 
-        jTextField5.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(103, 65, 114));
-        jTextField5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(103, 65, 114)));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 90, 32));
+        txtMas.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        txtMas.setForeground(new java.awt.Color(103, 65, 114));
+        txtMas.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(103, 65, 114)));
+        jPanel1.add(txtMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 90, 32));
 
-        jButton8.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(103, 65, 114));
-        jButton8.setText("Tìm kiếm");
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 100, 32));
+        btnTimsach.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnTimsach.setForeground(new java.awt.Color(103, 65, 114));
+        btnTimsach.setText("Tìm kiếm");
+        btnTimsach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTimsach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnTimsach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimsachActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnTimsach, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 100, 32));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(103, 65, 114));
         jLabel10.setText("Ngày mượn:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 110, 32));
 
-        jTextField6.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(103, 65, 114));
-        jTextField6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(103, 65, 114)));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 90, 32));
+        txtMadg.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        txtMadg.setForeground(new java.awt.Color(103, 65, 114));
+        txtMadg.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(103, 65, 114)));
+        jPanel1.add(txtMadg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 90, 32));
 
-        jButton9.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(103, 65, 114));
-        jButton9.setText("Tìm kiếm");
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 100, 32));
+        btnTimDocGia.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        btnTimDocGia.setForeground(new java.awt.Color(103, 65, 114));
+        btnTimDocGia.setText("Tìm kiếm");
+        btnTimDocGia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTimDocGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnTimDocGia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimDocGiaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnTimDocGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 100, 32));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(103, 65, 114));
         jLabel11.setText("Trạng thái sách:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 150, 32));
 
-        jDateChooser1.setForeground(new java.awt.Color(103, 65, 114));
-        jDateChooser1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 200, 32));
+        datemuon.setForeground(new java.awt.Color(103, 65, 114));
+        datemuon.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jPanel1.add(datemuon, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 200, 32));
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(103, 65, 114));
         jLabel12.setText("Ngày mượn:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 110, 32));
 
-        jDateChooser2.setForeground(new java.awt.Color(103, 65, 114));
-        jDateChooser2.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 200, 32));
+        datetra.setForeground(new java.awt.Color(103, 65, 114));
+        datetra.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jPanel1.add(datetra, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 200, 32));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel4.setText("Tên độc giả");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 200, 20));
+        lblWdg.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        lblWdg.setForeground(new java.awt.Color(255, 102, 102));
+        lblWdg.setText("Tên độc giả");
+        jPanel1.add(lblWdg, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 200, 20));
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel5.setText("Tên sách");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 125, 200, 20));
+        lblWsach.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        lblWsach.setForeground(new java.awt.Color(255, 102, 102));
+        lblWsach.setText("* Chọn một cuốn sách");
+        jPanel1.add(lblWsach, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 125, 200, 20));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(103, 65, 114));
@@ -159,31 +249,28 @@ public class QlTraSach extends javax.swing.JDialog {
         jLabel2.setText("Mô tả: ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 110, 32));
 
-        txtAreaQLsach.setColumns(20);
-        txtAreaQLsach.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        txtAreaQLsach.setRows(5);
-        jScrollPane2.setViewportView(txtAreaQLsach);
+        txtmota.setColumns(20);
+        txtmota.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        txtmota.setRows(5);
+        jScrollPane2.setViewportView(txtmota);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 200, 100));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 200, 70));
 
         jScrollPane1.setBackground(new java.awt.Color(213, 184, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(90, 34, 139));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblSachMuon.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        tblSachMuon.setForeground(new java.awt.Color(90, 34, 139));
+        tblSachMuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Mã sách", "Tên độc giả", "Ngày mượn", "Ngày trả", "Mô tả"
+                "Tên sách", "Tên độc giả", "Ngày mượn", "Ngày trả", "Mô tả"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, true, true, false, true
@@ -197,49 +284,145 @@ public class QlTraSach extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(102, 102, 102));
-        jTable1.setRowHeight(25);
-        jTable1.setSelectionBackground(new java.awt.Color(190, 144, 212));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
+        tblSachMuon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblSachMuon.setGridColor(new java.awt.Color(102, 102, 102));
+        tblSachMuon.setRowHeight(25);
+        tblSachMuon.setSelectionBackground(new java.awt.Color(190, 144, 212));
+        tblSachMuon.setShowGrid(true);
+        tblSachMuon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSachMuonMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblSachMuon);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 490, 400));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 490, 420));
 
-        jButton1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(90, 34, 139));
-        jButton1.setText("Thêm");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 510, 90, 30));
+        btnMatSach.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnMatSach.setForeground(new java.awt.Color(90, 34, 139));
+        btnMatSach.setText("Mất");
+        btnMatSach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMatSach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMatSachActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMatSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 120, 32));
 
-        jButton2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(90, 34, 139));
-        jButton2.setText("Trả sách");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 110, 30));
+        btnTraSach.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnTraSach.setForeground(new java.awt.Color(90, 34, 139));
+        btnTraSach.setText("Trả sách");
+        btnTraSach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTraSach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraSachActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnTraSach, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 120, 32));
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(103, 65, 114));
         jLabel13.setText("Mã độc giả:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 110, 32));
 
-        jComboBox1.setBackground(new java.awt.Color(190, 144, 212));
-        jComboBox1.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(103, 65, 114));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(103, 65, 114)));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 140, 32));
+        cmbStatus.setBackground(new java.awt.Color(190, 144, 212));
+        cmbStatus.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        cmbStatus.setForeground(new java.awt.Color(103, 65, 114));
+        cmbStatus.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(103, 65, 114)));
+        cmbStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(cmbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 140, 32));
+
+        btnHuy.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnHuy.setForeground(new java.awt.Color(90, 34, 139));
+        btnHuy.setText("Hủy");
+        btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 180, 32));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
+    private void btnTimsachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimsachActionPerformed
         // TODO add your handling code here:
-        // Dong form
-        this.dispose();
-    }//GEN-LAST:event_lblSystemICMouseClicked
+        String input = txtMas.getText().trim();
+        if (input.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên sách!");
+            return;
+        }
+
+        try {
+            SachMuonModel sach = null;
+            
+            if (input.matches("\\d+")) {
+                // Tìm theo mã sách
+                sach = sachmuon.getSachById(Integer.parseInt(input));
+            } else {
+                // Tìm theo tên sách
+                sach = sachmuon.getSachByTen(input);
+            }
+            if (sach != null) {
+                // Hiển thị sách trong bảng (tbl_phieumuon)
+                ShowData();
+            } else {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy sách!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi tìm sách: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnTimsachActionPerformed
+
+    private void btnTimDocGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimDocGiaActionPerformed
+        // TODO add your handling code here:
+        String input = txtMadg.getText().trim();
+        if (input.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên độc giả!");
+            return;
+        }
+
+        try {
+            SachMuonModel docGia = null;
+
+            // Kiểm tra xem input là mã độc giả hay họ tên
+            if (input.matches("\\d+")) {
+                // Nếu input là số, tìm theo mã độc giả
+                int idDocGia = Integer.parseInt(input);
+                docGia = sachmuon.getDocGiaById(idDocGia);
+            } else {
+                // Nếu input là chữ, tìm theo họ tên
+                docGia = sachmuon.getDocGiaByHoTen(input);
+            }            if (docGia != null) {
+                ShowData();
+            } else {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy độc giả!");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi tìm độc giả: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnTimDocGiaActionPerformed
+
+    private void btnTraSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraSachActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnTraSachActionPerformed
+
+    private void btnMatSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatSachActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMatSachActionPerformed
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void tblSachMuonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSachMuonMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tblSachMuonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -253,61 +436,62 @@ public class QlTraSach extends javax.swing.JDialog {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(QlTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QlTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QlTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(QlTraSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            QlTraSach dialog = new QlTraSach(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
+            try {
+                QlTraSach dialog = new QlTraSach(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(QlTraSach.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JButton btnHuy;
+    private javax.swing.JButton btnMatSach;
+    private javax.swing.JButton btnTimDocGia;
+    private javax.swing.JButton btnTimsach;
+    private javax.swing.JButton btnTraSach;
+    private javax.swing.JComboBox<String> cmbStatus;
+    private com.toedter.calendar.JDateChooser datemuon;
+    private com.toedter.calendar.JDateChooser datetra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblSystemIC1;
     private javax.swing.JLabel lblTieude;
+    private javax.swing.JLabel lblWdg;
+    private javax.swing.JLabel lblWsach;
     private javax.swing.JPanel pnlHeader;
-    private javax.swing.JTextArea txtAreaQLsach;
+    private javax.swing.JTable tblSachMuon;
+    private javax.swing.JTextField txtMadg;
+    private javax.swing.JTextField txtMas;
+    private javax.swing.JTextArea txtmota;
     // End of variables declaration//GEN-END:variables
 }
