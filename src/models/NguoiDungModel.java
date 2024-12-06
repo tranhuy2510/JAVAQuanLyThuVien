@@ -13,6 +13,7 @@ public class NguoiDungModel {
     private String matkhau;
     private String loaiuser;
     private String hoten; // Bổ sung thuộc tính Họ Tên
+    private String sodienthoai;
     
     // Khởi tạo không tham số
     public NguoiDungModel(){}
@@ -25,13 +26,16 @@ public class NguoiDungModel {
         this.loaiuser = loaiuser;
     }
 
-    public NguoiDungModel(String manguoidung, String taikhoan, String matkhau, String loaiuser, String hoten) {
+    public NguoiDungModel(String manguoidung, String taikhoan, String matkhau, String loaiuser, String hoten, String sodienthoai) {
         this.manguoidung = manguoidung;
         this.taikhoan = taikhoan;
         this.matkhau = matkhau;
         this.loaiuser = loaiuser;
         this.hoten = hoten;
+        this.sodienthoai = sodienthoai;
     }
+
+    
     
      //khoi tao nhanh khi lam viec voi giao dien
     public NguoiDungModel(ResultSet rs) throws SQLException{
@@ -76,6 +80,14 @@ public class NguoiDungModel {
 
     public void setHoten(String hoten) {
         this.hoten = hoten;
+    }
+
+    public String getSodienthoai() {
+        return sodienthoai;
+    }
+
+    public void setSodienthoai(String sodienthoai) {
+        this.sodienthoai = sodienthoai;
     }
     
     

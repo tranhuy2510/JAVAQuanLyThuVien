@@ -176,14 +176,14 @@ public class NguoiDungController {
         }
         return dsSach;
     }*/
-    
+
     public List<NguoiDungModel> getdsNguoidung() throws SQLException {
         // Danh sách lưu thông tin người dùng
         List<NguoiDungModel> dsNguoiDung = new ArrayList<>();
 
         // Câu truy vấn kết hợp hai bảng
-        String query = "SELECT nguoidung.id_user AS Ma, docgia.hoten AS HoTen, nguoidung.taikhoan AS TaiKhoan, " +
-                       "nguoidung.matkhau AS MatKhau, nguoidung.loaiuser AS LoaiUser " +
+        String query = "SELECT nguoidung.id_user AS Ma, docgia.hoten AS HoTen, docgia.sodt AS SoDT, " +
+                       "nguoidung.taikhoan AS TaiKhoan, nguoidung.matkhau AS MatKhau, nguoidung.loaiuser AS LoaiUser " +
                        "FROM tbl_NguoiDung nguoidung " +
                        "INNER JOIN tbl_docgia docgia ON nguoidung.id_user = docgia.id_user";
 
@@ -196,11 +196,14 @@ public class NguoiDungController {
                 nguoiDung.setMatkhau(rs.getString("MatKhau"));     // Mật khẩu
                 nguoiDung.setLoaiuser(rs.getString("LoaiUser"));   // Loại user
 
-                // Kết hợp Họ Tên từ bảng độc giả
+                // Kết hợp Họ Tên và Số điện thoại từ bảng độc giả
                 DocGiaModel docGia = new DocGiaModel();
-                docGia.setHoten(rs.getString("HoTen")); // Họ tên
+                docGia.setHoten(rs.getString("HoTen"));            // Họ tên
+                docGia.setSodienthoai(rs.getString("SoDT"));       // Số điện thoại
 
-                nguoiDung.setHoten(docGia.getHoten()); // Gán Họ tên vào NguoiDungModel
+                nguoiDung.setHoten(docGia.getHoten());             // Gán Họ tên vào NguoiDungModel
+                nguoiDung.setSodienthoai(docGia.getSodienthoai()); // Gán số điện thoại vào NguoiDungModel
+
                 dsNguoiDung.add(nguoiDung);
             }
         } catch (SQLException e) {
@@ -210,28 +213,37 @@ public class NguoiDungController {
         return dsNguoiDung;
     }
 
+    
+    
+    
     public List<NguoiDungModel> timKiemNguoiDung(String keyword) throws SQLException {
         List<NguoiDungModel> dsNguoiDung = new ArrayList<>();
 
         // Câu truy vấn tìm kiếm
         String query = "SELECT nguoidung.id_user AS Ma, docgia.hoten AS HoTen, nguoidung.taikhoan AS TaiKhoan, " +
-                       "nguoidung.matkhau AS MatKhau, nguoidung.loaiuser AS LoaiUser " +
+                       "nguoidung.matkhau AS MatKhau, nguoidung.loaiuser AS LoaiUser, docgia.sodt AS SoDienThoai " +
                        "FROM tbl_NguoiDung nguoidung " +
                        "INNER JOIN tbl_docgia docgia ON nguoidung.id_user = docgia.id_user " +
-                       "WHERE docgia.id_docgia LIKE ? OR docgia.hoten LIKE ?";
+                       "WHERE docgia.id_docgia LIKE ? OR docgia.hoten LIKE ? OR docgia.sodt LIKE ? OR nguoidung.taikhoan LIKE ?";
 
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setString(1, "%" + keyword + "%"); // Tìm theo Mã độc giả
+            // Gán tham số cho câu truy vấn
+            pstmt.setString(1, "%" + keyword + "%"); // Tìm theo ID độc giả
             pstmt.setString(2, "%" + keyword + "%"); // Tìm theo Họ tên
+            pstmt.setString(3, "%" + keyword + "%"); // Tìm theo Số điện thoại
+            pstmt.setString(4, "%" + keyword + "%"); // Tìm theo Tài khoản
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
+                    // Tạo đối tượng NguoiDungModel và gán dữ liệu
                     NguoiDungModel nguoiDung = new NguoiDungModel();
-                    nguoiDung.setManguoidung(rs.getString("Ma"));
-                    nguoiDung.setHoten(rs.getString("HoTen"));
-                    nguoiDung.setTaikhoan(rs.getString("TaiKhoan"));
-                    nguoiDung.setMatkhau(rs.getString("MatKhau"));
-                    nguoiDung.setLoaiuser(rs.getString("LoaiUser"));
+                    nguoiDung.setManguoidung(rs.getString("Ma"));          // Mã người dùng
+                    nguoiDung.setHoten(rs.getString("HoTen"));            // Họ tên
+                    nguoiDung.setTaikhoan(rs.getString("TaiKhoan"));      // Tài khoản
+                    nguoiDung.setMatkhau(rs.getString("MatKhau"));        // Mật khẩu
+                    nguoiDung.setLoaiuser(rs.getString("LoaiUser"));      // Loại user
+                    nguoiDung.setSodienthoai(rs.getString("SoDienThoai"));// Số điện thoại
+
                     dsNguoiDung.add(nguoiDung);
                 }
             }
@@ -241,8 +253,9 @@ public class NguoiDungController {
 
         return dsNguoiDung;
     }
+
     
-    public boolean addUser(String username, String password, String hoTen) throws SQLException {
+    public boolean addUser(String username, String password, String hoTen, String soDT) throws SQLException {
         conn.setAutoCommit(false); // Bắt đầu transaction
         try {
             // 1. Mã hóa mật khẩu
@@ -262,10 +275,11 @@ public class NguoiDungController {
                         int idUser = rs.getInt(1);
 
                         // 3. Thêm vào bảng tbl_docgia
-                        String insertDocGiaSQL = "INSERT INTO tbl_docgia (hoten, id_user) VALUES (?, ?, ?)";
+                        String insertDocGiaSQL = "INSERT INTO tbl_docgia (hoten, sodt, id_user) VALUES (?, ?, ?)";
                         try (PreparedStatement stmtDocGia = conn.prepareStatement(insertDocGiaSQL)) {
                             stmtDocGia.setString(1, hoTen);
-                            stmtDocGia.setInt(2, idUser);
+                            stmtDocGia.setString(2, soDT);
+                            stmtDocGia.setInt(3, idUser);
                             stmtDocGia.executeUpdate();
                         }
                     }
@@ -282,7 +296,43 @@ public class NguoiDungController {
         }
     }
 
-    
+    public boolean updateUser(String userId, String hoTen, String taiKhoan, String matKhau, String soDienThoai) throws SQLException {
+        String updateNguoiDungSQL = "UPDATE tbl_nguoidung SET taikhoan = ?, matkhau = ? WHERE id_user = ?";
+        String updateDocGiaSQL = "UPDATE tbl_docgia SET hoten = ?, sodt = ? WHERE id_user = ?";
+
+        conn.setAutoCommit(false); // Bắt đầu transaction
+        try {
+            // Cập nhật bảng tbl_nguoidung
+            try (PreparedStatement stmtNguoiDung = conn.prepareStatement(updateNguoiDungSQL)) {
+                stmtNguoiDung.setString(1, taiKhoan);
+                stmtNguoiDung.setString(2, matKhau);
+                stmtNguoiDung.setString(3, userId);
+                stmtNguoiDung.executeUpdate();
+            }
+
+            // Cập nhật bảng tbl_docgia
+            try (PreparedStatement stmtDocGia = conn.prepareStatement(updateDocGiaSQL)) {
+                stmtDocGia.setString(1, hoTen);
+                stmtDocGia.setString(2, soDienThoai);
+                stmtDocGia.setString(3, userId);
+                stmtDocGia.executeUpdate();
+            }
+
+            conn.commit(); // Xác nhận transaction
+            return true;
+        } catch (SQLException e) {
+            conn.rollback(); // Hoàn tác nếu xảy ra lỗi
+            throw e;
+        } finally {
+            conn.setAutoCommit(true);
+        }
+    }
+
+
+
+
+
+
     
     
     
