@@ -12,6 +12,7 @@ public class NguoiDungModel {
     private String taikhoan;
     private String matkhau;
     private String loaiuser;
+    private String hoten; // Bổ sung thuộc tính Họ Tên
     
     // Khởi tạo không tham số
     public NguoiDungModel(){}
@@ -23,6 +24,14 @@ public class NguoiDungModel {
         this.matkhau = matkhau;
         this.loaiuser = loaiuser;
     }
+
+    public NguoiDungModel(String manguoidung, String taikhoan, String matkhau, String loaiuser, String hoten) {
+        this.manguoidung = manguoidung;
+        this.taikhoan = taikhoan;
+        this.matkhau = matkhau;
+        this.loaiuser = loaiuser;
+        this.hoten = hoten;
+    }
     
      //khoi tao nhanh khi lam viec voi giao dien
     public NguoiDungModel(ResultSet rs) throws SQLException{
@@ -30,6 +39,7 @@ public class NguoiDungModel {
         this.taikhoan = rs.getString("taikhoan");
         this.matkhau = rs.getString("matkhau");
         this.loaiuser = rs.getString("loaiuser");
+        this.hoten = rs.getString("hoten");
     }
    
 
@@ -60,7 +70,16 @@ public class NguoiDungModel {
         this.matkhau = hashPassword(matkhau);  // Giả sử bạn mã hóa mật khẩu trước khi set
     }
 
+    public String getHoten() {
+        return hoten;
+    }
 
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
+    }
+    
+    
+    
     public String getLoaiuser() {
         return loaiuser;
     }

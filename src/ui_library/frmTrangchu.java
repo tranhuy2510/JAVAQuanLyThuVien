@@ -535,7 +535,7 @@ public class frmTrangchu extends javax.swing.JFrame {
 
         getContentPane().add(pnlSystem, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 1270, 840));
 
-        setBounds(0, 0, 1540, 920);
+        setBounds(0, 0, 1540, 909);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDangXuatMouseClicked
@@ -565,9 +565,13 @@ public class frmTrangchu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQLTheLoaiMouseClicked
 
     private void btnQLNguoiDungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLNguoiDungMouseClicked
-        // TODO add your handling code here:
-        QLNguoiDung users = new QLNguoiDung(this, true);
-        users.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            QLNguoiDung users = new QLNguoiDung(this, true);
+            users.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(frmTrangchu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnQLNguoiDungMouseClicked
 
     private void btnDSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDSDocGiaMouseClicked

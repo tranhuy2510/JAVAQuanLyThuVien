@@ -4,20 +4,95 @@
  */
 package ui_library;
 
+import controllers.NguoiDungController;
+import static controllers.NguoiDungController.decryptPassword;
+import java.awt.HeadlessException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import models.NguoiDungModel;
+
 /**
  *
  * @author admin
  */
-public class QLNguoiDung extends javax.swing.JDialog {
+public final class QLNguoiDung extends javax.swing.JDialog {
 
     /**
      * Creates new form QLNguoiDung
      */
-    public QLNguoiDung(java.awt.Frame parent, boolean modal) {
+    // Khai báo tableModel
+    private final DefaultTableModel tableModel;
+    private final NguoiDungController dsuser;
+    
+    public QLNguoiDung(java.awt.Frame parent, boolean modal) throws SQLException {
         super(parent, modal);
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
+        setupUI();
+        // Cấu hình bảng và controller
+        tableModel = (DefaultTableModel) tblNguoidung.getModel();
+        dsuser = new NguoiDungController();
+        // Khởi tạo các components trên JFrame
+        String[] colsName = {"Mã", " Họ Tên", "Tài khoản", "Mật khẩu", "Quyền hạn"};
+        // đặt tiêu đề cột cho tableModel
+        tableModel.setColumnIdentifiers(colsName);
+        // Kết nối JTable với tableModel
+        tblNguoidung.setModel(tableModel);
+        // Gọi hàm showDataOnTable() để hiển thị dữ liệu lên bảng
+        ShowData();
+        
+        
+        
+        lblWhoten.setVisible(false);
+        lblWtk.setVisible(false);
+        lblWmk.setVisible(false);
+        lblWmk2.setVisible(false);
+        lblWtkExist.setVisible(false);
+         // Cài đặt biểu tượng show/hide mật khẩu
+        lblShowMK.setVisible(true); // Hiển thị biểu tượng mở mắt ban đầu
+        lblHideMK.setVisible(false); // Ẩn biểu tượng đóng mắt ban đầu
+        
+        lblShowMK1.setVisible(true); // Hiển thị biểu tượng mở mắt ban đầu
+        lblHideMK1.setVisible(false); // Ẩn biểu tượng đóng mắt ban đầu
     }
 
+    private void setupUI(){
+        //set UI
+        tblNguoidung.getTableHeader().setBackground(new java.awt.Color(200,247,197));
+        tblNguoidung.getTableHeader().setForeground(new java.awt.Color(4,147,114));
+        tblNguoidung.getTableHeader().setFont(new java.awt.Font("Roboto", 1, 16));
+        tblNguoidung.getTableHeader().setOpaque(false);
+        
+        
+    }
+    
+    public void ShowData() throws SQLException{ 
+        List<NguoiDungModel> lst = dsuser.getdsNguoidung();
+        // Duyệt qua ArrayList data
+        Object[] rows = new Object[5];
+        for(int i =0; i< lst.size() ; i++){
+            rows[0] = lst.get(i).getManguoidung();
+            rows[1] = lst.get(i).getHoten();
+            rows[2] = lst.get(i).getTaikhoan();
+            rows[3] = lst.get(i).getMatkhau();
+            rows[4] = lst.get(i).getLoaiuser();
+            // Đưa dòng dữ liệu vào tableModel
+            tableModel.addRow(rows);
+        }     
+    }
+    
+    //Ham xoa du lieu trong tableModel 
+    public void ClearData() throws SQLException{ 
+        int rowCount = tableModel.getRowCount(); // Lấy số lượng dòng hiện tại
+        for (int i = rowCount - 1; i >= 0; i--) {
+            tableModel.removeRow(i); // Xóa từng dòng
+        }
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,7 +104,7 @@ public class QLNguoiDung extends javax.swing.JDialog {
 
         jPanel_Theloaisach = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblQLNguoidung = new javax.swing.JTable();
+        tblNguoidung = new javax.swing.JTable();
         lblMasach = new javax.swing.JLabel();
         lblTensach = new javax.swing.JLabel();
         lblTacgia = new javax.swing.JLabel();
@@ -38,32 +113,37 @@ public class QLNguoiDung extends javax.swing.JDialog {
         txtID = new javax.swing.JTextField();
         txtHoten = new javax.swing.JTextField();
         txtTentaikhoan = new javax.swing.JTextField();
-        btnThem = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
         lblTieudeTL = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        pwMatkhau = new javax.swing.JPasswordField();
-        pwNhaplaimk = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        lbl_CloseFormTL = new javax.swing.JLabel();
+        btnSua = new javax.swing.JButton();
+        txtMatkhau = new javax.swing.JPasswordField();
+        txtMkxacthuc = new javax.swing.JPasswordField();
+        ChkSetAdmin = new javax.swing.JCheckBox();
+        lblWmk = new javax.swing.JLabel();
+        lblWmk2 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
+        btnTim = new javax.swing.JButton();
+        btnHienThi = new javax.swing.JButton();
+        lblHideMK = new javax.swing.JLabel();
+        lblShowMK = new javax.swing.JLabel();
+        lblShowMK1 = new javax.swing.JLabel();
+        lblHideMK1 = new javax.swing.JLabel();
+        btnThem = new javax.swing.JButton();
+        lblWtk = new javax.swing.JLabel();
+        lblWhoten = new javax.swing.JLabel();
+        lblWtkExist = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_Theloaisach.setBackground(new java.awt.Color(200, 247, 197));
+        jPanel_Theloaisach.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(30, 130, 76)));
         jPanel_Theloaisach.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblQLNguoidung.setModel(new javax.swing.table.DefaultTableModel(
+        tblNguoidung.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        tblNguoidung.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Họ tên", "Tên tài khoản", "Mật khẩu", "Quyền hạn"
@@ -77,49 +157,67 @@ public class QLNguoiDung extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
-        tblQLNguoidung.setShowGrid(true);
-        jScrollPane1.setViewportView(tblQLNguoidung);
+        tblNguoidung.setRowHeight(25);
+        tblNguoidung.setSelectionBackground(new java.awt.Color(30, 130, 76));
+        tblNguoidung.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tblNguoidung.setShowGrid(true);
+        tblNguoidung.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblNguoidungMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblNguoidung);
 
-        jPanel_Theloaisach.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 520, -1));
+        jPanel_Theloaisach.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 520, 360));
 
-        lblMasach.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        lblMasach.setText("ID:");
-        jPanel_Theloaisach.add(lblMasach, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 24));
+        lblMasach.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lblMasach.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblMasach.setText("Tìm kiếm:");
+        lblMasach.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(30, 130, 76)));
+        jPanel_Theloaisach.add(lblMasach, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 80, 100, 32));
 
-        lblTensach.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblTensach.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lblTensach.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTensach.setText("Họ tên:");
-        jPanel_Theloaisach.add(lblTensach, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jPanel_Theloaisach.add(lblTensach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 135, 32));
 
-        lblTacgia.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblTacgia.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lblTacgia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTacgia.setText("Tên tài khoản:");
-        jPanel_Theloaisach.add(lblTacgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        jPanel_Theloaisach.add(lblTacgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 135, 32));
 
-        lblTheloai.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblTheloai.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lblTheloai.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTheloai.setText("Mật khẩu:");
-        jPanel_Theloaisach.add(lblTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        jPanel_Theloaisach.add(lblTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 135, 32));
 
-        lblSoluong.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        lblSoluong.setText("Nhập lại mật khẩu:");
-        jPanel_Theloaisach.add(lblSoluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
+        lblSoluong.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        lblSoluong.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSoluong.setText("Xác thực lại:");
+        jPanel_Theloaisach.add(lblSoluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 135, 32));
 
-        txtID.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jPanel_Theloaisach.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 225, -1));
+        txtID.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtID.setEnabled(false);
+        jPanel_Theloaisach.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 32, 32));
 
-        txtHoten.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jPanel_Theloaisach.add(txtHoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 225, -1));
+        txtHoten.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        txtHoten.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel_Theloaisach.add(txtHoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 200, 32));
 
-        txtTentaikhoan.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jPanel_Theloaisach.add(txtTentaikhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 225, -1));
+        txtTentaikhoan.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        txtTentaikhoan.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel_Theloaisach.add(txtTentaikhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 200, 32));
 
-        btnThem.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        btnThem.setText("Thêm ");
-        btnThem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel_Theloaisach.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
-
-        btnHuy.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnHuy.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         btnHuy.setText("Hủy bỏ");
         btnHuy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel_Theloaisach.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, -1, -1));
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuyActionPerformed(evt);
+            }
+        });
+        jPanel_Theloaisach.add(btnHuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 100, 32));
 
         lblTieudeTL.setBackground(new java.awt.Color(30, 130, 76));
         lblTieudeTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -127,73 +225,358 @@ public class QLNguoiDung extends javax.swing.JDialog {
         lblTieudeTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTieudeTL.setText("Quản lý người dùng");
         lblTieudeTL.setOpaque(true);
-        jPanel_Theloaisach.add(lblTieudeTL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 57));
+        jPanel_Theloaisach.add(lblTieudeTL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 57));
 
-        jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton1.setText("Sửa");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel_Theloaisach.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 86, -1));
-
-        pwMatkhau.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jPanel_Theloaisach.add(pwMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 152, -1));
-
-        pwNhaplaimk.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jPanel_Theloaisach.add(pwNhaplaimk, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 152, -1));
-
-        jCheckBox1.setBackground(new java.awt.Color(200, 247, 197));
-        jCheckBox1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(51, 51, 255));
-        jCheckBox1.setText("Đặt làm quản trị viên");
-        jCheckBox1.setBorder(null);
-        jCheckBox1.setContentAreaFilled(false);
-        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBox1.setFocusPainted(false);
-        jPanel_Theloaisach.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
-
-        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel1.setText("* ID không được để trống");
-        jPanel_Theloaisach.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, -1));
-
-        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setText("* Họ tên không được để trống");
-        jPanel_Theloaisach.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 173, -1));
-
-        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel3.setText("* Tên tài khoản không được để trống");
-        jPanel_Theloaisach.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 203, -1));
-
-        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel4.setText("* Mật khẩu không được để trống");
-        jPanel_Theloaisach.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 183, -1));
-
-        jLabel5.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel5.setText("* Mật khẩu không khớp");
-        jPanel_Theloaisach.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 160, -1));
-
-        lbl_CloseFormTL.setBackground(new java.awt.Color(30, 130, 76));
-        lbl_CloseFormTL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl_CloseFormTL.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_CloseFormTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_CloseFormTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lbl_CloseFormTL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbl_CloseFormTL.setOpaque(true);
-        lbl_CloseFormTL.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_CloseFormTLMouseClicked(evt);
+        btnSua.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
             }
         });
-        jPanel_Theloaisach.add(lbl_CloseFormTL, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 72, 57));
+        jPanel_Theloaisach.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 100, 32));
 
-        getContentPane().add(jPanel_Theloaisach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 524));
+        txtMatkhau.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        txtMatkhau.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel_Theloaisach.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 200, 32));
+
+        txtMkxacthuc.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        txtMkxacthuc.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel_Theloaisach.add(txtMkxacthuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 200, 32));
+
+        ChkSetAdmin.setBackground(new java.awt.Color(200, 247, 197));
+        ChkSetAdmin.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
+        ChkSetAdmin.setForeground(new java.awt.Color(51, 51, 255));
+        ChkSetAdmin.setText("Đặt làm quản trị viên");
+        ChkSetAdmin.setBorder(null);
+        ChkSetAdmin.setContentAreaFilled(false);
+        ChkSetAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ChkSetAdmin.setFocusPainted(false);
+        ChkSetAdmin.setIconTextGap(10);
+        ChkSetAdmin.setMargin(new java.awt.Insets(9, 9, 9, 9));
+        jPanel_Theloaisach.add(ChkSetAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, 35));
+
+        lblWmk.setForeground(new java.awt.Color(255, 51, 51));
+        lblWmk.setText("* Mật khẩu không được để trống");
+        jPanel_Theloaisach.add(lblWmk, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 295, 200, 18));
+
+        lblWmk2.setForeground(new java.awt.Color(255, 51, 51));
+        lblWmk2.setText("* Mật khẩu không khớp");
+        jPanel_Theloaisach.add(lblWmk2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 355, 200, 18));
+
+        txtUser.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jPanel_Theloaisach.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 150, 32));
+
+        btnTim.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnTim.setText("Tìm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
+        jPanel_Theloaisach.add(btnTim, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, 32));
+
+        btnHienThi.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        btnHienThi.setText("Hiển thị tất cả");
+        btnHienThi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(30, 130, 76)));
+        btnHienThi.setContentAreaFilled(false);
+        btnHienThi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHienThiActionPerformed(evt);
+            }
+        });
+        jPanel_Theloaisach.add(btnHienThi, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 70, -1, 32));
+
+        lblHideMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeclose.png"))); // NOI18N
+        lblHideMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHideMKMouseClicked(evt);
+            }
+        });
+        jPanel_Theloaisach.add(lblHideMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 260, 32, 30));
+
+        lblShowMK.setBackground(new java.awt.Color(255, 102, 102));
+        lblShowMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeopen.png"))); // NOI18N
+        lblShowMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblShowMKMouseClicked(evt);
+            }
+        });
+        jPanel_Theloaisach.add(lblShowMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 260, 32, 30));
+
+        lblShowMK1.setBackground(new java.awt.Color(255, 102, 102));
+        lblShowMK1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeopen.png"))); // NOI18N
+        lblShowMK1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblShowMK1MouseClicked(evt);
+            }
+        });
+        jPanel_Theloaisach.add(lblShowMK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 320, 32, 30));
+
+        lblHideMK1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeclose.png"))); // NOI18N
+        lblHideMK1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHideMK1MouseClicked(evt);
+            }
+        });
+        jPanel_Theloaisach.add(lblHideMK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 320, 32, 30));
+
+        btnThem.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        jPanel_Theloaisach.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 100, 32));
+
+        lblWtk.setForeground(new java.awt.Color(255, 51, 51));
+        lblWtk.setText("* Tên tài khoản không được để trống");
+        jPanel_Theloaisach.add(lblWtk, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 203, -1));
+
+        lblWhoten.setForeground(new java.awt.Color(255, 51, 51));
+        lblWhoten.setText("* Họ tên không được để trống");
+        jPanel_Theloaisach.add(lblWhoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 175, 173, -1));
+
+        lblWtkExist.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        lblWtkExist.setForeground(new java.awt.Color(255, 51, 51));
+        lblWtkExist.setText("* Tài khoản đã tồn tại");
+        jPanel_Theloaisach.add(lblWtkExist, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 280, -1));
+
+        getContentPane().add(jPanel_Theloaisach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lbl_CloseFormTLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_CloseFormTLMouseClicked
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
-        // Dong form the loai sach
-        this.dispose();
-    }//GEN-LAST:event_lbl_CloseFormTLMouseClicked
+        String keyword = txtUser.getText().trim(); // Lấy từ khóa tìm kiếm từ TextField
+
+        if (keyword.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập từ khóa tìm kiếm!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            // Gọi phương thức tìm kiếm
+            List<NguoiDungModel> dsTimKiem = dsuser.timKiemNguoiDung(keyword);
+
+            // Xóa dữ liệu cũ trong bảng
+            tableModel.setRowCount(0);
+
+            if (dsTimKiem.isEmpty()) {
+                // Không tìm thấy kết quả
+                JOptionPane.showMessageDialog(null, "Không tìm thấy người dùng!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // Hiển thị kết quả tìm kiếm
+                for (NguoiDungModel nguoiDung : dsTimKiem) {
+                    Object[] row = {
+                        nguoiDung.getManguoidung(),
+                        nguoiDung.getHoten(),
+                        nguoiDung.getTaikhoan(),
+                        nguoiDung.getMatkhau(),
+                        nguoiDung.getLoaiuser()
+                    };
+                    tableModel.addRow(row);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Lỗi khi tìm kiếm: " + ex.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnTimActionPerformed
+
+    private void btnHienThiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHienThiActionPerformed
+        
+        try {
+            // TODO add your handling code here:
+            tableModel.setRowCount(0);
+            ShowData();
+        } catch (SQLException ex) {
+            Logger.getLogger(QLNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnHienThiActionPerformed
+
+    /**
+    * Hàm tiện ích để lấy giá trị từ bảng, trả về chuỗi rỗng nếu giá trị null.
+    *
+    * @param model DefaultTableModel của bảng
+    * @param rowIndex Chỉ số dòng
+    * @param columnIndex Chỉ số cột
+    * @return Giá trị của ô (dưới dạng chuỗi), hoặc chuỗi rỗng nếu null
+    **/
+    private String getCellValue(DefaultTableModel model, int rowIndex, int columnIndex) {
+        Object value = model.getValueAt(rowIndex, columnIndex);
+        return value != null ? value.toString() : "";
+    }
+    
+    private void tblNguoidungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNguoidungMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tblNguoidung.getSelectedRow(); // Lấy chỉ số dòng được chọn
+
+        if (selectedRow >= 0) { // Kiểm tra nếu có dòng được chọn
+            DefaultTableModel model = (DefaultTableModel) tblNguoidung.getModel();
+
+            try {
+                // Lấy dữ liệu từ từng cột và cập nhật vào các JTextField tương ứng
+                txtID.setText(getCellValue(model, selectedRow, 0));
+                txtHoten.setText(getCellValue(model, selectedRow, 1));
+                txtTentaikhoan.setText(getCellValue(model, selectedRow, 2));
+                /*
+                txtMatkhau.setText(getCellValue(model, selectedRow, 3));
+                txtMkxacthuc.setText(getCellValue(model, selectedRow, 4)); // Cột "Xác thực"
+                */
+                // Lấy mật khẩu dạng mã hóa
+                String encryptedPassword = getCellValue(model, selectedRow, 3);
+
+                // Giải mã mật khẩu để hiển thị dạng bản rõ
+                String decryptedPassword = decryptPassword(encryptedPassword);
+                txtMatkhau.setText(decryptedPassword);
+
+                // Nếu có cột "Xác thực", hiển thị lên
+                //txtMkxacthuc.setText(getCellValue(model, selectedRow, 4));
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi khi đọc dữ liệu: " + e.getMessage(),
+                        "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một hàng!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_tblNguoidungMouseClicked
+
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
+        // TODO add your handling code here:
+        txtID.setText("");
+        txtHoten.setText("");
+        txtTentaikhoan.setText("");
+        txtMatkhau.setText("");
+        txtMkxacthuc.setText("");
+    }//GEN-LAST:event_btnHuyActionPerformed
+
+    private void lblHideMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHideMKMouseClicked
+        // TODO add your handling code here:
+        // Ẩn mật khẩu (trở về dạng ***)
+        txtMatkhau.setEchoChar('*'); // Ẩn mật khẩu (dạng ***)
+        lblShowMK.setVisible(true); // Hiển thị biểu tượng mở mắt
+        lblHideMK.setVisible(false); // Ẩn biểu tượng đóng mắt
+    }//GEN-LAST:event_lblHideMKMouseClicked
+
+    private void lblShowMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowMKMouseClicked
+        // TODO add your handling code here:
+        txtMatkhau.setEchoChar((char) 0); // Hiển thị mật khẩu
+        lblShowMK.setVisible(false); // Ẩn biểu tượng mở mắt
+        lblHideMK.setVisible(true); // Hiển thị biểu tượng đóng mắt
+    }//GEN-LAST:event_lblShowMKMouseClicked
+
+    private void lblShowMK1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowMK1MouseClicked
+        // TODO add your handling code here:
+        txtMkxacthuc.setEchoChar((char) 0); // Hiển thị mật khẩu
+        lblShowMK1.setVisible(false); // Ẩn biểu tượng mở mắt
+        lblHideMK1.setVisible(true); // Hiển thị biểu tượng đóng mắt
+    }//GEN-LAST:event_lblShowMK1MouseClicked
+
+    private void lblHideMK1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHideMK1MouseClicked
+        // TODO add your handling code here:
+        // Ẩn mật khẩu (trở về dạng ***)
+        txtMkxacthuc.setEchoChar('*'); // Ẩn mật khẩu (dạng ***)
+        lblShowMK1.setVisible(true); // Hiển thị biểu tượng mở mắt
+        lblHideMK1.setVisible(false); // Ẩn biểu tượng đóng mắt
+    }//GEN-LAST:event_lblHideMK1MouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    // Phương thức kiểm tra tên tài khoản hợp lệ 
+    private boolean isValidUsername(String username) { 
+        // Quy tắc: ít nhất 3 ký tự, không quá 15 ký tự, không khoảng trắng, chỉ chứa chữ cái và số 
+        return username.matches("^[a-zA-Z0-9]{3,15}$"); 
+    } 
+    
+    // Phương thức kiểm tra mật khẩu hợp lệ 
+    private boolean kiemTraMatKhauHopLe(String matKhau) {
+        return matKhau.length() >= 8 && 
+               matKhau.matches(".*[A-Z].*") && 
+               matKhau.matches(".*[a-z].*") && 
+               matKhau.matches(".*\\d.*");
+    }
+    
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        try {
+            // Lấy dữ liệu từ các trường nhập
+            String fullname = txtHoten.getText().trim();
+            String taikhoan = txtTentaikhoan.getText().trim();
+            String matkhau = new String(txtMatkhau.getPassword());
+            String xacnhanMatKhau = new String(txtMkxacthuc.getPassword());
+            //String loaiUser = 
+            boolean isValid = true;
+
+            // Kiểm tra dữ liệu nhập vào
+            // 1. Kiểm tra họ tên
+            if (fullname.isEmpty()) {
+                lblWhoten.setVisible(true);
+                return;
+            } 
+            
+            // 2. Kiểm tra username
+            if (taikhoan.isEmpty()) {
+                lblWtk.setVisible(true);
+                return;
+            }
+            if (!isValidUsername(taikhoan)) {
+                JOptionPane.showMessageDialog(null, "Tên tài khoản không hợp lệ (3-15 ký tự, không chứa khoảng trắng)!",
+                        "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            // 3. Kiểm tra mật khẩu
+            if (matkhau.isEmpty()) {
+                lblWmk.setVisible(true);
+                return;
+            }
+            /*
+            if (!kiemTraMatKhauHopLe(matkhau)) {
+                JOptionPane.showMessageDialog(null, "Mật khẩu phải có ít nhất 8 ký tự, chứa chữ hoa, chữ thường và số.",
+                        "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            */
+            // 4. Kiểm tra xác minh mật khẩu
+            if (!matkhau.equals(xacnhanMatKhau)) {
+                lblWmk2.setVisible(true);
+                return;
+            }
+            
+            // Chỉ tiếp tục nếu tất cả dữ liệu hợp lệ
+            if (!isValid) {
+                return;
+            }
+            // Khởi tạo controller
+            NguoiDungController nguoiDungCon = new NguoiDungController();
+
+                // Kiểm tra tài khoản đã tồn tại
+                if (nguoiDungCon.kiemTraTaiKhoanTonTai(taikhoan)) {
+                    lblWtkExist.setVisible(true);            
+                    return;
+                }
+
+                // Đăng ký tài khoản
+                boolean themthanhcong = nguoiDungCon.addUser(fullname, taikhoan, matkhau);
+
+                if (themthanhcong) {
+                    JOptionPane.showMessageDialog(this, "Thêm thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                    ClearData(); // Xóa dữ liệu trong các trường nhập
+                    ShowData(); // Tải lại dữ liệu vào bảng từ database
+                } else {
+                    JOptionPane.showMessageDialog(null, "Thêm thất bại. Vui lòng thử lại.", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                }
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi: " + ex.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnThemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,24 +590,21 @@ public class QLNguoiDung extends javax.swing.JDialog {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(QLNguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QLNguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QLNguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(QLNguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
                 QLNguoiDung dialog = new QLNguoiDung(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
@@ -233,34 +613,42 @@ public class QLNguoiDung extends javax.swing.JDialog {
                     }
                 });
                 dialog.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(QLNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox ChkSetAdmin;
+    private javax.swing.JButton btnHienThi;
     private javax.swing.JButton btnHuy;
+    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton btnTim;
     private javax.swing.JPanel jPanel_Theloaisach;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblHideMK;
+    private javax.swing.JLabel lblHideMK1;
     private javax.swing.JLabel lblMasach;
+    private javax.swing.JLabel lblShowMK;
+    private javax.swing.JLabel lblShowMK1;
     private javax.swing.JLabel lblSoluong;
     private javax.swing.JLabel lblTacgia;
     private javax.swing.JLabel lblTensach;
     private javax.swing.JLabel lblTheloai;
     private javax.swing.JLabel lblTieudeTL;
-    private javax.swing.JLabel lbl_CloseFormTL;
-    private javax.swing.JPasswordField pwMatkhau;
-    private javax.swing.JPasswordField pwNhaplaimk;
-    private javax.swing.JTable tblQLNguoidung;
+    private javax.swing.JLabel lblWhoten;
+    private javax.swing.JLabel lblWmk;
+    private javax.swing.JLabel lblWmk2;
+    private javax.swing.JLabel lblWtk;
+    private javax.swing.JLabel lblWtkExist;
+    private javax.swing.JTable tblNguoidung;
     private javax.swing.JTextField txtHoten;
     private javax.swing.JTextField txtID;
+    private javax.swing.JPasswordField txtMatkhau;
+    private javax.swing.JPasswordField txtMkxacthuc;
     private javax.swing.JTextField txtTentaikhoan;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

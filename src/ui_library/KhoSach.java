@@ -16,6 +16,8 @@ public class KhoSach extends javax.swing.JDialog {
     public KhoSach(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
     }
 
     /**

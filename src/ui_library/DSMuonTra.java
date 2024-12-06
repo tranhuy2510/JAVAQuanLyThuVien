@@ -16,6 +16,8 @@ public class DSMuonTra extends javax.swing.JDialog {
     public DSMuonTra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -92,6 +94,7 @@ public class DSMuonTra extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
+        tblSachmuon.setRowHeight(25);
         tblSachmuon.setSelectionBackground(new java.awt.Color(191, 202, 230));
         jScrollPane1.setViewportView(tblSachmuon);
 
@@ -133,7 +136,8 @@ public class DSMuonTra extends javax.swing.JDialog {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }

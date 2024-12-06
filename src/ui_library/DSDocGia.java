@@ -16,6 +16,10 @@ public class DSDocGia extends javax.swing.JDialog {
     public DSDocGia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        // can giua cho form
+        this.setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -43,12 +47,12 @@ public class DSDocGia extends javax.swing.JDialog {
         gia = new javax.swing.JLabel();
         pnlHeader = new javax.swing.JPanel();
         lblTieude = new javax.swing.JLabel();
-        lblSystemIC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_Theloaisach.setBackground(new java.awt.Color(200, 247, 197));
+        jPanel_Theloaisach.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 3, 3, new java.awt.Color(30, 130, 76)));
         jPanel_Theloaisach.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblDanhsach.setModel(new javax.swing.table.DefaultTableModel(
@@ -70,6 +74,7 @@ public class DSDocGia extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
+        tblDanhsach.setRowHeight(25);
         tblDanhsach.setShowGrid(true);
         jScrollPane1.setViewportView(tblDanhsach);
 
@@ -131,29 +136,13 @@ public class DSDocGia extends javax.swing.JDialog {
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTieude.setBackground(new java.awt.Color(241, 231, 254));
-        lblTieude.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTieude.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
         lblTieude.setForeground(new java.awt.Color(255, 255, 255));
         lblTieude.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTieude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/book.png"))); // NOI18N
         lblTieude.setText("    Hồ sơ độc giả");
         lblTieude.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 270, 70));
-
-        lblSystemIC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_close24.png"))); // NOI18N
-        lblSystemIC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblSystemIC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblSystemICMouseExited(evt);
-            }
-        });
-        pnlHeader.add(lblSystemIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, 60, 60));
+        pnlHeader.add(lblTieude, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 270, 70));
 
         jPanel_Theloaisach.add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 70));
 
@@ -161,22 +150,6 @@ public class DSDocGia extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblSystemICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseClicked
-        // TODO add your handling code here:
-        // Dong form
-        this.dispose();
-    }//GEN-LAST:event_lblSystemICMouseClicked
-
-    private void lblSystemICMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseEntered
-        // TODO add your handling code here:
-        lblSystemIC.setBackground(new java.awt.Color(255,102,102));
-    }//GEN-LAST:event_lblSystemICMouseEntered
-
-    private void lblSystemICMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemICMouseExited
-        // TODO add your handling code here:
-        lblSystemIC.setBackground(new java.awt.Color(30,130,76));
-    }//GEN-LAST:event_lblSystemICMouseExited
 
     /**
      * @param args the command line arguments
@@ -190,19 +163,16 @@ public class DSDocGia extends javax.swing.JDialog {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    //javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DSDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DSDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DSDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DSDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the dialog */
@@ -229,7 +199,6 @@ public class DSDocGia extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel_Theloaisach;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMasach;
-    private javax.swing.JLabel lblSystemIC;
     private javax.swing.JLabel lblTieude;
     private javax.swing.JLabel matg;
     private javax.swing.JLabel nhaxb;

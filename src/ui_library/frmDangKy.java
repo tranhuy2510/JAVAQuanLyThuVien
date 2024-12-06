@@ -57,6 +57,8 @@ public class frmDangKy extends javax.swing.JFrame {
         // Đặt ký tự ẩn mật khẩu mặc định
         txtMatKhau1.setEchoChar('*');
         
+        lblReLoad.setOpaque(true); // Cho phép JLabel có background
+        lblReLoad.setBackground(new java.awt.Color(137,196,244));
         lblMinFrm.setOpaque(true); // Cho phép JLabel có background
         lblMinFrm.setBackground(new java.awt.Color(137,196,244)); // Màu nền ban đầu
         lblClose.setOpaque(true);
@@ -350,6 +352,12 @@ public class frmDangKy extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblReLoadMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblReLoadMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblReLoadMouseExited(evt);
+            }
         });
         pnlSignIn.add(lblReLoad, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 40, 32));
 
@@ -375,7 +383,7 @@ public class frmDangKy extends javax.swing.JFrame {
         lblWsdt.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         lblWsdt.setForeground(new java.awt.Color(255, 51, 51));
         lblWsdt.setText("* Số điện thoại không hợp lệ");
-        pnlSignIn.add(lblWsdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 590, 280, -1));
+        pnlSignIn.add(lblWsdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 565, 280, -1));
 
         lblWtkExist.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         lblWtkExist.setForeground(new java.awt.Color(255, 51, 51));
@@ -591,7 +599,7 @@ public class frmDangKy extends javax.swing.JFrame {
 
     private void lblCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseEntered
         // TODO add your handling code here:
-        lblClose.setBackground(new java.awt.Color(255,51,51));
+        lblClose.setBackground(new java.awt.Color(255,102,102));
     }//GEN-LAST:event_lblCloseMouseEntered
 
     private void lblCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseExited
@@ -672,6 +680,16 @@ public class frmDangKy extends javax.swing.JFrame {
             lblWsdt.setVisible(false);
         }
     }//GEN-LAST:event_txtSdtKeyReleased
+
+    private void lblReLoadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReLoadMouseEntered
+        // TODO add your handling code here:
+        lblReLoad.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_lblReLoadMouseEntered
+
+    private void lblReLoadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReLoadMouseExited
+        // TODO add your handling code here:
+        lblReLoad.setBackground(new java.awt.Color(137,196,244));
+    }//GEN-LAST:event_lblReLoadMouseExited
 
     
     

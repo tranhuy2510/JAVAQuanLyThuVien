@@ -378,7 +378,7 @@ public class frmDangnhap extends javax.swing.JFrame {
 
     private void lblCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseEntered
         // TODO add your handling code here:
-        lblClose.setBackground(Color.LIGHT_GRAY);       
+        lblClose.setBackground(new java.awt.Color(255,102,102));
     }//GEN-LAST:event_lblCloseMouseEntered
 
     private void lblCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseExited
