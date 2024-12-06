@@ -5,7 +5,6 @@
 package ui_library;
 
 import controllers.NguoiDungController;
-import static controllers.NguoiDungController.decryptPassword;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
 import java.util.List;
@@ -198,12 +197,12 @@ public final class QLNguoiDung extends javax.swing.JDialog {
         lblTheloai.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lblTheloai.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTheloai.setText("Mật khẩu:");
-        jPanel_Theloaisach.add(lblTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 135, 32));
+        jPanel_Theloaisach.add(lblTheloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 135, 32));
 
         lblSoluong.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lblSoluong.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSoluong.setText("Xác thực lại:");
-        jPanel_Theloaisach.add(lblSoluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 135, 32));
+        jPanel_Theloaisach.add(lblSoluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 135, 32));
 
         txtID.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -248,11 +247,11 @@ public final class QLNguoiDung extends javax.swing.JDialog {
 
         txtMatkhau.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         txtMatkhau.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jPanel_Theloaisach.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 200, 32));
+        jPanel_Theloaisach.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 200, 32));
 
         txtMkxacthuc.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         txtMkxacthuc.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jPanel_Theloaisach.add(txtMkxacthuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 200, 32));
+        jPanel_Theloaisach.add(txtMkxacthuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 200, 32));
 
         ChkSetAdmin.setBackground(new java.awt.Color(200, 247, 197));
         ChkSetAdmin.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
@@ -268,11 +267,11 @@ public final class QLNguoiDung extends javax.swing.JDialog {
 
         lblWmk.setForeground(new java.awt.Color(255, 51, 51));
         lblWmk.setText("* Mật khẩu không được để trống");
-        jPanel_Theloaisach.add(lblWmk, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 295, 200, 18));
+        jPanel_Theloaisach.add(lblWmk, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 200, 18));
 
         lblWmk2.setForeground(new java.awt.Color(255, 51, 51));
         lblWmk2.setText("* Mật khẩu không khớp");
-        jPanel_Theloaisach.add(lblWmk2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 355, 200, 18));
+        jPanel_Theloaisach.add(lblWmk2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 200, 18));
 
         txtUser.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jPanel_Theloaisach.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 150, 32));
@@ -303,7 +302,7 @@ public final class QLNguoiDung extends javax.swing.JDialog {
                 lblHideMKMouseClicked(evt);
             }
         });
-        jPanel_Theloaisach.add(lblHideMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 260, 32, 30));
+        jPanel_Theloaisach.add(lblHideMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 32, 30));
 
         lblShowMK.setBackground(new java.awt.Color(255, 102, 102));
         lblShowMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeopen.png"))); // NOI18N
@@ -312,7 +311,7 @@ public final class QLNguoiDung extends javax.swing.JDialog {
                 lblShowMKMouseClicked(evt);
             }
         });
-        jPanel_Theloaisach.add(lblShowMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 260, 32, 30));
+        jPanel_Theloaisach.add(lblShowMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 32, 30));
 
         lblShowMK1.setBackground(new java.awt.Color(255, 102, 102));
         lblShowMK1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeopen.png"))); // NOI18N
@@ -321,7 +320,7 @@ public final class QLNguoiDung extends javax.swing.JDialog {
                 lblShowMK1MouseClicked(evt);
             }
         });
-        jPanel_Theloaisach.add(lblShowMK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 320, 32, 30));
+        jPanel_Theloaisach.add(lblShowMK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 32, 30));
 
         lblHideMK1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ic_eyeclose.png"))); // NOI18N
         lblHideMK1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -329,7 +328,7 @@ public final class QLNguoiDung extends javax.swing.JDialog {
                 lblHideMK1MouseClicked(evt);
             }
         });
-        jPanel_Theloaisach.add(lblHideMK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 320, 32, 30));
+        jPanel_Theloaisach.add(lblHideMK1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 32, 30));
 
         btnThem.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         btnThem.setText("Thêm");
@@ -361,22 +360,27 @@ public final class QLNguoiDung extends javax.swing.JDialog {
                 txtSdtKeyReleased(evt);
             }
         });
-        jPanel_Theloaisach.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 200, 32));
+        jPanel_Theloaisach.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 200, 32));
 
         lblSdt.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         lblSdt.setText("Số điện thoại:");
-        jPanel_Theloaisach.add(lblSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 135, 32));
+        jPanel_Theloaisach.add(lblSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 135, 32));
 
         lblWsdt.setForeground(new java.awt.Color(255, 51, 51));
         lblWsdt.setText("* Số điện thoại không hợp lệ");
-        jPanel_Theloaisach.add(lblWsdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 425, 220, -1));
+        jPanel_Theloaisach.add(lblWsdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 220, -1));
 
         lblWsdt1.setForeground(new java.awt.Color(255, 51, 51));
         lblWsdt1.setText("* Số điện thoại không được để trống");
-        jPanel_Theloaisach.add(lblWsdt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 425, 220, -1));
+        jPanel_Theloaisach.add(lblWsdt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 220, -1));
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         jButton1.setText("Xóa");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel_Theloaisach.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 550, 150, 35));
 
         getContentPane().add(jPanel_Theloaisach, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 610));
@@ -461,7 +465,7 @@ public final class QLNguoiDung extends javax.swing.JDialog {
                 /*
                 txtMatkhau.setText(getCellValue(model, selectedRow, 3));
                 txtMkxacthuc.setText(getCellValue(model, selectedRow, 4)); // Cột "Xác thực"
-                */
+                
                 // Lấy mật khẩu dạng mã hóa
                 String encryptedPassword = getCellValue(model, selectedRow, 3);
 
@@ -471,6 +475,7 @@ public final class QLNguoiDung extends javax.swing.JDialog {
 
                 // Nếu có cột "Xác thực", hiển thị lên
                 //txtMkxacthuc.setText(decryptedPassword);
+                */
                 txtSdt.setText(getCellValue(model, selectedRow, 4));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi khi đọc dữ liệu: " + e.getMessage(),
@@ -489,6 +494,7 @@ public final class QLNguoiDung extends javax.swing.JDialog {
         txtMatkhau.setText("");
         txtMkxacthuc.setText("");
         txtSdt.setText("");
+        ChkSetAdmin.setSelected(false);
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void lblHideMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHideMKMouseClicked
@@ -537,45 +543,69 @@ public final class QLNguoiDung extends javax.swing.JDialog {
 
             // Lấy ID người dùng từ bảng
             String userId = model.getValueAt(selectedRow, 0).toString();
-
+            String currentLoaiUser = model.getValueAt(selectedRow, 5).toString();
+            
             // Lấy dữ liệu từ các trường nhập
             String hoTen = txtHoten.getText().trim();
             String taiKhoan = txtTentaikhoan.getText().trim();
             String matKhau = new String(txtMatkhau.getPassword());
             String xacNhanMatKhau = new String(txtMkxacthuc.getPassword());
             String soDienThoai = txtSdt.getText().trim();
+            String loaiUser = ChkSetAdmin.isSelected() ? "Admin" : "User";
 
-            // Kiểm tra dữ liệu
-            if (hoTen.isEmpty() || taiKhoan.isEmpty() || matKhau.isEmpty() || soDienThoai.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền đầy đủ thông tin!", "Thông báo", JOptionPane.WARNING_MESSAGE);
-                return;
+            boolean hasChanges = false;
+
+            // Kiểm tra và cập nhật từng trường
+            if (!hoTen.isEmpty()) {
+                if (dsuser.updateUserField(userId, "hoten", hoTen)) {
+                    hasChanges = true;
+                }
             }
 
-            if (!matKhau.equals(xacNhanMatKhau)) {
-                JOptionPane.showMessageDialog(this, "Mật khẩu xác nhận không khớp!", "Thông báo", JOptionPane.WARNING_MESSAGE);
-                return;
+            if (!taiKhoan.isEmpty()) {
+                if (dsuser.kiemTraTaiKhoanTonTai(taiKhoan)) {
+                    JOptionPane.showMessageDialog(this, "Tài khoản đã tồn tại!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                if (dsuser.updateUserField(userId, "taikhoan", taiKhoan)) {
+                    hasChanges = true;
+                }
             }
 
-            if (!isValidPhoneNumber(soDienThoai)) {
-                JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ!", "Thông báo", JOptionPane.WARNING_MESSAGE);
-                return;
+            if (!matKhau.isEmpty() || !xacNhanMatKhau.isEmpty()) {
+                if (!matKhau.equals(xacNhanMatKhau)) {
+                    JOptionPane.showMessageDialog(this, "Mật khẩu và xác nhận mật khẩu không khớp!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                String encryptPassword = NguoiDungController.encryptPassword(matKhau);
+                if (dsuser.updateUserField(userId, "matkhau", encryptPassword)) {
+                    hasChanges = true;
+                }
             }
 
-            // Mã hóa mật khẩu
-            String encryptPassword = NguoiDungController.encryptPassword(matKhau);
+            if (!soDienThoai.isEmpty()) {
+                if (!isValidPhoneNumber(soDienThoai)) {
+                    JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                if (dsuser.updateUserField(userId, "sodt", soDienThoai)) {
+                    hasChanges = true;
+                }
+            }
 
-            // Cập nhật thông tin vào cơ sở dữ liệu
-            NguoiDungController controller = new NguoiDungController();
-            boolean isUpdated = controller.updateUser(userId, hoTen, taiKhoan, encryptPassword, soDienThoai);
+            // Chỉ cập nhật loaiUser nếu có thay đổi
+            if (!loaiUser.equals(currentLoaiUser)) {
+                if (dsuser.updateUserField(userId, "loaiuser", loaiUser)) {
+                    hasChanges = true;
+                }
+            }
 
-            if (isUpdated) {
-                JOptionPane.showMessageDialog(this, "Cập nhật thông tin thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-                ClearData();
-                // Làm mới dữ liệu hiển thị
-                ShowData();
-                
+            if (!hasChanges) {
+                JOptionPane.showMessageDialog(this, "Không có trường nào được cập nhật!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Cập nhật thông tin thất bại. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Cập nhật thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                ClearData();
+                ShowData();
             }
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
@@ -608,9 +638,11 @@ public final class QLNguoiDung extends javax.swing.JDialog {
             String matkhau = new String(txtMatkhau.getPassword());
             String xacnhanMatKhau = new String(txtMkxacthuc.getPassword());
             String soDienThoai = txtSdt.getText().trim();
-            //String loaiUser = 
+            String loaiUser = ChkSetAdmin.isSelected() ? "Admin" : "user";
+            
             boolean isValid = true;
 
+            
             // Kiểm tra dữ liệu nhập vào
             // 1. Kiểm tra họ tên
             if (fullname.isEmpty()) {
@@ -661,17 +693,16 @@ public final class QLNguoiDung extends javax.swing.JDialog {
             if (!isValid) {
                 return;
             }
-            // Khởi tạo controller
-            NguoiDungController nguoiDungCon = new NguoiDungController();
+            
 
                 // Kiểm tra tài khoản đã tồn tại
-                if (nguoiDungCon.kiemTraTaiKhoanTonTai(taikhoan)) {
+                if (dsuser.kiemTraTaiKhoanTonTai(taikhoan)) {
                     lblWtkExist.setVisible(true);            
                     return;
                 }
 
                 // Đăng ký tài khoản
-                boolean themthanhcong = nguoiDungCon.addUser(taikhoan, matkhau, fullname, soDienThoai);
+                boolean themthanhcong = dsuser.addUser(taikhoan, matkhau, fullname, soDienThoai, loaiUser);
 
                 if (themthanhcong) {
                     JOptionPane.showMessageDialog(this, "Thêm thành công.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -700,6 +731,53 @@ public final class QLNguoiDung extends javax.swing.JDialog {
             lblWsdt.setVisible(false);
         }
     }//GEN-LAST:event_txtSdtKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // Lấy dòng được chọn trong bảng
+            int selectedRow = tblNguoidung.getSelectedRow();
+
+            // Kiểm tra nếu chưa chọn dòng nào
+            if (selectedRow < 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn một người dùng để xóa!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Lấy ID người dùng từ bảng
+            DefaultTableModel model = (DefaultTableModel) tblNguoidung.getModel();
+            int idUser = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+
+            // Kiểm tra xem độc giả có phiếu mượn nào chưa trả không
+            boolean hasUnreturnedBooks = dsuser.checkIfUserHasUnreturnedBooks(idUser);
+
+            if (hasUnreturnedBooks) {
+                JOptionPane.showMessageDialog(this, "Không thể xóa người dùng này vì họ đang có sách mượn chưa trả!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+                return; // Ngừng thao tác xóa nếu có phiếu mượn chưa trả
+            }
+
+            // Hiển thị hộp thoại xác nhận
+            int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa người dùng này?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+            if (confirm != JOptionPane.YES_OPTION) {
+                return; // Hủy thao tác nếu chọn "No"
+            }
+
+            // Thực hiện xóa người dùng
+            boolean isDeleted = dsuser.deleteNguoiDung(idUser);
+
+            if (isDeleted) {
+                JOptionPane.showMessageDialog(this, "Xóa người dùng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+                // Cập nhật lại bảng
+                ClearData(); // Xóa trắng dữ liệu bảng
+                ShowData();  // Hiển thị dữ liệu mới
+            } else {
+                JOptionPane.showMessageDialog(this, "Xóa người dùng thất bại. Vui lòng thử lại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

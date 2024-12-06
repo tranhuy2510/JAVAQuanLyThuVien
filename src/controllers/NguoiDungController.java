@@ -228,7 +228,7 @@ public class NguoiDungController {
 
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
             // Gán tham số cho câu truy vấn
-            pstmt.setString(1, "%" + keyword + "%"); // Tìm theo ID độc giả
+            //pstmt.setString(1, "%" + keyword + "%"); // Tìm theo ID độc giả
             pstmt.setString(2, "%" + keyword + "%"); // Tìm theo Họ tên
             pstmt.setString(3, "%" + keyword + "%"); // Tìm theo Số điện thoại
             pstmt.setString(4, "%" + keyword + "%"); // Tìm theo Tài khoản
@@ -255,18 +255,18 @@ public class NguoiDungController {
     }
 
     
-    public boolean addUser(String username, String password, String hoTen, String soDT) throws SQLException {
+    public boolean addUser(String username, String password, String hoTen, String soDT, String loaiUser) throws SQLException {
         conn.setAutoCommit(false); // Bắt đầu transaction
         try {
             // 1. Mã hóa mật khẩu
             String EncryptPassword = encryptPassword(password);
 
             // 2. Thêm vào bảng tbl_nguoidung
-            String insertNguoiDungSQL = "INSERT INTO tbl_nguoidung (taikhoan, matkhau, loaiuser) VALUES (?, ?, 'user')";
+            String insertNguoiDungSQL = "INSERT INTO tbl_nguoidung (taikhoan, matkhau, loaiuser) VALUES (?, ?, ?)";
             try (PreparedStatement stmtNguoiDung = conn.prepareStatement(insertNguoiDungSQL, Statement.RETURN_GENERATED_KEYS)) {
                 stmtNguoiDung.setString(1, username);
                 stmtNguoiDung.setString(2, EncryptPassword);
-                //stmtNguoiDung.setString(3, loaiUser);
+                stmtNguoiDung.setString(3, loaiUser);
                 stmtNguoiDung.executeUpdate();
 
                 // Lấy id_user vừa tạo
@@ -285,7 +285,7 @@ public class NguoiDungController {
                     }
                 }
             }
-            
+
             conn.commit(); // Xác nhận transaction
             return true;
         } catch (SQLException ex) {
@@ -294,8 +294,97 @@ public class NguoiDungController {
         } finally {
             conn.setAutoCommit(true);
         }
+    }   
+
+    
+    public boolean updateUserField(String userId, String fieldName, String value) throws SQLException {
+        String tableName;
+        String sql;
+
+        // Xác định bảng và cột cần cập nhật
+        switch (fieldName) {
+            case "hoten":
+            case "sodt":
+                tableName = "tbl_docgia";
+                sql = "UPDATE " + tableName + " SET " + fieldName + " = ? WHERE id_user = ?";
+                break;
+            case "taikhoan":
+            case "matkhau":
+            case "loaiuser": // Thêm trường hợp cho loaiUser
+                tableName = "tbl_nguoidung";
+                sql = "UPDATE " + tableName + " SET " + fieldName + " = ? WHERE id_user = ?";
+                break;
+            default:
+                throw new IllegalArgumentException("Cột không hợp lệ: " + fieldName);
+        }
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, value);
+            pstmt.setString(2, userId);
+            return pstmt.executeUpdate() > 0;
+        }
+    }
+    
+    public boolean checkIfUserHasUnreturnedBooks(int idUser) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM tbl_sachmuon WHERE id_docgia = ? AND trangthai != 'Đã hoàn'";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, idUser);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;  // Nếu có phiếu mượn chưa trả, trả về true
+            }
+        }
+
+        return false;  // Nếu không có phiếu mượn chưa trả
+    }
+    
+    public boolean deleteNguoiDung(int idUser) throws SQLException {
+        String sql = "DELETE FROM tbl_NguoiDung WHERE id_user = ?";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, idUser);
+            return pstmt.executeUpdate() > 0;
+        }
     }
 
+    
+    
+    
+
+    /*
+    public boolean deleteDocGia(int idDocGia) throws SQLException {
+        String sqlCheckBorrowedBooks = "SELECT COUNT(*) FROM tbl_sachmuon WHERE id_docgia = ?";
+        String sqlDeleteDocGia = "DELETE FROM tbl_docgia WHERE id_docgia = ?";
+
+        try (PreparedStatement pstmtCheck = conn.prepareStatement(sqlCheckBorrowedBooks);
+             PreparedStatement pstmtDelete = conn.prepareStatement(sqlDeleteDocGia)) {
+
+            // Kiểm tra nếu độc giả còn sách mượn
+            pstmtCheck.setInt(1, idDocGia);
+            ResultSet rs = pstmtCheck.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                // Độc giả vẫn còn sách mượn
+                return false; // Không thể xóa
+            }
+
+            // Xóa độc giả
+            pstmtDelete.setInt(1, idDocGia);
+            return pstmtDelete.executeUpdate() > 0;
+        }
+    }
+    */
+
+    
+    
+    
+    
+    
+    
+    
+/*
     public boolean updateUser(String userId, String hoTen, String taiKhoan, String matKhau, String soDienThoai) throws SQLException {
         String updateNguoiDungSQL = "UPDATE tbl_nguoidung SET taikhoan = ?, matkhau = ? WHERE id_user = ?";
         String updateDocGiaSQL = "UPDATE tbl_docgia SET hoten = ?, sodt = ? WHERE id_user = ?";
@@ -329,7 +418,7 @@ public class NguoiDungController {
     }
 
 
-
+*/
 
 
 

@@ -40,7 +40,7 @@ public class SachController {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Lỗi khi lấy dữ liệu  bang tac gia: " + e.getMessage());
+            System.out.println("Lỗi khi lấy dữ liệu  bang sach: " + e.getMessage());
         }
         return dsSach;
     }
